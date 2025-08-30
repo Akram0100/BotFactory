@@ -112,7 +112,7 @@
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1">{{ bot.name }}</h6>
                                     <p class="text-muted mb-1 small">
-                                        {{ bot.description|truncate(80) if bot.description else "No description" }}
+                                        {{ bot.description|truncate(80) if bot.description else _("No description") }}
                                     </p>
                                     <small class="text-muted">
                                         <i class="fas fa-circle text-{{ 'success' if bot.status.value == 'active' else 'secondary' }} me-1"></i>
@@ -211,7 +211,7 @@
                 <div class="card-body">
                     <div class="d-grid gap-2">
                         <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
-                            <i class="fas fa-plus me-2"></i>Create New Bot
+                            <i class="fas fa-plus me-2"></i>{{ _("Create New Bot") }}
                         </a>
                         <a href="{{ url_for('bots.list_bots') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-list me-2"></i>{{ _('Manage Bots') }}
@@ -226,7 +226,7 @@
                     <div class="text-center">
                         <small class="text-muted">
                             <i class="fas fa-question-circle me-1"></i>
-                            Need help? <a href="#" class="text-decoration-none">Contact Support</a>
+                            {{ _("Need help?") }} <a href="#" class="text-decoration-none">{{ _("Contact Support") }}</a>
                         </small>
                     </div>
                 </div>

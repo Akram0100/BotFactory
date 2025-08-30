@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-4 text-end">
                     <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-warning">
-                        <i class="fas fa-arrow-up me-2"></i>Upgrade Plan
+                        <i class="fas fa-arrow-up me-2"></i>{{ _("Upgrade Plan") }}
                     </a>
                 </div>
             </div>
@@ -75,12 +75,12 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a class="dropdown-item" href="{{ url_for('bots.edit_bot', bot_id=bot.id) }}">
-                                                <i class="fas fa-edit me-2"></i>Edit Bot
+                                                <i class="fas fa-edit me-2"></i>{{ _("Edit Bot") }}
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ url_for('bots.knowledge_base', bot_id=bot.id) }}">
-                                                <i class="fas fa-database me-2"></i>Knowledge Base
+                                                <i class="fas fa-database me-2"></i>{{ _("Knowledge Base") }}
                                             </a>
                                         </li>
                                         <li><hr class="dropdown-divider"></li>
@@ -89,14 +89,14 @@
                                                 <input type="hidden" name="action" value="toggle_status">
                                                 <button type="submit" class="dropdown-item">
                                                     <i class="fas fa-{{ 'pause' if bot.status.value == 'active' else 'play' }} me-2"></i>
-                                                    {{ 'Deactivate' if bot.status.value == 'active' else 'Activate' }}
+                                                    {{ _("Deactivate") if bot.status.value == 'active' else _("Activate") }}
                                                 </button>
                                             </form>
                                         </li>
                                         <li>
                                             <button type="button" class="dropdown-item text-danger" 
                                                     data-bs-toggle="modal" data-bs-target="#deleteModal{{ bot.id }}">
-                                                <i class="fas fa-trash me-2"></i>Delete
+                                                <i class="fas fa-trash me-2"></i>{{ _("Delete") }}
                                             </button>
                                         </li>
                                     </ul>
@@ -105,7 +105,7 @@
 
                             <!-- Bot Description -->
                             <p class="card-text text-muted small mb-3">
-                                {{ bot.description|truncate(100) if bot.description else "No description provided" }}
+                                {{ bot.description|truncate(100) if bot.description else _("No description provided") }}
                             </p>
 
                             <!-- Bot Stats -->
@@ -113,13 +113,13 @@
                                 <div class="col-6">
                                     <div class="bg-light rounded p-2 text-center">
                                         <div class="h6 mb-0 text-primary">{{ bot.total_messages|number }}</div>
-                                        <small class="text-muted">Messages</small>
+                                        <small class="text-muted">{{ _("Messages") }}</small>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="bg-light rounded p-2 text-center">
                                         <div class="h6 mb-0 text-success">{{ bot.total_users|number }}</div>
-                                        <small class="text-muted">Users</small>
+                                        <small class="text-muted">{{ _("Users") }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <div class="mb-3">
                                     <small class="text-warning">
                                         <i class="fas fa-exclamation-triangle me-1"></i>
-                                        Telegram not configured
+                                        {{ _("Telegram not configured") }}
                                     </small>
                                 </div>
                             {% endif %}
@@ -146,7 +146,7 @@
                                 <div class="mb-3">
                                     <small class="text-muted">
                                         <i class="fas fa-clock me-1"></i>
-                                        Last activity: {{ bot.last_activity|datetime }}
+                                        {{ _("Last activity:") }} {{ bot.last_activity|datetime }}
                                     </small>
                                 </div>
                             {% endif %}

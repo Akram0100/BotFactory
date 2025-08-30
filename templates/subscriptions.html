@@ -14,13 +14,13 @@
                 </ol>
             </nav>
             <div class="text-center">
-                <h1 class="h2 mb-3">Choose Your Plan</h1>
-                <p class="lead text-muted">Scale your AI chatbot operations with flexible pricing</p>
+                <h1 class="h2 mb-3">{{ _("Choose Your Plan") }}</h1>
+                <p class="lead text-muted">{{ _("Scale your AI chatbot operations with flexible pricing") }}</p>
                 
                 {% if current_subscription %}
                     <div class="alert alert-info d-inline-block">
                         <i class="fas fa-crown me-2"></i>
-                        Currently on <strong>{{ current_subscription.subscription_type.value.title() }}</strong> plan
+                        {{ _("Currently on") }} <strong>{{ current_subscription.subscription_type.value.title() }}</strong> {{ _("plan") }}
                     </div>
                 {% endif %}
             </div>
@@ -43,24 +43,24 @@
                         <span class="h1">$0</span>
                         <span class="text-muted">/month</span>
                     </div>
-                    <p class="text-muted mb-4">Perfect for trying out BotFactory</p>
+                    <p class="text-muted mb-4">{{ _("Perfect for trying out BotFactory") }}</p>
                     
                     <ul class="list-unstyled text-start mb-4">
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>1</strong> AI chatbot
+                            <strong>1</strong> {{ _("AI chatbot") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>100</strong> messages per month
+                            <strong>100</strong> {{ _("messages per month") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>10</strong> knowledge base entries
+                            <strong>10</strong> {{ _("knowledge base entries") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Telegram integration
+                            {{ _("Telegram integration") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
@@ -96,7 +96,7 @@
                     {% if current_subscription and current_subscription.subscription_type.value == 'basic' %}
                         <i class="fas fa-check-circle me-2"></i>Current Plan
                     {% else %}
-                        <i class="fas fa-star me-2"></i>Most Popular
+                        <i class="fas fa-star me-2"></i>{{ _("Most Popular") }}
                     {% endif %}
                 </div>
                 <div class="card-body text-center p-4">
@@ -105,16 +105,16 @@
                         <span class="h1">$29</span>
                         <span class="text-muted">/month</span>
                     </div>
-                    <p class="text-muted mb-4">Great for small businesses</p>
+                    <p class="text-muted mb-4">{{ _("Great for small businesses") }}</p>
                     
                     <ul class="list-unstyled text-start mb-4">
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>5</strong> AI chatbots
+                            <strong>5</strong> {{ _("AI chatbots") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>1,000</strong> messages per month
+                            <strong>1,000</strong> {{ _("messages per month") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
@@ -173,7 +173,7 @@
                         <span class="h1">$99</span>
                         <span class="text-muted">/month</span>
                     </div>
-                    <p class="text-muted mb-4">For growing businesses and agencies</p>
+                    <p class="text-muted mb-4">{{ _("For growing businesses and agencies") }}</p>
                     
                     <ul class="list-unstyled text-start mb-4">
                         <li class="mb-2">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-30 17:19+0000\n"
+"POT-Creation-Date: 2025-08-30 17:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,19 +65,68 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: templates/bot_edit.html:25
+#: templates/base.html:124
+msgid "Create powerful AI chatbots for your business with ease."
+msgstr ""
+
+#: templates/base.html:127
+msgid "Features"
+msgstr ""
+
+#: templates/base.html:129
+msgid "AI-Powered Responses"
+msgstr ""
+
+#: templates/base.html:130
+msgid "Telegram Integration"
+msgstr ""
+
+#: templates/base.html:131 templates/bot_edit.html:93
+#: templates/bot_list.html:83
+msgid "Knowledge Base"
+msgstr ""
+
+#: templates/base.html:132
+msgid "Analytics"
+msgstr ""
+
+#: templates/base.html:136
+msgid "Support"
+msgstr ""
+
+#: templates/base.html:138
+msgid "Documentation"
+msgstr ""
+
+#: templates/base.html:139
+msgid "Contact Us"
+msgstr ""
+
+#: templates/base.html:140
+msgid "FAQ"
+msgstr ""
+
+#: templates/base.html:147
+msgid "All rights reserved."
+msgstr ""
+
+#: templates/base.html:150
+msgid "Powered by Google Gemini AI"
+msgstr ""
+
+#: templates/bot_edit.html:25 templates/bot_list.html:108
 msgid "No description provided"
 msgstr ""
 
-#: templates/bot_edit.html:32
+#: templates/bot_edit.html:32 templates/bot_list.html:92
 msgid "Deactivate"
 msgstr ""
 
-#: templates/bot_edit.html:32
+#: templates/bot_edit.html:32 templates/bot_list.html:92
 msgid "Activate"
 msgstr ""
 
-#: templates/bot_edit.html:36
+#: templates/bot_edit.html:36 templates/bot_list.html:99
 msgid "Delete"
 msgstr ""
 
@@ -103,10 +152,6 @@ msgstr ""
 
 #: templates/bot_edit.html:88
 msgid "Telegram Setup"
-msgstr ""
-
-#: templates/bot_edit.html:93
-msgid "Knowledge Base"
 msgstr ""
 
 #: templates/bot_edit.html:98
@@ -180,6 +225,7 @@ msgid "Manage and monitor your intelligent chatbots"
 msgstr ""
 
 #: templates/bot_list.html:24 templates/dashboard.html:17
+#: templates/dashboard.html:214
 msgid "Create New Bot"
 msgstr ""
 
@@ -194,6 +240,30 @@ msgstr ""
 #: templates/bot_list.html:42
 #, python-format
 msgid "You are using %(current)s of %(max)s available bots."
+msgstr ""
+
+#: templates/bot_list.html:46 templates/dashboard.html:196
+msgid "Upgrade Plan"
+msgstr ""
+
+#: templates/bot_list.html:78
+msgid "Edit Bot"
+msgstr ""
+
+#: templates/bot_list.html:116 templates/dashboard.html:184
+msgid "Messages"
+msgstr ""
+
+#: templates/bot_list.html:122
+msgid "Users"
+msgstr ""
+
+#: templates/bot_list.html:139
+msgid "Telegram not configured"
+msgstr ""
+
+#: templates/bot_list.html:149
+msgid "Last activity:"
 msgstr ""
 
 #: templates/dashboard.html:12
@@ -221,6 +291,10 @@ msgstr ""
 msgid "View All"
 msgstr ""
 
+#: templates/dashboard.html:115
+msgid "No description"
+msgstr ""
+
 #: templates/dashboard.html:143
 msgid "No Bots Yet"
 msgstr ""
@@ -241,14 +315,6 @@ msgstr ""
 msgid "Bots Used"
 msgstr ""
 
-#: templates/dashboard.html:184
-msgid "Messages"
-msgstr ""
-
-#: templates/dashboard.html:196
-msgid "Upgrade Plan"
-msgstr ""
-
 #: templates/dashboard.html:200
 msgid "Active Subscription"
 msgstr ""
@@ -263,6 +329,14 @@ msgstr ""
 
 #: templates/dashboard.html:220
 msgid "View Plans"
+msgstr ""
+
+#: templates/dashboard.html:229
+msgid "Need help?"
+msgstr ""
+
+#: templates/dashboard.html:229
+msgid "Contact Support"
 msgstr ""
 
 #: templates/index.html:12
@@ -298,5 +372,57 @@ msgstr ""
 
 #: templates/index.html:54
 msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr ""
+
+#: templates/subscriptions.html:17
+msgid "Choose Your Plan"
+msgstr ""
+
+#: templates/subscriptions.html:18
+msgid "Scale your AI chatbot operations with flexible pricing"
+msgstr ""
+
+#: templates/subscriptions.html:23
+msgid "Currently on"
+msgstr ""
+
+#: templates/subscriptions.html:23
+msgid "plan"
+msgstr ""
+
+#: templates/subscriptions.html:46
+msgid "Perfect for trying out BotFactory"
+msgstr ""
+
+#: templates/subscriptions.html:51
+msgid "AI chatbot"
+msgstr ""
+
+#: templates/subscriptions.html:55 templates/subscriptions.html:117
+msgid "messages per month"
+msgstr ""
+
+#: templates/subscriptions.html:59
+msgid "knowledge base entries"
+msgstr ""
+
+#: templates/subscriptions.html:63
+msgid "Telegram integration"
+msgstr ""
+
+#: templates/subscriptions.html:99
+msgid "Most Popular"
+msgstr ""
+
+#: templates/subscriptions.html:108
+msgid "Great for small businesses"
+msgstr ""
+
+#: templates/subscriptions.html:113
+msgid "AI chatbots"
+msgstr ""
+
+#: templates/subscriptions.html:176
+msgid "For growing businesses and agencies"
 msgstr ""
 
