@@ -22,18 +22,18 @@
                             {{ bot.status.value.title() }}
                         </span>
                     </h1>
-                    <p class="text-muted mb-0">{{ bot.description or "No description provided" }}</p>
+                    <p class="text-muted mb-0">{{ bot.description or _("No description provided") }}</p>
                 </div>
                 <div>
                     <form method="POST" style="display: inline;">
                         <input type="hidden" name="action" value="toggle_status">
                         <button type="submit" class="btn btn-{{ 'warning' if bot.status.value == 'active' else 'success' }} me-2">
                             <i class="fas fa-{{ 'pause' if bot.status.value == 'active' else 'play' }} me-1"></i>
-                            {{ 'Deactivate' if bot.status.value == 'active' else 'Activate' }}
+                            {{ _('Deactivate') if bot.status.value == 'active' else _('Activate') }}
                         </button>
                     </form>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBotModal">
-                        <i class="fas fa-trash me-1"></i>Delete
+                        <i class="fas fa-trash me-1"></i>{{ _('Delete') }}
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="card text-center">
                 <div class="card-body py-3">
                     <h4 class="text-primary mb-1">{{ bot.total_messages|number }}</h4>
-                    <small class="text-muted">Total Messages</small>
+                    <small class="text-muted">{{ _('Total Messages') }}</small>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="card text-center">
                 <div class="card-body py-3">
                     <h4 class="text-success mb-1">{{ bot.total_users|number }}</h4>
-                    <small class="text-muted">Users Served</small>
+                    <small class="text-muted">{{ _('Users Served') }}</small>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="card text-center">
                 <div class="card-body py-3">
                     <h4 class="text-info mb-1">{{ bot.last_activity|datetime if bot.last_activity else 'Never' }}</h4>
-                    <small class="text-muted">Last Activity</small>
+                    <small class="text-muted">{{ _('Last Activity') }}</small>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="card text-center">
                 <div class="card-body py-3">
                     <h4 class="text-warning mb-1">{{ bot.knowledge_base|length }}</h4>
-                    <small class="text-muted">Knowledge Entries</small>
+                    <small class="text-muted">{{ _('Knowledge Entries') }}</small>
                 </div>
             </div>
         </div>

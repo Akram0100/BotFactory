@@ -116,6 +116,45 @@ msgstr "Botlarni boshqarish"
 msgid "View Plans"
 msgstr "Rejalarni ko'rish"
 
+msgid "My AI Chatbots"
+msgstr "Mening AI chatbotlarim"
+
+msgid "Manage and monitor your intelligent chatbots"
+msgstr "Aqlli chatbotlaringizni boshqaring va kuzating"
+
+msgid "Upgrade to Create More"
+msgstr "Ko'proq yaratish uchun yangilang"
+
+msgid "Bot Limit Reached"
+msgstr "Bot chegarasiga yetildi"
+
+msgid "You are using %(current)s of %(max)s available bots."
+msgstr "Siz %(max)s ta mavjud botdan %(current)s tasini ishlatyapsiz."
+
+msgid "No description provided"
+msgstr "Tavsif berilmagan"
+
+msgid "Deactivate"
+msgstr "O'chirish"
+
+msgid "Delete"
+msgstr "O'chirish"
+
+msgid "Knowledge Entries"
+msgstr "Bilimlar yozuvlari"
+
+msgid "Language"
+msgstr "Til"
+
+msgid "English"
+msgstr "Ingliz tili"
+
+msgid "Russian"
+msgstr "Rus tili"
+
+msgid "Uzbek"
+msgstr "O'zbek tili"
+
 msgid "Free"
 msgstr "Bepul"
 
