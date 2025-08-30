@@ -8,11 +8,22 @@ class AIService:
     """Service for AI-powered chatbot responses using Google Gemini"""
     
     def __init__(self):
-        self.client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-        self.model = "gemini-2.5-flash"
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if api_key:
+            self.client = genai.Client(api_key=api_key)
+            self.model = "gemini-2.5-flash"
+            self.api_available = True
+        else:
+            self.client = None
+            self.model = "gemini-2.5-flash"
+            self.api_available = False
+            logging.warning("GEMINI_API_KEY not found. AI responses will be disabled.")
     
     def get_response(self, bot, user_message, user_language='auto'):
         """Generate AI response for user message"""
+        if not self.api_available or not self.client:
+            return "AI service is currently unavailable. Please configure your GEMINI_API_KEY to enable AI responses."
+        
         try:
             # Get bot's knowledge base
             knowledge_entries = KnowledgeBase.query.filter_by(bot_id=bot.id).all()
@@ -67,6 +78,9 @@ If you don't know something, be honest about it.
     
     def test_connection(self):
         """Test Gemini API connection"""
+        if not self.api_available or not self.client:
+            return False
+        
         try:
             response = self.client.models.generate_content(
                 model=self.model,
@@ -79,6 +93,9 @@ If you don't know something, be honest about it.
     
     def analyze_message_sentiment(self, message):
         """Analyze sentiment of user message (for analytics)"""
+        if not self.api_available or not self.client:
+            return 'neutral'
+        
         try:
             prompt = f"""Analyze the sentiment of this message and respond with just one word: positive, negative, or neutral.
 
@@ -102,6 +119,9 @@ Message: {message}"""
     
     def summarize_conversation(self, messages):
         """Summarize a conversation (for analytics)"""
+        if not self.api_available or not self.client:
+            return "AI summarization is currently unavailable."
+        
         try:
             if not messages:
                 return "No conversation to summarize."
