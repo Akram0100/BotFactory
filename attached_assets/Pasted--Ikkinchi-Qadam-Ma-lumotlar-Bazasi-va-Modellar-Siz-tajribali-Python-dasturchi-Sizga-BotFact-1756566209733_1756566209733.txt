@@ -1,0 +1,77 @@
+🗃️ Ikkinchi Qadam: Ma'lumotlar Bazasi va Modellar
+Siz — tajribali Python dasturchi. Sizga "BotFactory" loyihasining ikkinchi qadami berilmoqda. Bu qadamda siz PostgreSQL ma'lumotlar bazasini sozlash va SQLAlchemy yordamida asosiy modellarni yaratishingiz kerak. 
+
+📋 Vazifa: database/db.py va models/ papkasini yaratish
+Talablarga rioya qiling:
+
+database/db.py faylida PostgreSQL ulanishini sozlang
+models/ papkasida quyidagi modellarni yarating:
+User modeli (id, username, email, password_hash, created_at)
+Bot modeli (id, name, user_id, knowledge_base, created_at)
+Subscription modeli (id, user_id, plan_type, expires_at, is_active)
+Har bir model SQLAlchemy yordamida yozilishi kerak
+Fayllar izoh bilan yozilishi shart
+Modellar o'rtasida to'g'ri relationshiplar bo'lishi kerak
+📁 Loyiha tuzilmasi (yangi qo'shimchalar bilan)
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+BotFactory/
+│
+├── main.py
+├── requirements.txt
+├── .env
+│
+├── database/
+│   └── db.py           ← PostgreSQL ulanish
+│
+├── models/
+│   ├── __init__.py
+│   ├── user.py         ← User model
+│   ├── bot.py          ← Bot model
+│   └── subscription.py ← Subscription model
+📦 requirements.txt fayliga quyidagilarni qo'shing:
+txt
+
+
+1
+2
+3
+4
+5
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+🔐 .env fayli (Replit Secrets uchun)
+.env faylini yarating va quyidagini yozing:
+
+env
+
+
+1
+DATABASE_URL=postgresql://username:password@host:port/database_name
+(Bu qiymatni keyin Replit Secrets orqali to'ldirasiz)
+
+✅ Talablarga rioya qiling:
+User modelida kerakli maydonlar mavjud bo'lsin
+Bot modeli User modeliga bog'lanishi kerak (foreign key)
+Subscription modeli ham User modeliga bog'lanishi kerak
+Barcha modellar Base dan meros olsin
+created_at maydonlari avtomatik hozirgi vaqtni o'z ichiga oladi
+🧠 AI Agentga beriladigan aniq buyruq:
+"Siz endi BotFactory loyihasining ikkinchi qadamasini bajarishingiz kerak. PostgreSQL ma'lumotlar bazasini sozlash va SQLAlchemy yordamida User, Bot va Subscription modellarini yaratishingiz kerak. Yuqoridagi talablarga to'liq rioya qiling. Har bir fayl izoh bilan yozilgan bo'lsin. Modellar o'rtasida to'g'ri relationshiplar bo'lsin. database/db.py faylida PostgreSQL ulanishini sozlang. requirements.txt fayliga kerakli kutubxonalarni qo'shing." 
