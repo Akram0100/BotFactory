@@ -1,0 +1,483 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ bot.name }} - BotFactory{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('bots.list_bots') }}">Bots</a></li>
+                    <li class="breadcrumb-item active">{{ bot.name }}</li>
+                </ol>
+            </nav>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h2 mb-1">
+                        <i class="fas fa-robot me-2"></i>{{ bot.name }}
+                        <span class="badge bg-{{ 'success' if bot.status.value == 'active' else 'secondary' }} ms-2">
+                            {{ bot.status.value.title() }}
+                        </span>
+                    </h1>
+                    <p class="text-muted mb-0">{{ bot.description or "No description provided" }}</p>
+                </div>
+                <div>
+                    <form method="POST" style="display: inline;">
+                        <input type="hidden" name="action" value="toggle_status">
+                        <button type="submit" class="btn btn-{{ 'warning' if bot.status.value == 'active' else 'success' }} me-2">
+                            <i class="fas fa-{{ 'pause' if bot.status.value == 'active' else 'play' }} me-1"></i>
+                            {{ 'Deactivate' if bot.status.value == 'active' else 'Activate' }}
+                        </button>
+                    </form>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBotModal">
+                        <i class="fas fa-trash me-1"></i>Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body py-3">
+                    <h4 class="text-primary mb-1">{{ bot.total_messages|number }}</h4>
+                    <small class="text-muted">Total Messages</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body py-3">
+                    <h4 class="text-success mb-1">{{ bot.total_users|number }}</h4>
+                    <small class="text-muted">Users Served</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body py-3">
+                    <h4 class="text-info mb-1">{{ bot.last_activity|datetime if bot.last_activity else 'Never' }}</h4>
+                    <small class="text-muted">Last Activity</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body py-3">
+                    <h4 class="text-warning mb-1">{{ bot.knowledge_base|length }}</h4>
+                    <small class="text-muted">Knowledge Entries</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-tabs mb-4" id="botTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
+                <i class="fas fa-cog me-2"></i>Basic Settings
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="telegram-tab" data-bs-toggle="tab" data-bs-target="#telegram" type="button" role="tab">
+                <i class="fab fa-telegram me-2"></i>Telegram Setup
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="knowledge-tab" data-bs-toggle="tab" data-bs-target="#knowledge" type="button" role="tab">
+                <i class="fas fa-database me-2"></i>Knowledge Base
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="test-tab" data-bs-toggle="tab" data-bs-target="#test" type="button" role="tab">
+                <i class="fas fa-comment-dots me-2"></i>Test Bot
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="botTabsContent">
+        <!-- Basic Settings Tab -->
+        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Bot Configuration</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <input type="hidden" name="action" value="update_basic">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Bot Name</label>
+                                <input type="text" class="form-control" id="name" name="name" 
+                                       value="{{ bot.name }}" required maxlength="100">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="telegram_username" class="form-label">Telegram Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control" id="telegram_username" 
+                                           value="{{ bot.telegram_username or 'Not configured' }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" 
+                                      rows="3" maxlength="500">{{ bot.description or '' }}</textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="system_prompt" class="form-label">Bot Personality & Instructions</label>
+                            <textarea class="form-control" id="system_prompt" name="system_prompt" 
+                                      rows="8" required>{{ bot.system_prompt }}</textarea>
+                            <div class="form-text">Define how your bot should behave and respond to users.</div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Save Changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Telegram Setup Tab -->
+        <div class="tab-pane fade" id="telegram" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Telegram Bot Configuration</h5>
+                </div>
+                <div class="card-body">
+                    {% if bot.telegram_token %}
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Bot is connected to Telegram as <strong>@{{ bot.telegram_username }}</strong>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            To deploy your bot to Telegram, you need to create a bot token via @BotFather.
+                        </div>
+                    {% endif %}
+
+                    <form method="POST">
+                        <input type="hidden" name="action" value="setup_telegram">
+                        
+                        <div class="mb-3">
+                            <label for="telegram_token" class="form-label">Telegram Bot Token</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fab fa-telegram"></i>
+                                </span>
+                                <input type="password" class="form-control" id="telegram_token" 
+                                       name="telegram_token" placeholder="Enter your bot token from @BotFather"
+                                       value="{{ bot.telegram_token if bot.telegram_token else '' }}">
+                            </div>
+                            <div class="form-text">
+                                Get this token by messaging @BotFather on Telegram and creating a new bot.
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-link me-2"></i>{{ 'Update' if bot.telegram_token else 'Connect' }} Telegram Bot
+                        </button>
+                    </form>
+
+                    <!-- Instructions -->
+                    <hr class="my-4">
+                    <h6>How to get a Telegram Bot Token:</h6>
+                    <ol class="small">
+                        <li>Open Telegram and search for <code>@BotFather</code></li>
+                        <li>Send <code>/newbot</code> command</li>
+                        <li>Follow the instructions to create your bot</li>
+                        <li>Copy the token and paste it above</li>
+                        <li>Click "Connect Telegram Bot" to activate</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Base Tab -->
+        <div class="tab-pane fade" id="knowledge" role="tabpanel">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Knowledge Base Entries</h5>
+                            <a href="{{ url_for('bots.knowledge_base', bot_id=bot.id) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-plus me-1"></i>Add Entry
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            {% if bot.knowledge_base %}
+                                {% for entry in bot.knowledge_base[:5] %}
+                                    <div class="d-flex align-items-start mb-3 {% if not loop.last %}border-bottom pb-3{% endif %}">
+                                        <div class="me-3">
+                                            <i class="fas fa-{{ 'file-text' if entry.file_type == 'text' else 'file' }} text-muted"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">{{ entry.title }}</h6>
+                                            <p class="text-muted small mb-1">{{ entry.content|truncate(100) }}</p>
+                                            <small class="text-muted">
+                                                Added {{ entry.created_at|datetime }}
+                                                {% if entry.file_size %}
+                                                    • {{ (entry.file_size / 1024)|round(1) }}KB
+                                                {% endif %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {% if bot.knowledge_base|length > 5 %}
+                                    <div class="text-center">
+                                        <a href="{{ url_for('bots.knowledge_base', bot_id=bot.id) }}" class="text-decoration-none">
+                                            View all {{ bot.knowledge_base|length }} entries
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div class="text-center py-4">
+                                    <i class="fas fa-database text-muted mb-3" style="font-size: 3rem;"></i>
+                                    <h6 class="text-muted">No Knowledge Base Entries</h6>
+                                    <p class="text-muted">Add documents and information to train your bot</p>
+                                    <a href="{{ url_for('bots.knowledge_base', bot_id=bot.id) }}" class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>Add First Entry
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Knowledge Base Tips</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled small">
+                                <li class="mb-2">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    Add FAQs to help your bot answer common questions
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-file-text text-info me-2"></i>
+                                    Upload product documentation or manuals
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-brain text-success me-2"></i>
+                                    Include company policies and procedures
+                                </li>
+                                <li class="mb-0">
+                                    <i class="fas fa-users text-primary me-2"></i>
+                                    Add context about your business or service
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Bot Tab -->
+        <div class="tab-pane fade" id="test" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Test Your Bot</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div id="chatContainer" class="border rounded p-3 mb-3" style="height: 400px; overflow-y: auto; background-color: var(--bs-dark);">
+                                <div class="text-center text-muted py-4">
+                                    <i class="fas fa-comment-dots mb-2" style="font-size: 2rem;"></i>
+                                    <p>Start a conversation with your bot to test its responses</p>
+                                </div>
+                            </div>
+                            <form id="testForm">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="testMessage" 
+                                           placeholder="Type a message to test your bot..." required>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-light">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Test Suggestions</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm test-suggestion" 
+                                                data-message="Hello, how can you help me?">
+                                            General greeting
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm test-suggestion" 
+                                                data-message="What do you know about [your topic]?">
+                                            Knowledge test
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm test-suggestion" 
+                                                data-message="Can you help me with a specific question?">
+                                            Support request
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm test-suggestion" 
+                                                data-message="Tell me more about your services">
+                                            Information request
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Bot Modal -->
+<div class="modal fade" id="deleteBotModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Bot</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong>{{ bot.name }}</strong>?</p>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    This action cannot be undone. All bot data, conversations, and knowledge base entries will be permanently deleted.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{{ url_for('bots.delete_bot', bot_id=bot.id) }}" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-2"></i>Delete Bot
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Test bot functionality
+document.getElementById('testForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const messageInput = document.getElementById('testMessage');
+    const message = messageInput.value.trim();
+    
+    if (!message) return;
+    
+    const chatContainer = document.getElementById('chatContainer');
+    
+    // Clear initial message if it's the first interaction
+    if (chatContainer.children.length === 1 && chatContainer.children[0].classList.contains('text-center')) {
+        chatContainer.innerHTML = '';
+    }
+    
+    // Add user message
+    addChatMessage(message, 'user');
+    messageInput.value = '';
+    
+    // Add loading message
+    const loadingMsg = addChatMessage('Thinking...', 'bot', true);
+    
+    try {
+        const response = await fetch(`/api/bot/{{ bot.id }}/test`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: message })
+        });
+        
+        const data = await response.json();
+        
+        // Remove loading message
+        loadingMsg.remove();
+        
+        if (data.response) {
+            addChatMessage(data.response, 'bot');
+        } else {
+            addChatMessage('Sorry, I encountered an error processing your message.', 'bot');
+        }
+    } catch (error) {
+        loadingMsg.remove();
+        addChatMessage('Error: Could not connect to bot service.', 'bot');
+    }
+});
+
+function addChatMessage(message, sender, isLoading = false) {
+    const chatContainer = document.getElementById('chatContainer');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `mb-3 d-flex ${sender === 'user' ? 'justify-content-end' : 'justify-content-start'}`;
+    
+    const bubbleClass = sender === 'user' ? 'bg-primary text-white' : 'bg-secondary text-white';
+    const icon = sender === 'user' ? 'fas fa-user' : 'fas fa-robot';
+    
+    messageDiv.innerHTML = `
+        <div class="d-flex align-items-start ${sender === 'user' ? 'flex-row-reverse' : ''}">
+            <div class="${bubbleClass} rounded px-3 py-2" style="max-width: 70%;">
+                ${isLoading ? '<i class="fas fa-spinner fa-spin me-2"></i>' : ''}${message}
+            </div>
+            <div class="mx-2 mt-1">
+                <i class="${icon} text-muted"></i>
+            </div>
+        </div>
+    `;
+    
+    chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+    return messageDiv;
+}
+
+// Test suggestion buttons
+document.querySelectorAll('.test-suggestion').forEach(button => {
+    button.addEventListener('click', function() {
+        const message = this.dataset.message;
+        document.getElementById('testMessage').value = message;
+        document.getElementById('testForm').dispatchEvent(new Event('submit'));
+    });
+});
+
+// Character counters for textareas
+function addCharacterCounter(elementId, maxLength) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    const counter = document.createElement('div');
+    counter.className = 'form-text text-end';
+    counter.style.marginTop = '0.25rem';
+    element.parentNode.appendChild(counter);
+    
+    function updateCounter() {
+        const length = element.value.length;
+        counter.textContent = `${length}/${maxLength} characters`;
+        counter.className = `form-text text-end ${length > maxLength * 0.8 ? 'text-warning' : ''}`;
+    }
+    
+    element.addEventListener('input', updateCounter);
+    updateCounter();
+}
+
+// Add character counters
+addCharacterCounter('description', 500);
+addCharacterCounter('system_prompt', 2000);
+</script>
+{% endblock %}

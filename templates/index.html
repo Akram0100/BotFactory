@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% block title %}BotFactory - Create AI Chatbots for Your Business{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    Create Powerful AI Chatbots in Minutes
+                </h1>
+                <p class="lead mb-4">
+                    Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. 
+                    No coding required - just upload your knowledge base and deploy!
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Get Started Free
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg">
+                        Learn More
+                    </a>
+                </div>
+                <div class="mt-4">
+                    <small class="text-white-50">
+                        <i class="fas fa-check me-1"></i>Free tier available
+                        <span class="mx-2">•</span>
+                        <i class="fas fa-check me-1"></i>No credit card required
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="position-relative">
+                    <i class="fas fa-robot display-1 text-white-50"></i>
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-4">
+                            <i class="fas fa-comments text-white mb-3" style="font-size: 3rem;"></i>
+                            <h5 class="text-white">AI-Powered</h5>
+                            <p class="text-white-75 small mb-0">Smart conversations with your customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<section id="features" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">Why Choose BotFactory?</h2>
+            <p class="lead text-muted">Everything you need to create and deploy intelligent chatbots</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fas fa-brain text-primary" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">AI-Powered Intelligence</h5>
+                        <p class="card-text">
+                            Powered by Google Gemini AI for natural, intelligent conversations 
+                            that understand context and provide helpful responses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fab fa-telegram text-success" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">Telegram Integration</h5>
+                        <p class="card-text">
+                            Deploy your bots directly to Telegram with one click. 
+                            Reach millions of users where they already are.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fas fa-database text-info" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">Knowledge Base</h5>
+                        <p class="card-text">
+                            Upload your documents, FAQs, and content to train your bot 
+                            with your specific knowledge and expertise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fas fa-cogs text-warning" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">Easy Setup</h5>
+                        <p class="card-text">
+                            No coding required. Create and customize your chatbot 
+                            with our intuitive web interface in just minutes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fas fa-chart-line text-danger" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">Analytics & Insights</h5>
+                        <p class="card-text">
+                            Track conversations, user engagement, and bot performance 
+                            with detailed analytics and reporting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-secondary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="fas fa-shield-alt text-secondary" style="font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="card-title">Secure & Reliable</h5>
+                        <p class="card-text">
+                            Enterprise-grade security and 99.9% uptime ensure your bots 
+                            are always available when your customers need them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">How It Works</h2>
+            <p class="lead text-muted">Get your AI chatbot up and running in three simple steps</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 text-center">
+                <div class="position-relative">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="h3 mb-0">1</span>
+                    </div>
+                    <h5>Create Your Bot</h5>
+                    <p class="text-muted">
+                        Sign up and create your first chatbot. Define its personality 
+                        and purpose with custom prompts.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 text-center">
+                <div class="position-relative">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="h3 mb-0">2</span>
+                    </div>
+                    <h5>Upload Knowledge</h5>
+                    <p class="text-muted">
+                        Upload your documents, FAQs, and content to train your bot 
+                        with your specific knowledge base.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 text-center">
+                <div class="position-relative">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="h3 mb-0">3</span>
+                    </div>
+                    <h5>Deploy & Share</h5>
+                    <p class="text-muted">
+                        Connect to Telegram and share your bot with users. 
+                        Monitor conversations and improve over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Preview -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">Simple, Transparent Pricing</h2>
+            <p class="lead text-muted">Start free and scale as you grow</p>
+        </div>
+        
+        <div class="row justify-content-center g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow">
+                    <div class="card-body text-center p-4">
+                        <h5 class="card-title">Free</h5>
+                        <div class="mb-3">
+                            <span class="h2">$0</span>
+                            <span class="text-muted">/month</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1 AI chatbot</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>100 messages/month</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic knowledge base</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Telegram integration</li>
+                        </ul>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow border-primary">
+                    <div class="card-header bg-primary text-white text-center">
+                        <span class="badge bg-warning text-dark">Most Popular</span>
+                    </div>
+                    <div class="card-body text-center p-4">
+                        <h5 class="card-title">Basic</h5>
+                        <div class="mb-3">
+                            <span class="h2">$29</span>
+                            <span class="text-muted">/month</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 AI chatbots</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1,000 messages/month</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced knowledge base</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                        </ul>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Start Free Trial</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow">
+                    <div class="card-body text-center p-4">
+                        <h5 class="card-title">Premium</h5>
+                        <div class="mb-3">
+                            <span class="h2">$99</span>
+                            <span class="text-muted">/month</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>25 AI chatbots</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>10,000 messages/month</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited knowledge base</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Analytics & API access</li>
+                        </ul>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Start Free Trial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Ready to Create Your AI Chatbot?</h2>
+        <p class="lead mb-4">
+            Join thousands of businesses using BotFactory to provide better customer support 
+            and engagement through AI-powered chatbots.
+        </p>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+            <i class="fas fa-rocket me-2"></i>Start Building for Free
+        </a>
+        <div class="mt-4">
+            <small class="text-white-75">No credit card required • 14-day free trial on paid plans</small>
+        </div>
+    </div>
+</section>
+{% endblock %}

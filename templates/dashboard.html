@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - BotFactory{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Welcome Header -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h2 mb-1">Welcome back, {{ current_user.get_full_name() }}!</h1>
+                    <p class="text-muted">Manage your AI chatbots and monitor performance</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Create New Bot
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-1">{{ stats.total_bots }}</h4>
+                            <p class="mb-0">Total Bots</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-robot" style="font-size: 2rem; opacity: 0.7;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-1">{{ stats.active_bots }}</h4>
+                            <p class="mb-0">Active Bots</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-play-circle" style="font-size: 2rem; opacity: 0.7;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-1">{{ stats.total_messages|number }}</h4>
+                            <p class="mb-0">Total Messages</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-comments" style="font-size: 2rem; opacity: 0.7;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-1">{{ stats.total_users|number }}</h4>
+                            <p class="mb-0">Users Served</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-users" style="font-size: 2rem; opacity: 0.7;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Recent Bots -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Your Bots</h5>
+                    <a href="{{ url_for('bots.list_bots') }}" class="text-decoration-none">
+                        View All <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% if bots %}
+                        {% for bot in bots %}
+                            <div class="d-flex align-items-center mb-3 {% if not loop.last %}border-bottom pb-3{% endif %}">
+                                <div class="me-3">
+                                    <div class="bg-{{ 'success' if bot.status.value == 'active' else 'secondary' }} 
+                                                text-white rounded-circle d-flex align-items-center justify-content-center"
+                                         style="width: 50px; height: 50px;">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">{{ bot.name }}</h6>
+                                    <p class="text-muted mb-1 small">
+                                        {{ bot.description|truncate(80) if bot.description else "No description" }}
+                                    </p>
+                                    <small class="text-muted">
+                                        <i class="fas fa-circle text-{{ 'success' if bot.status.value == 'active' else 'secondary' }} me-1"></i>
+                                        {{ bot.status.value.title() }}
+                                        {% if bot.last_activity %}
+                                            • Last activity: {{ bot.last_activity|datetime }}
+                                        {% endif %}
+                                    </small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="small text-muted mb-1">
+                                        <i class="fas fa-comments me-1"></i>{{ bot.total_messages|number }}
+                                    </div>
+                                    <div class="small text-muted">
+                                        <i class="fas fa-users me-1"></i>{{ bot.total_users|number }}
+                                    </div>
+                                </div>
+                                <div class="ms-3">
+                                    <a href="{{ url_for('bots.edit_bot', bot_id=bot.id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-robot text-muted mb-3" style="font-size: 3rem;"></i>
+                            <h5 class="text-muted">No Bots Yet</h5>
+                            <p class="text-muted">Create your first AI chatbot to get started</p>
+                            <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Create Your First Bot
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription & Quick Actions -->
+        <div class="col-lg-4">
+            <!-- Subscription Info -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-crown me-2 text-warning"></i>Your Plan
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <span class="badge bg-{{ 'primary' if subscription.subscription_type.value == 'free' else 'success' }} fs-6">
+                            {{ subscription.subscription_type.value.title() }}
+                        </span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between small">
+                            <span>Bots Used</span>
+                            <span>{{ stats.total_bots }} / {{ subscription.max_bots }}</span>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: {{ (stats.total_bots / subscription.max_bots * 100) if subscription.max_bots > 0 else 0 }}%">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between small">
+                            <span>Messages</span>
+                            <span>{{ stats.total_messages|number }} / {{ subscription.max_messages_per_month|number }}</span>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-info" role="progressbar" 
+                                 style="width: {{ (stats.total_messages / subscription.max_messages_per_month * 100) if subscription.max_messages_per_month > 0 else 0 }}%">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if subscription.subscription_type.value == 'free' %}
+                        <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-arrow-up me-2"></i>Upgrade Plan
+                        </a>
+                    {% else %}
+                        <button class="btn btn-outline-success w-100" disabled>
+                            <i class="fas fa-check me-2"></i>Active Subscription
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Create New Bot
+                        </a>
+                        <a href="{{ url_for('bots.list_bots') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-list me-2"></i>Manage Bots
+                        </a>
+                        <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-outline-info">
+                            <i class="fas fa-crown me-2"></i>View Plans
+                        </a>
+                    </div>
+                    
+                    <hr class="my-3">
+                    
+                    <div class="text-center">
+                        <small class="text-muted">
+                            <i class="fas fa-question-circle me-1"></i>
+                            Need help? <a href="#" class="text-decoration-none">Contact Support</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-refresh stats every 30 seconds
+setInterval(function() {
+    // Only refresh if user is active (has interacted recently)
+    if (document.hidden) return;
+    
+    fetch('/api/dashboard/stats')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update stats without page reload
+                updateStatCard(0, data.stats.total_bots);
+                updateStatCard(1, data.stats.active_bots);
+                updateStatCard(2, data.stats.total_messages);
+                updateStatCard(3, data.stats.total_users);
+            }
+        })
+        .catch(error => console.log('Stats refresh failed:', error));
+}, 30000);
+
+function updateStatCard(index, value) {
+    const cards = document.querySelectorAll('.card h4');
+    if (cards[index]) {
+        cards[index].textContent = formatNumber(value);
+    }
+}
+
+function formatNumber(num) {
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    return num.toString();
+}
+</script>
+{% endblock %}
