@@ -72,9 +72,12 @@ class TelegramService:
             # Store application
             self.active_bots[bot.id] = application
             
-            # Start polling in a separate thread
+            # Start polling in a separate thread with its own event loop
             def run_bot():
+                import asyncio
                 try:
+                    # Create new event loop for this thread
+                    asyncio.set_event_loop(asyncio.new_event_loop())
                     application.run_polling(allowed_updates=Update.ALL_TYPES)
                 except Exception as e:
                     logging.error(f"Bot {bot.id} polling error: {e}")
@@ -100,7 +103,11 @@ class TelegramService:
         try:
             if bot.id in self.active_bots:
                 application = self.active_bots[bot.id]
-                application.stop()
+                try:
+                    application.stop()
+                except:
+                    # If stop() fails, force cleanup
+                    pass
                 del self.active_bots[bot.id]
                 
             if bot.id in self.bot_threads:
@@ -289,17 +296,21 @@ def auto_start_bots():
     try:
         # Import here to avoid circular imports
         from models import Bot, BotStatus
+        from app import create_app
         
         # Small delay to ensure database is ready
         time.sleep(2)
         
-        active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
-        for bot in active_bots:
-            if bot.telegram_token:
-                telegram_service.start_bot(bot)
-                time.sleep(1)
-        
-        logging.info(f"Auto-started {len(active_bots)} active bots")
+        # Create app context for database access
+        app = create_app()
+        with app.app_context():
+            active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
+            for bot in active_bots:
+                if bot.telegram_token:
+                    telegram_service.start_bot(bot)
+                    time.sleep(1)
+            
+            logging.info(f"Auto-started {len(active_bots)} active bots")
         
     except Exception as e:
         logging.error(f"Auto-start bots error: {e}")
