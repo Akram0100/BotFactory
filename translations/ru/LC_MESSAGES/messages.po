@@ -216,7 +216,7 @@ msgstr "Бот подключён к Telegram как"
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr ""
+msgstr "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота через @BotFather."
 "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота "
 "через @BotFather."
 
@@ -478,7 +478,7 @@ msgstr "Безопасность корпоративного уровня и 99
 
 #: templates/index.html:149
 msgid "How It Works"
-msgstr ""
+msgstr "Как это работает"
 
 #: templates/index.html:150
 #, fuzzy
@@ -519,11 +519,11 @@ msgstr ""
 
 #: templates/index.html:200
 msgid "Simple, Transparent Pricing"
-msgstr ""
+msgstr "Простые, прозрачные цены"
 
 #: templates/index.html:201
 msgid "Start free and scale as you grow"
-msgstr ""
+msgstr "Начните бесплатно и масштабируйтесь по мере роста"
 
 #: templates/index.html:208 templates/subscriptions.html:236
 msgid "Free"

@@ -192,7 +192,7 @@ msgstr "Bot shaxsiyati va ko'rsatmalar"
 
 #: templates/bot_edit.html:141
 msgid "Define how your bot should behave and respond to users."
-msgstr ""
+msgstr "Botingiz foydalanuvchilarga qanday javob berishi va o'zini qanday tutishini belgilang."
 "Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi "
 "kerakligini belgilang."
 
@@ -212,7 +212,7 @@ msgstr "Bot Telegramga quyidagicha ulangan"
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr ""
+msgstr "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token yaratishingiz kerak."
 "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token "
 "yaratishingiz kerak."
 
@@ -222,7 +222,7 @@ msgstr "Telegram bot tokeni"
 
 #: templates/bot_edit.html:185
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
-msgstr ""
+msgstr "Bu tokenni olish uchun Telegramda @BotFather ga xabar yozib, yangi bot yarating."
 "Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi bot "
 "yaratish orqali oling."
 
@@ -397,7 +397,7 @@ msgstr "Nega BotFactory ni tanlash kerak?"
 
 #: templates/index.html:54
 msgid "Everything you need to create and deploy intelligent chatbots"
-msgstr ""
+msgstr "Aqlli chatbotlar yaratish va joylashtirish uchun kerak bo'lgan hamma narsa"
 "Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma "
 "narsa"
 
@@ -468,7 +468,7 @@ msgstr "Korporativ darajadagi xavfsizlik va 99.9% ishga tushish vaqti botlaringi
 
 #: templates/index.html:149
 msgid "How It Works"
-msgstr ""
+msgstr "Qanday ishlaydi"
 
 #: templates/index.html:150
 #, fuzzy
@@ -509,11 +509,11 @@ msgstr ""
 
 #: templates/index.html:200
 msgid "Simple, Transparent Pricing"
-msgstr ""
+msgstr "Oddiy va shaffof narxlar"
 
 #: templates/index.html:201
 msgid "Start free and scale as you grow"
-msgstr ""
+msgstr "Bepul boshlang va o'sayotganda kengaytiring"
 
 #: templates/index.html:208 templates/subscriptions.html:236
 msgid "Free"
