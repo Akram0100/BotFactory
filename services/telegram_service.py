@@ -2,8 +2,8 @@ import os
 import logging
 import threading
 import time
-from telegram import Update, Bot as TelegramBot
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram import Update, Bot as TelegramBot, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 from models import Bot, Conversation, Message
 from app import db
 from services.ai_service import AIService
@@ -15,6 +15,7 @@ class TelegramService:
         self.ai_service = AIService()
         self.active_bots = {}  # Store active bot applications
         self.bot_threads = {}  # Store bot polling threads
+        self.user_languages = {}  # Store user language preferences
     
     def validate_token(self, token):
         """Validate Telegram bot token and get bot info"""
@@ -73,8 +74,12 @@ class TelegramService:
             async def message_wrapper(update, context):
                 return await self._handle_message(update, context, bot)
             
+            async def callback_wrapper(update, context):
+                return await self._handle_callback(update, context, bot)
+            
             application.add_handler(CommandHandler("start", start_wrapper))
             application.add_handler(CommandHandler("help", help_wrapper))
+            application.add_handler(CallbackQueryHandler(callback_wrapper))
             application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_wrapper))
             
             # Store application
@@ -167,20 +172,28 @@ class TelegramService:
             return False
     
     async def _handle_start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
-        """Handle /start command"""
+        """Handle /start command with language selection"""
         user = update.effective_user
         
-        welcome_message = f"Hello {user.first_name}! 👋\n\n"
+        # Create language selection keyboard
+        keyboard = [
+            [
+                InlineKeyboardButton("🇺🇿 O'zbek tili", callback_data="lang_uz"),
+                InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru")
+            ],
+            [
+                InlineKeyboardButton("🇺🇸 English", callback_data="lang_en")
+            ]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        welcome_message = f"Hello {user.first_name}! 👋 / Salom {user.first_name}! 👋\n\n"
         welcome_message += f"I'm {bot.name}, an AI-powered assistant.\n"
+        welcome_message += f"Men {bot.name}, AI yordamchisiman.\n\n"
+        welcome_message += "Please select your preferred language / Iltimos, o'z tilingizni tanlang:\n"
+        welcome_message += "Пожалуйста, выберите ваш язык:"
         
-        if bot.description:
-            welcome_message += f"{bot.description}\n\n"
-        else:
-            welcome_message += "I'm here to help answer your questions and assist you.\n\n"
-        
-        welcome_message += "Just send me a message and I'll do my best to help!"
-        
-        await update.message.reply_text(welcome_message)
+        await update.message.reply_text(welcome_message, reply_markup=reply_markup)
         
         # Update conversation record
         await self._update_conversation(update, bot)
@@ -208,10 +221,13 @@ class TelegramService:
             # Show typing indicator
             await context.bot.send_chat_action(chat_id=update.effective_chat.id, action='typing')
             
-            # Get AI response with app context
+            # Get AI response with app context and user language
+            user_key = f"{bot.id}_{user.id}"
+            user_language = self.user_languages.get(user_key, 'auto')
+            
             from app import app
             with app.app_context():
-                ai_response = self.ai_service.get_response(bot, user_message)
+                ai_response = self.ai_service.get_response(bot, user_message, user_language=user_language)
             
             # Send response
             await update.message.reply_text(ai_response)
@@ -262,6 +278,54 @@ class TelegramService:
             except:
                 pass
     
+    async def _handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
+        """Handle callback queries from inline keyboards"""
+        query = update.callback_query
+        await query.answer()
+        
+        user = query.from_user
+        user_key = f"{bot.id}_{user.id}"
+        
+        if query.data.startswith('lang_'):
+            language = query.data.split('_')[1]
+            
+            # Store user's language preference
+            self.user_languages[user_key] = language
+            
+            # Language-specific welcome messages
+            if language == 'uz':
+                welcome_message = f"Salom {user.first_name}! 👋\n\n"
+                welcome_message += f"Men {bot.name}man, AI yordamchisi.\n"
+                if bot.description:
+                    welcome_message += f"{bot.description}\n\n"
+                else:
+                    welcome_message += "Men sizga savollaringizga javob berish va yordam berishda xizmat qilaman.\n\n"
+                welcome_message += "Menga xabar yuboring va men sizga yordam berishga harakat qilaman!"
+            
+            elif language == 'ru':
+                welcome_message = f"Привет {user.first_name}! 👋\n\n"
+                welcome_message += f"Я {bot.name}, ИИ-ассистент.\n"
+                if bot.description:
+                    welcome_message += f"{bot.description}\n\n"
+                else:
+                    welcome_message += "Я здесь, чтобы помочь отвечать на ваши вопросы и оказать поддержку.\n\n"
+                welcome_message += "Просто отправьте мне сообщение, и я сделаю всё возможное, чтобы помочь!"
+            
+            else:  # English
+                welcome_message = f"Hello {user.first_name}! 👋\n\n"
+                welcome_message += f"I'm {bot.name}, an AI-powered assistant.\n"
+                if bot.description:
+                    welcome_message += f"{bot.description}\n\n"
+                else:
+                    welcome_message += "I'm here to help answer your questions and assist you.\n\n"
+                welcome_message += "Just send me a message and I'll do my best to help!"
+            
+            # Edit the original message to remove keyboard
+            await query.edit_message_text(welcome_message)
+            
+            # Update conversation record
+            await self._update_conversation_from_callback(query, bot)
+    
     async def _store_message(self, update: Update, bot, user_message, ai_response):
         """Store message in database"""
         # This method is called with app context already from _handle_message
@@ -302,6 +366,42 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Message storage error: {e}")
+            from app import db
+            try:
+                db.session.rollback()
+            except:
+                pass
+    
+    async def _update_conversation_from_callback(self, query, bot):
+        """Update or create conversation record from callback query"""
+        try:
+            from app import app
+            with app.app_context():
+                user = query.from_user
+                telegram_user_id = str(user.id)
+                
+                # Find or create conversation
+                conversation = Conversation.query.filter_by(
+                    bot_id=bot.id,
+                    telegram_user_id=telegram_user_id
+                ).first()
+                
+                if not conversation:
+                    conversation = Conversation(
+                        bot_id=bot.id,
+                        telegram_user_id=telegram_user_id,
+                        telegram_username=user.username or user.first_name
+                    )
+                    db.session.add(conversation)
+                    
+                    # Update bot's total users count
+                    bot.total_users += 1
+                
+                conversation.last_message = db.func.now()
+                db.session.commit()
+            
+        except Exception as e:
+            logging.error(f"Callback conversation update error: {e}")
             from app import db
             try:
                 db.session.rollback()

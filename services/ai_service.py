@@ -11,7 +11,7 @@ class AIService:
         self.client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
         self.model = "gemini-2.5-flash"
     
-    def get_response(self, bot, user_message):
+    def get_response(self, bot, user_message, user_language='auto'):
         """Generate AI response for user message"""
         try:
             # Get bot's knowledge base
@@ -23,8 +23,11 @@ class AIService:
                 for entry in knowledge_entries:
                     knowledge_context += f"- {entry.title}: {entry.content[:500]}...\n"
             
-            # Detect language and set appropriate instructions
-            language_instruction = self._detect_language_instruction(user_message)
+            # Set language instructions based on user preference or detection
+            if user_language != 'auto':
+                language_instruction = self._get_language_instruction(user_language)
+            else:
+                language_instruction = self._detect_language_instruction(user_message)
             
             # Construct system prompt with language support
             system_instruction = f"""{bot.system_prompt}
@@ -148,3 +151,14 @@ Message: {message}"""
             return "Always respond in RUSSIAN language (отвечайте на русском языке)."
         else:
             return "Respond in the same language as the user's message. If the message is in Uzbek, respond in Uzbek. If in Russian, respond in Russian. If in English, respond in English."
+    
+    def _get_language_instruction(self, language):
+        """Get language instruction based on user's selected language"""
+        if language == 'uz':
+            return "Always respond in UZBEK language (o'zbek tilida javob bering). Use Latin script for Uzbek."
+        elif language == 'ru':
+            return "Always respond in RUSSIAN language (отвечайте на русском языке)."
+        elif language == 'en':
+            return "Always respond in ENGLISH language."
+        else:
+            return "Respond in the same language as the user's message."
