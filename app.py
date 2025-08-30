@@ -75,6 +75,15 @@ def create_app():
             return '0'
         return f"{int(value):,}"
     
+    @app.template_filter('datetime')
+    def datetime_filter(value):
+        """Format datetime for display"""
+        if value is None:
+            return 'Unknown'
+        if hasattr(value, 'strftime'):
+            return value.strftime('%B %d, %Y at %I:%M %p')
+        return str(value)
+    
     # Make functions available to templates
     @app.context_processor
     def inject_template_vars():
