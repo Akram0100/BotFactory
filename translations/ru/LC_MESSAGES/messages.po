@@ -1,0 +1,266 @@
+# Russian translations for BotFactory.
+# Copyright (C) 2025 BotFactory
+# This file is distributed under the same license as the BotFactory project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BotFactory 1.0\n"
+"Report-Msgid-Bugs-To: support@botfactory.com\n"
+"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"PO-Revision-Date: 2025-08-30 13:58+0000\n"
+"Last-Translator: BotFactory Team\n"
+"Language: ru\n"
+"Language-Team: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# Navigation
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "My Bots"
+msgstr "Мои боты"
+
+msgid "Plans"
+msgstr "Тарифы"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "Login"
+msgstr "Вход"
+
+msgid "Sign Up"
+msgstr "Регистрация"
+
+# Hero Section
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Создавайте мощные AI-чатботы за минуты"
+
+msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
+msgstr "Создавайте умных чатботов для Telegram и других платформ с помощью Google Gemini AI. Программирование не требуется - просто загрузите свою базу знаний и разверните!"
+
+msgid "Get Started Free"
+msgstr "Начать бесплатно"
+
+msgid "Learn More"
+msgstr "Узнать больше"
+
+msgid "Free tier available"
+msgstr "Бесплатный тариф доступен"
+
+msgid "No credit card required"
+msgstr "Кредитная карта не требуется"
+
+msgid "Why Choose BotFactory?"
+msgstr "Почему стоит выбрать BotFactory?"
+
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr "Всё необходимое для создания и развертывания умных чатботов"
+
+msgid "AI-Powered Conversations"
+msgstr "Разговоры на основе ИИ"
+
+msgid "Smart, contextual responses powered by Google Gemini AI"
+msgstr "Умные, контекстные ответы на основе Google Gemini AI"
+
+msgid "Easy Integration"
+msgstr "Простая интеграция"
+
+msgid "Deploy to Telegram instantly with one-click setup"
+msgstr "Мгновенное развертывание в Telegram одним нажатием"
+
+msgid "Knowledge Base Upload"
+msgstr "Загрузка базы знаний"
+
+msgid "Upload documents and files to train your bot"
+msgstr "Загрузите документы и файлы для обучения вашего бота"
+
+msgid "Welcome back!"
+msgstr "Добро пожаловать!"
+
+msgid "Sign in to your account to continue."
+msgstr "Войдите в свою учетную запись, чтобы продолжить."
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+msgid "Create your account"
+msgstr "Создайте свою учетную запись"
+
+msgid "Join thousands of users creating AI chatbots."
+msgstr "Присоединяйтесь к тысячам пользователей, создающих AI-чатботов."
+
+msgid "Email"
+msgstr "Электронная почта"
+
+msgid "First Name"
+msgstr "Имя"
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+msgid "Welcome to your dashboard"
+msgstr "Добро пожаловать в вашу панель управления"
+
+msgid "Total Bots"
+msgstr "Всего ботов"
+
+msgid "Active Bots"
+msgstr "Активные боты"
+
+msgid "Total Messages"
+msgstr "Всего сообщений"
+
+msgid "Total Users"
+msgstr "Всего пользователей"
+
+msgid "Recent Bots"
+msgstr "Недавние боты"
+
+msgid "Create New Bot"
+msgstr "Создать нового бота"
+
+msgid "View All Bots"
+msgstr "Посмотреть всех ботов"
+
+msgid "Create Bot"
+msgstr "Создать бота"
+
+msgid "Bot Name"
+msgstr "Имя бота"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "System Prompt"
+msgstr "Системный промпт"
+
+msgid "Save Bot"
+msgstr "Сохранить бота"
+
+msgid "Edit Bot"
+msgstr "Редактировать бота"
+
+msgid "Bot Configuration"
+msgstr "Конфигурация бота"
+
+msgid "Telegram Setup"
+msgstr "Настройка Telegram"
+
+msgid "Knowledge Base"
+msgstr "База знаний"
+
+msgid "Analytics"
+msgstr "Аналитика"
+
+msgid "Bot Token"
+msgstr "Токен бота"
+
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+msgid "Choose Your Plan"
+msgstr "Выберите свой план"
+
+msgid "Free"
+msgstr "Бесплатный"
+
+msgid "Basic"
+msgstr "Базовый"
+
+msgid "Premium"
+msgstr "Премиум"
+
+msgid "per month"
+msgstr "в месяц"
+
+msgid "Current Plan"
+msgstr "Текущий план"
+
+msgid "Upgrade"
+msgstr "Обновить"
+
+msgid "AI chatbots"
+msgstr "AI-чатботы"
+
+msgid "messages per month"
+msgstr "сообщений в месяц"
+
+msgid "Knowledge base entries"
+msgstr "Записи базы знаний"
+
+msgid "Email support"
+msgstr "Поддержка по email"
+
+msgid "Priority support"
+msgstr "Приоритетная поддержка"
+
+msgid "Analytics dashboard"
+msgstr "Панель аналитики"
+
+msgid "API access"
+msgstr "Доступ к API"
+
+msgid "Bot created successfully!"
+msgstr "Бот успешно создан!"
+
+msgid "Bot updated successfully!"
+msgstr "Бот успешно обновлен!"
+
+msgid "Bot deleted successfully!"
+msgstr "Бот успешно удален!"
+
+msgid "Settings saved successfully!"
+msgstr "Настройки успешно сохранены!"
+
+msgid "File uploaded successfully!"
+msgstr "Файл успешно загружен!"
+
+msgid "Invalid username or password."
+msgstr "Неверное имя пользователя или пароль."
+
+msgid "Please fill in all fields."
+msgstr "Пожалуйста, заполните все поля."
+
+msgid "Passwords do not match."
+msgstr "Пароли не совпадают."
+
+msgid "Username already exists."
+msgstr "Имя пользователя уже существует."
+
+msgid "Email already registered."
+msgstr "Email уже зарегистрирован."
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "English"
+msgstr "English"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "Uzbek"
+msgstr "O'zbek"

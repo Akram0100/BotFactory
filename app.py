@@ -1,9 +1,10 @@
 import os
 import logging
-from flask import Flask
+from flask import Flask, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_babel import Babel, get_locale
 from sqlalchemy.orm import DeclarativeBase
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -17,6 +18,7 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 migrate = Migrate()
 login_manager = LoginManager()
+babel = Babel()
 
 def create_app():
     # Create Flask app
@@ -32,12 +34,43 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16MB max file upload
     
+    # Babel configuration
+    app.config["LANGUAGES"] = {
+        'en': 'English',
+        'ru': 'Русский',
+        'uz': 'O\'zbek'
+    }
+    app.config["BABEL_DEFAULT_LOCALE"] = 'en'
+    app.config["BABEL_DEFAULT_TIMEZONE"] = 'UTC'
+    
     # Proxy fix for deployment
     app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+    
+    # Babel locale selector function
+    def get_locale():
+        # 1. If user is logged in, use their preferred language
+        from flask_login import current_user
+        if current_user.is_authenticated and hasattr(current_user, 'language') and current_user.language:
+            return current_user.language
+        
+        # 2. If language is in session, use that
+        if 'language' in session:
+            return session['language']
+        
+        # 3. Use browser's preferred language if supported
+        return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or 'en'
     
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
+    babel.init_app(app)
+    babel.locale_selector_func = get_locale
+    
+    # Make functions available to templates
+    @app.context_processor
+    def inject_template_vars():
+        from flask_babel import get_locale
+        return dict(get_locale=get_locale)
     
     # Configure Flask-Login
     login_manager.init_app(app)
@@ -49,6 +82,7 @@ def create_app():
     def load_user(user_id):
         from models import User
         return User.query.get(int(user_id))
+    
     
     # Import and register routes
     from routes import main, auth, bots, subscriptions

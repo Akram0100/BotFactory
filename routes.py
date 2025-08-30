@@ -29,6 +29,21 @@ def index():
         return redirect(url_for('main.dashboard'))
     return render_template('index.html')
 
+@main.route('/set-language/<language>')
+def set_language(language):
+    """Set user language preference"""
+    supported_languages = ['en', 'ru', 'uz']
+    if language in supported_languages:
+        session['language'] = language
+        
+        # Update user's language preference if logged in
+        if current_user.is_authenticated:
+            current_user.language = language
+            db.session.commit()
+    
+    # Redirect back to previous page or dashboard
+    return redirect(request.referrer or url_for('main.index'))
+
 @main.route('/dashboard')
 @login_required
 def dashboard():

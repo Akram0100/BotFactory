@@ -1,0 +1,273 @@
+# Uzbek translations for BotFactory.
+# Copyright (C) 2025 BotFactory
+# This file is distributed under the same license as the BotFactory project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BotFactory 1.0\n"
+"Report-Msgid-Bugs-To: support@botfactory.com\n"
+"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"PO-Revision-Date: 2025-08-30 13:58+0000\n"
+"Last-Translator: BotFactory Team\n"
+"Language: uz\n"
+"Language-Team: uz\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# Navigation
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "My Bots"
+msgstr "Mening botlarim"
+
+msgid "Plans"
+msgstr "Rejalar"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Settings"
+msgstr "Sozlamalar"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+# Hero Section
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Bir necha daqiqada kuchli AI chatbotlarini yarating"
+
+msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
+msgstr "Google Gemini AI yordamida Telegram va boshqa platformalar uchun aqlli chatbotlarni yarating. Dasturlash talab qilinmaydi - faqat bilimlar bazasini yuklang va joylashtiring!"
+
+msgid "Get Started Free"
+msgstr "Bepul boshlang"
+
+msgid "Learn More"
+msgstr "Batafsil"
+
+msgid "Free tier available"
+msgstr "Bepul tarif mavjud"
+
+msgid "No credit card required"
+msgstr "Kredit karta talab qilinmaydi"
+
+# Features
+msgid "Why Choose BotFactory?"
+msgstr "Nega BotFactory ni tanlash kerak?"
+
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr "Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma narsa"
+
+msgid "AI-Powered Conversations"
+msgstr "AI tomonidan quvvatlanadigan suhbatlar"
+
+msgid "Smart, contextual responses powered by Google Gemini AI"
+msgstr "Google Gemini AI tomonidan quvvatlanadigan aqlli, kontekstli javoblar"
+
+msgid "Easy Integration"
+msgstr "Oson integratsiya"
+
+msgid "Deploy to Telegram instantly with one-click setup"
+msgstr "Bir marta bosish bilan Telegram-ga darhol joylashtiring"
+
+msgid "Knowledge Base Upload"
+msgstr "Bilimlar bazasini yuklash"
+
+msgid "Upload documents and files to train your bot"
+msgstr "Botingizni o'qitish uchun hujjatlar va fayllarni yuklang"
+
+# Authentication
+msgid "Welcome back!"
+msgstr "Xush kelibsiz!"
+
+msgid "Sign in to your account to continue."
+msgstr "Davom etish uchun hisobingizga kiring."
+
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Remember me"
+msgstr "Meni eslab qoling"
+
+msgid "Create your account"
+msgstr "Hisobingizni yarating"
+
+msgid "Join thousands of users creating AI chatbots."
+msgstr "AI chatbotlar yaratayotgan minglab foydalanuvchilarga qo'shiling."
+
+msgid "Email"
+msgstr "Elektron pochta"
+
+msgid "First Name"
+msgstr "Ism"
+
+msgid "Last Name"
+msgstr "Familiya"
+
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Create Account"
+msgstr "Hisob yaratish"
+
+# Dashboard
+msgid "Welcome to your dashboard"
+msgstr "Boshqaruv panelingizga xush kelibsiz"
+
+msgid "Total Bots"
+msgstr "Jami botlar"
+
+msgid "Active Bots"
+msgstr "Faol botlar"
+
+msgid "Total Messages"
+msgstr "Jami xabarlar"
+
+msgid "Total Users"
+msgstr "Jami foydalanuvchilar"
+
+msgid "Recent Bots"
+msgstr "So'nggi botlar"
+
+msgid "Create New Bot"
+msgstr "Yangi bot yaratish"
+
+msgid "View All Bots"
+msgstr "Barcha botlarni ko'rish"
+
+# Bot Management
+msgid "Create Bot"
+msgstr "Bot yaratish"
+
+msgid "Bot Name"
+msgstr "Bot nomi"
+
+msgid "Description"
+msgstr "Tavsif"
+
+msgid "System Prompt"
+msgstr "Tizim buyrug'i"
+
+msgid "Save Bot"
+msgstr "Botni saqlash"
+
+msgid "Edit Bot"
+msgstr "Botni tahrirlash"
+
+msgid "Bot Configuration"
+msgstr "Bot konfiguratsiyasi"
+
+msgid "Telegram Setup"
+msgstr "Telegram sozlamalari"
+
+msgid "Knowledge Base"
+msgstr "Bilimlar bazasi"
+
+msgid "Analytics"
+msgstr "Tahlillar"
+
+msgid "Bot Token"
+msgstr "Bot tokeni"
+
+msgid "Save Changes"
+msgstr "O'zgarishlarni saqlash"
+
+# Subscriptions
+msgid "Choose Your Plan"
+msgstr "Rejangizni tanlang"
+
+msgid "Free"
+msgstr "Bepul"
+
+msgid "Basic"
+msgstr "Asosiy"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "per month"
+msgstr "oyiga"
+
+msgid "Current Plan"
+msgstr "Joriy reja"
+
+msgid "Upgrade"
+msgstr "Yangilash"
+
+msgid "AI chatbots"
+msgstr "AI chatbotlar"
+
+msgid "messages per month"
+msgstr "oyiga xabar"
+
+msgid "Knowledge base entries"
+msgstr "Bilimlar bazasi yozuvlari"
+
+msgid "Email support"
+msgstr "Elektron pochta orqali yordam"
+
+msgid "Priority support"
+msgstr "Ustuvor yordam"
+
+msgid "Analytics dashboard"
+msgstr "Tahlillar paneli"
+
+msgid "API access"
+msgstr "API kirish"
+
+# Messages
+msgid "Bot created successfully!"
+msgstr "Bot muvaffaqiyatli yaratildi!"
+
+msgid "Bot updated successfully!"
+msgstr "Bot muvaffaqiyatli yangilandi!"
+
+msgid "Bot deleted successfully!"
+msgstr "Bot muvaffaqiyatli o'chirildi!"
+
+msgid "Settings saved successfully!"
+msgstr "Sozlamalar muvaffaqiyatli saqlandi!"
+
+msgid "File uploaded successfully!"
+msgstr "Fayl muvaffaqiyatli yuklandi!"
+
+msgid "Invalid username or password."
+msgstr "Noto'g'ri foydalanuvchi nomi yoki parol."
+
+msgid "Please fill in all fields."
+msgstr "Iltimos, barcha maydonlarni to'ldiring."
+
+msgid "Passwords do not match."
+msgstr "Parollar mos kelmaydi."
+
+msgid "Username already exists."
+msgstr "Foydalanuvchi nomi allaqachon mavjud."
+
+msgid "Email already registered."
+msgstr "Elektron pochta allaqachon ro'yxatdan o'tgan."
+
+# Language Switcher
+msgid "Language"
+msgstr "Til"
+
+msgid "English"
+msgstr "English"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "Uzbek"
+msgstr "O'zbek"

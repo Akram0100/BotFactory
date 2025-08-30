@@ -25,6 +25,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(256), nullable=False)
     first_name = db.Column(db.String(100), nullable=True)
     last_name = db.Column(db.String(100), nullable=True)
+    language = db.Column(db.String(5), default='en', nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     active = db.Column(db.Boolean, default=True)

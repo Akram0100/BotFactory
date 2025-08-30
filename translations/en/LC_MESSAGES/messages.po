@@ -1,0 +1,265 @@
+# English translations for BotFactory.
+# Copyright (C) 2025 BotFactory
+# This file is distributed under the same license as the BotFactory project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BotFactory 1.0\n"
+"Report-Msgid-Bugs-To: support@botfactory.com\n"
+"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"PO-Revision-Date: 2025-08-30 13:58+0000\n"
+"Last-Translator: BotFactory Team\n"
+"Language: en\n"
+"Language-Team: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# Navigation
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "My Bots"
+msgstr "My Bots"
+
+msgid "Plans"
+msgstr "Plans"
+
+msgid "Profile"
+msgstr "Profile"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Sign Up"
+msgstr "Sign Up"
+
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Create Powerful AI Chatbots in Minutes"
+
+msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
+msgstr "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
+
+msgid "Get Started Free"
+msgstr "Get Started Free"
+
+msgid "Learn More"
+msgstr "Learn More"
+
+msgid "Free tier available"
+msgstr "Free tier available"
+
+msgid "No credit card required"
+msgstr "No credit card required"
+
+msgid "Why Choose BotFactory?"
+msgstr "Why Choose BotFactory?"
+
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr "Everything you need to create and deploy intelligent chatbots"
+
+msgid "AI-Powered Conversations"
+msgstr "AI-Powered Conversations"
+
+msgid "Smart, contextual responses powered by Google Gemini AI"
+msgstr "Smart, contextual responses powered by Google Gemini AI"
+
+msgid "Easy Integration"
+msgstr "Easy Integration"
+
+msgid "Deploy to Telegram instantly with one-click setup"
+msgstr "Deploy to Telegram instantly with one-click setup"
+
+msgid "Knowledge Base Upload"
+msgstr "Knowledge Base Upload"
+
+msgid "Upload documents and files to train your bot"
+msgstr "Upload documents and files to train your bot"
+
+msgid "Welcome back!"
+msgstr "Welcome back!"
+
+msgid "Sign in to your account to continue."
+msgstr "Sign in to your account to continue."
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Remember me"
+msgstr "Remember me"
+
+msgid "Create your account"
+msgstr "Create your account"
+
+msgid "Join thousands of users creating AI chatbots."
+msgstr "Join thousands of users creating AI chatbots."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "First Name"
+msgstr "First Name"
+
+msgid "Last Name"
+msgstr "Last Name"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Create Account"
+msgstr "Create Account"
+
+msgid "Welcome to your dashboard"
+msgstr "Welcome to your dashboard"
+
+msgid "Total Bots"
+msgstr "Total Bots"
+
+msgid "Active Bots"
+msgstr "Active Bots"
+
+msgid "Total Messages"
+msgstr "Total Messages"
+
+msgid "Total Users"
+msgstr "Total Users"
+
+msgid "Recent Bots"
+msgstr "Recent Bots"
+
+msgid "Create New Bot"
+msgstr "Create New Bot"
+
+msgid "View All Bots"
+msgstr "View All Bots"
+
+msgid "Create Bot"
+msgstr "Create Bot"
+
+msgid "Bot Name"
+msgstr "Bot Name"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "System Prompt"
+msgstr "System Prompt"
+
+msgid "Save Bot"
+msgstr "Save Bot"
+
+msgid "Edit Bot"
+msgstr "Edit Bot"
+
+msgid "Bot Configuration"
+msgstr "Bot Configuration"
+
+msgid "Telegram Setup"
+msgstr "Telegram Setup"
+
+msgid "Knowledge Base"
+msgstr "Knowledge Base"
+
+msgid "Analytics"
+msgstr "Analytics"
+
+msgid "Bot Token"
+msgstr "Bot Token"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Choose Your Plan"
+msgstr "Choose Your Plan"
+
+msgid "Free"
+msgstr "Free"
+
+msgid "Basic"
+msgstr "Basic"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "per month"
+msgstr "per month"
+
+msgid "Current Plan"
+msgstr "Current Plan"
+
+msgid "Upgrade"
+msgstr "Upgrade"
+
+msgid "AI chatbots"
+msgstr "AI chatbots"
+
+msgid "messages per month"
+msgstr "messages per month"
+
+msgid "Knowledge base entries"
+msgstr "Knowledge base entries"
+
+msgid "Email support"
+msgstr "Email support"
+
+msgid "Priority support"
+msgstr "Priority support"
+
+msgid "Analytics dashboard"
+msgstr "Analytics dashboard"
+
+msgid "API access"
+msgstr "API access"
+
+msgid "Bot created successfully!"
+msgstr "Bot created successfully!"
+
+msgid "Bot updated successfully!"
+msgstr "Bot updated successfully!"
+
+msgid "Bot deleted successfully!"
+msgstr "Bot deleted successfully!"
+
+msgid "Settings saved successfully!"
+msgstr "Settings saved successfully!"
+
+msgid "File uploaded successfully!"
+msgstr "File uploaded successfully!"
+
+msgid "Invalid username or password."
+msgstr "Invalid username or password."
+
+msgid "Please fill in all fields."
+msgstr "Please fill in all fields."
+
+msgid "Passwords do not match."
+msgstr "Passwords do not match."
+
+msgid "Username already exists."
+msgstr "Username already exists."
+
+msgid "Email already registered."
+msgstr "Email already registered."
+
+msgid "Language"
+msgstr "Language"
+
+msgid "English"
+msgstr "English"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "Uzbek"
+msgstr "O'zbek"
