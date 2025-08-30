@@ -46,7 +46,12 @@ def create_app():
     # Proxy fix for deployment
     app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
     
-    # Babel locale selector function
+    
+    # Initialize extensions
+    db.init_app(app)
+    migrate.init_app(app, db)
+    
+    # Configure Babel locale selector
     def get_locale():
         # 1. If user is logged in, use their preferred language
         from flask_login import current_user
@@ -60,11 +65,7 @@ def create_app():
         # 3. Use browser's preferred language if supported
         return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or 'en'
     
-    # Initialize extensions
-    db.init_app(app)
-    migrate.init_app(app, db)
-    babel.init_app(app)
-    babel.locale_selector_func = get_locale
+    babel.init_app(app, locale_selector=get_locale)
     
     # Make functions available to templates
     @app.context_processor
