@@ -37,7 +37,7 @@ msgstr "Язык"
 
 #: templates/base.html:59
 msgid "English"
-msgstr "English"
+msgstr "Английский"
 
 #: templates/base.html:60
 msgid "Russian"
@@ -75,11 +75,11 @@ msgstr "Создавайте мощные AI-чатботы за минуты"
 
 #: templates/base.html:127
 msgid "Features"
-msgstr ""
+msgstr "Возможности"
 
 #: templates/base.html:129
 msgid "AI-Powered Responses"
-msgstr ""
+msgstr "ИИ-ответы"
 
 #: templates/base.html:130 templates/subscriptions.html:261
 #, fuzzy
@@ -93,31 +93,31 @@ msgstr "База знаний"
 
 #: templates/base.html:132
 msgid "Analytics"
-msgstr ""
+msgstr "Аналитика"
 
 #: templates/base.html:136 templates/subscriptions.html:285
 msgid "Support"
-msgstr ""
+msgstr "Поддержка"
 
 #: templates/base.html:138
 msgid "Documentation"
-msgstr ""
+msgstr "Документация"
 
 #: templates/base.html:139
 msgid "Contact Us"
-msgstr ""
+msgstr "Связаться с нами"
 
 #: templates/base.html:140
 msgid "FAQ"
-msgstr ""
+msgstr "ЧАВО"
 
 #: templates/base.html:147
 msgid "All rights reserved."
-msgstr ""
+msgstr "Все права защищены."
 
 #: templates/base.html:150
 msgid "Powered by Google Gemini AI"
-msgstr ""
+msgstr "Работает на Google Gemini AI"
 
 #: templates/bot_edit.html:25 templates/bot_list.html:108
 #, fuzzy
@@ -126,7 +126,7 @@ msgstr "Описание"
 
 #: templates/bot_edit.html:32 templates/bot_list.html:92
 msgid "Deactivate"
-msgstr ""
+msgstr "Деактивировать"
 
 #: templates/bot_edit.html:32 templates/bot_list.html:92
 #, fuzzy
@@ -135,7 +135,7 @@ msgstr "Активные боты"
 
 #: templates/bot_edit.html:36 templates/bot_list.html:99
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: templates/bot_edit.html:49 templates/dashboard.html:64
 msgid "Total Messages"
@@ -143,11 +143,11 @@ msgstr "Всего сообщений"
 
 #: templates/bot_edit.html:57 templates/dashboard.html:80
 msgid "Users Served"
-msgstr ""
+msgstr "Обслужено пользователей"
 
 #: templates/bot_edit.html:65
 msgid "Last Activity"
-msgstr ""
+msgstr "Последняя активность"
 
 #: templates/bot_edit.html:73
 #, fuzzy
@@ -192,11 +192,11 @@ msgstr "Описание"
 
 #: templates/bot_edit.html:138
 msgid "Bot Personality & Instructions"
-msgstr ""
+msgstr "Личность бота и инструкции"
 
 #: templates/bot_edit.html:141
 msgid "Define how your bot should behave and respond to users."
-msgstr ""
+msgstr "Определите, как ваш бот должен вести себя и отвечать пользователям."
 
 #: templates/bot_edit.html:145
 msgid "Save Changes"
@@ -209,13 +209,13 @@ msgstr "Конфигурация бота"
 
 #: templates/bot_edit.html:162
 msgid "Bot is connected to Telegram as"
-msgstr ""
+msgstr "Бот подключён к Telegram как"
 
 #: templates/bot_edit.html:167
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr ""
+msgstr "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота через @BotFather."
 
 #: templates/bot_edit.html:175
 #, fuzzy
@@ -224,11 +224,11 @@ msgstr "Токен бота"
 
 #: templates/bot_edit.html:185
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
-msgstr ""
+msgstr "Получите этот токен, отправив сообщение @BotFather в Telegram и создав нового бота."
 
 #: templates/bot_edit.html:196
 msgid "How to get a Telegram Bot Token:"
-msgstr ""
+msgstr "Как получить токен Telegram бота:"
 
 #: templates/bot_list.html:18
 #, fuzzy
@@ -237,7 +237,7 @@ msgstr "AI-чатботы"
 
 #: templates/bot_list.html:19
 msgid "Manage and monitor your intelligent chatbots"
-msgstr ""
+msgstr "Управляйте и мониторьте ваших умных чатботов"
 
 #: templates/bot_list.html:24 templates/dashboard.html:17
 #: templates/dashboard.html:214
@@ -246,16 +246,16 @@ msgstr "Создать нового бота"
 
 #: templates/bot_list.html:28
 msgid "Upgrade to Create More"
-msgstr ""
+msgstr "Обновите для создания больше ботов"
 
 #: templates/bot_list.html:42
 msgid "Bot Limit Reached"
-msgstr ""
+msgstr "Достигнут лимит ботов"
 
 #: templates/bot_list.html:42
 #, python-format
 msgid "You are using %(current)s of %(max)s available bots."
-msgstr ""
+msgstr "Вы используете %(current)s из %(max)s доступных ботов."
 
 #: templates/bot_list.html:46 templates/dashboard.html:196
 #, fuzzy
@@ -274,7 +274,7 @@ msgstr "Всего сообщений"
 
 #: templates/bot_list.html:122
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: templates/bot_list.html:139
 #, fuzzy
@@ -283,7 +283,7 @@ msgstr "Конфигурация бота"
 
 #: templates/bot_list.html:149
 msgid "Last activity:"
-msgstr ""
+msgstr "Последняя активность:"
 
 #: templates/dashboard.html:12
 #, fuzzy, python-format
@@ -292,7 +292,7 @@ msgstr "Добро пожаловать!"
 
 #: templates/dashboard.html:13
 msgid "Manage your AI chatbots and monitor performance"
-msgstr ""
+msgstr "Управляйте вашими AI-чатботами и отслеживайте производительность"
 
 #: templates/dashboard.html:32
 msgid "Total Bots"
@@ -319,11 +319,11 @@ msgstr "Описание"
 
 #: templates/dashboard.html:143
 msgid "No Bots Yet"
-msgstr ""
+msgstr "Пока нет ботов"
 
 #: templates/dashboard.html:144
 msgid "Create your first AI chatbot to get started"
-msgstr ""
+msgstr "Создайте своего первого AI-чатбота, чтобы начать"
 
 #: templates/dashboard.html:146 templates/subscriptions.html:376
 #, fuzzy
@@ -347,7 +347,7 @@ msgstr "Описание"
 
 #: templates/dashboard.html:209
 msgid "Quick Actions"
-msgstr ""
+msgstr "Быстрые действия"
 
 #: templates/dashboard.html:217
 #, fuzzy
@@ -361,11 +361,11 @@ msgstr "Тарифы"
 
 #: templates/dashboard.html:229
 msgid "Need help?"
-msgstr ""
+msgstr "Нужна помощь?"
 
 #: templates/dashboard.html:229
 msgid "Contact Support"
-msgstr ""
+msgstr "Связаться с поддержкой"
 
 # Hero Section
 #: templates/index.html:12
@@ -418,11 +418,11 @@ msgstr "Выберите свой план"
 
 #: templates/subscriptions.html:18
 msgid "Scale your AI chatbot operations with flexible pricing"
-msgstr ""
+msgstr "Масштабируйте свои AI-чатбот операции с гибким ценообразованием"
 
 #: templates/subscriptions.html:23
 msgid "Currently on"
-msgstr ""
+msgstr "Сейчас на"
 
 #: templates/subscriptions.html:23
 #, fuzzy
@@ -438,11 +438,11 @@ msgstr "Выберите свой план"
 #: templates/subscriptions.html:44 templates/subscriptions.html:106
 #: templates/subscriptions.html:174
 msgid "/month"
-msgstr ""
+msgstr "/в месяц"
 
 #: templates/subscriptions.html:46
 msgid "Perfect for trying out BotFactory"
-msgstr ""
+msgstr "Идеально для знакомства с BotFactory"
 
 #: templates/subscriptions.html:51
 #, fuzzy
