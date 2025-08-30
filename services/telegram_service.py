@@ -63,22 +63,39 @@ class TelegramService:
             # Create application
             application = Application.builder().token(bot.telegram_token).build()
             
-            # Add handlers
-            application.add_handler(CommandHandler("start", lambda u, c: self._handle_start_command(u, c, bot)))
-            application.add_handler(CommandHandler("help", lambda u, c: self._handle_help_command(u, c, bot)))
-            application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, 
-                                                 lambda u, c: self._handle_message(u, c, bot)))
+            # Add handlers with proper async wrapper
+            async def start_wrapper(update, context):
+                return await self._handle_start_command(update, context, bot)
+            
+            async def help_wrapper(update, context):
+                return await self._handle_help_command(update, context, bot)
+            
+            async def message_wrapper(update, context):
+                return await self._handle_message(update, context, bot)
+            
+            application.add_handler(CommandHandler("start", start_wrapper))
+            application.add_handler(CommandHandler("help", help_wrapper))
+            application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_wrapper))
             
             # Store application
             self.active_bots[bot.id] = application
             
-            # Start polling in a separate thread with its own event loop
+            # Start polling in a separate thread with proper async setup
             def run_bot():
                 import asyncio
                 try:
-                    # Create new event loop for this thread
-                    asyncio.set_event_loop(asyncio.new_event_loop())
-                    application.run_polling(allowed_updates=Update.ALL_TYPES)
+                    # Create and set new event loop for this thread
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    
+                    # Run the application
+                    loop.run_until_complete(application.initialize())
+                    loop.run_until_complete(application.start())
+                    loop.run_until_complete(application.updater.start_polling())
+                    
+                    # Keep the loop running
+                    loop.run_forever()
+                    
                 except Exception as e:
                     logging.error(f"Bot {bot.id} polling error: {e}")
                     # Clean up on error
@@ -86,6 +103,9 @@ class TelegramService:
                         del self.active_bots[bot.id]
                     if bot.id in self.bot_threads:
                         del self.bot_threads[bot.id]
+                finally:
+                    if 'loop' in locals():
+                        loop.close()
             
             bot_thread = threading.Thread(target=run_bot, daemon=True)
             bot_thread.start()
@@ -104,10 +124,35 @@ class TelegramService:
             if bot.id in self.active_bots:
                 application = self.active_bots[bot.id]
                 try:
-                    application.stop()
-                except:
-                    # If stop() fails, force cleanup
+                    # Try to stop the application gracefully
+                    import asyncio
+                    
+                    # Create a task to stop the application
+                    async def stop_app():
+                        try:
+                            await application.updater.stop()
+                            await application.stop()
+                            await application.shutdown()
+                        except Exception as e:
+                            logging.error(f"Error during app shutdown: {e}")
+                    
+                    # Run the stop task in a new event loop if needed
+                    try:
+                        loop = asyncio.get_event_loop()
+                        if loop.is_running():
+                            # Schedule the stop task
+                            asyncio.create_task(stop_app())
+                        else:
+                            loop.run_until_complete(stop_app())
+                    except RuntimeError:
+                        # No loop exists, create one
+                        asyncio.run(stop_app())
+                        
+                except Exception as e:
+                    logging.error(f"Error stopping application: {e}")
+                    # Force cleanup even if stop fails
                     pass
+                    
                 del self.active_bots[bot.id]
                 
             if bot.id in self.bot_threads:
