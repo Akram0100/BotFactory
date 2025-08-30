@@ -1,0 +1,109 @@
+🧠 AI Agentga Beriladigan Prompt (Uzun va Tushuntiruvchi)
+Siz — tajribali full-stack Python dasturchi va AI muhandisisiz. Sizga quyidagi loyiha tavsif etilmoqda. Siz uni bosqichma-bosqich, professional darajada kod yozishingiz kerak. Har bir bosqichda kerakli fayllar, struktura, kod va izohlar yozilishi shart. Loyiha Replitda ishlashi kerak. 
+
+🎯 Loyiha: BotFactory — Tijoriy AI Chatbot Platformasi (SaaS)
+Maqsad:
+Har qanday biznes uchun sun'iy intellektga asoslangan shaxsiy chatbot yaratish imkonini beruvchi SaaS platforma yaratish. Platforma mijozlarga o'zlarining bilimlar bazasi asosida Telegram, Instagram, WhatsApp kabi kanallarda ishlaydigan chatbotlarni yaratishga imkon beradi.
+
+🧱 Loyiha Tuzilmasi (Struktura)
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+BotFactory/
+│
+├── main.py                 # Asosiy API (FastAPI)
+├── .env                    # Maxfiy kalitlar
+├── requirements.txt        # Kutubxonalar
+├── README.md               # Loyiha tavsifi
+│
+├── models/                 # SQLAlchemy modellar
+│   ├── user.py
+│   ├── bot.py
+│   └── subscription.py
+│
+├── database/
+│   └── db.py               # PostgreSQL ulanish
+│
+├── api/
+│   └── routes/
+│       ├── users.py
+│       ├── bots.py
+│       └── subscriptions.py
+│
+├── services/
+│   ├── ai_service.py       # Google Gemini API
+│   ├── telegram_service.py # Telegram bot
+│   └── auth_service.py     # Foydalanuvchi autentifikatsiya
+│
+├── utils/
+│   └── helpers.py
+🛠️ Texnologiyalar
+Backend: Python + FastAPI
+Frontend: Next.js (ajralgan repl sifatida)
+Ma'lumotlar bazasi: PostgreSQL (ElephantSQL orqali)
+AI: Google Gemini API
+Telegram: python-telegram-bot
+Hosting: Replit
+🔐 Replit Secrets (Kalitlar)
+Quyidagi kalitlar Replit Secrets bo'limiga qo'shiladi:
+
+DATABASE_URL — PostgreSQL manzil
+GOOGLE_API_KEY — Google AI API kaliti
+TELEGRAM_BOT_TOKEN — Telegram bot token
+📌 Ish Ketma-ketligi (Qadamlar)
+Asosiy API va server tayyorlash
+main.py faylida FastAPI serverini yozing.
+/ endpointida "Welcome to BotFactory" xabarini qaytaring.
+Ma'lumotlar bazasi ulanishi
+database/db.py faylida PostgreSQL ulanishini sozlang.
+SQLAlchemy modellarini yarating: User, Bot, Subscription.
+API endpointlar
+Foydalanuvchilar: /api/users — ro'yxatdan o'tish, login
+Botlar: /api/bots — yaratish, yangilash, o'chirish
+Obuna: /api/subscriptions — bepul sinov, obuna turini tanlash
+AI xizmati
+services/ai_service.py — Google Gemini API orqali so'rov yuborish va javob olish
+Telegram bot
+services/telegram_service.py — Telegramda foydalanuvchi xabarini qabul qilish va AI javobini yuborish
+Frontend (ajralgan repl sifatida)
+Yangi Next.js repl yarating.
+Foydalanuvchi dashboardi: login, bot yaratish, sozlamalar
+Testlash
+Har bir API endpointini test qiling.
+Telegram bot ishlashini tekshiring.
+✅ Talablarga rioya qilish
+Har bir fayl izoh bilan yozilishi kerak.
+Kod Replitda ishlashi kerak.
+Loyiha modulli va toza bo'lishi kerak.
+Har bir qadam oxirida foydalanuvchiga natija ko'rsatilishi kerak.
+💬 Nima qilishingiz kerak?
+Yuqoridagi promptni Replit AI Agentga kiriting.
+AI agentga: "Birinchi qadamni bajar — main.py faylini yoz" deb buyurish orqali boshlang.
+Har bir qadamni yakunlagandan so'ng keyingi qadamni so'rang.
