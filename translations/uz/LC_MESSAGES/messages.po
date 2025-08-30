@@ -46,6 +46,85 @@ msgstr "Ro'yxatdan o'tish"
 msgid "Create Powerful AI Chatbots in Minutes"
 msgstr "Bir necha daqiqada kuchli AI chatbotlarini yarating"
 
+# Dashboard
+msgid "Welcome back, %(name)s!"
+msgstr "Xush kelibsiz, %(name)s!"
+
+msgid "Manage your AI chatbots and monitor performance"
+msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
+
+msgid "Create New Bot"
+msgstr "Yangi bot yaratish"
+
+msgid "Total Bots"
+msgstr "Jami botlar"
+
+msgid "Active Bots"
+msgstr "Faol botlar"
+
+msgid "Total Messages"
+msgstr "Jami xabarlar"
+
+msgid "Users Served"
+msgstr "Xizmat ko'rsatilgan foydalanuvchilar"
+
+msgid "Your Bots"
+msgstr "Sizning botlaringiz"
+
+msgid "View All"
+msgstr "Barchasini ko'rish"
+
+msgid "Your Plan"
+msgstr "Sizning rejangiz"
+
+msgid "Quick Actions"
+msgstr "Tezkor amallar"
+
+msgid "No Bots Yet"
+msgstr "Hali botlar yo'q"
+
+msgid "Create your first AI chatbot to get started"
+msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
+
+msgid "Create Your First Bot"
+msgstr "Birinchi botingizni yarating"
+
+msgid "Inactive"
+msgstr "Faol emas"
+
+msgid "Active"
+msgstr "Faol"
+
+msgid "Last activity"
+msgstr "Oxirgi faollik"
+
+msgid "No description"
+msgstr "Tavsif yo'q"
+
+msgid "Bots Used"
+msgstr "Ishlatilgan botlar"
+
+msgid "Upgrade Plan"
+msgstr "Rejani yangilash"
+
+msgid "Active Subscription"
+msgstr "Faol obuna"
+
+msgid "Manage Bots"
+msgstr "Botlarni boshqarish"
+
+msgid "View Plans"
+msgstr "Rejalarni ko'rish"
+
+msgid "Free"
+msgstr "Bepul"
+
+msgid "Basic"
+msgstr "Asosiy"
+
+msgid "Premium"
+msgstr "Premium"
+
 msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
 msgstr "Google Gemini AI yordamida Telegram va boshqa platformalar uchun aqlli chatbotlarni yarating. Dasturlash talab qilinmaydi - faqat bilimlar bazasini yuklang va joylashtiring!"
 

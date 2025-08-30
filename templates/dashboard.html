@@ -9,12 +9,12 @@
         <div class="col">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="h2 mb-1">Welcome back, {{ current_user.get_full_name() }}!</h1>
-                    <p class="text-muted">Manage your AI chatbots and monitor performance</p>
+                    <h1 class="h2 mb-1">{{ _('Welcome back, %(name)s!', name=current_user.get_full_name()) }}</h1>
+                    <p class="text-muted">{{ _('Manage your AI chatbots and monitor performance') }}</p>
                 </div>
                 <div>
                     <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
-                        <i class="fas fa-plus me-2"></i>Create New Bot
+                        <i class="fas fa-plus me-2"></i>{{ _('Create New Bot') }}
                     </a>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">{{ stats.total_bots }}</h4>
-                            <p class="mb-0">Total Bots</p>
+                            <p class="mb-0">{{ _('Total Bots') }}</p>
                         </div>
                         <div>
                             <i class="fas fa-robot" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -45,7 +45,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">{{ stats.active_bots }}</h4>
-                            <p class="mb-0">Active Bots</p>
+                            <p class="mb-0">{{ _('Active Bots') }}</p>
                         </div>
                         <div>
                             <i class="fas fa-play-circle" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -61,7 +61,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">{{ stats.total_messages|number }}</h4>
-                            <p class="mb-0">Total Messages</p>
+                            <p class="mb-0">{{ _('Total Messages') }}</p>
                         </div>
                         <div>
                             <i class="fas fa-comments" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -77,7 +77,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">{{ stats.total_users|number }}</h4>
-                            <p class="mb-0">Users Served</p>
+                            <p class="mb-0">{{ _('Users Served') }}</p>
                         </div>
                         <div>
                             <i class="fas fa-users" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -93,9 +93,9 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Your Bots</h5>
+                    <h5 class="mb-0">{{ _('Your Bots') }}</h5>
                     <a href="{{ url_for('bots.list_bots') }}" class="text-decoration-none">
-                        View All <i class="fas fa-arrow-right ms-1"></i>
+                        {{ _('View All') }} <i class="fas fa-arrow-right ms-1"></i>
                     </a>
                 </div>
                 <div class="card-body">
@@ -140,10 +140,10 @@
                     {% else %}
                         <div class="text-center py-4">
                             <i class="fas fa-robot text-muted mb-3" style="font-size: 3rem;"></i>
-                            <h5 class="text-muted">No Bots Yet</h5>
-                            <p class="text-muted">Create your first AI chatbot to get started</p>
+                            <h5 class="text-muted">{{ _('No Bots Yet') }}</h5>
+                            <p class="text-muted">{{ _('Create your first AI chatbot to get started') }}</p>
                             <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary">
-                                <i class="fas fa-plus me-2"></i>Create Your First Bot
+                                <i class="fas fa-plus me-2"></i>{{ _('Create Your First Bot') }}
                             </a>
                         </div>
                     {% endif %}
@@ -157,7 +157,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="mb-0">
-                        <i class="fas fa-crown me-2 text-warning"></i>Your Plan
+                        <i class="fas fa-crown me-2 text-warning"></i>{{ _('Your Plan') }}
                     </h5>
                 </div>
                 <div class="card-body">
@@ -169,7 +169,7 @@
                     
                     <div class="mb-3">
                         <div class="d-flex justify-content-between small">
-                            <span>Bots Used</span>
+                            <span>{{ _('Bots Used') }}</span>
                             <span>{{ stats.total_bots }} / {{ subscription.max_bots }}</span>
                         </div>
                         <div class="progress progress-sm">
@@ -181,7 +181,7 @@
                     
                     <div class="mb-3">
                         <div class="d-flex justify-content-between small">
-                            <span>Messages</span>
+                            <span>{{ _('Messages') }}</span>
                             <span>{{ stats.total_messages|number }} / {{ subscription.max_messages_per_month|number }}</span>
                         </div>
                         <div class="progress progress-sm">
@@ -193,11 +193,11 @@
                     
                     {% if subscription.subscription_type.value == 'free' %}
                         <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-outline-primary w-100">
-                            <i class="fas fa-arrow-up me-2"></i>Upgrade Plan
+                            <i class="fas fa-arrow-up me-2"></i>{{ _('Upgrade Plan') }}
                         </a>
                     {% else %}
                         <button class="btn btn-outline-success w-100" disabled>
-                            <i class="fas fa-check me-2"></i>Active Subscription
+                            <i class="fas fa-check me-2"></i>{{ _('Active Subscription') }}
                         </button>
                     {% endif %}
                 </div>
@@ -206,7 +206,7 @@
             <!-- Quick Actions -->
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Quick Actions</h5>
+                    <h5 class="mb-0">{{ _('Quick Actions') }}</h5>
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
@@ -214,10 +214,10 @@
                             <i class="fas fa-plus me-2"></i>Create New Bot
                         </a>
                         <a href="{{ url_for('bots.list_bots') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-list me-2"></i>Manage Bots
+                            <i class="fas fa-list me-2"></i>{{ _('Manage Bots') }}
                         </a>
                         <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-outline-info">
-                            <i class="fas fa-crown me-2"></i>View Plans
+                            <i class="fas fa-crown me-2"></i>{{ _('View Plans') }}
                         </a>
                     </div>
                     
