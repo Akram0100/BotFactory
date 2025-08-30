@@ -67,6 +67,14 @@ def create_app():
     
     babel.init_app(app, locale_selector=get_locale)
     
+    # Custom template filters
+    @app.template_filter('number')
+    def number_filter(value):
+        """Format number with commas"""
+        if value is None:
+            return '0'
+        return f"{int(value):,}"
+    
     # Make functions available to templates
     @app.context_processor
     def inject_template_vars():
