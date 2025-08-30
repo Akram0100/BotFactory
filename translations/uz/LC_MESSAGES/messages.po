@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 17:32+0000\n"
+"POT-Creation-Date: 2025-08-30 17:39+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
-#: templates/base.html:36
+#: templates/base.html:36 templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr "Boshqaruv paneli"
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "AI-Powered Responses"
 msgstr ""
 
-#: templates/base.html:130
+#: templates/base.html:130 templates/subscriptions.html:261
 #, fuzzy
 msgid "Telegram Integration"
 msgstr "Telegram bot konfiguratsiyasi"
@@ -95,7 +95,7 @@ msgstr "Bilimlar bazasi"
 msgid "Analytics"
 msgstr ""
 
-#: templates/base.html:136
+#: templates/base.html:136 templates/subscriptions.html:285
 msgid "Support"
 msgstr ""
 
@@ -322,7 +322,7 @@ msgstr "Hali botlar yo'q"
 msgid "Create your first AI chatbot to get started"
 msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
 
-#: templates/dashboard.html:146
+#: templates/dashboard.html:146 templates/subscriptions.html:376
 msgid "Create Your First Bot"
 msgstr "Birinchi botingizni yarating"
 
@@ -400,6 +400,11 @@ msgstr ""
 "Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma "
 "narsa"
 
+#: templates/subscriptions.html:13
+#, fuzzy
+msgid "Subscription Plans"
+msgstr "Faol obuna"
+
 #: templates/subscriptions.html:17
 #, fuzzy
 msgid "Choose Your Plan"
@@ -418,6 +423,17 @@ msgstr ""
 msgid "plan"
 msgstr "Rejalar"
 
+#: templates/subscriptions.html:37 templates/subscriptions.html:97
+#: templates/subscriptions.html:163
+#, fuzzy
+msgid "Current Plan"
+msgstr "Sizning rejangiz"
+
+#: templates/subscriptions.html:44 templates/subscriptions.html:106
+#: templates/subscriptions.html:174
+msgid "/month"
+msgstr ""
+
 #: templates/subscriptions.html:46
 msgid "Perfect for trying out BotFactory"
 msgstr ""
@@ -428,11 +444,12 @@ msgid "AI chatbot"
 msgstr "Mening AI chatbotlarim"
 
 #: templates/subscriptions.html:55 templates/subscriptions.html:117
+#: templates/subscriptions.html:185
 #, fuzzy
 msgid "messages per month"
 msgstr "Jami xabarlar"
 
-#: templates/subscriptions.html:59
+#: templates/subscriptions.html:59 templates/subscriptions.html:121
 #, fuzzy
 msgid "knowledge base entries"
 msgstr "Bilimlar yozuvlari"
@@ -442,6 +459,25 @@ msgstr "Bilimlar yozuvlari"
 msgid "Telegram integration"
 msgstr "Telegram bot konfiguratsiyasi"
 
+#: templates/subscriptions.html:67
+msgid "Basic support"
+msgstr ""
+
+#: templates/subscriptions.html:71 templates/subscriptions.html:129
+#: templates/subscriptions.html:197
+msgid "Priority support"
+msgstr ""
+
+# Navigation
+#: templates/subscriptions.html:75
+#, fuzzy
+msgid "Analytics dashboard"
+msgstr "Boshqaruv paneli"
+
+#: templates/subscriptions.html:81
+msgid "Switch to Free"
+msgstr ""
+
 #: templates/subscriptions.html:99
 msgid "Most Popular"
 msgstr ""
@@ -450,12 +486,195 @@ msgstr ""
 msgid "Great for small businesses"
 msgstr ""
 
-#: templates/subscriptions.html:113
+#: templates/subscriptions.html:113 templates/subscriptions.html:181
 #, fuzzy
 msgid "AI chatbots"
 msgstr "Mening AI chatbotlarim"
 
+#: templates/subscriptions.html:125 templates/subscriptions.html:193
+#, fuzzy
+msgid "All integrations"
+msgstr "Telegram bot konfiguratsiyasi"
+
+#: templates/subscriptions.html:133
+msgid "Custom bot personalities"
+msgstr ""
+
+#: templates/subscriptions.html:137
+#, fuzzy
+msgid "Basic analytics"
+msgstr "Asosiy sozlamalar"
+
+#: templates/subscriptions.html:144
+#, fuzzy
+msgid "Upgrade to Basic"
+msgstr "Rejani yangilash"
+
+#: templates/subscriptions.html:146
+msgid "Switch to Basic"
+msgstr ""
+
 #: templates/subscriptions.html:176
 msgid "For growing businesses and agencies"
 msgstr ""
+
+#: templates/subscriptions.html:189 templates/subscriptions.html:258
+msgid "Unlimited"
+msgstr ""
+
+#: templates/subscriptions.html:189
+#, fuzzy
+msgid "knowledge base"
+msgstr "Bilimlar bazasi"
+
+#: templates/subscriptions.html:201
+msgid "Advanced analytics"
+msgstr ""
+
+#: templates/subscriptions.html:205
+msgid "API access"
+msgstr ""
+
+#: templates/subscriptions.html:212
+#, fuzzy
+msgid "Upgrade to Premium"
+msgstr "Ko'proq yaratish uchun yangilang"
+
+#: templates/subscriptions.html:214
+msgid "Choose Premium"
+msgstr ""
+
+#: templates/subscriptions.html:230
+msgid "Feature Comparison"
+msgstr ""
+
+#: templates/subscriptions.html:235
+msgid "Feature"
+msgstr ""
+
+#: templates/subscriptions.html:236
+msgid "Free"
+msgstr ""
+
+#: templates/subscriptions.html:237 templates/subscriptions.html:275
+msgid "Basic"
+msgstr ""
+
+#: templates/subscriptions.html:238
+msgid "Premium"
+msgstr ""
+
+#: templates/subscriptions.html:243
+#, fuzzy
+msgid "AI Chatbots"
+msgstr "Mening AI chatbotlarim"
+
+#: templates/subscriptions.html:249
+#, fuzzy
+msgid "Messages per Month"
+msgstr "Jami xabarlar"
+
+#: templates/subscriptions.html:255
+#, fuzzy
+msgid "Knowledge Base Entries"
+msgstr "Bilimlar yozuvlari"
+
+#: templates/subscriptions.html:267
+msgid "Custom AI Personalities"
+msgstr ""
+
+# Navigation
+#: templates/subscriptions.html:273
+#, fuzzy
+msgid "Analytics Dashboard"
+msgstr "Boshqaruv paneli"
+
+#: templates/subscriptions.html:276
+msgid "Advanced"
+msgstr ""
+
+#: templates/subscriptions.html:279
+msgid "API Access"
+msgstr ""
+
+#: templates/subscriptions.html:286
+msgid "Community"
+msgstr ""
+
+#: templates/subscriptions.html:287 templates/subscriptions.html:288
+msgid "Priority"
+msgstr ""
+
+#: templates/subscriptions.html:299
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/subscriptions.html:305
+msgid "Can I upgrade or downgrade my plan anytime?"
+msgstr ""
+
+#: templates/subscriptions.html:310
+msgid ""
+"Yes, you can upgrade or downgrade your subscription plan at any time. "
+"Changes take effect immediately, and billing is prorated accordingly."
+msgstr ""
+
+#: templates/subscriptions.html:318
+msgid "What happens if I exceed my message limit?"
+msgstr ""
+
+#: templates/subscriptions.html:323
+msgid ""
+"When you reach your monthly message limit, your bots will temporarily "
+"stop responding until the next billing cycle or you upgrade your plan. "
+"We'll notify you before you reach the limit."
+msgstr ""
+
+#: templates/subscriptions.html:331
+msgid "Is there a free trial for paid plans?"
+msgstr ""
+
+#: templates/subscriptions.html:336
+msgid ""
+"Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
+" during the trial period without being charged."
+msgstr ""
+
+#: templates/subscriptions.html:344
+msgid "What payment methods do you accept?"
+msgstr ""
+
+#: templates/subscriptions.html:349
+msgid ""
+"We accept all major credit cards (Visa, Mastercard, American Express) and"
+" PayPal. All payments are processed securely through Stripe."
+msgstr ""
+
+#: templates/subscriptions.html:357
+#, fuzzy
+msgid "Can I cancel my subscription?"
+msgstr "Faol obuna"
+
+#: templates/subscriptions.html:362
+msgid ""
+"Yes, you can cancel your subscription at any time. Your bots will "
+"continue to work until the end of your current billing period, after "
+"which they'll be downgraded to the free plan limits."
+msgstr ""
+
+#: templates/subscriptions.html:372
+msgid "Ready to get started?"
+msgstr ""
+
+#: templates/subscriptions.html:373
+msgid ""
+"Choose a plan that fits your needs and start building powerful AI "
+"chatbots today."
+msgstr ""
+
+# Navigation
+#: templates/subscriptions.html:379
+#, fuzzy
+msgid "Go to Dashboard"
+msgstr "Boshqaruv paneli"
 

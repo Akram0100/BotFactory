@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-30 17:32+0000\n"
+"POT-Creation-Date: 2025-08-30 17:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: templates/base.html:36
+#: templates/base.html:36 templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "AI-Powered Responses"
 msgstr ""
 
-#: templates/base.html:130
+#: templates/base.html:130 templates/subscriptions.html:261
 msgid "Telegram Integration"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Analytics"
 msgstr ""
 
-#: templates/base.html:136
+#: templates/base.html:136 templates/subscriptions.html:285
 msgid "Support"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Create your first AI chatbot to get started"
 msgstr ""
 
-#: templates/dashboard.html:146
+#: templates/dashboard.html:146 templates/subscriptions.html:376
 msgid "Create Your First Bot"
 msgstr ""
 
@@ -374,6 +374,10 @@ msgstr ""
 msgid "Everything you need to create and deploy intelligent chatbots"
 msgstr ""
 
+#: templates/subscriptions.html:13
+msgid "Subscription Plans"
+msgstr ""
+
 #: templates/subscriptions.html:17
 msgid "Choose Your Plan"
 msgstr ""
@@ -390,6 +394,16 @@ msgstr ""
 msgid "plan"
 msgstr ""
 
+#: templates/subscriptions.html:37 templates/subscriptions.html:97
+#: templates/subscriptions.html:163
+msgid "Current Plan"
+msgstr ""
+
+#: templates/subscriptions.html:44 templates/subscriptions.html:106
+#: templates/subscriptions.html:174
+msgid "/month"
+msgstr ""
+
 #: templates/subscriptions.html:46
 msgid "Perfect for trying out BotFactory"
 msgstr ""
@@ -399,15 +413,33 @@ msgid "AI chatbot"
 msgstr ""
 
 #: templates/subscriptions.html:55 templates/subscriptions.html:117
+#: templates/subscriptions.html:185
 msgid "messages per month"
 msgstr ""
 
-#: templates/subscriptions.html:59
+#: templates/subscriptions.html:59 templates/subscriptions.html:121
 msgid "knowledge base entries"
 msgstr ""
 
 #: templates/subscriptions.html:63
 msgid "Telegram integration"
+msgstr ""
+
+#: templates/subscriptions.html:67
+msgid "Basic support"
+msgstr ""
+
+#: templates/subscriptions.html:71 templates/subscriptions.html:129
+#: templates/subscriptions.html:197
+msgid "Priority support"
+msgstr ""
+
+#: templates/subscriptions.html:75
+msgid "Analytics dashboard"
+msgstr ""
+
+#: templates/subscriptions.html:81
+msgid "Switch to Free"
 msgstr ""
 
 #: templates/subscriptions.html:99
@@ -418,11 +450,181 @@ msgstr ""
 msgid "Great for small businesses"
 msgstr ""
 
-#: templates/subscriptions.html:113
+#: templates/subscriptions.html:113 templates/subscriptions.html:181
 msgid "AI chatbots"
+msgstr ""
+
+#: templates/subscriptions.html:125 templates/subscriptions.html:193
+msgid "All integrations"
+msgstr ""
+
+#: templates/subscriptions.html:133
+msgid "Custom bot personalities"
+msgstr ""
+
+#: templates/subscriptions.html:137
+msgid "Basic analytics"
+msgstr ""
+
+#: templates/subscriptions.html:144
+msgid "Upgrade to Basic"
+msgstr ""
+
+#: templates/subscriptions.html:146
+msgid "Switch to Basic"
 msgstr ""
 
 #: templates/subscriptions.html:176
 msgid "For growing businesses and agencies"
+msgstr ""
+
+#: templates/subscriptions.html:189 templates/subscriptions.html:258
+msgid "Unlimited"
+msgstr ""
+
+#: templates/subscriptions.html:189
+msgid "knowledge base"
+msgstr ""
+
+#: templates/subscriptions.html:201
+msgid "Advanced analytics"
+msgstr ""
+
+#: templates/subscriptions.html:205
+msgid "API access"
+msgstr ""
+
+#: templates/subscriptions.html:212
+msgid "Upgrade to Premium"
+msgstr ""
+
+#: templates/subscriptions.html:214
+msgid "Choose Premium"
+msgstr ""
+
+#: templates/subscriptions.html:230
+msgid "Feature Comparison"
+msgstr ""
+
+#: templates/subscriptions.html:235
+msgid "Feature"
+msgstr ""
+
+#: templates/subscriptions.html:236
+msgid "Free"
+msgstr ""
+
+#: templates/subscriptions.html:237 templates/subscriptions.html:275
+msgid "Basic"
+msgstr ""
+
+#: templates/subscriptions.html:238
+msgid "Premium"
+msgstr ""
+
+#: templates/subscriptions.html:243
+msgid "AI Chatbots"
+msgstr ""
+
+#: templates/subscriptions.html:249
+msgid "Messages per Month"
+msgstr ""
+
+#: templates/subscriptions.html:255
+msgid "Knowledge Base Entries"
+msgstr ""
+
+#: templates/subscriptions.html:267
+msgid "Custom AI Personalities"
+msgstr ""
+
+#: templates/subscriptions.html:273
+msgid "Analytics Dashboard"
+msgstr ""
+
+#: templates/subscriptions.html:276
+msgid "Advanced"
+msgstr ""
+
+#: templates/subscriptions.html:279
+msgid "API Access"
+msgstr ""
+
+#: templates/subscriptions.html:286
+msgid "Community"
+msgstr ""
+
+#: templates/subscriptions.html:287 templates/subscriptions.html:288
+msgid "Priority"
+msgstr ""
+
+#: templates/subscriptions.html:299
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/subscriptions.html:305
+msgid "Can I upgrade or downgrade my plan anytime?"
+msgstr ""
+
+#: templates/subscriptions.html:310
+msgid ""
+"Yes, you can upgrade or downgrade your subscription plan at any time. "
+"Changes take effect immediately, and billing is prorated accordingly."
+msgstr ""
+
+#: templates/subscriptions.html:318
+msgid "What happens if I exceed my message limit?"
+msgstr ""
+
+#: templates/subscriptions.html:323
+msgid ""
+"When you reach your monthly message limit, your bots will temporarily "
+"stop responding until the next billing cycle or you upgrade your plan. "
+"We'll notify you before you reach the limit."
+msgstr ""
+
+#: templates/subscriptions.html:331
+msgid "Is there a free trial for paid plans?"
+msgstr ""
+
+#: templates/subscriptions.html:336
+msgid ""
+"Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
+" during the trial period without being charged."
+msgstr ""
+
+#: templates/subscriptions.html:344
+msgid "What payment methods do you accept?"
+msgstr ""
+
+#: templates/subscriptions.html:349
+msgid ""
+"We accept all major credit cards (Visa, Mastercard, American Express) and"
+" PayPal. All payments are processed securely through Stripe."
+msgstr ""
+
+#: templates/subscriptions.html:357
+msgid "Can I cancel my subscription?"
+msgstr ""
+
+#: templates/subscriptions.html:362
+msgid ""
+"Yes, you can cancel your subscription at any time. Your bots will "
+"continue to work until the end of your current billing period, after "
+"which they'll be downgraded to the free plan limits."
+msgstr ""
+
+#: templates/subscriptions.html:372
+msgid "Ready to get started?"
+msgstr ""
+
+#: templates/subscriptions.html:373
+msgid ""
+"Choose a plan that fits your needs and start building powerful AI "
+"chatbots today."
+msgstr ""
+
+#: templates/subscriptions.html:379
+msgid "Go to Dashboard"
 msgstr ""
 

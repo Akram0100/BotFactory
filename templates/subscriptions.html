@@ -9,8 +9,8 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Subscription Plans</li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">{{ _("Dashboard") }}</a></li>
+                    <li class="breadcrumb-item active">{{ _("Subscription Plans") }}</li>
                 </ol>
             </nav>
             <div class="text-center">
@@ -34,14 +34,14 @@
             <div class="card h-100 {% if current_subscription and current_subscription.subscription_type.value == 'free' %}border-primary{% endif %}">
                 {% if current_subscription and current_subscription.subscription_type.value == 'free' %}
                     <div class="card-header bg-primary text-white text-center">
-                        <i class="fas fa-check-circle me-2"></i>Current Plan
+                        <i class="fas fa-check-circle me-2"></i>{{ _("Current Plan") }}
                     </div>
                 {% endif %}
                 <div class="card-body text-center p-4">
                     <h3 class="card-title">Free</h3>
                     <div class="mb-3">
                         <span class="h1">$0</span>
-                        <span class="text-muted">/month</span>
+                        <span class="text-muted">{{ _("/month") }}</span>
                     </div>
                     <p class="text-muted mb-4">{{ _("Perfect for trying out BotFactory") }}</p>
                     
@@ -64,21 +64,21 @@
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Basic support
+                            {{ _("Basic support") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-times text-muted me-2"></i>
-                            <span class="text-muted">Priority support</span>
+                            <span class="text-muted">{{ _("Priority support") }}</span>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-times text-muted me-2"></i>
-                            <span class="text-muted">Analytics dashboard</span>
+                            <span class="text-muted">{{ _("Analytics dashboard") }}</span>
                         </li>
                     </ul>
                     
                     {% if not current_subscription or current_subscription.subscription_type.value != 'free' %}
                         <a href="{{ url_for('subscriptions.upgrade_plan', plan='free') }}" class="btn btn-outline-primary w-100">
-                            Switch to Free
+                            {{ _("Switch to Free") }}
                         </a>
                     {% else %}
                         <button class="btn btn-primary w-100" disabled>
@@ -94,7 +94,7 @@
             <div class="card h-100 border-success {% if current_subscription and current_subscription.subscription_type.value == 'basic' %}border-primary{% endif %}">
                 <div class="card-header bg-success text-white text-center">
                     {% if current_subscription and current_subscription.subscription_type.value == 'basic' %}
-                        <i class="fas fa-check-circle me-2"></i>Current Plan
+                        <i class="fas fa-check-circle me-2"></i>{{ _("Current Plan") }}
                     {% else %}
                         <i class="fas fa-star me-2"></i>{{ _("Most Popular") }}
                     {% endif %}
@@ -103,7 +103,7 @@
                     <h3 class="card-title">Basic</h3>
                     <div class="mb-3">
                         <span class="h1">$29</span>
-                        <span class="text-muted">/month</span>
+                        <span class="text-muted">{{ _("/month") }}</span>
                     </div>
                     <p class="text-muted mb-4">{{ _("Great for small businesses") }}</p>
                     
@@ -118,32 +118,32 @@
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>50</strong> knowledge base entries
+                            <strong>50</strong> {{ _("knowledge base entries") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            All integrations
+                            {{ _("All integrations") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Priority support
+                            {{ _("Priority support") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Custom bot personalities
+                            {{ _("Custom bot personalities") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Basic analytics
+                            {{ _("Basic analytics") }}
                         </li>
                     </ul>
                     
                     {% if not current_subscription or current_subscription.subscription_type.value != 'basic' %}
                         <a href="{{ url_for('subscriptions.upgrade_plan', plan='basic') }}" class="btn btn-success w-100">
                             {% if current_subscription and current_subscription.subscription_type.value == 'free' %}
-                                Upgrade to Basic
+                                {{ _("Upgrade to Basic") }}
                             {% else %}
-                                Switch to Basic
+                                {{ _("Switch to Basic") }}
                             {% endif %}
                         </a>
                     {% else %}
@@ -160,7 +160,7 @@
             <div class="card h-100 border-warning {% if current_subscription and current_subscription.subscription_type.value == 'premium' %}border-primary{% endif %}">
                 {% if current_subscription and current_subscription.subscription_type.value == 'premium' %}
                     <div class="card-header bg-primary text-white text-center">
-                        <i class="fas fa-check-circle me-2"></i>Current Plan
+                        <i class="fas fa-check-circle me-2"></i>{{ _("Current Plan") }}
                     </div>
                 {% else %}
                     <div class="card-header bg-warning text-dark text-center">
@@ -171,47 +171,47 @@
                     <h3 class="card-title">Premium</h3>
                     <div class="mb-3">
                         <span class="h1">$99</span>
-                        <span class="text-muted">/month</span>
+                        <span class="text-muted">{{ _("/month") }}</span>
                     </div>
                     <p class="text-muted mb-4">{{ _("For growing businesses and agencies") }}</p>
                     
                     <ul class="list-unstyled text-start mb-4">
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>25</strong> AI chatbots
+                            <strong>25</strong> {{ _("AI chatbots") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>10,000</strong> messages per month
+                            <strong>10,000</strong> {{ _("messages per month") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            <strong>Unlimited</strong> knowledge base
+                            <strong>{{ _("Unlimited") }}</strong> {{ _("knowledge base") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            All integrations
+                            {{ _("All integrations") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Priority support
+                            {{ _("Priority support") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            Advanced analytics
+                            {{ _("Advanced analytics") }}
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
-                            API access
+                            {{ _("API access") }}
                         </li>
                     </ul>
                     
                     {% if not current_subscription or current_subscription.subscription_type.value != 'premium' %}
                         <a href="{{ url_for('subscriptions.upgrade_plan', plan='premium') }}" class="btn btn-warning w-100">
                             {% if current_subscription %}
-                                Upgrade to Premium
+                                {{ _("Upgrade to Premium") }}
                             {% else %}
-                                Choose Premium
+                                {{ _("Choose Premium") }}
                             {% endif %}
                         </a>
                     {% else %}
@@ -227,65 +227,65 @@
     <!-- Features Comparison Table -->
     <div class="row mb-5">
         <div class="col">
-            <h3 class="text-center mb-4">Feature Comparison</h3>
+            <h3 class="text-center mb-4">{{ _("Feature Comparison") }}</h3>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Feature</th>
-                            <th class="text-center">Free</th>
-                            <th class="text-center">Basic</th>
-                            <th class="text-center">Premium</th>
+                            <th>{{ _("Feature") }}</th>
+                            <th class="text-center">{{ _("Free") }}</th>
+                            <th class="text-center">{{ _("Basic") }}</th>
+                            <th class="text-center">{{ _("Premium") }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><i class="fas fa-robot me-2"></i>AI Chatbots</td>
+                            <td><i class="fas fa-robot me-2"></i>{{ _("AI Chatbots") }}</td>
                             <td class="text-center">1</td>
                             <td class="text-center">5</td>
                             <td class="text-center">25</td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-comments me-2"></i>Messages per Month</td>
+                            <td><i class="fas fa-comments me-2"></i>{{ _("Messages per Month") }}</td>
                             <td class="text-center">100</td>
                             <td class="text-center">1,000</td>
                             <td class="text-center">10,000</td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-database me-2"></i>Knowledge Base Entries</td>
+                            <td><i class="fas fa-database me-2"></i>{{ _("Knowledge Base Entries") }}</td>
                             <td class="text-center">10</td>
                             <td class="text-center">50</td>
-                            <td class="text-center">Unlimited</td>
+                            <td class="text-center">{{ _("Unlimited") }}</td>
                         </tr>
                         <tr>
-                            <td><i class="fab fa-telegram me-2"></i>Telegram Integration</td>
+                            <td><i class="fab fa-telegram me-2"></i>{{ _("Telegram Integration") }}</td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-brain me-2"></i>Custom AI Personalities</td>
+                            <td><i class="fas fa-brain me-2"></i>{{ _("Custom AI Personalities") }}</td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-chart-line me-2"></i>Analytics Dashboard</td>
+                            <td><i class="fas fa-chart-line me-2"></i>{{ _("Analytics Dashboard") }}</td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
-                            <td class="text-center">Basic</td>
-                            <td class="text-center">Advanced</td>
+                            <td class="text-center">{{ _("Basic") }}</td>
+                            <td class="text-center">{{ _("Advanced") }}</td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-code me-2"></i>API Access</td>
+                            <td><i class="fas fa-code me-2"></i>{{ _("API Access") }}</td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-headset me-2"></i>Support</td>
-                            <td class="text-center">Community</td>
-                            <td class="text-center">Priority</td>
-                            <td class="text-center">Priority</td>
+                            <td><i class="fas fa-headset me-2"></i>{{ _("Support") }}</td>
+                            <td class="text-center">{{ _("Community") }}</td>
+                            <td class="text-center">{{ _("Priority") }}</td>
+                            <td class="text-center">{{ _("Priority") }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -296,18 +296,18 @@
     <!-- FAQ Section -->
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+            <h3 class="text-center mb-4">{{ _("Frequently Asked Questions") }}</h3>
             
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            Can I upgrade or downgrade my plan anytime?
+                            {{ _("Can I upgrade or downgrade my plan anytime?") }}
                         </button>
                     </h2>
                     <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Yes, you can upgrade or downgrade your subscription plan at any time. Changes take effect immediately, and billing is prorated accordingly.
+                            {{ _("Yes, you can upgrade or downgrade your subscription plan at any time. Changes take effect immediately, and billing is prorated accordingly.") }}
                         </div>
                     </div>
                 </div>
@@ -315,12 +315,12 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                            What happens if I exceed my message limit?
+                            {{ _("What happens if I exceed my message limit?") }}
                         </button>
                     </h2>
                     <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            When you reach your monthly message limit, your bots will temporarily stop responding until the next billing cycle or you upgrade your plan. We'll notify you before you reach the limit.
+                            {{ _("When you reach your monthly message limit, your bots will temporarily stop responding until the next billing cycle or you upgrade your plan. We'll notify you before you reach the limit.") }}
                         </div>
                     </div>
                 </div>
@@ -328,12 +328,12 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                            Is there a free trial for paid plans?
+                            {{ _("Is there a free trial for paid plans?") }}
                         </button>
                     </h2>
                     <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Yes! All paid plans come with a 14-day free trial. You can cancel anytime during the trial period without being charged.
+                            {{ _("Yes! All paid plans come with a 14-day free trial. You can cancel anytime during the trial period without being charged.") }}
                         </div>
                     </div>
                 </div>
@@ -341,12 +341,12 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                            What payment methods do you accept?
+                            {{ _("What payment methods do you accept?") }}
                         </button>
                     </h2>
                     <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            We accept all major credit cards (Visa, Mastercard, American Express) and PayPal. All payments are processed securely through Stripe.
+                            {{ _("We accept all major credit cards (Visa, Mastercard, American Express) and PayPal. All payments are processed securely through Stripe.") }}
                         </div>
                     </div>
                 </div>
@@ -354,12 +354,12 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                            Can I cancel my subscription?
+                            {{ _("Can I cancel my subscription?") }}
                         </button>
                     </h2>
                     <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Yes, you can cancel your subscription at any time. Your bots will continue to work until the end of your current billing period, after which they'll be downgraded to the free plan limits.
+                            {{ _("Yes, you can cancel your subscription at any time. Your bots will continue to work until the end of your current billing period, after which they'll be downgraded to the free plan limits.") }}
                         </div>
                     </div>
                 </div>
@@ -369,14 +369,14 @@
 
     <!-- CTA Section -->
     <div class="text-center mt-5 py-4">
-        <h4 class="mb-3">Ready to get started?</h4>
-        <p class="text-muted mb-4">Choose a plan that fits your needs and start building powerful AI chatbots today.</p>
+        <h4 class="mb-3">{{ _("Ready to get started?") }}</h4>
+        <p class="text-muted mb-4">{{ _("Choose a plan that fits your needs and start building powerful AI chatbots today.") }}</p>
         <div class="d-flex justify-content-center gap-3">
             <a href="{{ url_for('bots.create_bot') }}" class="btn btn-primary btn-lg">
-                <i class="fas fa-rocket me-2"></i>Create Your First Bot
+                <i class="fas fa-rocket me-2"></i>{{ _("Create Your First Bot") }}
             </a>
             <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-secondary btn-lg">
-                <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                <i class="fas fa-tachometer-alt me-2"></i>{{ _("Go to Dashboard") }}
             </a>
         </div>
     </div>
