@@ -18,19 +18,37 @@ class TelegramService:
     
     def validate_token(self, token):
         """Validate Telegram bot token and get bot info"""
+        import asyncio
+        
+        async def _validate():
+            try:
+                telegram_bot = TelegramBot(token)
+                bot_info = await telegram_bot.get_me()
+                
+                return {
+                    'id': bot_info.id,
+                    'username': bot_info.username,
+                    'first_name': bot_info.first_name,
+                    'is_bot': bot_info.is_bot
+                }
+            except Exception as e:
+                logging.error(f"Token validation error: {e}")
+                return None
+        
         try:
-            telegram_bot = TelegramBot(token)
-            bot_info = telegram_bot.get_me()
-            
-            return {
-                'id': bot_info.id,
-                'username': bot_info.username,
-                'first_name': bot_info.first_name,
-                'is_bot': bot_info.is_bot
-            }
-        except Exception as e:
-            logging.error(f"Token validation error: {e}")
-            return None
+            # Try to get existing event loop
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # If loop is running, we need to use run_in_executor
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(asyncio.run, _validate())
+                    return future.result()
+            else:
+                return loop.run_until_complete(_validate())
+        except RuntimeError:
+            # No event loop exists, create one
+            return asyncio.run(_validate())
     
     def start_bot(self, bot):
         """Start a Telegram bot instance"""
