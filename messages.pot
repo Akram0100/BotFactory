@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"POT-Creation-Date: 2025-08-30 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,4 +16,287 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: templates/base.html:36
+msgid "Dashboard"
+msgstr ""
+
+#: templates/base.html:41
+msgid "My Bots"
+msgstr ""
+
+#: templates/base.html:46
+msgid "Plans"
+msgstr ""
+
+#: templates/base.html:56
+msgid "Language"
+msgstr ""
+
+#: templates/base.html:59
+msgid "English"
+msgstr ""
+
+#: templates/base.html:60
+msgid "Russian"
+msgstr ""
+
+#: templates/base.html:61
+msgid "Uzbek"
+msgstr ""
+
+#: templates/base.html:71
+msgid "Profile"
+msgstr ""
+
+#: templates/base.html:72
+msgid "Settings"
+msgstr ""
+
+#: templates/base.html:74
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:79
+msgid "Login"
+msgstr ""
+
+#: templates/base.html:82
+msgid "Sign Up"
+msgstr ""
+
+#: templates/bot_edit.html:25
+msgid "No description provided"
+msgstr ""
+
+#: templates/bot_edit.html:32
+msgid "Deactivate"
+msgstr ""
+
+#: templates/bot_edit.html:32
+msgid "Activate"
+msgstr ""
+
+#: templates/bot_edit.html:36
+msgid "Delete"
+msgstr ""
+
+#: templates/bot_edit.html:49 templates/dashboard.html:64
+msgid "Total Messages"
+msgstr ""
+
+#: templates/bot_edit.html:57 templates/dashboard.html:80
+msgid "Users Served"
+msgstr ""
+
+#: templates/bot_edit.html:65
+msgid "Last Activity"
+msgstr ""
+
+#: templates/bot_edit.html:73
+msgid "Knowledge Entries"
+msgstr ""
+
+#: templates/bot_edit.html:83
+msgid "Basic Settings"
+msgstr ""
+
+#: templates/bot_edit.html:88
+msgid "Telegram Setup"
+msgstr ""
+
+#: templates/bot_edit.html:93
+msgid "Knowledge Base"
+msgstr ""
+
+#: templates/bot_edit.html:98
+msgid "Test Bot"
+msgstr ""
+
+#: templates/bot_edit.html:109
+msgid "Bot Configuration"
+msgstr ""
+
+#: templates/bot_edit.html:117
+msgid "Bot Name"
+msgstr ""
+
+#: templates/bot_edit.html:122
+msgid "Telegram Username"
+msgstr ""
+
+#: templates/bot_edit.html:126
+msgid "Not configured"
+msgstr ""
+
+#: templates/bot_edit.html:132
+msgid "Description"
+msgstr ""
+
+#: templates/bot_edit.html:138
+msgid "Bot Personality & Instructions"
+msgstr ""
+
+#: templates/bot_edit.html:141
+msgid "Define how your bot should behave and respond to users."
+msgstr ""
+
+#: templates/bot_edit.html:145
+msgid "Save Changes"
+msgstr ""
+
+#: templates/bot_edit.html:156
+msgid "Telegram Bot Configuration"
+msgstr ""
+
+#: templates/bot_edit.html:162
+msgid "Bot is connected to Telegram as"
+msgstr ""
+
+#: templates/bot_edit.html:167
+msgid ""
+"To deploy your bot to Telegram, you need to create a bot token via "
+"@BotFather."
+msgstr ""
+
+#: templates/bot_edit.html:175
+msgid "Telegram Bot Token"
+msgstr ""
+
+#: templates/bot_edit.html:185
+msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
+msgstr ""
+
+#: templates/bot_edit.html:196
+msgid "How to get a Telegram Bot Token:"
+msgstr ""
+
+#: templates/bot_list.html:18
+msgid "My AI Chatbots"
+msgstr ""
+
+#: templates/bot_list.html:19
+msgid "Manage and monitor your intelligent chatbots"
+msgstr ""
+
+#: templates/bot_list.html:24 templates/dashboard.html:17
+msgid "Create New Bot"
+msgstr ""
+
+#: templates/bot_list.html:28
+msgid "Upgrade to Create More"
+msgstr ""
+
+#: templates/bot_list.html:42
+msgid "Bot Limit Reached"
+msgstr ""
+
+#: templates/bot_list.html:42
+#, python-format
+msgid "You are using %(current)s of %(max)s available bots."
+msgstr ""
+
+#: templates/dashboard.html:12
+#, python-format
+msgid "Welcome back, %(name)s!"
+msgstr ""
+
+#: templates/dashboard.html:13
+msgid "Manage your AI chatbots and monitor performance"
+msgstr ""
+
+#: templates/dashboard.html:32
+msgid "Total Bots"
+msgstr ""
+
+#: templates/dashboard.html:48
+msgid "Active Bots"
+msgstr ""
+
+#: templates/dashboard.html:96
+msgid "Your Bots"
+msgstr ""
+
+#: templates/dashboard.html:98
+msgid "View All"
+msgstr ""
+
+#: templates/dashboard.html:143
+msgid "No Bots Yet"
+msgstr ""
+
+#: templates/dashboard.html:144
+msgid "Create your first AI chatbot to get started"
+msgstr ""
+
+#: templates/dashboard.html:146
+msgid "Create Your First Bot"
+msgstr ""
+
+#: templates/dashboard.html:160
+msgid "Your Plan"
+msgstr ""
+
+#: templates/dashboard.html:172
+msgid "Bots Used"
+msgstr ""
+
+#: templates/dashboard.html:184
+msgid "Messages"
+msgstr ""
+
+#: templates/dashboard.html:196
+msgid "Upgrade Plan"
+msgstr ""
+
+#: templates/dashboard.html:200
+msgid "Active Subscription"
+msgstr ""
+
+#: templates/dashboard.html:209
+msgid "Quick Actions"
+msgstr ""
+
+#: templates/dashboard.html:217
+msgid "Manage Bots"
+msgstr ""
+
+#: templates/dashboard.html:220
+msgid "View Plans"
+msgstr ""
+
+#: templates/index.html:12
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr ""
+
+#: templates/index.html:15
+msgid ""
+"Build intelligent chatbots for Telegram and other platforms using Google "
+"Gemini AI. No coding required - just upload your knowledge base and "
+"deploy!"
+msgstr ""
+
+#: templates/index.html:19
+msgid "Get Started Free"
+msgstr ""
+
+#: templates/index.html:22
+msgid "Learn More"
+msgstr ""
+
+#: templates/index.html:27
+msgid "Free tier available"
+msgstr ""
+
+#: templates/index.html:29
+msgid "No credit card required"
+msgstr ""
+
+#: templates/index.html:53
+msgid "Why Choose BotFactory?"
+msgstr ""
+
+#: templates/index.html:54
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr ""
 

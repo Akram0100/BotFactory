@@ -6,261 +6,323 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"POT-Creation-Date: 2025-08-30 17:19+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: ru\n"
 "Language-Team: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
+#: templates/base.html:36
 msgid "Dashboard"
 msgstr "Панель управления"
 
+#: templates/base.html:41
 msgid "My Bots"
 msgstr "Мои боты"
 
+#: templates/base.html:46
 msgid "Plans"
 msgstr "Тарифы"
 
-msgid "Profile"
-msgstr "Профиль"
-
-msgid "Settings"
-msgstr "Настройки"
-
-msgid "Logout"
-msgstr "Выход"
-
-msgid "Login"
-msgstr "Вход"
-
-msgid "Sign Up"
-msgstr "Регистрация"
-
-# Hero Section
-msgid "Create Powerful AI Chatbots in Minutes"
-msgstr "Создавайте мощные AI-чатботы за минуты"
-
-msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
-msgstr "Создавайте умных чатботов для Telegram и других платформ с помощью Google Gemini AI. Программирование не требуется - просто загрузите свою базу знаний и разверните!"
-
-msgid "Get Started Free"
-msgstr "Начать бесплатно"
-
-msgid "Learn More"
-msgstr "Узнать больше"
-
-msgid "Free tier available"
-msgstr "Бесплатный тариф доступен"
-
-msgid "No credit card required"
-msgstr "Кредитная карта не требуется"
-
-msgid "Why Choose BotFactory?"
-msgstr "Почему стоит выбрать BotFactory?"
-
-msgid "Everything you need to create and deploy intelligent chatbots"
-msgstr "Всё необходимое для создания и развертывания умных чатботов"
-
-msgid "AI-Powered Conversations"
-msgstr "Разговоры на основе ИИ"
-
-msgid "Smart, contextual responses powered by Google Gemini AI"
-msgstr "Умные, контекстные ответы на основе Google Gemini AI"
-
-msgid "Easy Integration"
-msgstr "Простая интеграция"
-
-msgid "Deploy to Telegram instantly with one-click setup"
-msgstr "Мгновенное развертывание в Telegram одним нажатием"
-
-msgid "Knowledge Base Upload"
-msgstr "Загрузка базы знаний"
-
-msgid "Upload documents and files to train your bot"
-msgstr "Загрузите документы и файлы для обучения вашего бота"
-
-msgid "Welcome back!"
-msgstr "Добро пожаловать!"
-
-msgid "Sign in to your account to continue."
-msgstr "Войдите в свою учетную запись, чтобы продолжить."
-
-msgid "Username"
-msgstr "Имя пользователя"
-
-msgid "Password"
-msgstr "Пароль"
-
-msgid "Remember me"
-msgstr "Запомнить меня"
-
-msgid "Create your account"
-msgstr "Создайте свою учетную запись"
-
-msgid "Join thousands of users creating AI chatbots."
-msgstr "Присоединяйтесь к тысячам пользователей, создающих AI-чатботов."
-
-msgid "Email"
-msgstr "Электронная почта"
-
-msgid "First Name"
-msgstr "Имя"
-
-msgid "Last Name"
-msgstr "Фамилия"
-
-msgid "Confirm Password"
-msgstr "Подтвердите пароль"
-
-msgid "Create Account"
-msgstr "Создать аккаунт"
-
-msgid "Welcome to your dashboard"
-msgstr "Добро пожаловать в вашу панель управления"
-
-msgid "Total Bots"
-msgstr "Всего ботов"
-
-msgid "Active Bots"
-msgstr "Активные боты"
-
-msgid "Total Messages"
-msgstr "Всего сообщений"
-
-msgid "Total Users"
-msgstr "Всего пользователей"
-
-msgid "Recent Bots"
-msgstr "Недавние боты"
-
-msgid "Create New Bot"
-msgstr "Создать нового бота"
-
-msgid "View All Bots"
-msgstr "Посмотреть всех ботов"
-
-msgid "Create Bot"
-msgstr "Создать бота"
-
-msgid "Bot Name"
-msgstr "Имя бота"
-
-msgid "Description"
-msgstr "Описание"
-
-msgid "System Prompt"
-msgstr "Системный промпт"
-
-msgid "Save Bot"
-msgstr "Сохранить бота"
-
-msgid "Edit Bot"
-msgstr "Редактировать бота"
-
-msgid "Bot Configuration"
-msgstr "Конфигурация бота"
-
-msgid "Telegram Setup"
-msgstr "Настройка Telegram"
-
-msgid "Knowledge Base"
-msgstr "База знаний"
-
-msgid "Analytics"
-msgstr "Аналитика"
-
-msgid "Bot Token"
-msgstr "Токен бота"
-
-msgid "Save Changes"
-msgstr "Сохранить изменения"
-
-msgid "Choose Your Plan"
-msgstr "Выберите свой план"
-
-msgid "Free"
-msgstr "Бесплатный"
-
-msgid "Basic"
-msgstr "Базовый"
-
-msgid "Premium"
-msgstr "Премиум"
-
-msgid "per month"
-msgstr "в месяц"
-
-msgid "Current Plan"
-msgstr "Текущий план"
-
-msgid "Upgrade"
-msgstr "Обновить"
-
-msgid "AI chatbots"
-msgstr "AI-чатботы"
-
-msgid "messages per month"
-msgstr "сообщений в месяц"
-
-msgid "Knowledge base entries"
-msgstr "Записи базы знаний"
-
-msgid "Email support"
-msgstr "Поддержка по email"
-
-msgid "Priority support"
-msgstr "Приоритетная поддержка"
-
-msgid "Analytics dashboard"
-msgstr "Панель аналитики"
-
-msgid "API access"
-msgstr "Доступ к API"
-
-msgid "Bot created successfully!"
-msgstr "Бот успешно создан!"
-
-msgid "Bot updated successfully!"
-msgstr "Бот успешно обновлен!"
-
-msgid "Bot deleted successfully!"
-msgstr "Бот успешно удален!"
-
-msgid "Settings saved successfully!"
-msgstr "Настройки успешно сохранены!"
-
-msgid "File uploaded successfully!"
-msgstr "Файл успешно загружен!"
-
-msgid "Invalid username or password."
-msgstr "Неверное имя пользователя или пароль."
-
-msgid "Please fill in all fields."
-msgstr "Пожалуйста, заполните все поля."
-
-msgid "Passwords do not match."
-msgstr "Пароли не совпадают."
-
-msgid "Username already exists."
-msgstr "Имя пользователя уже существует."
-
-msgid "Email already registered."
-msgstr "Email уже зарегистрирован."
-
+#: templates/base.html:56
 msgid "Language"
 msgstr "Язык"
 
+#: templates/base.html:59
 msgid "English"
 msgstr "English"
 
+#: templates/base.html:60
 msgid "Russian"
 msgstr "Русский"
 
+#: templates/base.html:61
 msgid "Uzbek"
 msgstr "O'zbek"
+
+#: templates/base.html:71
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/base.html:72
+msgid "Settings"
+msgstr "Настройки"
+
+#: templates/base.html:74
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/base.html:79
+msgid "Login"
+msgstr "Вход"
+
+#: templates/base.html:82
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: templates/bot_edit.html:25
+#, fuzzy
+msgid "No description provided"
+msgstr "Описание"
+
+#: templates/bot_edit.html:32
+msgid "Deactivate"
+msgstr ""
+
+#: templates/bot_edit.html:32
+#, fuzzy
+msgid "Activate"
+msgstr "Активные боты"
+
+#: templates/bot_edit.html:36
+msgid "Delete"
+msgstr ""
+
+#: templates/bot_edit.html:49 templates/dashboard.html:64
+msgid "Total Messages"
+msgstr "Всего сообщений"
+
+#: templates/bot_edit.html:57 templates/dashboard.html:80
+msgid "Users Served"
+msgstr ""
+
+#: templates/bot_edit.html:65
+msgid "Last Activity"
+msgstr ""
+
+#: templates/bot_edit.html:73
+#, fuzzy
+msgid "Knowledge Entries"
+msgstr "Записи базы знаний"
+
+#: templates/bot_edit.html:83
+#, fuzzy
+msgid "Basic Settings"
+msgstr "Настройки"
+
+#: templates/bot_edit.html:88
+msgid "Telegram Setup"
+msgstr "Настройка Telegram"
+
+#: templates/bot_edit.html:93
+msgid "Knowledge Base"
+msgstr "База знаний"
+
+#: templates/bot_edit.html:98
+#, fuzzy
+msgid "Test Bot"
+msgstr "Редактировать бота"
+
+#: templates/bot_edit.html:109
+msgid "Bot Configuration"
+msgstr "Конфигурация бота"
+
+#: templates/bot_edit.html:117
+msgid "Bot Name"
+msgstr "Имя бота"
+
+#: templates/bot_edit.html:122
+#, fuzzy
+msgid "Telegram Username"
+msgstr "Настройка Telegram"
+
+#: templates/bot_edit.html:126
+#, fuzzy
+msgid "Not configured"
+msgstr "Конфигурация бота"
+
+#: templates/bot_edit.html:132
+msgid "Description"
+msgstr "Описание"
+
+#: templates/bot_edit.html:138
+msgid "Bot Personality & Instructions"
+msgstr ""
+
+#: templates/bot_edit.html:141
+msgid "Define how your bot should behave and respond to users."
+msgstr ""
+
+#: templates/bot_edit.html:145
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: templates/bot_edit.html:156
+#, fuzzy
+msgid "Telegram Bot Configuration"
+msgstr "Конфигурация бота"
+
+#: templates/bot_edit.html:162
+msgid "Bot is connected to Telegram as"
+msgstr ""
+
+#: templates/bot_edit.html:167
+msgid ""
+"To deploy your bot to Telegram, you need to create a bot token via "
+"@BotFather."
+msgstr ""
+
+#: templates/bot_edit.html:175
+#, fuzzy
+msgid "Telegram Bot Token"
+msgstr "Токен бота"
+
+#: templates/bot_edit.html:185
+msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
+msgstr ""
+
+#: templates/bot_edit.html:196
+msgid "How to get a Telegram Bot Token:"
+msgstr ""
+
+#: templates/bot_list.html:18
+#, fuzzy
+msgid "My AI Chatbots"
+msgstr "AI-чатботы"
+
+#: templates/bot_list.html:19
+msgid "Manage and monitor your intelligent chatbots"
+msgstr ""
+
+#: templates/bot_list.html:24 templates/dashboard.html:17
+msgid "Create New Bot"
+msgstr "Создать нового бота"
+
+#: templates/bot_list.html:28
+msgid "Upgrade to Create More"
+msgstr ""
+
+#: templates/bot_list.html:42
+msgid "Bot Limit Reached"
+msgstr ""
+
+#: templates/bot_list.html:42
+#, python-format
+msgid "You are using %(current)s of %(max)s available bots."
+msgstr ""
+
+#: templates/dashboard.html:12
+#, fuzzy, python-format
+msgid "Welcome back, %(name)s!"
+msgstr "Добро пожаловать!"
+
+#: templates/dashboard.html:13
+msgid "Manage your AI chatbots and monitor performance"
+msgstr ""
+
+#: templates/dashboard.html:32
+msgid "Total Bots"
+msgstr "Всего ботов"
+
+#: templates/dashboard.html:48
+msgid "Active Bots"
+msgstr "Активные боты"
+
+#: templates/dashboard.html:96
+#, fuzzy
+msgid "Your Bots"
+msgstr "Мои боты"
+
+#: templates/dashboard.html:98
+#, fuzzy
+msgid "View All"
+msgstr "Посмотреть всех ботов"
+
+#: templates/dashboard.html:143
+msgid "No Bots Yet"
+msgstr ""
+
+#: templates/dashboard.html:144
+msgid "Create your first AI chatbot to get started"
+msgstr ""
+
+#: templates/dashboard.html:146
+#, fuzzy
+msgid "Create Your First Bot"
+msgstr "Создайте свою учетную запись"
+
+#: templates/dashboard.html:160
+#, fuzzy
+msgid "Your Plan"
+msgstr "Выберите свой план"
+
+#: templates/dashboard.html:172
+#, fuzzy
+msgid "Bots Used"
+msgstr "Всего пользователей"
+
+#: templates/dashboard.html:184
+#, fuzzy
+msgid "Messages"
+msgstr "Всего сообщений"
+
+#: templates/dashboard.html:196
+#, fuzzy
+msgid "Upgrade Plan"
+msgstr "Обновить"
+
+#: templates/dashboard.html:200
+#, fuzzy
+msgid "Active Subscription"
+msgstr "Описание"
+
+#: templates/dashboard.html:209
+msgid "Quick Actions"
+msgstr ""
+
+#: templates/dashboard.html:217
+#, fuzzy
+msgid "Manage Bots"
+msgstr "Мои боты"
+
+#: templates/dashboard.html:220
+#, fuzzy
+msgid "View Plans"
+msgstr "Тарифы"
+
+# Hero Section
+#: templates/index.html:12
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Создавайте мощные AI-чатботы за минуты"
+
+#: templates/index.html:15
+msgid ""
+"Build intelligent chatbots for Telegram and other platforms using Google "
+"Gemini AI. No coding required - just upload your knowledge base and "
+"deploy!"
+msgstr ""
+"Создавайте умных чатботов для Telegram и других платформ с помощью Google"
+" Gemini AI. Программирование не требуется - просто загрузите свою базу "
+"знаний и разверните!"
+
+#: templates/index.html:19
+msgid "Get Started Free"
+msgstr "Начать бесплатно"
+
+#: templates/index.html:22
+msgid "Learn More"
+msgstr "Узнать больше"
+
+#: templates/index.html:27
+msgid "Free tier available"
+msgstr "Бесплатный тариф доступен"
+
+#: templates/index.html:29
+msgid "No credit card required"
+msgstr "Кредитная карта не требуется"
+
+#: templates/index.html:53
+msgid "Why Choose BotFactory?"
+msgstr "Почему стоит выбрать BotFactory?"
+
+#: templates/index.html:54
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr "Всё необходимое для создания и развертывания умных чатботов"
+

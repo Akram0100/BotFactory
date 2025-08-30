@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"POT-Creation-Date: 2025-08-30 17:19+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -18,431 +18,304 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
+#: templates/base.html:36
 msgid "Dashboard"
 msgstr "Boshqaruv paneli"
 
+#: templates/base.html:41
 msgid "My Bots"
 msgstr "Mening botlarim"
 
+#: templates/base.html:46
 msgid "Plans"
 msgstr "Rejalar"
 
-msgid "Profile"
-msgstr "Profil"
-
-msgid "Settings"
-msgstr "Sozlamalar"
-
-msgid "Logout"
-msgstr "Chiqish"
-
-msgid "Login"
-msgstr "Kirish"
-
-msgid "Sign Up"
-msgstr "Ro'yxatdan o'tish"
-
-# Hero Section
-msgid "Create Powerful AI Chatbots in Minutes"
-msgstr "Bir necha daqiqada kuchli AI chatbotlarini yarating"
-
-# Dashboard
-msgid "Welcome back, %(name)s!"
-msgstr "Xush kelibsiz, %(name)s!"
-
-msgid "Manage your AI chatbots and monitor performance"
-msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
-
-msgid "Create New Bot"
-msgstr "Yangi bot yaratish"
-
-msgid "Total Bots"
-msgstr "Jami botlar"
-
-msgid "Active Bots"
-msgstr "Faol botlar"
-
-msgid "Total Messages"
-msgstr "Jami xabarlar"
-
-msgid "Users Served"
-msgstr "Xizmat ko'rsatilgan foydalanuvchilar"
-
-msgid "Your Bots"
-msgstr "Sizning botlaringiz"
-
-msgid "View All"
-msgstr "Barchasini ko'rish"
-
-msgid "Your Plan"
-msgstr "Sizning rejangiz"
-
-msgid "Quick Actions"
-msgstr "Tezkor amallar"
-
-msgid "No Bots Yet"
-msgstr "Hali botlar yo'q"
-
-msgid "Create your first AI chatbot to get started"
-msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
-
-msgid "Create Your First Bot"
-msgstr "Birinchi botingizni yarating"
-
-msgid "Inactive"
-msgstr "Faol emas"
-
-msgid "Active"
-msgstr "Faol"
-
-msgid "Last activity"
-msgstr "Oxirgi faollik"
-
-msgid "No description"
-msgstr "Tavsif yo'q"
-
-msgid "Bots Used"
-msgstr "Ishlatilgan botlar"
-
-msgid "Upgrade Plan"
-msgstr "Rejani yangilash"
-
-msgid "Active Subscription"
-msgstr "Faol obuna"
-
-msgid "Manage Bots"
-msgstr "Botlarni boshqarish"
-
-msgid "View Plans"
-msgstr "Rejalarni ko'rish"
-
-msgid "My AI Chatbots"
-msgstr "Mening AI chatbotlarim"
-
-msgid "Manage and monitor your intelligent chatbots"
-msgstr "Aqlli chatbotlaringizni boshqaring va kuzating"
-
-msgid "Upgrade to Create More"
-msgstr "Ko'proq yaratish uchun yangilang"
-
-msgid "Bot Limit Reached"
-msgstr "Bot chegarasiga yetildi"
-
-msgid "You are using %(current)s of %(max)s available bots."
-msgstr "Siz %(max)s ta mavjud botdan %(current)s tasini ishlatyapsiz."
-
-msgid "No description provided"
-msgstr "Tavsif berilmagan"
-
-msgid "Deactivate"
-msgstr "O'chirish"
-
-msgid "Delete"
-msgstr "O'chirish"
-
-msgid "Knowledge Entries"
-msgstr "Bilimlar yozuvlari"
-
+# Language Switcher
+#: templates/base.html:56
 msgid "Language"
 msgstr "Til"
 
+#: templates/base.html:59
 msgid "English"
 msgstr "Ingliz tili"
 
+#: templates/base.html:60
 msgid "Russian"
 msgstr "Rus tili"
 
+#: templates/base.html:61
 msgid "Uzbek"
 msgstr "O'zbek tili"
 
+#: templates/base.html:71
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/base.html:72
+msgid "Settings"
+msgstr "Sozlamalar"
+
+#: templates/base.html:74
+msgid "Logout"
+msgstr "Chiqish"
+
+#: templates/base.html:79
+msgid "Login"
+msgstr "Kirish"
+
+#: templates/base.html:82
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+#: templates/bot_edit.html:25
+msgid "No description provided"
+msgstr "Tavsif berilmagan"
+
+#: templates/bot_edit.html:32
+msgid "Deactivate"
+msgstr "O'chirish"
+
+#: templates/bot_edit.html:32
+#, fuzzy
+msgid "Activate"
+msgstr "O'chirish"
+
+#: templates/bot_edit.html:36
+msgid "Delete"
+msgstr "O'chirish"
+
+#: templates/bot_edit.html:49 templates/dashboard.html:64
+msgid "Total Messages"
+msgstr "Jami xabarlar"
+
+#: templates/bot_edit.html:57 templates/dashboard.html:80
+msgid "Users Served"
+msgstr "Xizmat ko'rsatilgan foydalanuvchilar"
+
+#: templates/bot_edit.html:65
+#, fuzzy
+msgid "Last Activity"
+msgstr "Oxirgi faollik"
+
+#: templates/bot_edit.html:73
+msgid "Knowledge Entries"
+msgstr "Bilimlar yozuvlari"
+
+#: templates/bot_edit.html:83
 msgid "Basic Settings"
 msgstr "Asosiy sozlamalar"
 
+#: templates/bot_edit.html:88
 msgid "Telegram Setup"
 msgstr "Telegram sozlamalari"
 
+#: templates/bot_edit.html:93
+msgid "Knowledge Base"
+msgstr "Bilimlar bazasi"
+
+#: templates/bot_edit.html:98
 msgid "Test Bot"
 msgstr "Botni sinash"
 
+#: templates/bot_edit.html:109
 msgid "Bot Configuration"
 msgstr "Bot konfiguratsiyasi"
 
+#: templates/bot_edit.html:117
 msgid "Bot Name"
 msgstr "Bot nomi"
 
+#: templates/bot_edit.html:122
 msgid "Telegram Username"
 msgstr "Telegram foydalanuvchi nomi"
 
+#: templates/bot_edit.html:126
 msgid "Not configured"
 msgstr "Sozlanmagan"
 
+#: templates/bot_edit.html:132
+msgid "Description"
+msgstr "Tavsif"
+
+#: templates/bot_edit.html:138
 msgid "Bot Personality & Instructions"
 msgstr "Bot shaxsiyati va ko'rsatmalar"
 
+#: templates/bot_edit.html:141
 msgid "Define how your bot should behave and respond to users."
-msgstr "Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi kerakligini belgilang."
+msgstr ""
+"Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi "
+"kerakligini belgilang."
 
+#: templates/bot_edit.html:145
 msgid "Save Changes"
 msgstr "O'zgarishlarni saqlash"
 
+#: templates/bot_edit.html:156
 msgid "Telegram Bot Configuration"
 msgstr "Telegram bot konfiguratsiyasi"
 
+#: templates/bot_edit.html:162
 msgid "Bot is connected to Telegram as"
 msgstr "Bot Telegramga quyidagicha ulangan"
 
-msgid "To deploy your bot to Telegram, you need to create a bot token via @BotFather."
-msgstr "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token yaratishingiz kerak."
+#: templates/bot_edit.html:167
+msgid ""
+"To deploy your bot to Telegram, you need to create a bot token via "
+"@BotFather."
+msgstr ""
+"Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token "
+"yaratishingiz kerak."
 
+#: templates/bot_edit.html:175
 msgid "Telegram Bot Token"
 msgstr "Telegram bot tokeni"
 
+#: templates/bot_edit.html:185
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
-msgstr "Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi bot yaratish orqali oling."
+msgstr ""
+"Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi bot "
+"yaratish orqali oling."
 
+#: templates/bot_edit.html:196
 msgid "How to get a Telegram Bot Token:"
 msgstr "Telegram Bot Tokenini qanday olish mumkin:"
 
-msgid "Connect"
-msgstr "Ulash"
+#: templates/bot_list.html:18
+msgid "My AI Chatbots"
+msgstr "Mening AI chatbotlarim"
 
-msgid "Update"
-msgstr "Yangilash"
+#: templates/bot_list.html:19
+msgid "Manage and monitor your intelligent chatbots"
+msgstr "Aqlli chatbotlaringizni boshqaring va kuzating"
 
-msgid "Telegram Bot"
-msgstr "Telegram Bot"
+#: templates/bot_list.html:24 templates/dashboard.html:17
+msgid "Create New Bot"
+msgstr "Yangi bot yaratish"
 
-msgid "Free"
-msgstr "Bepul"
+#: templates/bot_list.html:28
+msgid "Upgrade to Create More"
+msgstr "Ko'proq yaratish uchun yangilang"
 
-msgid "Basic"
-msgstr "Asosiy"
+#: templates/bot_list.html:42
+msgid "Bot Limit Reached"
+msgstr "Bot chegarasiga yetildi"
 
-msgid "Premium"
-msgstr "Premium"
+#: templates/bot_list.html:42
+#, python-format
+msgid "You are using %(current)s of %(max)s available bots."
+msgstr "Siz %(max)s ta mavjud botdan %(current)s tasini ishlatyapsiz."
 
-msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
-msgstr "Google Gemini AI yordamida Telegram va boshqa platformalar uchun aqlli chatbotlarni yarating. Dasturlash talab qilinmaydi - faqat bilimlar bazasini yuklang va joylashtiring!"
+# Dashboard
+#: templates/dashboard.html:12
+#, python-format
+msgid "Welcome back, %(name)s!"
+msgstr "Xush kelibsiz, %(name)s!"
 
+#: templates/dashboard.html:13
+msgid "Manage your AI chatbots and monitor performance"
+msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
+
+#: templates/dashboard.html:32
+msgid "Total Bots"
+msgstr "Jami botlar"
+
+#: templates/dashboard.html:48
+msgid "Active Bots"
+msgstr "Faol botlar"
+
+#: templates/dashboard.html:96
+msgid "Your Bots"
+msgstr "Sizning botlaringiz"
+
+#: templates/dashboard.html:98
+msgid "View All"
+msgstr "Barchasini ko'rish"
+
+#: templates/dashboard.html:143
+msgid "No Bots Yet"
+msgstr "Hali botlar yo'q"
+
+#: templates/dashboard.html:144
+msgid "Create your first AI chatbot to get started"
+msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
+
+#: templates/dashboard.html:146
+msgid "Create Your First Bot"
+msgstr "Birinchi botingizni yarating"
+
+#: templates/dashboard.html:160
+msgid "Your Plan"
+msgstr "Sizning rejangiz"
+
+#: templates/dashboard.html:172
+msgid "Bots Used"
+msgstr "Ishlatilgan botlar"
+
+#: templates/dashboard.html:184
+#, fuzzy
+msgid "Messages"
+msgstr "Jami xabarlar"
+
+#: templates/dashboard.html:196
+msgid "Upgrade Plan"
+msgstr "Rejani yangilash"
+
+#: templates/dashboard.html:200
+msgid "Active Subscription"
+msgstr "Faol obuna"
+
+#: templates/dashboard.html:209
+msgid "Quick Actions"
+msgstr "Tezkor amallar"
+
+#: templates/dashboard.html:217
+msgid "Manage Bots"
+msgstr "Botlarni boshqarish"
+
+#: templates/dashboard.html:220
+msgid "View Plans"
+msgstr "Rejalarni ko'rish"
+
+# Hero Section
+#: templates/index.html:12
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Bir necha daqiqada kuchli AI chatbotlarini yarating"
+
+#: templates/index.html:15
+msgid ""
+"Build intelligent chatbots for Telegram and other platforms using Google "
+"Gemini AI. No coding required - just upload your knowledge base and "
+"deploy!"
+msgstr ""
+"Google Gemini AI yordamida Telegram va boshqa platformalar uchun aqlli "
+"chatbotlarni yarating. Dasturlash talab qilinmaydi - faqat bilimlar "
+"bazasini yuklang va joylashtiring!"
+
+#: templates/index.html:19
 msgid "Get Started Free"
 msgstr "Bepul boshlang"
 
+#: templates/index.html:22
 msgid "Learn More"
 msgstr "Batafsil"
 
+#: templates/index.html:27
 msgid "Free tier available"
 msgstr "Bepul tarif mavjud"
 
+#: templates/index.html:29
 msgid "No credit card required"
 msgstr "Kredit karta talab qilinmaydi"
 
 # Features
+#: templates/index.html:53
 msgid "Why Choose BotFactory?"
 msgstr "Nega BotFactory ni tanlash kerak?"
 
+#: templates/index.html:54
 msgid "Everything you need to create and deploy intelligent chatbots"
-msgstr "Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma narsa"
+msgstr ""
+"Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma "
+"narsa"
 
-msgid "AI-Powered Conversations"
-msgstr "AI tomonidan quvvatlanadigan suhbatlar"
-
-msgid "Smart, contextual responses powered by Google Gemini AI"
-msgstr "Google Gemini AI tomonidan quvvatlanadigan aqlli, kontekstli javoblar"
-
-msgid "Easy Integration"
-msgstr "Oson integratsiya"
-
-msgid "Deploy to Telegram instantly with one-click setup"
-msgstr "Bir marta bosish bilan Telegram-ga darhol joylashtiring"
-
-msgid "Knowledge Base Upload"
-msgstr "Bilimlar bazasini yuklash"
-
-msgid "Upload documents and files to train your bot"
-msgstr "Botingizni o'qitish uchun hujjatlar va fayllarni yuklang"
-
-# Authentication
-msgid "Welcome back!"
-msgstr "Xush kelibsiz!"
-
-msgid "Sign in to your account to continue."
-msgstr "Davom etish uchun hisobingizga kiring."
-
-msgid "Username"
-msgstr "Foydalanuvchi nomi"
-
-msgid "Password"
-msgstr "Parol"
-
-msgid "Remember me"
-msgstr "Meni eslab qoling"
-
-msgid "Create your account"
-msgstr "Hisobingizni yarating"
-
-msgid "Join thousands of users creating AI chatbots."
-msgstr "AI chatbotlar yaratayotgan minglab foydalanuvchilarga qo'shiling."
-
-msgid "Email"
-msgstr "Elektron pochta"
-
-msgid "First Name"
-msgstr "Ism"
-
-msgid "Last Name"
-msgstr "Familiya"
-
-msgid "Confirm Password"
-msgstr "Parolni tasdiqlang"
-
-msgid "Create Account"
-msgstr "Hisob yaratish"
-
-# Dashboard
-msgid "Welcome to your dashboard"
-msgstr "Boshqaruv panelingizga xush kelibsiz"
-
-msgid "Total Bots"
-msgstr "Jami botlar"
-
-msgid "Active Bots"
-msgstr "Faol botlar"
-
-msgid "Total Messages"
-msgstr "Jami xabarlar"
-
-msgid "Total Users"
-msgstr "Jami foydalanuvchilar"
-
-msgid "Recent Bots"
-msgstr "So'nggi botlar"
-
-msgid "Create New Bot"
-msgstr "Yangi bot yaratish"
-
-msgid "View All Bots"
-msgstr "Barcha botlarni ko'rish"
-
-# Bot Management
-msgid "Create Bot"
-msgstr "Bot yaratish"
-
-msgid "Bot Name"
-msgstr "Bot nomi"
-
-msgid "Description"
-msgstr "Tavsif"
-
-msgid "System Prompt"
-msgstr "Tizim buyrug'i"
-
-msgid "Save Bot"
-msgstr "Botni saqlash"
-
-msgid "Edit Bot"
-msgstr "Botni tahrirlash"
-
-msgid "Bot Configuration"
-msgstr "Bot konfiguratsiyasi"
-
-msgid "Telegram Setup"
-msgstr "Telegram sozlamalari"
-
-msgid "Knowledge Base"
-msgstr "Bilimlar bazasi"
-
-msgid "Analytics"
-msgstr "Tahlillar"
-
-msgid "Bot Token"
-msgstr "Bot tokeni"
-
-msgid "Save Changes"
-msgstr "O'zgarishlarni saqlash"
-
-# Subscriptions
-msgid "Choose Your Plan"
-msgstr "Rejangizni tanlang"
-
-msgid "Free"
-msgstr "Bepul"
-
-msgid "Basic"
-msgstr "Asosiy"
-
-msgid "Premium"
-msgstr "Premium"
-
-msgid "per month"
-msgstr "oyiga"
-
-msgid "Current Plan"
-msgstr "Joriy reja"
-
-msgid "Upgrade"
-msgstr "Yangilash"
-
-msgid "AI chatbots"
-msgstr "AI chatbotlar"
-
-msgid "messages per month"
-msgstr "oyiga xabar"
-
-msgid "Knowledge base entries"
-msgstr "Bilimlar bazasi yozuvlari"
-
-msgid "Email support"
-msgstr "Elektron pochta orqali yordam"
-
-msgid "Priority support"
-msgstr "Ustuvor yordam"
-
-msgid "Analytics dashboard"
-msgstr "Tahlillar paneli"
-
-msgid "API access"
-msgstr "API kirish"
-
-# Messages
-msgid "Bot created successfully!"
-msgstr "Bot muvaffaqiyatli yaratildi!"
-
-msgid "Bot updated successfully!"
-msgstr "Bot muvaffaqiyatli yangilandi!"
-
-msgid "Bot deleted successfully!"
-msgstr "Bot muvaffaqiyatli o'chirildi!"
-
-msgid "Settings saved successfully!"
-msgstr "Sozlamalar muvaffaqiyatli saqlandi!"
-
-msgid "File uploaded successfully!"
-msgstr "Fayl muvaffaqiyatli yuklandi!"
-
-msgid "Invalid username or password."
-msgstr "Noto'g'ri foydalanuvchi nomi yoki parol."
-
-msgid "Please fill in all fields."
-msgstr "Iltimos, barcha maydonlarni to'ldiring."
-
-msgid "Passwords do not match."
-msgstr "Parollar mos kelmaydi."
-
-msgid "Username already exists."
-msgstr "Foydalanuvchi nomi allaqachon mavjud."
-
-msgid "Email already registered."
-msgstr "Elektron pochta allaqachon ro'yxatdan o'tgan."
-
-# Language Switcher
-msgid "Language"
-msgstr "Til"
-
-msgid "English"
-msgstr "English"
-
-msgid "Russian"
-msgstr "Русский"
-
-msgid "Uzbek"
-msgstr "O'zbek"
