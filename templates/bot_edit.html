@@ -80,22 +80,22 @@
     <ul class="nav nav-tabs mb-4" id="botTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
-                <i class="fas fa-cog me-2"></i>Basic Settings
+                <i class="fas fa-cog me-2"></i>{{ _('Basic Settings') }}
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="telegram-tab" data-bs-toggle="tab" data-bs-target="#telegram" type="button" role="tab">
-                <i class="fab fa-telegram me-2"></i>Telegram Setup
+                <i class="fab fa-telegram me-2"></i>{{ _('Telegram Setup') }}
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="knowledge-tab" data-bs-toggle="tab" data-bs-target="#knowledge" type="button" role="tab">
-                <i class="fas fa-database me-2"></i>Knowledge Base
+                <i class="fas fa-database me-2"></i>{{ _('Knowledge Base') }}
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="test-tab" data-bs-toggle="tab" data-bs-target="#test" type="button" role="tab">
-                <i class="fas fa-comment-dots me-2"></i>Test Bot
+                <i class="fas fa-comment-dots me-2"></i>{{ _('Test Bot') }}
             </button>
         </li>
     </ul>
@@ -106,7 +106,7 @@
         <div class="tab-pane fade show active" id="basic" role="tabpanel">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Bot Configuration</h5>
+                    <h5 class="mb-0">{{ _('Bot Configuration') }}</h5>
                 </div>
                 <div class="card-body">
                     <form method="POST">
@@ -114,35 +114,35 @@
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="name" class="form-label">Bot Name</label>
+                                <label for="name" class="form-label">{{ _('Bot Name') }}</label>
                                 <input type="text" class="form-control" id="name" name="name" 
                                        value="{{ bot.name }}" required maxlength="100">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="telegram_username" class="form-label">Telegram Username</label>
+                                <label for="telegram_username" class="form-label">{{ _('Telegram Username') }}</label>
                                 <div class="input-group">
                                     <span class="input-group-text">@</span>
                                     <input type="text" class="form-control" id="telegram_username" 
-                                           value="{{ bot.telegram_username or 'Not configured' }}" readonly>
+                                           value="{{ bot.telegram_username or _('Not configured') }}" readonly>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">{{ _('Description') }}</label>
                             <textarea class="form-control" id="description" name="description" 
                                       rows="3" maxlength="500">{{ bot.description or '' }}</textarea>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="system_prompt" class="form-label">Bot Personality & Instructions</label>
+                            <label for="system_prompt" class="form-label">{{ _('Bot Personality & Instructions') }}</label>
                             <textarea class="form-control" id="system_prompt" name="system_prompt" 
                                       rows="8" required>{{ bot.system_prompt }}</textarea>
-                            <div class="form-text">Define how your bot should behave and respond to users.</div>
+                            <div class="form-text">{{ _('Define how your bot should behave and respond to users.') }}</div>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-2"></i>Save Changes
+                            <i class="fas fa-save me-2"></i>{{ _('Save Changes') }}
                         </button>
                     </form>
                 </div>
@@ -153,18 +153,18 @@
         <div class="tab-pane fade" id="telegram" role="tabpanel">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Telegram Bot Configuration</h5>
+                    <h5 class="mb-0">{{ _('Telegram Bot Configuration') }}</h5>
                 </div>
                 <div class="card-body">
                     {% if bot.telegram_token %}
                         <div class="alert alert-success">
                             <i class="fas fa-check-circle me-2"></i>
-                            Bot is connected to Telegram as <strong>@{{ bot.telegram_username }}</strong>
+                            {{ _('Bot is connected to Telegram as') }} <strong>@{{ bot.telegram_username }}</strong>
                         </div>
                     {% else %}
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i>
-                            To deploy your bot to Telegram, you need to create a bot token via @BotFather.
+                            {{ _('To deploy your bot to Telegram, you need to create a bot token via @BotFather.') }}
                         </div>
                     {% endif %}
 
@@ -172,7 +172,7 @@
                         <input type="hidden" name="action" value="setup_telegram">
                         
                         <div class="mb-3">
-                            <label for="telegram_token" class="form-label">Telegram Bot Token</label>
+                            <label for="telegram_token" class="form-label">{{ _('Telegram Bot Token') }}</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fab fa-telegram"></i>
@@ -182,7 +182,7 @@
                                        value="{{ bot.telegram_token if bot.telegram_token else '' }}">
                             </div>
                             <div class="form-text">
-                                Get this token by messaging @BotFather on Telegram and creating a new bot.
+                                {{ _('Get this token by messaging @BotFather on Telegram and creating a new bot.') }}
                             </div>
                         </div>
                         
@@ -193,7 +193,7 @@
 
                     <!-- Instructions -->
                     <hr class="my-4">
-                    <h6>How to get a Telegram Bot Token:</h6>
+                    <h6>{{ _('How to get a Telegram Bot Token:') }}</h6>
                     <ol class="small">
                         <li>Open Telegram and search for <code>@BotFather</code></li>
                         <li>Send <code>/newbot</code> command</li>

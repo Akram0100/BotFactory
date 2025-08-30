@@ -155,6 +155,63 @@ msgstr "Rus tili"
 msgid "Uzbek"
 msgstr "O'zbek tili"
 
+msgid "Basic Settings"
+msgstr "Asosiy sozlamalar"
+
+msgid "Telegram Setup"
+msgstr "Telegram sozlamalari"
+
+msgid "Test Bot"
+msgstr "Botni sinash"
+
+msgid "Bot Configuration"
+msgstr "Bot konfiguratsiyasi"
+
+msgid "Bot Name"
+msgstr "Bot nomi"
+
+msgid "Telegram Username"
+msgstr "Telegram foydalanuvchi nomi"
+
+msgid "Not configured"
+msgstr "Sozlanmagan"
+
+msgid "Bot Personality & Instructions"
+msgstr "Bot shaxsiyati va ko'rsatmalar"
+
+msgid "Define how your bot should behave and respond to users."
+msgstr "Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi kerakligini belgilang."
+
+msgid "Save Changes"
+msgstr "O'zgarishlarni saqlash"
+
+msgid "Telegram Bot Configuration"
+msgstr "Telegram bot konfiguratsiyasi"
+
+msgid "Bot is connected to Telegram as"
+msgstr "Bot Telegramga quyidagicha ulangan"
+
+msgid "To deploy your bot to Telegram, you need to create a bot token via @BotFather."
+msgstr "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token yaratishingiz kerak."
+
+msgid "Telegram Bot Token"
+msgstr "Telegram bot tokeni"
+
+msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
+msgstr "Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi bot yaratish orqali oling."
+
+msgid "How to get a Telegram Bot Token:"
+msgstr "Telegram Bot Tokenini qanday olish mumkin:"
+
+msgid "Connect"
+msgstr "Ulash"
+
+msgid "Update"
+msgstr "Yangilash"
+
+msgid "Telegram Bot"
+msgstr "Telegram Bot"
+
 msgid "Free"
 msgstr "Bepul"
 
