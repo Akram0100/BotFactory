@@ -208,53 +208,63 @@ class TelegramService:
             # Show typing indicator
             await context.bot.send_chat_action(chat_id=update.effective_chat.id, action='typing')
             
-            # Get AI response
-            ai_response = self.ai_service.get_response(bot, user_message)
+            # Get AI response with app context
+            from app import app
+            with app.app_context():
+                ai_response = self.ai_service.get_response(bot, user_message)
             
             # Send response
             await update.message.reply_text(ai_response)
             
-            # Store conversation in database (in background)
-            await self._store_message(update, bot, user_message, ai_response)
+            # Store conversation in database (in background) with app context
+            with app.app_context():
+                await self._store_message(update, bot, user_message, ai_response)
             
         except Exception as e:
             logging.error(f"Message handling error for bot {bot.id}: {e}")
             await update.message.reply_text(
-                "I apologize, but I'm experiencing some technical difficulties. Please try again in a moment."
+                "Kechirasiz, texnik muammolar yuz berdi. Iltimos, biroz kutib yana urinib ko'ring. / I apologize, but I'm experiencing some technical difficulties. Please try again in a moment."
             )
     
     async def _update_conversation(self, update: Update, bot):
         """Update or create conversation record"""
         try:
-            user = update.effective_user
-            telegram_user_id = str(user.id)
-            
-            # Find or create conversation
-            conversation = Conversation.query.filter_by(
-                bot_id=bot.id,
-                telegram_user_id=telegram_user_id
-            ).first()
-            
-            if not conversation:
-                conversation = Conversation(
-                    bot_id=bot.id,
-                    telegram_user_id=telegram_user_id,
-                    telegram_username=user.username or user.first_name
-                )
-                db.session.add(conversation)
+            from app import app
+            with app.app_context():
+                user = update.effective_user
+                telegram_user_id = str(user.id)
                 
-                # Update bot's total users count
-                bot.total_users += 1
-            
-            conversation.last_message = db.func.now()
-            db.session.commit()
+                # Find or create conversation
+                conversation = Conversation.query.filter_by(
+                    bot_id=bot.id,
+                    telegram_user_id=telegram_user_id
+                ).first()
+                
+                if not conversation:
+                    conversation = Conversation(
+                        bot_id=bot.id,
+                        telegram_user_id=telegram_user_id,
+                        telegram_username=user.username or user.first_name
+                    )
+                    db.session.add(conversation)
+                    
+                    # Update bot's total users count
+                    bot.total_users += 1
+                
+                conversation.last_message = db.func.now()
+                db.session.commit()
             
         except Exception as e:
             logging.error(f"Conversation update error: {e}")
-            db.session.rollback()
+            from app import db
+            try:
+                db.session.rollback()
+            except:
+                pass
     
     async def _store_message(self, update: Update, bot, user_message, ai_response):
         """Store message in database"""
+        # This method is called with app context already from _handle_message
         try:
             user = update.effective_user
             telegram_user_id = str(user.id)
@@ -292,7 +302,11 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Message storage error: {e}")
-            db.session.rollback()
+            from app import db
+            try:
+                db.session.rollback()
+            except:
+                pass
     
     def get_bot_stats(self, bot):
         """Get statistics for a bot"""

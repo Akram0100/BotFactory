@@ -23,11 +23,16 @@ class AIService:
                 for entry in knowledge_entries:
                     knowledge_context += f"- {entry.title}: {entry.content[:500]}...\n"
             
-            # Construct system prompt
+            # Detect language and set appropriate instructions
+            language_instruction = self._detect_language_instruction(user_message)
+            
+            # Construct system prompt with language support
             system_instruction = f"""{bot.system_prompt}
             
 You are a chatbot named "{bot.name}".
 {f"Description: {bot.description}" if bot.description else ""}
+
+IMPORTANT LANGUAGE RULE: {language_instruction}
 
 Please respond helpfully and naturally to user messages.
 If you have relevant information in your knowledge base, use it to provide accurate answers.
@@ -118,3 +123,28 @@ Message: {message}"""
         except Exception as e:
             logging.error(f"Conversation summarization error: {e}")
             return "Unable to summarize conversation."
+    
+    def _detect_language_instruction(self, user_message):
+        """Detect the language of user message and return appropriate instruction"""
+        # Simple language detection based on common words and characters
+        uzbek_words = ['salom', 'assalomu', 'alaykum', 'rahmat', 'yaxshi', 'qanday', 'nima', 'kim', 'qachon', 'qayer', 'nega', 'qancha', 'bormi', 'yoq', 'ha', 'men', 'sen', 'biz', 'siz', 'ular', 'bu', 'shu', 'o\'sha', 'kimsiz', 'nimalar']
+        russian_words = ['привет', 'здравствуй', 'спасибо', 'как', 'что', 'где', 'когда', 'почему', 'сколько', 'да', 'нет', 'я', 'ты', 'мы', 'вы', 'они', 'это']
+        
+        message_lower = user_message.lower()
+        
+        # Check for Uzbek
+        uzbek_count = sum(1 for word in uzbek_words if word in message_lower)
+        russian_count = sum(1 for word in russian_words if word in message_lower)
+        
+        # Check for Cyrillic characters (Russian/Uzbek cyrillic)
+        cyrillic_count = sum(1 for char in user_message if '\u0400' <= char <= '\u04FF')
+        
+        if uzbek_count > 0 or cyrillic_count > 0:
+            if uzbek_count > russian_count:
+                return "Always respond in UZBEK language (o'zbek tilida javob bering). Use Latin script for Uzbek."
+            else:
+                return "Always respond in RUSSIAN language (отвечайте на русском языке)."
+        elif russian_count > 0:
+            return "Always respond in RUSSIAN language (отвечайте на русском языке)."
+        else:
+            return "Respond in the same language as the user's message. If the message is in Uzbek, respond in Uzbek. If in Russian, respond in Russian. If in English, respond in English."
