@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 17:39+0000\n"
+"POT-Creation-Date: 2025-08-30 18:58+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -81,13 +81,14 @@ msgstr "Xususiyatlar"
 msgid "AI-Powered Responses"
 msgstr "AI asosidagi javoblar"
 
-#: templates/base.html:130 templates/subscriptions.html:261
+#: templates/base.html:130 templates/index.html:78
+#: templates/subscriptions.html:261
 #, fuzzy
 msgid "Telegram Integration"
 msgstr "Telegram bot konfiguratsiyasi"
 
 #: templates/base.html:131 templates/bot_edit.html:93
-#: templates/bot_list.html:83
+#: templates/bot_list.html:83 templates/index.html:92
 msgid "Knowledge Base"
 msgstr "Bilimlar bazasi"
 
@@ -400,6 +401,129 @@ msgstr ""
 "Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma "
 "narsa"
 
+#: templates/index.html:64
+#, fuzzy
+msgid "AI-Powered Intelligence"
+msgstr "AI asosidagi intellekt"
+
+#: templates/index.html:66
+msgid ""
+"Powered by Google Gemini AI for natural, intelligent conversations that "
+"understand context and provide helpful responses."
+msgstr ""
+"Google Gemini AI tomonidan quvvatlanadi, tabiiy va aqlli suhbatlar uchun "
+"kontekstni tushunadi va foydali javoblar beradi."
+
+#: templates/index.html:80
+msgid ""
+"Deploy your bots directly to Telegram with one click. Reach millions of "
+"users where they already are."
+msgstr ""
+"Botlaringizni bir click bilan bevosita Telegramga joylashtiring. "
+"Millionlab foydalanuvchilarga ular allaqachon turgan joyda yeting."
+
+#: templates/index.html:94
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge and expertise."
+msgstr ""
+"Hujjatlaringiz, tez-tez beriladigan savollar va kontentingizni yuklang va"
+" botingizni o'zingizning maxsus bilim va tajribangiz bilan o'rgating."
+
+#: templates/index.html:106
+#, fuzzy
+msgid "Easy Setup"
+msgstr "Telegram sozlamalari"
+
+#: templates/index.html:108
+msgid ""
+"No coding required. Create and customize your chatbot with our intuitive "
+"web interface in just minutes."
+msgstr ""
+"Dasturlash talab qilinmaydi. Bizning intuitiv web interfeysimiz bilan bir"
+" necha daqiqada chatbotingizni yarating va sozlang."
+
+#: templates/index.html:120
+#, fuzzy
+msgid "Analytics & Insights"
+msgstr "Analitika"
+
+#: templates/index.html:122
+msgid ""
+"Track conversations, user engagement, and bot performance with detailed "
+"analytics and reporting."
+msgstr ""
+
+#: templates/index.html:134
+msgid "Secure & Reliable"
+msgstr ""
+
+#: templates/index.html:136
+msgid ""
+"Enterprise-grade security and 99.9% uptime ensure your bots are always "
+"available when your customers need them."
+msgstr "Korporativ darajadagi xavfsizlik va 99.9% ishga tushish vaqti botlaringizning mijozlaringiz kerak bo'lganda doimo foydalanish mumkinligini ta'minlaydi."
+"botlaringizning mijozlaringiz kerak bo'lganda doimo foydalanish "
+"mumkinligini ta'minlaydi."
+
+#: templates/index.html:149
+msgid "How It Works"
+msgstr ""
+
+#: templates/index.html:150
+#, fuzzy
+msgid "Get your AI chatbot up and running in three simple steps"
+msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
+
+#: templates/index.html:160
+#, fuzzy
+msgid "Create Your Bot"
+msgstr "Birinchi botingizni yarating"
+
+#: templates/index.html:162
+msgid ""
+"Sign up and create your first chatbot. Define its personality and purpose"
+" with custom prompts."
+msgstr ""
+
+#: templates/index.html:173
+#, fuzzy
+msgid "Upload Knowledge"
+msgstr "Bilimlar bazasi"
+
+#: templates/index.html:175
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge base."
+msgstr ""
+
+#: templates/index.html:186
+msgid "Deploy & Share"
+msgstr ""
+
+#: templates/index.html:188
+msgid ""
+"Connect to Telegram and share your bot with users. Monitor conversations "
+"and improve over time."
+msgstr ""
+
+#: templates/index.html:200
+msgid "Simple, Transparent Pricing"
+msgstr ""
+
+#: templates/index.html:201
+msgid "Start free and scale as you grow"
+msgstr ""
+
+#: templates/index.html:208 templates/subscriptions.html:236
+msgid "Free"
+msgstr "Bepul"
+
+#: templates/index.html:211 templates/subscriptions.html:44
+#: templates/subscriptions.html:106 templates/subscriptions.html:174
+msgid "/month"
+msgstr "/oyiga"
+
 #: templates/subscriptions.html:13
 #, fuzzy
 msgid "Subscription Plans"
@@ -428,11 +552,6 @@ msgstr "Rejalar"
 #, fuzzy
 msgid "Current Plan"
 msgstr "Sizning rejangiz"
-
-#: templates/subscriptions.html:44 templates/subscriptions.html:106
-#: templates/subscriptions.html:174
-msgid "/month"
-msgstr "/oyiga"
 
 #: templates/subscriptions.html:46
 msgid "Perfect for trying out BotFactory"
@@ -552,10 +671,6 @@ msgstr "Xususiyatlarni taqqoslash"
 msgid "Feature"
 msgstr "Xususiyat"
 
-#: templates/subscriptions.html:236
-msgid "Free"
-msgstr "Bepul"
-
 #: templates/subscriptions.html:237 templates/subscriptions.html:275
 msgid "Basic"
 msgstr "Asosiy"
@@ -617,7 +732,10 @@ msgstr "Rejamni istalgan vaqtda yangilay yoki pastlashtira olamanmi?"
 msgid ""
 "Yes, you can upgrade or downgrade your subscription plan at any time. "
 "Changes take effect immediately, and billing is prorated accordingly."
-msgstr "Ha, siz istalgan vaqtda obuna rejangizni yangilay yoki pastlashtira olasiz. O'zgarishlar darhol kuchga kiradi va to'lov shunga mos ravishda hisoblanadi."
+msgstr ""
+"Ha, siz istalgan vaqtda obuna rejangizni yangilay yoki pastlashtira "
+"olasiz. O'zgarishlar darhol kuchga kiradi va to'lov shunga mos ravishda "
+"hisoblanadi."
 
 #: templates/subscriptions.html:318
 msgid "What happens if I exceed my message limit?"
@@ -628,7 +746,10 @@ msgid ""
 "When you reach your monthly message limit, your bots will temporarily "
 "stop responding until the next billing cycle or you upgrade your plan. "
 "We'll notify you before you reach the limit."
-msgstr "Oylik xabar limitingizga yetganingizda, botlaringiz keyingi hisob-kitob davrigacha yoki rejangizni yangilamaguningizcha vaqtincha javob berishni to'xtatadi. Limitga yetishdan oldin sizni xabardor qilamiz."
+msgstr ""
+"Oylik xabar limitingizga yetganingizda, botlaringiz keyingi hisob-kitob "
+"davrigacha yoki rejangizni yangilamaguningizcha vaqtincha javob berishni "
+"to'xtatadi. Limitga yetishdan oldin sizni xabardor qilamiz."
 
 #: templates/subscriptions.html:331
 msgid "Is there a free trial for paid plans?"
@@ -638,7 +759,10 @@ msgstr "Pullik rejalar uchun bepul sinov davri bormi?"
 msgid ""
 "Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
 " during the trial period without being charged."
-msgstr "Ha! Barcha pullik rejalar 14 kunlik bepul sinov davri bilan keladi. Sinov davri mobaynida istalgan vaqtda bekor qila olasiz va hech qanday to'lov olinmaydi."
+msgstr ""
+"Ha! Barcha pullik rejalar 14 kunlik bepul sinov davri bilan keladi. Sinov"
+" davri mobaynida istalgan vaqtda bekor qila olasiz va hech qanday to'lov "
+"olinmaydi."
 
 #: templates/subscriptions.html:344
 msgid "What payment methods do you accept?"
@@ -648,7 +772,10 @@ msgstr "Qanday to'lov usullarini qabul qilasiz?"
 msgid ""
 "We accept all major credit cards (Visa, Mastercard, American Express) and"
 " PayPal. All payments are processed securely through Stripe."
-msgstr "Biz barcha asosiy kredit kartalarni (Visa, Mastercard, American Express) va PayPal ni qabul qilamiz. Barcha to'lovlar Stripe orqali xavfsiz tarzda qayta ishlanadi."
+msgstr ""
+"Biz barcha asosiy kredit kartalarni (Visa, Mastercard, American Express) "
+"va PayPal ni qabul qilamiz. Barcha to'lovlar Stripe orqali xavfsiz tarzda"
+" qayta ishlanadi."
 
 #: templates/subscriptions.html:357
 #, fuzzy
@@ -660,7 +787,10 @@ msgid ""
 "Yes, you can cancel your subscription at any time. Your bots will "
 "continue to work until the end of your current billing period, after "
 "which they'll be downgraded to the free plan limits."
-msgstr "Ha, obunangizni istalgan vaqtda bekor qila olasiz. Botlaringiz joriy hisob-kitob davri tugaguncha ishlashda davom etadi, shundan so'ng ular bepul reja chegaralariga tushiriladi."
+msgstr ""
+"Ha, obunangizni istalgan vaqtda bekor qila olasiz. Botlaringiz joriy "
+"hisob-kitob davri tugaguncha ishlashda davom etadi, shundan so'ng ular "
+"bepul reja chegaralariga tushiriladi."
 
 #: templates/subscriptions.html:372
 msgid "Ready to get started?"
@@ -670,7 +800,9 @@ msgstr "Boshlashga tayyormisiz?"
 msgid ""
 "Choose a plan that fits your needs and start building powerful AI "
 "chatbots today."
-msgstr "Ehtiyojlaringizga mos rejani tanlang va bugunoq kuchli AI chatbotlarini qurishni boshlang."
+msgstr ""
+"Ehtiyojlaringizga mos rejani tanlang va bugunoq kuchli AI chatbotlarini "
+"qurishni boshlang."
 
 # Navigation
 #: templates/subscriptions.html:379

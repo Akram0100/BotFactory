@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 17:39+0000\n"
+"POT-Creation-Date: 2025-08-30 18:58+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: ru\n"
@@ -81,13 +81,14 @@ msgstr "Возможности"
 msgid "AI-Powered Responses"
 msgstr "ИИ-ответы"
 
-#: templates/base.html:130 templates/subscriptions.html:261
+#: templates/base.html:130 templates/index.html:78
+#: templates/subscriptions.html:261
 #, fuzzy
 msgid "Telegram Integration"
 msgstr "Конфигурация бота"
 
 #: templates/base.html:131 templates/bot_edit.html:93
-#: templates/bot_list.html:83
+#: templates/bot_list.html:83 templates/index.html:92
 msgid "Knowledge Base"
 msgstr "База знаний"
 
@@ -215,7 +216,9 @@ msgstr "Бот подключён к Telegram как"
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота через @BotFather."
+msgstr ""
+"Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота "
+"через @BotFather."
 
 #: templates/bot_edit.html:175
 #, fuzzy
@@ -224,7 +227,9 @@ msgstr "Токен бота"
 
 #: templates/bot_edit.html:185
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
-msgstr "Получите этот токен, отправив сообщение @BotFather в Telegram и создав нового бота."
+msgstr ""
+"Получите этот токен, отправив сообщение @BotFather в Telegram и создав "
+"нового бота."
 
 #: templates/bot_edit.html:196
 msgid "How to get a Telegram Bot Token:"
@@ -406,6 +411,129 @@ msgstr "Почему стоит выбрать BotFactory?"
 msgid "Everything you need to create and deploy intelligent chatbots"
 msgstr "Всё необходимое для создания и развертывания умных чатботов"
 
+#: templates/index.html:64
+#, fuzzy
+msgid "AI-Powered Intelligence"
+msgstr "ИИ-интеллект"
+
+#: templates/index.html:66
+msgid ""
+"Powered by Google Gemini AI for natural, intelligent conversations that "
+"understand context and provide helpful responses."
+msgstr ""
+"Работает на Google Gemini AI для естественных, умных разговоров, которые "
+"понимают контекст и предоставляют полезные ответы."
+
+#: templates/index.html:80
+msgid ""
+"Deploy your bots directly to Telegram with one click. Reach millions of "
+"users where they already are."
+msgstr ""
+"Разверните ваших ботов прямо в Telegram одним кликом. Достигните "
+"миллионов пользователей там, где они уже находятся."
+
+#: templates/index.html:94
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge and expertise."
+msgstr ""
+"Загрузите ваши документы, FAQ и контент, чтобы обучить бота вашими "
+"специфическими знаниями и экспертизой."
+
+#: templates/index.html:106
+#, fuzzy
+msgid "Easy Setup"
+msgstr "Настройка Telegram"
+
+#: templates/index.html:108
+msgid ""
+"No coding required. Create and customize your chatbot with our intuitive "
+"web interface in just minutes."
+msgstr ""
+"Программирование не требуется. Создайте и настройте вашего чатбота с "
+"помощью нашего интуитивного веб-интерфейса за считанные минуты."
+
+#: templates/index.html:120
+#, fuzzy
+msgid "Analytics & Insights"
+msgstr "Аналитика"
+
+#: templates/index.html:122
+msgid ""
+"Track conversations, user engagement, and bot performance with detailed "
+"analytics and reporting."
+msgstr ""
+
+#: templates/index.html:134
+msgid "Secure & Reliable"
+msgstr ""
+
+#: templates/index.html:136
+msgid ""
+"Enterprise-grade security and 99.9% uptime ensure your bots are always "
+"available when your customers need them."
+msgstr "Безопасность корпоративного уровня и 99.9% время безотказной работы гарантируют, что ваши боты всегда доступны, когда они нужны вашим клиентам."
+"гарантируют, что ваши боты всегда доступны, когда они нужны вашим "
+"клиентам."
+
+#: templates/index.html:149
+msgid "How It Works"
+msgstr ""
+
+#: templates/index.html:150
+#, fuzzy
+msgid "Get your AI chatbot up and running in three simple steps"
+msgstr "Управляйте вашими AI-чатботами и отслеживайте производительность"
+
+#: templates/index.html:160
+#, fuzzy
+msgid "Create Your Bot"
+msgstr "Создайте свою учетную запись"
+
+#: templates/index.html:162
+msgid ""
+"Sign up and create your first chatbot. Define its personality and purpose"
+" with custom prompts."
+msgstr ""
+
+#: templates/index.html:173
+#, fuzzy
+msgid "Upload Knowledge"
+msgstr "База знаний"
+
+#: templates/index.html:175
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge base."
+msgstr ""
+
+#: templates/index.html:186
+msgid "Deploy & Share"
+msgstr ""
+
+#: templates/index.html:188
+msgid ""
+"Connect to Telegram and share your bot with users. Monitor conversations "
+"and improve over time."
+msgstr ""
+
+#: templates/index.html:200
+msgid "Simple, Transparent Pricing"
+msgstr ""
+
+#: templates/index.html:201
+msgid "Start free and scale as you grow"
+msgstr ""
+
+#: templates/index.html:208 templates/subscriptions.html:236
+msgid "Free"
+msgstr ""
+
+#: templates/index.html:211 templates/subscriptions.html:44
+#: templates/subscriptions.html:106 templates/subscriptions.html:174
+msgid "/month"
+msgstr "/в месяц"
+
 #: templates/subscriptions.html:13
 #, fuzzy
 msgid "Subscription Plans"
@@ -434,11 +562,6 @@ msgstr "Тарифы"
 #, fuzzy
 msgid "Current Plan"
 msgstr "Выберите свой план"
-
-#: templates/subscriptions.html:44 templates/subscriptions.html:106
-#: templates/subscriptions.html:174
-msgid "/month"
-msgstr "/в месяц"
 
 #: templates/subscriptions.html:46
 msgid "Perfect for trying out BotFactory"
@@ -556,10 +679,6 @@ msgstr ""
 
 #: templates/subscriptions.html:235
 msgid "Feature"
-msgstr ""
-
-#: templates/subscriptions.html:236
-msgid "Free"
 msgstr ""
 
 #: templates/subscriptions.html:237 templates/subscriptions.html:275

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 13:58+0000\n"
+"POT-Creation-Date: 2025-08-30 18:58+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: en\n"
@@ -18,248 +18,855 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
+#: templates/base.html:36 templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr "Dashboard"
 
+#: templates/base.html:41
 msgid "My Bots"
 msgstr "My Bots"
 
+#: templates/base.html:46
 msgid "Plans"
 msgstr "Plans"
 
-msgid "Profile"
-msgstr "Profile"
-
-msgid "Settings"
-msgstr "Settings"
-
-msgid "Logout"
-msgstr "Logout"
-
-msgid "Login"
-msgstr "Login"
-
-msgid "Sign Up"
-msgstr "Sign Up"
-
-msgid "Create Powerful AI Chatbots in Minutes"
-msgstr "Create Powerful AI Chatbots in Minutes"
-
-msgid "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
-msgstr "Build intelligent chatbots for Telegram and other platforms using Google Gemini AI. No coding required - just upload your knowledge base and deploy!"
-
-msgid "Get Started Free"
-msgstr "Get Started Free"
-
-msgid "Learn More"
-msgstr "Learn More"
-
-msgid "Free tier available"
-msgstr "Free tier available"
-
-msgid "No credit card required"
-msgstr "No credit card required"
-
-msgid "Why Choose BotFactory?"
-msgstr "Why Choose BotFactory?"
-
-msgid "Everything you need to create and deploy intelligent chatbots"
-msgstr "Everything you need to create and deploy intelligent chatbots"
-
-msgid "AI-Powered Conversations"
-msgstr "AI-Powered Conversations"
-
-msgid "Smart, contextual responses powered by Google Gemini AI"
-msgstr "Smart, contextual responses powered by Google Gemini AI"
-
-msgid "Easy Integration"
-msgstr "Easy Integration"
-
-msgid "Deploy to Telegram instantly with one-click setup"
-msgstr "Deploy to Telegram instantly with one-click setup"
-
-msgid "Knowledge Base Upload"
-msgstr "Knowledge Base Upload"
-
-msgid "Upload documents and files to train your bot"
-msgstr "Upload documents and files to train your bot"
-
-msgid "Welcome back!"
-msgstr "Welcome back!"
-
-msgid "Sign in to your account to continue."
-msgstr "Sign in to your account to continue."
-
-msgid "Username"
-msgstr "Username"
-
-msgid "Password"
-msgstr "Password"
-
-msgid "Remember me"
-msgstr "Remember me"
-
-msgid "Create your account"
-msgstr "Create your account"
-
-msgid "Join thousands of users creating AI chatbots."
-msgstr "Join thousands of users creating AI chatbots."
-
-msgid "Email"
-msgstr "Email"
-
-msgid "First Name"
-msgstr "First Name"
-
-msgid "Last Name"
-msgstr "Last Name"
-
-msgid "Confirm Password"
-msgstr "Confirm Password"
-
-msgid "Create Account"
-msgstr "Create Account"
-
-msgid "Welcome to your dashboard"
-msgstr "Welcome to your dashboard"
-
-msgid "Total Bots"
-msgstr "Total Bots"
-
-msgid "Active Bots"
-msgstr "Active Bots"
-
-msgid "Total Messages"
-msgstr "Total Messages"
-
-msgid "Total Users"
-msgstr "Total Users"
-
-msgid "Recent Bots"
-msgstr "Recent Bots"
-
-msgid "Create New Bot"
-msgstr "Create New Bot"
-
-msgid "View All Bots"
-msgstr "View All Bots"
-
-msgid "Create Bot"
-msgstr "Create Bot"
-
-msgid "Bot Name"
-msgstr "Bot Name"
-
-msgid "Description"
-msgstr "Description"
-
-msgid "System Prompt"
-msgstr "System Prompt"
-
-msgid "Save Bot"
-msgstr "Save Bot"
-
-msgid "Edit Bot"
-msgstr "Edit Bot"
-
-msgid "Bot Configuration"
-msgstr "Bot Configuration"
-
-msgid "Telegram Setup"
-msgstr "Telegram Setup"
-
-msgid "Knowledge Base"
-msgstr "Knowledge Base"
-
-msgid "Analytics"
-msgstr "Analytics"
-
-msgid "Bot Token"
-msgstr "Bot Token"
-
-msgid "Save Changes"
-msgstr "Save Changes"
-
-msgid "Choose Your Plan"
-msgstr "Choose Your Plan"
-
-msgid "Free"
-msgstr "Free"
-
-msgid "Basic"
-msgstr "Basic"
-
-msgid "Premium"
-msgstr "Premium"
-
-msgid "per month"
-msgstr "per month"
-
-msgid "Current Plan"
-msgstr "Current Plan"
-
-msgid "Upgrade"
-msgstr "Upgrade"
-
-msgid "AI chatbots"
-msgstr "AI chatbots"
-
-msgid "messages per month"
-msgstr "messages per month"
-
-msgid "Knowledge base entries"
-msgstr "Knowledge base entries"
-
-msgid "Email support"
-msgstr "Email support"
-
-msgid "Priority support"
-msgstr "Priority support"
-
-msgid "Analytics dashboard"
-msgstr "Analytics dashboard"
-
-msgid "API access"
-msgstr "API access"
-
-msgid "Bot created successfully!"
-msgstr "Bot created successfully!"
-
-msgid "Bot updated successfully!"
-msgstr "Bot updated successfully!"
-
-msgid "Bot deleted successfully!"
-msgstr "Bot deleted successfully!"
-
-msgid "Settings saved successfully!"
-msgstr "Settings saved successfully!"
-
-msgid "File uploaded successfully!"
-msgstr "File uploaded successfully!"
-
-msgid "Invalid username or password."
-msgstr "Invalid username or password."
-
-msgid "Please fill in all fields."
-msgstr "Please fill in all fields."
-
-msgid "Passwords do not match."
-msgstr "Passwords do not match."
-
-msgid "Username already exists."
-msgstr "Username already exists."
-
-msgid "Email already registered."
-msgstr "Email already registered."
-
+#: templates/base.html:56
 msgid "Language"
 msgstr "Language"
 
+#: templates/base.html:59
 msgid "English"
 msgstr "English"
 
+#: templates/base.html:60
 msgid "Russian"
 msgstr "Русский"
 
+#: templates/base.html:61
 msgid "Uzbek"
 msgstr "O'zbek"
+
+#: templates/base.html:71
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/base.html:72
+msgid "Settings"
+msgstr "Settings"
+
+#: templates/base.html:74
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/base.html:79
+msgid "Login"
+msgstr "Login"
+
+#: templates/base.html:82
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: templates/base.html:124
+#, fuzzy
+msgid "Create powerful AI chatbots for your business with ease."
+msgstr "Create Powerful AI Chatbots in Minutes"
+
+#: templates/base.html:127
+msgid "Features"
+msgstr ""
+
+#: templates/base.html:129
+#, fuzzy
+msgid "AI-Powered Responses"
+msgstr "AI-Powered Conversations"
+
+#: templates/base.html:130 templates/index.html:78
+#: templates/subscriptions.html:261
+#, fuzzy
+msgid "Telegram Integration"
+msgstr "Easy Integration"
+
+#: templates/base.html:131 templates/bot_edit.html:93
+#: templates/bot_list.html:83 templates/index.html:92
+msgid "Knowledge Base"
+msgstr "Knowledge Base"
+
+#: templates/base.html:132
+msgid "Analytics"
+msgstr "Analytics"
+
+#: templates/base.html:136 templates/subscriptions.html:285
+#, fuzzy
+msgid "Support"
+msgstr "Email support"
+
+#: templates/base.html:138
+msgid "Documentation"
+msgstr ""
+
+#: templates/base.html:139
+msgid "Contact Us"
+msgstr ""
+
+#: templates/base.html:140
+msgid "FAQ"
+msgstr ""
+
+#: templates/base.html:147
+msgid "All rights reserved."
+msgstr ""
+
+#: templates/base.html:150
+#, fuzzy
+msgid "Powered by Google Gemini AI"
+msgstr "Smart, contextual responses powered by Google Gemini AI"
+
+#: templates/bot_edit.html:25 templates/bot_list.html:108
+#, fuzzy
+msgid "No description provided"
+msgstr "Description"
+
+#: templates/bot_edit.html:32 templates/bot_list.html:92
+msgid "Deactivate"
+msgstr ""
+
+#: templates/bot_edit.html:32 templates/bot_list.html:92
+#, fuzzy
+msgid "Activate"
+msgstr "Active Bots"
+
+#: templates/bot_edit.html:36 templates/bot_list.html:99
+msgid "Delete"
+msgstr ""
+
+#: templates/bot_edit.html:49 templates/dashboard.html:64
+msgid "Total Messages"
+msgstr "Total Messages"
+
+#: templates/bot_edit.html:57 templates/dashboard.html:80
+msgid "Users Served"
+msgstr ""
+
+#: templates/bot_edit.html:65
+msgid "Last Activity"
+msgstr ""
+
+#: templates/bot_edit.html:73
+#, fuzzy
+msgid "Knowledge Entries"
+msgstr "Knowledge base entries"
+
+#: templates/bot_edit.html:83
+#, fuzzy
+msgid "Basic Settings"
+msgstr "Settings"
+
+#: templates/bot_edit.html:88
+msgid "Telegram Setup"
+msgstr "Telegram Setup"
+
+#: templates/bot_edit.html:98
+#, fuzzy
+msgid "Test Bot"
+msgstr "Edit Bot"
+
+#: templates/bot_edit.html:109
+msgid "Bot Configuration"
+msgstr "Bot Configuration"
+
+#: templates/bot_edit.html:117
+msgid "Bot Name"
+msgstr "Bot Name"
+
+#: templates/bot_edit.html:122
+#, fuzzy
+msgid "Telegram Username"
+msgstr "Telegram Setup"
+
+#: templates/bot_edit.html:126
+#, fuzzy
+msgid "Not configured"
+msgstr "Bot Configuration"
+
+#: templates/bot_edit.html:132
+msgid "Description"
+msgstr "Description"
+
+#: templates/bot_edit.html:138
+msgid "Bot Personality & Instructions"
+msgstr ""
+
+#: templates/bot_edit.html:141
+msgid "Define how your bot should behave and respond to users."
+msgstr ""
+
+#: templates/bot_edit.html:145
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: templates/bot_edit.html:156
+#, fuzzy
+msgid "Telegram Bot Configuration"
+msgstr "Bot Configuration"
+
+#: templates/bot_edit.html:162
+msgid "Bot is connected to Telegram as"
+msgstr ""
+
+#: templates/bot_edit.html:167
+msgid ""
+"To deploy your bot to Telegram, you need to create a bot token via "
+"@BotFather."
+msgstr ""
+
+#: templates/bot_edit.html:175
+#, fuzzy
+msgid "Telegram Bot Token"
+msgstr "Bot Token"
+
+#: templates/bot_edit.html:185
+msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
+msgstr ""
+
+#: templates/bot_edit.html:196
+msgid "How to get a Telegram Bot Token:"
+msgstr ""
+
+#: templates/bot_list.html:18
+#, fuzzy
+msgid "My AI Chatbots"
+msgstr "AI chatbots"
+
+#: templates/bot_list.html:19
+msgid "Manage and monitor your intelligent chatbots"
+msgstr ""
+
+#: templates/bot_list.html:24 templates/dashboard.html:17
+#: templates/dashboard.html:214
+msgid "Create New Bot"
+msgstr "Create New Bot"
+
+#: templates/bot_list.html:28
+msgid "Upgrade to Create More"
+msgstr ""
+
+#: templates/bot_list.html:42
+msgid "Bot Limit Reached"
+msgstr ""
+
+#: templates/bot_list.html:42
+#, python-format
+msgid "You are using %(current)s of %(max)s available bots."
+msgstr ""
+
+#: templates/bot_list.html:46 templates/dashboard.html:196
+#, fuzzy
+msgid "Upgrade Plan"
+msgstr "Upgrade"
+
+#: templates/bot_list.html:78
+msgid "Edit Bot"
+msgstr "Edit Bot"
+
+#: templates/bot_list.html:116 templates/dashboard.html:184
+#, fuzzy
+msgid "Messages"
+msgstr "Total Messages"
+
+#: templates/bot_list.html:122
+#, fuzzy
+msgid "Users"
+msgstr "Total Users"
+
+#: templates/bot_list.html:139
+msgid "Telegram not configured"
+msgstr ""
+
+#: templates/bot_list.html:149
+msgid "Last activity:"
+msgstr ""
+
+#: templates/dashboard.html:12
+#, fuzzy, python-format
+msgid "Welcome back, %(name)s!"
+msgstr "Welcome back!"
+
+#: templates/dashboard.html:13
+msgid "Manage your AI chatbots and monitor performance"
+msgstr ""
+
+#: templates/dashboard.html:32
+msgid "Total Bots"
+msgstr "Total Bots"
+
+#: templates/dashboard.html:48
+msgid "Active Bots"
+msgstr "Active Bots"
+
+#: templates/dashboard.html:96
+#, fuzzy
+msgid "Your Bots"
+msgstr "My Bots"
+
+#: templates/dashboard.html:98
+#, fuzzy
+msgid "View All"
+msgstr "View All Bots"
+
+#: templates/dashboard.html:115
+#, fuzzy
+msgid "No description"
+msgstr "Description"
+
+#: templates/dashboard.html:143
+msgid "No Bots Yet"
+msgstr ""
+
+#: templates/dashboard.html:144
+msgid "Create your first AI chatbot to get started"
+msgstr ""
+
+#: templates/dashboard.html:146 templates/subscriptions.html:376
+#, fuzzy
+msgid "Create Your First Bot"
+msgstr "Create your account"
+
+#: templates/dashboard.html:160
+#, fuzzy
+msgid "Your Plan"
+msgstr "Choose Your Plan"
+
+#: templates/dashboard.html:172
+#, fuzzy
+msgid "Bots Used"
+msgstr "Total Users"
+
+#: templates/dashboard.html:200
+#, fuzzy
+msgid "Active Subscription"
+msgstr "Description"
+
+#: templates/dashboard.html:209
+msgid "Quick Actions"
+msgstr ""
+
+#: templates/dashboard.html:217
+#, fuzzy
+msgid "Manage Bots"
+msgstr "My Bots"
+
+#: templates/dashboard.html:220
+#, fuzzy
+msgid "View Plans"
+msgstr "Plans"
+
+#: templates/dashboard.html:229
+msgid "Need help?"
+msgstr ""
+
+#: templates/dashboard.html:229
+#, fuzzy
+msgid "Contact Support"
+msgstr "Priority support"
+
+#: templates/index.html:12
+msgid "Create Powerful AI Chatbots in Minutes"
+msgstr "Create Powerful AI Chatbots in Minutes"
+
+#: templates/index.html:15
+msgid ""
+"Build intelligent chatbots for Telegram and other platforms using Google "
+"Gemini AI. No coding required - just upload your knowledge base and "
+"deploy!"
+msgstr ""
+"Build intelligent chatbots for Telegram and other platforms using Google "
+"Gemini AI. No coding required - just upload your knowledge base and "
+"deploy!"
+
+#: templates/index.html:19
+msgid "Get Started Free"
+msgstr "Get Started Free"
+
+#: templates/index.html:22
+msgid "Learn More"
+msgstr "Learn More"
+
+#: templates/index.html:27
+msgid "Free tier available"
+msgstr "Free tier available"
+
+#: templates/index.html:29
+msgid "No credit card required"
+msgstr "No credit card required"
+
+#: templates/index.html:53
+msgid "Why Choose BotFactory?"
+msgstr "Why Choose BotFactory?"
+
+#: templates/index.html:54
+msgid "Everything you need to create and deploy intelligent chatbots"
+msgstr "Everything you need to create and deploy intelligent chatbots"
+
+#: templates/index.html:64
+msgid "AI-Powered Intelligence"
+msgstr ""
+
+#: templates/index.html:66
+msgid ""
+"Powered by Google Gemini AI for natural, intelligent conversations that "
+"understand context and provide helpful responses."
+msgstr ""
+
+#: templates/index.html:80
+msgid ""
+"Deploy your bots directly to Telegram with one click. Reach millions of "
+"users where they already are."
+msgstr ""
+
+#: templates/index.html:94
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge and expertise."
+msgstr ""
+
+#: templates/index.html:106
+#, fuzzy
+msgid "Easy Setup"
+msgstr "Telegram Setup"
+
+#: templates/index.html:108
+msgid ""
+"No coding required. Create and customize your chatbot with our intuitive "
+"web interface in just minutes."
+msgstr ""
+
+#: templates/index.html:120
+#, fuzzy
+msgid "Analytics & Insights"
+msgstr "Analytics"
+
+#: templates/index.html:122
+msgid ""
+"Track conversations, user engagement, and bot performance with detailed "
+"analytics and reporting."
+msgstr ""
+
+#: templates/index.html:134
+msgid "Secure & Reliable"
+msgstr ""
+
+#: templates/index.html:136
+#, python-format
+msgid ""
+"Enterprise-grade security and 99.9% uptime ensure your bots are always "
+"available when your customers need them."
+msgstr ""
+
+#: templates/index.html:149
+msgid "How It Works"
+msgstr ""
+
+#: templates/index.html:150
+msgid "Get your AI chatbot up and running in three simple steps"
+msgstr ""
+
+#: templates/index.html:160
+#, fuzzy
+msgid "Create Your Bot"
+msgstr "Create your account"
+
+#: templates/index.html:162
+msgid ""
+"Sign up and create your first chatbot. Define its personality and purpose"
+" with custom prompts."
+msgstr ""
+
+#: templates/index.html:173
+#, fuzzy
+msgid "Upload Knowledge"
+msgstr "Knowledge Base"
+
+#: templates/index.html:175
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge base."
+msgstr ""
+
+#: templates/index.html:186
+msgid "Deploy & Share"
+msgstr ""
+
+#: templates/index.html:188
+msgid ""
+"Connect to Telegram and share your bot with users. Monitor conversations "
+"and improve over time."
+msgstr ""
+
+#: templates/index.html:200
+msgid "Simple, Transparent Pricing"
+msgstr ""
+
+#: templates/index.html:201
+msgid "Start free and scale as you grow"
+msgstr ""
+
+#: templates/index.html:208 templates/subscriptions.html:236
+msgid "Free"
+msgstr "Free"
+
+#: templates/index.html:211 templates/subscriptions.html:44
+#: templates/subscriptions.html:106 templates/subscriptions.html:174
+#, fuzzy
+msgid "/month"
+msgstr "per month"
+
+#: templates/subscriptions.html:13
+#, fuzzy
+msgid "Subscription Plans"
+msgstr "Description"
+
+#: templates/subscriptions.html:17
+msgid "Choose Your Plan"
+msgstr "Choose Your Plan"
+
+#: templates/subscriptions.html:18
+msgid "Scale your AI chatbot operations with flexible pricing"
+msgstr ""
+
+#: templates/subscriptions.html:23
+#, fuzzy
+msgid "Currently on"
+msgstr "Current Plan"
+
+#: templates/subscriptions.html:23
+#, fuzzy
+msgid "plan"
+msgstr "Plans"
+
+#: templates/subscriptions.html:37 templates/subscriptions.html:97
+#: templates/subscriptions.html:163
+msgid "Current Plan"
+msgstr "Current Plan"
+
+#: templates/subscriptions.html:46
+msgid "Perfect for trying out BotFactory"
+msgstr ""
+
+#: templates/subscriptions.html:51
+#, fuzzy
+msgid "AI chatbot"
+msgstr "AI chatbots"
+
+#: templates/subscriptions.html:55 templates/subscriptions.html:117
+#: templates/subscriptions.html:185
+msgid "messages per month"
+msgstr "messages per month"
+
+#: templates/subscriptions.html:59 templates/subscriptions.html:121
+#, fuzzy
+msgid "knowledge base entries"
+msgstr "Knowledge base entries"
+
+#: templates/subscriptions.html:63
+#, fuzzy
+msgid "Telegram integration"
+msgstr "Easy Integration"
+
+#: templates/subscriptions.html:67
+#, fuzzy
+msgid "Basic support"
+msgstr "Email support"
+
+#: templates/subscriptions.html:71 templates/subscriptions.html:129
+#: templates/subscriptions.html:197
+msgid "Priority support"
+msgstr "Priority support"
+
+#: templates/subscriptions.html:75
+msgid "Analytics dashboard"
+msgstr "Analytics dashboard"
+
+#: templates/subscriptions.html:81
+msgid "Switch to Free"
+msgstr ""
+
+#: templates/subscriptions.html:99
+msgid "Most Popular"
+msgstr ""
+
+#: templates/subscriptions.html:108
+msgid "Great for small businesses"
+msgstr ""
+
+#: templates/subscriptions.html:113 templates/subscriptions.html:181
+msgid "AI chatbots"
+msgstr "AI chatbots"
+
+#: templates/subscriptions.html:125 templates/subscriptions.html:193
+#, fuzzy
+msgid "All integrations"
+msgstr "Easy Integration"
+
+#: templates/subscriptions.html:133
+msgid "Custom bot personalities"
+msgstr ""
+
+#: templates/subscriptions.html:137
+#, fuzzy
+msgid "Basic analytics"
+msgstr "Analytics"
+
+#: templates/subscriptions.html:144
+#, fuzzy
+msgid "Upgrade to Basic"
+msgstr "Upgrade"
+
+#: templates/subscriptions.html:146
+msgid "Switch to Basic"
+msgstr ""
+
+#: templates/subscriptions.html:176
+msgid "For growing businesses and agencies"
+msgstr ""
+
+#: templates/subscriptions.html:189 templates/subscriptions.html:258
+msgid "Unlimited"
+msgstr ""
+
+#: templates/subscriptions.html:189
+#, fuzzy
+msgid "knowledge base"
+msgstr "Knowledge Base"
+
+#: templates/subscriptions.html:201
+#, fuzzy
+msgid "Advanced analytics"
+msgstr "Analytics"
+
+#: templates/subscriptions.html:205
+msgid "API access"
+msgstr "API access"
+
+#: templates/subscriptions.html:212
+msgid "Upgrade to Premium"
+msgstr ""
+
+#: templates/subscriptions.html:214
+#, fuzzy
+msgid "Choose Premium"
+msgstr "Premium"
+
+#: templates/subscriptions.html:230
+msgid "Feature Comparison"
+msgstr ""
+
+#: templates/subscriptions.html:235
+msgid "Feature"
+msgstr ""
+
+#: templates/subscriptions.html:237 templates/subscriptions.html:275
+msgid "Basic"
+msgstr "Basic"
+
+#: templates/subscriptions.html:238
+msgid "Premium"
+msgstr "Premium"
+
+#: templates/subscriptions.html:243
+#, fuzzy
+msgid "AI Chatbots"
+msgstr "AI chatbots"
+
+#: templates/subscriptions.html:249
+#, fuzzy
+msgid "Messages per Month"
+msgstr "messages per month"
+
+#: templates/subscriptions.html:255
+#, fuzzy
+msgid "Knowledge Base Entries"
+msgstr "Knowledge base entries"
+
+#: templates/subscriptions.html:267
+msgid "Custom AI Personalities"
+msgstr ""
+
+#: templates/subscriptions.html:273
+#, fuzzy
+msgid "Analytics Dashboard"
+msgstr "Analytics dashboard"
+
+#: templates/subscriptions.html:276
+msgid "Advanced"
+msgstr ""
+
+#: templates/subscriptions.html:279
+#, fuzzy
+msgid "API Access"
+msgstr "API access"
+
+#: templates/subscriptions.html:286
+msgid "Community"
+msgstr ""
+
+#: templates/subscriptions.html:287 templates/subscriptions.html:288
+#, fuzzy
+msgid "Priority"
+msgstr "Priority support"
+
+#: templates/subscriptions.html:299
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/subscriptions.html:305
+msgid "Can I upgrade or downgrade my plan anytime?"
+msgstr ""
+
+#: templates/subscriptions.html:310
+msgid ""
+"Yes, you can upgrade or downgrade your subscription plan at any time. "
+"Changes take effect immediately, and billing is prorated accordingly."
+msgstr ""
+
+#: templates/subscriptions.html:318
+msgid "What happens if I exceed my message limit?"
+msgstr ""
+
+#: templates/subscriptions.html:323
+msgid ""
+"When you reach your monthly message limit, your bots will temporarily "
+"stop responding until the next billing cycle or you upgrade your plan. "
+"We'll notify you before you reach the limit."
+msgstr ""
+
+#: templates/subscriptions.html:331
+msgid "Is there a free trial for paid plans?"
+msgstr ""
+
+#: templates/subscriptions.html:336
+msgid ""
+"Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
+" during the trial period without being charged."
+msgstr ""
+
+#: templates/subscriptions.html:344
+msgid "What payment methods do you accept?"
+msgstr ""
+
+#: templates/subscriptions.html:349
+msgid ""
+"We accept all major credit cards (Visa, Mastercard, American Express) and"
+" PayPal. All payments are processed securely through Stripe."
+msgstr ""
+
+#: templates/subscriptions.html:357
+msgid "Can I cancel my subscription?"
+msgstr ""
+
+#: templates/subscriptions.html:362
+msgid ""
+"Yes, you can cancel your subscription at any time. Your bots will "
+"continue to work until the end of your current billing period, after "
+"which they'll be downgraded to the free plan limits."
+msgstr ""
+
+#: templates/subscriptions.html:372
+msgid "Ready to get started?"
+msgstr ""
+
+#: templates/subscriptions.html:373
+msgid ""
+"Choose a plan that fits your needs and start building powerful AI "
+"chatbots today."
+msgstr ""
+
+# Navigation
+#: templates/subscriptions.html:379
+#, fuzzy
+msgid "Go to Dashboard"
+msgstr "Dashboard"
+
+#~ msgid "Deploy to Telegram instantly with one-click setup"
+#~ msgstr "Deploy to Telegram instantly with one-click setup"
+
+#~ msgid "Knowledge Base Upload"
+#~ msgstr "Knowledge Base Upload"
+
+#~ msgid "Upload documents and files to train your bot"
+#~ msgstr "Upload documents and files to train your bot"
+
+#~ msgid "Sign in to your account to continue."
+#~ msgstr "Sign in to your account to continue."
+
+#~ msgid "Username"
+#~ msgstr "Username"
+
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#~ msgid "Remember me"
+#~ msgstr "Remember me"
+
+#~ msgid "Join thousands of users creating AI chatbots."
+#~ msgstr "Join thousands of users creating AI chatbots."
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "First Name"
+#~ msgstr "First Name"
+
+#~ msgid "Last Name"
+#~ msgstr "Last Name"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Confirm Password"
+
+#~ msgid "Create Account"
+#~ msgstr "Create Account"
+
+#~ msgid "Welcome to your dashboard"
+#~ msgstr "Welcome to your dashboard"
+
+#~ msgid "Recent Bots"
+#~ msgstr "Recent Bots"
+
+#~ msgid "Create Bot"
+#~ msgstr "Create Bot"
+
+#~ msgid "System Prompt"
+#~ msgstr "System Prompt"
+
+#~ msgid "Save Bot"
+#~ msgstr "Save Bot"
+
+#~ msgid "Bot created successfully!"
+#~ msgstr "Bot created successfully!"
+
+#~ msgid "Bot updated successfully!"
+#~ msgstr "Bot updated successfully!"
+
+#~ msgid "Bot deleted successfully!"
+#~ msgstr "Bot deleted successfully!"
+
+#~ msgid "Settings saved successfully!"
+#~ msgstr "Settings saved successfully!"
+
+#~ msgid "File uploaded successfully!"
+#~ msgstr "File uploaded successfully!"
+
+#~ msgid "Invalid username or password."
+#~ msgstr "Invalid username or password."
+
+#~ msgid "Please fill in all fields."
+#~ msgstr "Please fill in all fields."
+
+#~ msgid "Passwords do not match."
+#~ msgstr "Passwords do not match."
+
+#~ msgid "Username already exists."
+#~ msgstr "Username already exists."
+
+#~ msgid "Email already registered."
+#~ msgstr "Email already registered."
+

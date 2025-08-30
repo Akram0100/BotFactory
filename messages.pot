@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-30 17:39+0000\n"
+"POT-Creation-Date: 2025-08-30 18:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,12 +77,13 @@ msgstr ""
 msgid "AI-Powered Responses"
 msgstr ""
 
-#: templates/base.html:130 templates/subscriptions.html:261
+#: templates/base.html:130 templates/index.html:78
+#: templates/subscriptions.html:261
 msgid "Telegram Integration"
 msgstr ""
 
 #: templates/base.html:131 templates/bot_edit.html:93
-#: templates/bot_list.html:83
+#: templates/bot_list.html:83 templates/index.html:92
 msgid "Knowledge Base"
 msgstr ""
 
@@ -374,6 +375,113 @@ msgstr ""
 msgid "Everything you need to create and deploy intelligent chatbots"
 msgstr ""
 
+#: templates/index.html:64
+msgid "AI-Powered Intelligence"
+msgstr ""
+
+#: templates/index.html:66
+msgid ""
+"Powered by Google Gemini AI for natural, intelligent conversations that "
+"understand context and provide helpful responses."
+msgstr ""
+
+#: templates/index.html:80
+msgid ""
+"Deploy your bots directly to Telegram with one click. Reach millions of "
+"users where they already are."
+msgstr ""
+
+#: templates/index.html:94
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge and expertise."
+msgstr ""
+
+#: templates/index.html:106
+msgid "Easy Setup"
+msgstr ""
+
+#: templates/index.html:108
+msgid ""
+"No coding required. Create and customize your chatbot with our intuitive "
+"web interface in just minutes."
+msgstr ""
+
+#: templates/index.html:120
+msgid "Analytics & Insights"
+msgstr ""
+
+#: templates/index.html:122
+msgid ""
+"Track conversations, user engagement, and bot performance with detailed "
+"analytics and reporting."
+msgstr ""
+
+#: templates/index.html:134
+msgid "Secure & Reliable"
+msgstr ""
+
+#: templates/index.html:136
+msgid ""
+"Enterprise-grade security and 99.9% uptime ensure your bots are always "
+"available when your customers need them."
+msgstr ""
+
+#: templates/index.html:149
+msgid "How It Works"
+msgstr ""
+
+#: templates/index.html:150
+msgid "Get your AI chatbot up and running in three simple steps"
+msgstr ""
+
+#: templates/index.html:160
+msgid "Create Your Bot"
+msgstr ""
+
+#: templates/index.html:162
+msgid ""
+"Sign up and create your first chatbot. Define its personality and purpose"
+" with custom prompts."
+msgstr ""
+
+#: templates/index.html:173
+msgid "Upload Knowledge"
+msgstr ""
+
+#: templates/index.html:175
+msgid ""
+"Upload your documents, FAQs, and content to train your bot with your "
+"specific knowledge base."
+msgstr ""
+
+#: templates/index.html:186
+msgid "Deploy & Share"
+msgstr ""
+
+#: templates/index.html:188
+msgid ""
+"Connect to Telegram and share your bot with users. Monitor conversations "
+"and improve over time."
+msgstr ""
+
+#: templates/index.html:200
+msgid "Simple, Transparent Pricing"
+msgstr ""
+
+#: templates/index.html:201
+msgid "Start free and scale as you grow"
+msgstr ""
+
+#: templates/index.html:208 templates/subscriptions.html:236
+msgid "Free"
+msgstr ""
+
+#: templates/index.html:211 templates/subscriptions.html:44
+#: templates/subscriptions.html:106 templates/subscriptions.html:174
+msgid "/month"
+msgstr ""
+
 #: templates/subscriptions.html:13
 msgid "Subscription Plans"
 msgstr ""
@@ -397,11 +505,6 @@ msgstr ""
 #: templates/subscriptions.html:37 templates/subscriptions.html:97
 #: templates/subscriptions.html:163
 msgid "Current Plan"
-msgstr ""
-
-#: templates/subscriptions.html:44 templates/subscriptions.html:106
-#: templates/subscriptions.html:174
-msgid "/month"
 msgstr ""
 
 #: templates/subscriptions.html:46
@@ -508,10 +611,6 @@ msgstr ""
 
 #: templates/subscriptions.html:235
 msgid "Feature"
-msgstr ""
-
-#: templates/subscriptions.html:236
-msgid "Free"
 msgstr ""
 
 #: templates/subscriptions.html:237 templates/subscriptions.html:275
