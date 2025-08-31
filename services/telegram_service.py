@@ -172,12 +172,18 @@ class TelegramService:
             return False
     
     async def _handle_start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
-        """Handle /start command"""
+        """Handle /start command with language selection"""
         try:
             user = update.effective_user
-            welcome_message = f"Salom {user.first_name}! 👋\n\n"
-            welcome_message += f"Men {bot.name} botiman. Sizga qanday yordam bera olaman?\n\n"
-            welcome_message += "Menga savolingizni yuboring va men sizga javob beraman! 💬"
+            user_id = user.id
+            
+            # Check if user already has language preference
+            if user_id in self.user_languages:
+                # User has language preference, show welcome in that language
+                await self._show_welcome_message(update, bot, self.user_languages[user_id])
+            else:
+                # Show language selection
+                await self._show_language_selection(update, bot)
             
             # Send notification to admin about new user
             await self._send_notification(bot, f"🆕 Yangi foydalanuvchi: {user.first_name} (@{user.username or 'username yoq'}) - ID: {user.id}")
@@ -185,45 +191,51 @@ class TelegramService:
             # Update bot statistics
             await self._update_bot_stats(bot)
             
-            await update.message.reply_text(welcome_message)
-            
         except Exception as e:
             logging.error(f"Start command error: {e}")
-            await update.message.reply_text("Kechirasiz, xatolik yuz berdi.")
+            # Fallback error message in multiple languages
+            error_msg = "❌ Xatolik / Ошибка / Error\n\n"
+            error_msg += "🇺🇿 Kechirasiz, xatolik yuz berdi.\n"
+            error_msg += "🇷🇺 Извините, произошла ошибка.\n"
+            error_msg += "🇬🇧 Sorry, an error occurred."
+            await update.message.reply_text(error_msg)
     
     async def _handle_help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle /help command"""
         try:
-            help_message = f"ℹ️ **{bot.name} - Yordam**\n\n"
-            help_message += "**Qanday foydalanish:**\n"
-            help_message += "• Menga oddiy matn yuboring\n"
-            help_message += "• Men sizga javob beraman\n"
-            help_message += "• /start - Botni qayta ishga tushirish\n"
-            help_message += "• /help - Bu yordam habarini ko'rish\n\n"
-            help_message += "Savollar bormi? Menga yozing! 😊"
+            user_id = update.effective_user.id
+            user_lang = self.user_languages.get(user_id, 'uz')
+            
+            help_message = self._get_localized_help_message(bot.name, user_lang)
             
             await update.message.reply_text(help_message, parse_mode='Markdown')
             
         except Exception as e:
             logging.error(f"Help command error: {e}")
-            await update.message.reply_text("Yordam habarini yuklashda xatolik yuz berdi.")
+            user_id = update.effective_user.id
+            user_lang = self.user_languages.get(user_id, 'uz')
+            error_msg = self._get_localized_text('error', user_lang)
+            await update.message.reply_text(error_msg)
     
     async def _handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle regular text messages"""
         try:
             user = update.effective_user
             user_message = update.message.text
+            user_id = user.id
+            user_lang = self.user_languages.get(user_id, 'uz')
             
             # Send notification to admin about user message
             notification_text = f"💬 **Yangi xabar**\n"
             notification_text += f"👤 Foydalanuvchi: {user.first_name} (@{user.username or 'username yoq'})\n"
             notification_text += f"🆔 ID: {user.id}\n"
+            notification_text += f"🌐 Til: {user_lang}\n"
             notification_text += f"📝 Xabar: {user_message}"
             
             await self._send_notification(bot, notification_text)
             
-            # Get AI response
-            ai_response = self.ai_service.get_response(bot, user_message)
+            # Get AI response with user's language preference
+            ai_response = self.ai_service.get_response(bot, user_message, user_language=user_lang)
             
             # Send response to user
             if ai_response:
@@ -236,14 +248,18 @@ class TelegramService:
                 
                 await self._send_notification(bot, response_notification)
             else:
-                await update.message.reply_text("Kechirasiz, hozir javob bera olmayman. Keyinroq qaytib urinib ko'ring.")
+                no_response_msg = self._get_localized_text('no_response', user_lang)
+                await update.message.reply_text(no_response_msg)
             
             # Update bot statistics
             await self._update_bot_stats(bot)
             
         except Exception as e:
             logging.error(f"Message handling error: {e}")
-            await update.message.reply_text("Kechirasiz, xatolik yuz berdi.")
+            user_id = update.effective_user.id if update.effective_user else None
+            user_lang = self.user_languages.get(user_id, 'uz') if user_id else 'uz'
+            error_msg = self._get_localized_text('error', user_lang)
+            await update.message.reply_text(error_msg)
     
     async def _handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle callback queries from inline keyboards"""
@@ -253,6 +269,7 @@ class TelegramService:
             
             user = query.from_user
             callback_data = query.data
+            user_id = user.id
             
             # Send notification about callback
             notification_text = f"🔘 **Callback query**\n"
@@ -262,11 +279,22 @@ class TelegramService:
             
             await self._send_notification(bot, notification_text)
             
+            # Handle language selection
+            if callback_data.startswith("lang_"):
+                language = callback_data.split("_")[1]  # Extract language code
+                self.user_languages[user_id] = language
+                
+                # Show welcome message in selected language
+                await self._show_welcome_message(query, bot, language, edit_message=True)
+                
             # Handle different callback actions
-            if callback_data == "help":
+            elif callback_data == "help":
                 await self._handle_help_command(update, context, bot)
             else:
-                await query.edit_message_text("Tanlov amalga oshirildi!")
+                # Get user's language for response
+                user_lang = self.user_languages.get(user_id, 'uz')
+                response_msg = self._get_localized_text("selection_completed", user_lang)
+                await query.edit_message_text(response_msg)
             
         except Exception as e:
             logging.error(f"Callback handling error: {e}")
@@ -319,6 +347,132 @@ class TelegramService:
                 db.session.rollback()
             except:
                 pass
+    
+    async def _show_language_selection(self, update, bot):
+        """Show language selection menu"""
+        try:
+            user = update.effective_user
+            
+            # Create multilingual welcome message
+            welcome_text = "🌐 **Tilni tanlang / Выберите язык / Choose Language**\\n\\n"
+            welcome_text += f"Salom {user.first_name}! Men {bot.name} botiman.\\n"
+            welcome_text += f"Привет {user.first_name}! Я бот {bot.name}.\\n" 
+            welcome_text += f"Hello {user.first_name}! I'm {bot.name} bot.\\n\\n"
+            welcome_text += "Muloqot uchun tilni tanlang:"
+            
+            # Create inline keyboard with language options
+            keyboard = [
+                [InlineKeyboardButton("🇺🇿 O'zbek", callback_data="lang_uz")],
+                [InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru")],
+                [InlineKeyboardButton("🇬🇧 English", callback_data="lang_en")]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            await update.message.reply_text(welcome_text, reply_markup=reply_markup, parse_mode='Markdown')
+            
+        except Exception as e:
+            logging.error(f"Language selection error: {e}")
+    
+    async def _show_welcome_message(self, update_or_query, bot, language, edit_message=False):
+        """Show welcome message in selected language"""
+        try:
+            if edit_message:
+                # This is from callback query
+                user = update_or_query.from_user
+            else:
+                # This is from regular update
+                user = update_or_query.effective_user
+            
+            welcome_msg = self._get_localized_welcome_message(user.first_name, bot.name, language)
+            
+            if edit_message:
+                await update_or_query.edit_message_text(welcome_msg, parse_mode='Markdown')
+            else:
+                await update_or_query.message.reply_text(welcome_msg, parse_mode='Markdown')
+                
+        except Exception as e:
+            logging.error(f"Welcome message error: {e}")
+    
+    def _get_localized_welcome_message(self, user_name, bot_name, language):
+        """Get welcome message in specified language"""
+        messages = {
+            'uz': {
+                'welcome': f"Salom {user_name}! 👋\\n\\n"
+                          f"Men {bot_name} botiman. Sizga qanday yordam bera olaman?\\n\\n"
+                          f"Menga savolingizni yuboring va men sizga javob beraman! 💬\\n\\n"
+                          f"Tilni o'zgartirish uchun /start buyrug'ini qayta yuboring."
+            },
+            'ru': {
+                'welcome': f"Привет {user_name}! 👋\\n\\n"
+                          f"Я бот {bot_name}. Как я могу вам помочь?\\n\\n"
+                          f"Отправьте мне ваш вопрос, и я отвечу! 💬\\n\\n"
+                          f"Чтобы изменить язык, отправьте команду /start снова."
+            },
+            'en': {
+                'welcome': f"Hello {user_name}! 👋\\n\\n"
+                          f"I'm {bot_name} bot. How can I help you?\\n\\n"
+                          f"Send me your question and I'll respond! 💬\\n\\n"
+                          f"To change language, send /start command again."
+            }
+        }
+        
+        return messages.get(language, messages['uz'])['welcome']
+    
+    def _get_localized_text(self, key, language):
+        """Get localized text for given key and language"""
+        texts = {
+            'selection_completed': {
+                'uz': "Tanlov amalga oshirildi! ✅",
+                'ru': "Выбор сделан! ✅", 
+                'en': "Selection completed! ✅"
+            },
+            'error': {
+                'uz': "Kechirasiz, xatolik yuz berdi.",
+                'ru': "Извините, произошла ошибка.",
+                'en': "Sorry, an error occurred."
+            },
+            'no_response': {
+                'uz': "Kechirasiz, hozir javob bera olmayman. Keyinroq qaytib urinib ko'ring.",
+                'ru': "Извините, не могу ответить сейчас. Попробуйте позже.",
+                'en': "Sorry, I can't respond right now. Please try again later."
+            }
+        }
+        
+        return texts.get(key, {}).get(language, texts.get(key, {}).get('uz', 'Unknown'))
+    
+    def _get_localized_help_message(self, bot_name, language):
+        """Get help message in specified language"""
+        help_messages = {
+            'uz': {
+                'help': f"ℹ️ **{bot_name} - Yordam**\\n\\n"
+                       f"**Qanday foydalanish:**\\n"
+                       f"• Menga oddiy matn yuboring\\n"
+                       f"• Men sizga javob beraman\\n"
+                       f"• /start - Botni qayta ishga tushirish\\n"
+                       f"• /help - Bu yordam habarini ko'rish\\n\\n"
+                       f"Savollar bormi? Menga yozing! 😊"
+            },
+            'ru': {
+                'help': f"ℹ️ **{bot_name} - Помощь**\\n\\n"
+                       f"**Как использовать:**\\n"
+                       f"• Отправьте мне обычное сообщение\\n"
+                       f"• Я отвечу вам\\n"
+                       f"• /start - Перезапустить бота\\n"
+                       f"• /help - Показать это сообщение помощи\\n\\n"
+                       f"Есть вопросы? Пишите мне! 😊"
+            },
+            'en': {
+                'help': f"ℹ️ **{bot_name} - Help**\\n\\n"
+                       f"**How to use:**\\n"
+                       f"• Send me a regular text message\\n"
+                       f"• I will respond to you\\n"
+                       f"• /start - Restart the bot\\n"
+                       f"• /help - Show this help message\\n\\n"
+                       f"Have questions? Write to me! 😊"
+            }
+        }
+        
+        return help_messages.get(language, help_messages['uz'])['help']
     
     def get_active_bots(self):
         """Get list of currently active bot IDs"""
