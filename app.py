@@ -115,6 +115,10 @@ def create_app():
         import models  # noqa: F401
         db.create_all()
         logging.info("Database tables created")
+        
+        # TODO: Initialize notification templates after fixing Unicode encoding
+        # from services.notification_service import NotificationService
+        # NotificationService.initialize_templates()
     
     return app
 

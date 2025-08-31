@@ -17,7 +17,7 @@ class BroadcastService:
     @staticmethod
     def create_broadcast(admin_id, title, message_text, message_html=None, 
                         target_subscription=SubscriptionType.FREE, 
-                        allow_basic=False, allow_premium=False):
+                        allow_basic=False, allow_premium=False, scheduled_at=None):
         """Create a new broadcast message"""
         try:
             broadcast = AdminBroadcast(
@@ -27,7 +27,9 @@ class BroadcastService:
                 message_html=message_html,
                 target_subscription=target_subscription,
                 allow_basic=allow_basic,
-                allow_premium=allow_premium
+                allow_premium=allow_premium,
+                scheduled_at=scheduled_at,
+                is_scheduled=scheduled_at is not None
             )
             
             db.session.add(broadcast)
@@ -240,6 +242,79 @@ class BroadcastService:
         except Exception as e:
             current_app.logger.error(f"Error getting broadcast stats: {str(e)}")
             return None
+    
+    @staticmethod
+    def check_and_send_scheduled_broadcasts():
+        """Check for scheduled broadcasts that are ready to be sent"""
+        try:
+            current_time = datetime.utcnow()
+            
+            # Get scheduled broadcasts that are ready to send
+            ready_broadcasts = AdminBroadcast.query.filter(
+                AdminBroadcast.is_scheduled == True,
+                AdminBroadcast.is_sent == False,
+                AdminBroadcast.scheduled_at <= current_time
+            ).all()
+            
+            results = []
+            for broadcast in ready_broadcasts:
+                success, message = BroadcastService.send_broadcast(broadcast.id)
+                results.append({
+                    'broadcast_id': broadcast.id,
+                    'title': broadcast.title,
+                    'success': success,
+                    'message': message
+                })
+            
+            return results
+            
+        except Exception as e:
+            current_app.logger.error(f"Error checking scheduled broadcasts: {str(e)}")
+            return []
+    
+    @staticmethod
+    def get_scheduled_broadcasts(admin_id=None):
+        """Get list of scheduled broadcasts"""
+        try:
+            query = AdminBroadcast.query.filter(
+                AdminBroadcast.is_scheduled == True,
+                AdminBroadcast.is_sent == False
+            )
+            
+            if admin_id:
+                query = query.filter_by(admin_id=admin_id)
+            
+            broadcasts = query.order_by(AdminBroadcast.scheduled_at.asc()).all()
+            return broadcasts
+        except Exception as e:
+            current_app.logger.error(f"Error getting scheduled broadcasts: {str(e)}")
+            return []
+    
+    @staticmethod
+    def cancel_scheduled_broadcast(broadcast_id, admin_id=None):
+        """Cancel a scheduled broadcast"""
+        try:
+            query = AdminBroadcast.query.filter_by(id=broadcast_id)
+            if admin_id:
+                query = query.filter_by(admin_id=admin_id)
+            
+            broadcast = query.first()
+            if not broadcast:
+                return False, "Broadcast not found"
+            
+            if broadcast.is_sent:
+                return False, "Cannot cancel already sent broadcast"
+            
+            broadcast.is_scheduled = False
+            broadcast.scheduled_at = None
+            db.session.commit()
+            
+            return True, "Broadcast cancelled successfully"
+            
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Error cancelling broadcast: {str(e)}")
+            return False, str(e)
     
     @staticmethod
     def sanitize_html(html_content):

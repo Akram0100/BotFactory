@@ -180,6 +180,8 @@ class AdminBroadcast(db.Model):
     allow_premium = db.Column(db.Boolean, default=False)
     is_sent = db.Column(db.Boolean, default=False)
     sent_at = db.Column(db.DateTime, nullable=True)
+    scheduled_at = db.Column(db.DateTime, nullable=True)  # For scheduling broadcasts
+    is_scheduled = db.Column(db.Boolean, default=False)
     total_bots = db.Column(db.Integer, default=0)
     successful_sends = db.Column(db.Integer, default=0)
     failed_sends = db.Column(db.Integer, default=0)
@@ -212,3 +214,53 @@ class BroadcastDelivery(db.Model):
     
     def __repr__(self):
         return f'<BroadcastDelivery {self.id}>'
+
+class NotificationType(enum.Enum):
+    TRIAL_EXPIRING_3_DAYS = "trial_expiring_3_days"
+    TRIAL_EXPIRED = "trial_expired"
+    SUBSCRIPTION_EXPIRING_1_DAY = "subscription_expiring_1_day"
+    SUBSCRIPTION_EXPIRED = "subscription_expired"
+
+class NotificationTemplate(db.Model):
+    """Templates for automatic notifications"""
+    __tablename__ = 'notification_templates'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    notification_type = db.Column(db.Enum(NotificationType), nullable=False, unique=True)
+    message_uz = db.Column(db.Text, nullable=False)
+    message_ru = db.Column(db.Text, nullable=False)
+    message_en = db.Column(db.Text, nullable=False)
+    is_active = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    def get_message(self, language='en'):
+        """Get message text for specified language"""
+        if language == 'uz':
+            return self.message_uz
+        elif language == 'ru':
+            return self.message_ru
+        else:
+            return self.message_en
+    
+    def __repr__(self):
+        return f'<NotificationTemplate {self.notification_type.value}>'
+
+class UserNotification(db.Model):
+    """Track notifications sent to users"""
+    __tablename__ = 'user_notifications'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    notification_type = db.Column(db.Enum(NotificationType), nullable=False)
+    message_text = db.Column(db.Text, nullable=False)
+    is_sent = db.Column(db.Boolean, default=False)
+    sent_at = db.Column(db.DateTime, nullable=True)
+    error_message = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    user = db.relationship('User', backref='notifications')
+    
+    def __repr__(self):
+        return f'<UserNotification {self.notification_type.value} for User {self.user_id}>'
