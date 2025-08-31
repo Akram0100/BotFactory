@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 18:58+0000\n"
+"POT-Creation-Date: 2025-08-31 05:16+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: en\n"
@@ -18,11 +18,14 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
-#: templates/base.html:36 templates/subscriptions.html:12
+#: templates/base.html:36 templates/bot_create.html:12
+#: templates/bot_edit.html:12 templates/bot_list.html:12
+#: templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: templates/base.html:41
+#: templates/base.html:41 templates/bot_create.html:13
+#: templates/bot_edit.html:13 templates/bot_list.html:13
 msgid "My Bots"
 msgstr "My Bots"
 
@@ -81,7 +84,7 @@ msgid "AI-Powered Responses"
 msgstr "AI-Powered Conversations"
 
 #: templates/base.html:130 templates/index.html:78
-#: templates/subscriptions.html:261
+#: templates/subscriptions.html:285
 #, fuzzy
 msgid "Telegram Integration"
 msgstr "Easy Integration"
@@ -95,7 +98,7 @@ msgstr "Knowledge Base"
 msgid "Analytics"
 msgstr "Analytics"
 
-#: templates/base.html:136 templates/subscriptions.html:285
+#: templates/base.html:136 templates/subscriptions.html:309
 #, fuzzy
 msgid "Support"
 msgstr "Email support"
@@ -120,6 +123,42 @@ msgstr ""
 #, fuzzy
 msgid "Powered by Google Gemini AI"
 msgstr "Smart, contextual responses powered by Google Gemini AI"
+
+#: templates/bot_create.html:14 templates/bot_list.html:24
+#: templates/dashboard.html:17 templates/dashboard.html:214
+msgid "Create New Bot"
+msgstr "Create New Bot"
+
+#: templates/bot_create.html:17
+#, fuzzy
+msgid "Create New AI Chatbot"
+msgstr "Create New Bot"
+
+#: templates/bot_create.html:31
+#, fuzzy
+msgid "Let's Create Your Bot"
+msgstr "Create your account"
+
+#: templates/bot_create.html:32
+msgid "Fill in the details below to get started"
+msgstr ""
+
+#: templates/bot_create.html:37 templates/bot_edit.html:117
+msgid "Bot Name"
+msgstr "Bot Name"
+
+#: templates/bot_create.html:43
+#, fuzzy
+msgid "Enter a name for your bot"
+msgstr "Create your account"
+
+#: templates/bot_create.html:45
+msgid "Choose a friendly name that represents your bot's purpose"
+msgstr ""
+
+#: templates/bot_create.html:49 templates/bot_edit.html:132
+msgid "Description"
+msgstr "Description"
 
 #: templates/bot_edit.html:25 templates/bot_list.html:108
 #, fuzzy
@@ -174,10 +213,6 @@ msgstr "Edit Bot"
 msgid "Bot Configuration"
 msgstr "Bot Configuration"
 
-#: templates/bot_edit.html:117
-msgid "Bot Name"
-msgstr "Bot Name"
-
 #: templates/bot_edit.html:122
 #, fuzzy
 msgid "Telegram Username"
@@ -187,10 +222,6 @@ msgstr "Telegram Setup"
 #, fuzzy
 msgid "Not configured"
 msgstr "Bot Configuration"
-
-#: templates/bot_edit.html:132
-msgid "Description"
-msgstr "Description"
 
 #: templates/bot_edit.html:138
 msgid "Bot Personality & Instructions"
@@ -240,11 +271,6 @@ msgstr "AI chatbots"
 #: templates/bot_list.html:19
 msgid "Manage and monitor your intelligent chatbots"
 msgstr ""
-
-#: templates/bot_list.html:24 templates/dashboard.html:17
-#: templates/dashboard.html:214
-msgid "Create New Bot"
-msgstr "Create New Bot"
 
 #: templates/bot_list.html:28
 msgid "Upgrade to Create More"
@@ -326,7 +352,7 @@ msgstr ""
 msgid "Create your first AI chatbot to get started"
 msgstr ""
 
-#: templates/dashboard.html:146 templates/subscriptions.html:376
+#: templates/dashboard.html:146 templates/subscriptions.html:400
 #, fuzzy
 msgid "Create Your First Bot"
 msgstr "Create your account"
@@ -455,70 +481,68 @@ msgstr ""
 msgid "Secure & Reliable"
 msgstr ""
 
-#: templates/index.html:136
-#, python-format
-msgid ""
-"Enterprise-grade security and 99.9% uptime ensure your bots are always "
-"available when your customers need them."
-msgstr ""
-
-#: templates/index.html:149
+#: templates/index.html:155
 msgid "How It Works"
 msgstr ""
 
-#: templates/index.html:150
+#: templates/index.html:156
 msgid "Get your AI chatbot up and running in three simple steps"
 msgstr ""
 
-#: templates/index.html:160
+#: templates/index.html:166
 #, fuzzy
 msgid "Create Your Bot"
 msgstr "Create your account"
 
-#: templates/index.html:162
+#: templates/index.html:168
 msgid ""
 "Sign up and create your first chatbot. Define its personality and purpose"
 " with custom prompts."
 msgstr ""
 
-#: templates/index.html:173
+#: templates/index.html:179
 #, fuzzy
 msgid "Upload Knowledge"
 msgstr "Knowledge Base"
 
-#: templates/index.html:175
+#: templates/index.html:181
 msgid ""
 "Upload your documents, FAQs, and content to train your bot with your "
 "specific knowledge base."
 msgstr ""
 
-#: templates/index.html:186
+#: templates/index.html:192
 msgid "Deploy & Share"
 msgstr ""
 
-#: templates/index.html:188
+#: templates/index.html:194
 msgid ""
 "Connect to Telegram and share your bot with users. Monitor conversations "
 "and improve over time."
 msgstr ""
 
-#: templates/index.html:200
+#: templates/index.html:206
 msgid "Simple, Transparent Pricing"
 msgstr ""
 
-#: templates/index.html:201
+#: templates/index.html:207
 msgid "Start free and scale as you grow"
 msgstr ""
 
-#: templates/index.html:208 templates/subscriptions.html:236
+#: templates/index.html:214 templates/subscriptions.html:260
 msgid "Free"
 msgstr "Free"
 
-#: templates/index.html:211 templates/subscriptions.html:44
-#: templates/subscriptions.html:106 templates/subscriptions.html:174
+#: templates/index.html:217 templates/subscriptions.html:52
+#: templates/subscriptions.html:122 templates/subscriptions.html:198
 #, fuzzy
 msgid "/month"
 msgstr "per month"
+
+#: templates/index.html:238
+#, fuzzy
+msgid "Basic knowledge base"
+msgstr "Knowledge Base"
 
 #: templates/subscriptions.html:13
 #, fuzzy
@@ -543,245 +567,245 @@ msgstr "Current Plan"
 msgid "plan"
 msgstr "Plans"
 
-#: templates/subscriptions.html:37 templates/subscriptions.html:97
-#: templates/subscriptions.html:163
+#: templates/subscriptions.html:37 templates/subscriptions.html:105
+#: templates/subscriptions.html:179
 msgid "Current Plan"
 msgstr "Current Plan"
 
-#: templates/subscriptions.html:46
+#: templates/subscriptions.html:54
 msgid "Perfect for trying out BotFactory"
 msgstr ""
 
-#: templates/subscriptions.html:51
+#: templates/subscriptions.html:59
 #, fuzzy
 msgid "AI chatbot"
 msgstr "AI chatbots"
 
-#: templates/subscriptions.html:55 templates/subscriptions.html:117
-#: templates/subscriptions.html:185
+#: templates/subscriptions.html:63 templates/subscriptions.html:133
+#: templates/subscriptions.html:209
 msgid "messages per month"
 msgstr "messages per month"
 
-#: templates/subscriptions.html:59 templates/subscriptions.html:121
+#: templates/subscriptions.html:67 templates/subscriptions.html:137
 #, fuzzy
 msgid "knowledge base entries"
 msgstr "Knowledge base entries"
 
-#: templates/subscriptions.html:63
+#: templates/subscriptions.html:71
 #, fuzzy
 msgid "Telegram integration"
 msgstr "Easy Integration"
 
-#: templates/subscriptions.html:67
+#: templates/subscriptions.html:75
 #, fuzzy
 msgid "Basic support"
 msgstr "Email support"
 
-#: templates/subscriptions.html:71 templates/subscriptions.html:129
-#: templates/subscriptions.html:197
+#: templates/subscriptions.html:79 templates/subscriptions.html:145
+#: templates/subscriptions.html:221
 msgid "Priority support"
 msgstr "Priority support"
 
-#: templates/subscriptions.html:75
+#: templates/subscriptions.html:83
 msgid "Analytics dashboard"
 msgstr "Analytics dashboard"
 
-#: templates/subscriptions.html:81
+#: templates/subscriptions.html:89
 msgid "Switch to Free"
 msgstr ""
 
-#: templates/subscriptions.html:99
+#: templates/subscriptions.html:107
 msgid "Most Popular"
 msgstr ""
 
-#: templates/subscriptions.html:108
+#: templates/subscriptions.html:124
 msgid "Great for small businesses"
 msgstr ""
 
-#: templates/subscriptions.html:113 templates/subscriptions.html:181
+#: templates/subscriptions.html:129 templates/subscriptions.html:205
 msgid "AI chatbots"
 msgstr "AI chatbots"
 
-#: templates/subscriptions.html:125 templates/subscriptions.html:193
+#: templates/subscriptions.html:141 templates/subscriptions.html:217
 #, fuzzy
 msgid "All integrations"
 msgstr "Easy Integration"
 
-#: templates/subscriptions.html:133
+#: templates/subscriptions.html:149
 msgid "Custom bot personalities"
 msgstr ""
 
-#: templates/subscriptions.html:137
+#: templates/subscriptions.html:153
 #, fuzzy
 msgid "Basic analytics"
 msgstr "Analytics"
 
-#: templates/subscriptions.html:144
+#: templates/subscriptions.html:160
 #, fuzzy
 msgid "Upgrade to Basic"
 msgstr "Upgrade"
 
-#: templates/subscriptions.html:146
+#: templates/subscriptions.html:162
 msgid "Switch to Basic"
 msgstr ""
 
-#: templates/subscriptions.html:176
+#: templates/subscriptions.html:200
 msgid "For growing businesses and agencies"
 msgstr ""
 
-#: templates/subscriptions.html:189 templates/subscriptions.html:258
+#: templates/subscriptions.html:213 templates/subscriptions.html:282
 msgid "Unlimited"
 msgstr ""
 
-#: templates/subscriptions.html:189
+#: templates/subscriptions.html:213
 #, fuzzy
 msgid "knowledge base"
 msgstr "Knowledge Base"
 
-#: templates/subscriptions.html:201
+#: templates/subscriptions.html:225
 #, fuzzy
 msgid "Advanced analytics"
 msgstr "Analytics"
 
-#: templates/subscriptions.html:205
+#: templates/subscriptions.html:229
 msgid "API access"
 msgstr "API access"
 
-#: templates/subscriptions.html:212
+#: templates/subscriptions.html:236
 msgid "Upgrade to Premium"
 msgstr ""
 
-#: templates/subscriptions.html:214
+#: templates/subscriptions.html:238
 #, fuzzy
 msgid "Choose Premium"
 msgstr "Premium"
 
-#: templates/subscriptions.html:230
+#: templates/subscriptions.html:254
 msgid "Feature Comparison"
 msgstr ""
 
-#: templates/subscriptions.html:235
+#: templates/subscriptions.html:259
 msgid "Feature"
 msgstr ""
 
-#: templates/subscriptions.html:237 templates/subscriptions.html:275
+#: templates/subscriptions.html:261 templates/subscriptions.html:299
 msgid "Basic"
 msgstr "Basic"
 
-#: templates/subscriptions.html:238
+#: templates/subscriptions.html:262
 msgid "Premium"
 msgstr "Premium"
 
-#: templates/subscriptions.html:243
+#: templates/subscriptions.html:267
 #, fuzzy
 msgid "AI Chatbots"
 msgstr "AI chatbots"
 
-#: templates/subscriptions.html:249
+#: templates/subscriptions.html:273
 #, fuzzy
 msgid "Messages per Month"
 msgstr "messages per month"
 
-#: templates/subscriptions.html:255
+#: templates/subscriptions.html:279
 #, fuzzy
 msgid "Knowledge Base Entries"
 msgstr "Knowledge base entries"
 
-#: templates/subscriptions.html:267
+#: templates/subscriptions.html:291
 msgid "Custom AI Personalities"
 msgstr ""
 
-#: templates/subscriptions.html:273
+#: templates/subscriptions.html:297
 #, fuzzy
 msgid "Analytics Dashboard"
 msgstr "Analytics dashboard"
 
-#: templates/subscriptions.html:276
+#: templates/subscriptions.html:300
 msgid "Advanced"
 msgstr ""
 
-#: templates/subscriptions.html:279
+#: templates/subscriptions.html:303
 #, fuzzy
 msgid "API Access"
 msgstr "API access"
 
-#: templates/subscriptions.html:286
+#: templates/subscriptions.html:310
 msgid "Community"
 msgstr ""
 
-#: templates/subscriptions.html:287 templates/subscriptions.html:288
+#: templates/subscriptions.html:311 templates/subscriptions.html:312
 #, fuzzy
 msgid "Priority"
 msgstr "Priority support"
 
-#: templates/subscriptions.html:299
+#: templates/subscriptions.html:323
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: templates/subscriptions.html:305
+#: templates/subscriptions.html:329
 msgid "Can I upgrade or downgrade my plan anytime?"
 msgstr ""
 
-#: templates/subscriptions.html:310
+#: templates/subscriptions.html:334
 msgid ""
 "Yes, you can upgrade or downgrade your subscription plan at any time. "
 "Changes take effect immediately, and billing is prorated accordingly."
 msgstr ""
 
-#: templates/subscriptions.html:318
+#: templates/subscriptions.html:342
 msgid "What happens if I exceed my message limit?"
 msgstr ""
 
-#: templates/subscriptions.html:323
+#: templates/subscriptions.html:347
 msgid ""
 "When you reach your monthly message limit, your bots will temporarily "
 "stop responding until the next billing cycle or you upgrade your plan. "
 "We'll notify you before you reach the limit."
 msgstr ""
 
-#: templates/subscriptions.html:331
+#: templates/subscriptions.html:355
 msgid "Is there a free trial for paid plans?"
 msgstr ""
 
-#: templates/subscriptions.html:336
+#: templates/subscriptions.html:360
 msgid ""
 "Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
 " during the trial period without being charged."
 msgstr ""
 
-#: templates/subscriptions.html:344
+#: templates/subscriptions.html:368
 msgid "What payment methods do you accept?"
 msgstr ""
 
-#: templates/subscriptions.html:349
+#: templates/subscriptions.html:373
 msgid ""
 "We accept all major credit cards (Visa, Mastercard, American Express) and"
 " PayPal. All payments are processed securely through Stripe."
 msgstr ""
 
-#: templates/subscriptions.html:357
+#: templates/subscriptions.html:381
 msgid "Can I cancel my subscription?"
 msgstr ""
 
-#: templates/subscriptions.html:362
+#: templates/subscriptions.html:386
 msgid ""
 "Yes, you can cancel your subscription at any time. Your bots will "
 "continue to work until the end of your current billing period, after "
 "which they'll be downgraded to the free plan limits."
 msgstr ""
 
-#: templates/subscriptions.html:372
+#: templates/subscriptions.html:396
 msgid "Ready to get started?"
 msgstr ""
 
-#: templates/subscriptions.html:373
+#: templates/subscriptions.html:397
 msgid ""
 "Choose a plan that fits your needs and start building powerful AI "
 "chatbots today."
 msgstr ""
 
 # Navigation
-#: templates/subscriptions.html:379
+#: templates/subscriptions.html:403
 #, fuzzy
 msgid "Go to Dashboard"
 msgstr "Dashboard"
@@ -869,4 +893,10 @@ msgstr "Dashboard"
 
 #~ msgid "Email already registered."
 #~ msgstr "Email already registered."
+
+#~ msgid ""
+#~ "Enterprise-grade security and 99.9% "
+#~ "uptime ensure your bots are always "
+#~ "available when your customers need them."
+#~ msgstr ""
 

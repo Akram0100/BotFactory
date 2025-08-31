@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-30 18:58+0000\n"
+"POT-Creation-Date: 2025-08-31 05:16+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -18,11 +18,14 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 # Navigation
-#: templates/base.html:36 templates/subscriptions.html:12
+#: templates/base.html:36 templates/bot_create.html:12
+#: templates/bot_edit.html:12 templates/bot_list.html:12
+#: templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr "Boshqaruv paneli"
 
-#: templates/base.html:41
+#: templates/base.html:41 templates/bot_create.html:13
+#: templates/bot_edit.html:13 templates/bot_list.html:13
 msgid "My Bots"
 msgstr "Mening botlarim"
 
@@ -82,7 +85,7 @@ msgid "AI-Powered Responses"
 msgstr "AI asosidagi javoblar"
 
 #: templates/base.html:130 templates/index.html:78
-#: templates/subscriptions.html:261
+#: templates/subscriptions.html:285
 #, fuzzy
 msgid "Telegram Integration"
 msgstr "Telegram bot konfiguratsiyasi"
@@ -96,7 +99,7 @@ msgstr "Bilimlar bazasi"
 msgid "Analytics"
 msgstr "Analitika"
 
-#: templates/base.html:136 templates/subscriptions.html:285
+#: templates/base.html:136 templates/subscriptions.html:309
 msgid "Support"
 msgstr "Yordam"
 
@@ -119,6 +122,42 @@ msgstr "Barcha huquqlar himoyalangan."
 #: templates/base.html:150
 msgid "Powered by Google Gemini AI"
 msgstr "Google Gemini AI tomonidan quvvatlanadi"
+
+#: templates/bot_create.html:14 templates/bot_list.html:24
+#: templates/dashboard.html:17 templates/dashboard.html:214
+msgid "Create New Bot"
+msgstr "Yangi bot yaratish"
+
+#: templates/bot_create.html:17
+#, fuzzy
+msgid "Create New AI Chatbot"
+msgstr "Yangi bot yaratish"
+
+#: templates/bot_create.html:31
+#, fuzzy
+msgid "Let's Create Your Bot"
+msgstr "Birinchi botingizni yarating"
+
+#: templates/bot_create.html:32
+msgid "Fill in the details below to get started"
+msgstr ""
+
+#: templates/bot_create.html:37 templates/bot_edit.html:117
+msgid "Bot Name"
+msgstr "Bot nomi"
+
+#: templates/bot_create.html:43
+#, fuzzy
+msgid "Enter a name for your bot"
+msgstr "Birinchi botingizni yarating"
+
+#: templates/bot_create.html:45
+msgid "Choose a friendly name that represents your bot's purpose"
+msgstr ""
+
+#: templates/bot_create.html:49 templates/bot_edit.html:132
+msgid "Description"
+msgstr "Tavsif"
 
 #: templates/bot_edit.html:25 templates/bot_list.html:108
 msgid "No description provided"
@@ -170,10 +209,6 @@ msgstr "Botni sinash"
 msgid "Bot Configuration"
 msgstr "Bot konfiguratsiyasi"
 
-#: templates/bot_edit.html:117
-msgid "Bot Name"
-msgstr "Bot nomi"
-
 #: templates/bot_edit.html:122
 msgid "Telegram Username"
 msgstr "Telegram foydalanuvchi nomi"
@@ -181,10 +216,6 @@ msgstr "Telegram foydalanuvchi nomi"
 #: templates/bot_edit.html:126
 msgid "Not configured"
 msgstr "Sozlanmagan"
-
-#: templates/bot_edit.html:132
-msgid "Description"
-msgstr "Tavsif"
 
 #: templates/bot_edit.html:138
 msgid "Bot Personality & Instructions"
@@ -240,11 +271,6 @@ msgstr "Mening AI chatbotlarim"
 #: templates/bot_list.html:19
 msgid "Manage and monitor your intelligent chatbots"
 msgstr "Aqlli chatbotlaringizni boshqaring va kuzating"
-
-#: templates/bot_list.html:24 templates/dashboard.html:17
-#: templates/dashboard.html:214
-msgid "Create New Bot"
-msgstr "Yangi bot yaratish"
 
 #: templates/bot_list.html:28
 msgid "Upgrade to Create More"
@@ -326,7 +352,7 @@ msgstr "Hali botlar yo'q"
 msgid "Create your first AI chatbot to get started"
 msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
 
-#: templates/dashboard.html:146 templates/subscriptions.html:376
+#: templates/dashboard.html:146 templates/subscriptions.html:400
 msgid "Create Your First Bot"
 msgstr "Birinchi botingizni yarating"
 
@@ -462,74 +488,68 @@ msgstr ""
 msgid "Secure & Reliable"
 msgstr ""
 
-#: templates/index.html:136
-#, python-format
-msgid ""
-"Enterprise-grade security and 99.9% uptime ensure your bots are always "
-"available when your customers need them."
-msgstr ""
-"Korporativ darajadagi xavfsizlik va 99.9% ishga tushish vaqti "
-"botlaringizning mijozlaringiz kerak bo'lganda doimo foydalanish "
-"mumkinligini ta'minlaydi.botlaringizning mijozlaringiz kerak bo'lganda "
-"doimo foydalanish mumkinligini ta'minlaydi."
-
-#: templates/index.html:149
+#: templates/index.html:155
 msgid "How It Works"
 msgstr "Qanday ishlaydi"
 
-#: templates/index.html:150
+#: templates/index.html:156
 #, fuzzy
 msgid "Get your AI chatbot up and running in three simple steps"
 msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
 
-#: templates/index.html:160
+#: templates/index.html:166
 #, fuzzy
 msgid "Create Your Bot"
 msgstr "Birinchi botingizni yarating"
 
-#: templates/index.html:162
+#: templates/index.html:168
 msgid ""
 "Sign up and create your first chatbot. Define its personality and purpose"
 " with custom prompts."
 msgstr ""
 
-#: templates/index.html:173
+#: templates/index.html:179
 #, fuzzy
 msgid "Upload Knowledge"
 msgstr "Bilimlar bazasi"
 
-#: templates/index.html:175
+#: templates/index.html:181
 msgid ""
 "Upload your documents, FAQs, and content to train your bot with your "
 "specific knowledge base."
 msgstr ""
 
-#: templates/index.html:186
+#: templates/index.html:192
 msgid "Deploy & Share"
 msgstr ""
 
-#: templates/index.html:188
+#: templates/index.html:194
 msgid ""
 "Connect to Telegram and share your bot with users. Monitor conversations "
 "and improve over time."
 msgstr ""
 
-#: templates/index.html:200
+#: templates/index.html:206
 msgid "Simple, Transparent Pricing"
 msgstr "Oddiy va shaffof narxlar"
 
-#: templates/index.html:201
+#: templates/index.html:207
 msgid "Start free and scale as you grow"
 msgstr "Bepul boshlang va o'sayotganda kengaytiring"
 
-#: templates/index.html:208 templates/subscriptions.html:236
+#: templates/index.html:214 templates/subscriptions.html:260
 msgid "Free"
 msgstr "Bepul"
 
-#: templates/index.html:211 templates/subscriptions.html:44
-#: templates/subscriptions.html:106 templates/subscriptions.html:174
+#: templates/index.html:217 templates/subscriptions.html:52
+#: templates/subscriptions.html:122 templates/subscriptions.html:198
 msgid "/month"
 msgstr "/oyiga"
+
+#: templates/index.html:238
+#, fuzzy
+msgid "Basic knowledge base"
+msgstr "Bilimlar bazasi"
 
 #: templates/subscriptions.html:13
 #, fuzzy
@@ -554,188 +574,188 @@ msgstr ""
 msgid "plan"
 msgstr "Rejalar"
 
-#: templates/subscriptions.html:37 templates/subscriptions.html:97
-#: templates/subscriptions.html:163
+#: templates/subscriptions.html:37 templates/subscriptions.html:105
+#: templates/subscriptions.html:179
 #, fuzzy
 msgid "Current Plan"
 msgstr "Sizning rejangiz"
 
-#: templates/subscriptions.html:46
+#: templates/subscriptions.html:54
 msgid "Perfect for trying out BotFactory"
 msgstr "BotFactory ni sinab ko'rish uchun mukammal"
 
-#: templates/subscriptions.html:51
+#: templates/subscriptions.html:59
 #, fuzzy
 msgid "AI chatbot"
 msgstr "Mening AI chatbotlarim"
 
-#: templates/subscriptions.html:55 templates/subscriptions.html:117
-#: templates/subscriptions.html:185
+#: templates/subscriptions.html:63 templates/subscriptions.html:133
+#: templates/subscriptions.html:209
 #, fuzzy
 msgid "messages per month"
 msgstr "Jami xabarlar"
 
-#: templates/subscriptions.html:59 templates/subscriptions.html:121
+#: templates/subscriptions.html:67 templates/subscriptions.html:137
 #, fuzzy
 msgid "knowledge base entries"
 msgstr "Bilimlar yozuvlari"
 
-#: templates/subscriptions.html:63
+#: templates/subscriptions.html:71
 #, fuzzy
 msgid "Telegram integration"
 msgstr "Telegram bot konfiguratsiyasi"
 
-#: templates/subscriptions.html:67
+#: templates/subscriptions.html:75
 msgid "Basic support"
 msgstr "Asosiy yordam"
 
-#: templates/subscriptions.html:71 templates/subscriptions.html:129
-#: templates/subscriptions.html:197
+#: templates/subscriptions.html:79 templates/subscriptions.html:145
+#: templates/subscriptions.html:221
 msgid "Priority support"
 msgstr "Ustuvor yordam"
 
 # Navigation
-#: templates/subscriptions.html:75
+#: templates/subscriptions.html:83
 #, fuzzy
 msgid "Analytics dashboard"
 msgstr "Boshqaruv paneli"
 
-#: templates/subscriptions.html:81
+#: templates/subscriptions.html:89
 msgid "Switch to Free"
 msgstr "Bepul rejaga o'tish"
 
-#: templates/subscriptions.html:99
+#: templates/subscriptions.html:107
 msgid "Most Popular"
 msgstr "Eng mashhur"
 
-#: templates/subscriptions.html:108
+#: templates/subscriptions.html:124
 msgid "Great for small businesses"
 msgstr "Kichik bizneslar uchun ajoyib"
 
-#: templates/subscriptions.html:113 templates/subscriptions.html:181
+#: templates/subscriptions.html:129 templates/subscriptions.html:205
 #, fuzzy
 msgid "AI chatbots"
 msgstr "Mening AI chatbotlarim"
 
-#: templates/subscriptions.html:125 templates/subscriptions.html:193
+#: templates/subscriptions.html:141 templates/subscriptions.html:217
 #, fuzzy
 msgid "All integrations"
 msgstr "Telegram bot konfiguratsiyasi"
 
-#: templates/subscriptions.html:133
+#: templates/subscriptions.html:149
 msgid "Custom bot personalities"
 msgstr "Moslashtirilgan bot shaxsiyatlari"
 
-#: templates/subscriptions.html:137
+#: templates/subscriptions.html:153
 #, fuzzy
 msgid "Basic analytics"
 msgstr "Asosiy sozlamalar"
 
-#: templates/subscriptions.html:144
+#: templates/subscriptions.html:160
 #, fuzzy
 msgid "Upgrade to Basic"
 msgstr "Rejani yangilash"
 
-#: templates/subscriptions.html:146
+#: templates/subscriptions.html:162
 msgid "Switch to Basic"
 msgstr "Asosiy rejaga o'tish"
 
-#: templates/subscriptions.html:176
+#: templates/subscriptions.html:200
 msgid "For growing businesses and agencies"
 msgstr "O'sib borayotgan bizneslar va agentliklar uchun"
 
-#: templates/subscriptions.html:189 templates/subscriptions.html:258
+#: templates/subscriptions.html:213 templates/subscriptions.html:282
 msgid "Unlimited"
 msgstr "Cheksiz"
 
-#: templates/subscriptions.html:189
+#: templates/subscriptions.html:213
 #, fuzzy
 msgid "knowledge base"
 msgstr "Bilimlar bazasi"
 
-#: templates/subscriptions.html:201
+#: templates/subscriptions.html:225
 msgid "Advanced analytics"
 msgstr "Ilg'or analitika"
 
-#: templates/subscriptions.html:205
+#: templates/subscriptions.html:229
 msgid "API access"
 msgstr "API kirish huquqi"
 
-#: templates/subscriptions.html:212
+#: templates/subscriptions.html:236
 #, fuzzy
 msgid "Upgrade to Premium"
 msgstr "Ko'proq yaratish uchun yangilang"
 
-#: templates/subscriptions.html:214
+#: templates/subscriptions.html:238
 msgid "Choose Premium"
 msgstr "Premium ni tanlang"
 
-#: templates/subscriptions.html:230
+#: templates/subscriptions.html:254
 msgid "Feature Comparison"
 msgstr "Xususiyatlarni taqqoslash"
 
-#: templates/subscriptions.html:235
+#: templates/subscriptions.html:259
 msgid "Feature"
 msgstr "Xususiyat"
 
-#: templates/subscriptions.html:237 templates/subscriptions.html:275
+#: templates/subscriptions.html:261 templates/subscriptions.html:299
 msgid "Basic"
 msgstr "Asosiy"
 
-#: templates/subscriptions.html:238
+#: templates/subscriptions.html:262
 msgid "Premium"
 msgstr "Premium"
 
-#: templates/subscriptions.html:243
+#: templates/subscriptions.html:267
 #, fuzzy
 msgid "AI Chatbots"
 msgstr "Mening AI chatbotlarim"
 
-#: templates/subscriptions.html:249
+#: templates/subscriptions.html:273
 #, fuzzy
 msgid "Messages per Month"
 msgstr "Jami xabarlar"
 
-#: templates/subscriptions.html:255
+#: templates/subscriptions.html:279
 #, fuzzy
 msgid "Knowledge Base Entries"
 msgstr "Bilimlar yozuvlari"
 
-#: templates/subscriptions.html:267
+#: templates/subscriptions.html:291
 msgid "Custom AI Personalities"
 msgstr "Moslashtirilgan AI shaxsiyatlari"
 
 # Navigation
-#: templates/subscriptions.html:273
+#: templates/subscriptions.html:297
 #, fuzzy
 msgid "Analytics Dashboard"
 msgstr "Boshqaruv paneli"
 
-#: templates/subscriptions.html:276
+#: templates/subscriptions.html:300
 msgid "Advanced"
 msgstr "Ilg'or"
 
-#: templates/subscriptions.html:279
+#: templates/subscriptions.html:303
 msgid "API Access"
 msgstr "API kirish huquqi"
 
-#: templates/subscriptions.html:286
+#: templates/subscriptions.html:310
 msgid "Community"
 msgstr "Hamjamiyat"
 
-#: templates/subscriptions.html:287 templates/subscriptions.html:288
+#: templates/subscriptions.html:311 templates/subscriptions.html:312
 msgid "Priority"
 msgstr "Ustuvor"
 
-#: templates/subscriptions.html:299
+#: templates/subscriptions.html:323
 msgid "Frequently Asked Questions"
 msgstr "Tez-tez beriladigan savollar"
 
-#: templates/subscriptions.html:305
+#: templates/subscriptions.html:329
 msgid "Can I upgrade or downgrade my plan anytime?"
 msgstr "Rejamni istalgan vaqtda yangilay yoki pastlashtira olamanmi?"
 
-#: templates/subscriptions.html:310
+#: templates/subscriptions.html:334
 msgid ""
 "Yes, you can upgrade or downgrade your subscription plan at any time. "
 "Changes take effect immediately, and billing is prorated accordingly."
@@ -744,11 +764,11 @@ msgstr ""
 "olasiz. O'zgarishlar darhol kuchga kiradi va to'lov shunga mos ravishda "
 "hisoblanadi."
 
-#: templates/subscriptions.html:318
+#: templates/subscriptions.html:342
 msgid "What happens if I exceed my message limit?"
 msgstr "Xabar limitini oshirib yuborsam nima bo'ladi?"
 
-#: templates/subscriptions.html:323
+#: templates/subscriptions.html:347
 msgid ""
 "When you reach your monthly message limit, your bots will temporarily "
 "stop responding until the next billing cycle or you upgrade your plan. "
@@ -758,11 +778,11 @@ msgstr ""
 "davrigacha yoki rejangizni yangilamaguningizcha vaqtincha javob berishni "
 "to'xtatadi. Limitga yetishdan oldin sizni xabardor qilamiz."
 
-#: templates/subscriptions.html:331
+#: templates/subscriptions.html:355
 msgid "Is there a free trial for paid plans?"
 msgstr "Pullik rejalar uchun bepul sinov davri bormi?"
 
-#: templates/subscriptions.html:336
+#: templates/subscriptions.html:360
 msgid ""
 "Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
 " during the trial period without being charged."
@@ -771,11 +791,11 @@ msgstr ""
 " davri mobaynida istalgan vaqtda bekor qila olasiz va hech qanday to'lov "
 "olinmaydi."
 
-#: templates/subscriptions.html:344
+#: templates/subscriptions.html:368
 msgid "What payment methods do you accept?"
 msgstr "Qanday to'lov usullarini qabul qilasiz?"
 
-#: templates/subscriptions.html:349
+#: templates/subscriptions.html:373
 msgid ""
 "We accept all major credit cards (Visa, Mastercard, American Express) and"
 " PayPal. All payments are processed securely through Stripe."
@@ -784,12 +804,12 @@ msgstr ""
 "va PayPal ni qabul qilamiz. Barcha to'lovlar Stripe orqali xavfsiz tarzda"
 " qayta ishlanadi."
 
-#: templates/subscriptions.html:357
+#: templates/subscriptions.html:381
 #, fuzzy
 msgid "Can I cancel my subscription?"
 msgstr "Faol obuna"
 
-#: templates/subscriptions.html:362
+#: templates/subscriptions.html:386
 msgid ""
 "Yes, you can cancel your subscription at any time. Your bots will "
 "continue to work until the end of your current billing period, after "
@@ -799,11 +819,11 @@ msgstr ""
 "hisob-kitob davri tugaguncha ishlashda davom etadi, shundan so'ng ular "
 "bepul reja chegaralariga tushiriladi."
 
-#: templates/subscriptions.html:372
+#: templates/subscriptions.html:396
 msgid "Ready to get started?"
 msgstr "Boshlashga tayyormisiz?"
 
-#: templates/subscriptions.html:373
+#: templates/subscriptions.html:397
 msgid ""
 "Choose a plan that fits your needs and start building powerful AI "
 "chatbots today."
@@ -812,8 +832,20 @@ msgstr ""
 "qurishni boshlang."
 
 # Navigation
-#: templates/subscriptions.html:379
+#: templates/subscriptions.html:403
 #, fuzzy
 msgid "Go to Dashboard"
 msgstr "Boshqaruv paneli"
+
+#~ msgid ""
+#~ "Enterprise-grade security and 99.9% "
+#~ "uptime ensure your bots are always "
+#~ "available when your customers need them."
+#~ msgstr ""
+#~ "Korporativ darajadagi xavfsizlik va 99.9% "
+#~ "ishga tushish vaqti botlaringizning "
+#~ "mijozlaringiz kerak bo'lganda doimo "
+#~ "foydalanish mumkinligini ta'minlaydi.botlaringizning "
+#~ "mijozlaringiz kerak bo'lganda doimo "
+#~ "foydalanish mumkinligini ta'minlaydi."
 

@@ -9,12 +9,12 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url_for('bots.list_bots') }}">Bots</a></li>
-                    <li class="breadcrumb-item active">Create New Bot</li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">{{ _('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('bots.list_bots') }}">{{ _('My Bots') }}</a></li>
+                    <li class="breadcrumb-item active">{{ _('Create New Bot') }}</li>
                 </ol>
             </nav>
-            <h1 class="h2">Create New AI Chatbot</h1>
+            <h1 class="h2">{{ _('Create New AI Chatbot') }}</h1>
             <p class="text-muted">Set up your intelligent chatbot with custom personality and purpose</p>
         </div>
     </div>
@@ -28,25 +28,25 @@
                              style="width: 80px; height: 80px;">
                             <i class="fas fa-robot text-primary" style="font-size: 2rem;"></i>
                         </div>
-                        <h4>Let's Create Your Bot</h4>
-                        <p class="text-muted">Fill in the details below to get started</p>
+                        <h4>{{ _('Let\'s Create Your Bot') }}</h4>
+                        <p class="text-muted">{{ _('Fill in the details below to get started') }}</p>
                     </div>
 
                     <form method="POST" id="createBotForm">
                         <div class="mb-4">
-                            <label for="name" class="form-label">Bot Name *</label>
+                            <label for="name" class="form-label">{{ _('Bot Name') }} *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-tag"></i>
                                 </span>
                                 <input type="text" class="form-control" id="name" name="name" 
-                                       required maxlength="100" placeholder="Enter a name for your bot">
+                                       required maxlength="100" placeholder="{{ _('Enter a name for your bot') }}">
                             </div>
-                            <div class="form-text">Choose a friendly name that represents your bot's purpose</div>
+                            <div class="form-text">{{ _('Choose a friendly name that represents your bot\'s purpose') }}</div>
                         </div>
 
                         <div class="mb-4">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">{{ _('Description') }}</label>
                             <textarea class="form-control" id="description" name="description" 
                                       rows="3" maxlength="500" 
                                       placeholder="Describe what your bot does and how it helps users..."></textarea>
