@@ -313,8 +313,15 @@ class TelegramService:
                 
                 # Show welcome message in selected language
                 try:
-                    await self._show_welcome_message(query, bot, language, edit_message=True)
-                    logging.info(f"Welcome message sent to user {user_id} in language {language}")
+                    # Simple success message instead of complex welcome
+                    success_messages = {
+                        'uz': f"✅ Til tanlandi: O'zbek\n\n🎉 Salom! Menga savolingizni yuboring.",
+                        'ru': f"✅ Язык выбран: Русский\n\n🎉 Привет! Отправьте мне ваш вопрос.",
+                        'en': f"✅ Language selected: English\n\n🎉 Hello! Send me your question."
+                    }
+                    message = success_messages.get(language, success_messages['uz'])
+                    await query.edit_message_text(message)
+                    logging.info(f"Language {language} confirmed for user {user_id}")
                 except Exception as e:
                     logging.error(f"Error showing welcome message: {e}")
                     # Fallback: send simple text
