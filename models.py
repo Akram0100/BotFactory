@@ -106,9 +106,12 @@ class Bot(db.Model):
     total_users = db.Column(db.Integer, default=0)
     last_activity = db.Column(db.DateTime, nullable=True)
     
+    # Notification settings
+    admin_chat_id = db.Column(db.String(100), nullable=True)  # Admin chat ID for notifications
+    notification_channel = db.Column(db.String(100), nullable=True)  # Telegram channel for notifications
+    
     # Relationships
     knowledge_base = db.relationship('KnowledgeBase', backref='bot', lazy=True, cascade='all, delete-orphan')
-    conversations = db.relationship('Conversation', backref='bot', lazy=True, cascade='all, delete-orphan')
     
     def increment_message_count(self):
         """Increment total messages count"""
@@ -137,36 +140,6 @@ class KnowledgeBase(db.Model):
     def __repr__(self):
         return f'<KnowledgeBase {self.title}>'
 
-class Conversation(db.Model):
-    """Store conversation history"""
-    __tablename__ = 'conversations'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    bot_id = db.Column(db.Integer, db.ForeignKey('bots.id'), nullable=False)
-    telegram_user_id = db.Column(db.String(100), nullable=False)
-    telegram_username = db.Column(db.String(100), nullable=True)
-    message_count = db.Column(db.Integer, default=0)
-    first_message = db.Column(db.DateTime, default=datetime.utcnow)
-    last_message = db.Column(db.DateTime, default=datetime.utcnow)
-    
-    # Relationships
-    messages = db.relationship('Message', backref='conversation', lazy=True, cascade='all, delete-orphan')
-    
-    def __repr__(self):
-        return f'<Conversation {self.telegram_user_id} with Bot {self.bot_id}>'
-
-class Message(db.Model):
-    """Individual messages in conversations"""
-    __tablename__ = 'messages'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    conversation_id = db.Column(db.Integer, db.ForeignKey('conversations.id'), nullable=False)
-    user_message = db.Column(db.Text, nullable=False)
-    bot_response = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
-    def __repr__(self):
-        return f'<Message {self.id}>'
 
 class AdminBroadcast(db.Model):
     """Admin broadcast messages to free users"""

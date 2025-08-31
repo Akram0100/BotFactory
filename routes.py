@@ -5,7 +5,7 @@ from flask_babel import gettext as _
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 from app import db
-from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery, Conversation, Message
+from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery
 from services.auth_service import AuthService
 from services.ai_service import AIService
 from services.telegram_service import TelegramService
@@ -409,56 +409,6 @@ def delete_bot(bot_id):
     
     return redirect(url_for('bots.list_bots'))
 
-@bots.route('/<int:bot_id>/conversations')
-@login_required
-def conversations(bot_id):
-    """View bot conversations"""
-    bot = Bot.query.filter_by(id=bot_id, user_id=current_user.id).first_or_404()
-    
-    # Get query parameters for filtering
-    page = request.args.get('page', 1, type=int)
-    search = request.args.get('search', '')
-    
-    # Build query
-    conversations_query = Conversation.query.filter_by(bot_id=bot.id)
-    
-    # Apply search filter
-    if search:
-        conversations_query = conversations_query.filter(
-            db.or_(
-                Conversation.telegram_username.contains(search),
-                Conversation.telegram_user_id.contains(search)
-            )
-        )
-    
-    # Order by latest message
-    conversations_query = conversations_query.order_by(Conversation.last_message.desc())
-    
-    # Paginate results
-    conversations_paginated = conversations_query.paginate(
-        page=page, per_page=20, error_out=False
-    )
-    
-    return render_template('conversations.html', 
-                         bot=bot, 
-                         conversations=conversations_paginated,
-                         search=search)
-
-@bots.route('/<int:bot_id>/conversations/<int:conversation_id>')
-@login_required
-def conversation_detail(bot_id, conversation_id):
-    """View detailed conversation with messages"""
-    bot = Bot.query.filter_by(id=bot_id, user_id=current_user.id).first_or_404()
-    conversation = Conversation.query.filter_by(id=conversation_id, bot_id=bot.id).first_or_404()
-    
-    # Get all messages for this conversation
-    messages = Message.query.filter_by(conversation_id=conversation.id)\
-                           .order_by(Message.created_at.asc()).all()
-    
-    return render_template('conversation_detail.html', 
-                         bot=bot, 
-                         conversation=conversation,
-                         messages=messages)
 
 # Subscription routes
 @subscriptions.route('/plans')
