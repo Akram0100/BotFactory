@@ -4,7 +4,7 @@ import threading
 import time
 from telegram import Update, Bot as TelegramBot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
-from models import Bot
+from models import Bot, TelegramUser
 from app import db
 from services.ai_service import AIService
 
@@ -211,7 +211,7 @@ class TelegramService:
             if not update.effective_user:
                 return
             user_id = update.effective_user.id
-            user_lang = self.user_languages.get(user_id, 'uz')
+            user_lang = self._get_user_language(user_id)
             
             help_message = self._get_localized_help_message(bot.name, user_lang)
             
@@ -221,7 +221,7 @@ class TelegramService:
             logging.error(f"Help command error: {e}")
             if update and update.effective_user and update.message:
                 user_id = update.effective_user.id
-                user_lang = self.user_languages.get(user_id, 'uz')
+                user_lang = self._get_user_language(user_id)
                 error_msg = self._get_localized_text('error', user_lang)
                 await update.message.reply_text(error_msg)
     
@@ -234,7 +234,7 @@ class TelegramService:
                 
             user_message = update.message.text
             user_id = user.id
-            user_lang = self.user_languages.get(user_id, 'uz')
+            user_lang = self._get_user_language(user_id)
             
             # Send notification to admin about user message
             notification_text = f"💬 **Yangi xabar**\n"
@@ -269,7 +269,7 @@ class TelegramService:
             logging.error(f"Message handling error: {e}")
             if update and update.message:
                 user_id = update.effective_user.id if update.effective_user else None
-                user_lang = self.user_languages.get(user_id, 'uz') if user_id else 'uz'
+                user_lang = self._get_user_language(user_id) if user_id else 'uz'
                 error_msg = self._get_localized_text('error', user_lang)
                 await update.message.reply_text(error_msg)
     
@@ -300,6 +300,7 @@ class TelegramService:
             # Handle language selection
             if callback_data.startswith("lang_"):
                 language = callback_data.split("_")[1]  # Extract language code
+                self._set_user_language(user_id, language, user)
                 self.user_languages[user_id] = language
                 
                 # Show welcome message in selected language
@@ -310,7 +311,7 @@ class TelegramService:
                 await self._handle_help_command(update, context, bot)
             else:
                 # Get user's language for response
-                user_lang = self.user_languages.get(user_id, 'uz')
+                user_lang = self._get_user_language(user_id)
                 response_msg = self._get_localized_text("selection_completed", user_lang)
                 await query.edit_message_text(response_msg)
             
@@ -525,3 +526,55 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Bot restart error: {e}")
+    
+    def _get_user_language(self, telegram_user_id):
+        """Get user's language preference from database or cache"""
+        # Check cache first
+        if telegram_user_id in self.user_languages:
+            return self.user_languages[telegram_user_id]
+        
+        # Get from database
+        try:
+            telegram_user = TelegramUser.query.filter_by(telegram_user_id=telegram_user_id).first()
+            if telegram_user:
+                language = telegram_user.language
+                self.user_languages[telegram_user_id] = language  # Cache it
+                return language
+            else:
+                # Default to Uzbek if no preference found
+                return 'uz'
+        except Exception as e:
+            logging.error(f"Error getting user language: {e}")
+            return 'uz'
+    
+    def _set_user_language(self, telegram_user_id, language, user_data=None):
+        """Set user's language preference in database"""
+        try:
+            telegram_user = TelegramUser.query.filter_by(telegram_user_id=telegram_user_id).first()
+            
+            if telegram_user:
+                # Update existing user
+                telegram_user.language = language
+                if user_data:
+                    telegram_user.username = user_data.username
+                    telegram_user.first_name = user_data.first_name
+                    telegram_user.last_name = user_data.last_name
+            else:
+                # Create new user
+                telegram_user = TelegramUser(
+                    telegram_user_id=telegram_user_id,
+                    username=user_data.username if user_data else None,
+                    first_name=user_data.first_name if user_data else None,
+                    last_name=user_data.last_name if user_data else None,
+                    language=language
+                )
+                db.session.add(telegram_user)
+            
+            db.session.commit()
+            
+            # Update cache
+            self.user_languages[telegram_user_id] = language
+            
+        except Exception as e:
+            logging.error(f"Error setting user language: {e}")
+            db.session.rollback()

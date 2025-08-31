@@ -122,6 +122,22 @@ class Bot(db.Model):
     def __repr__(self):
         return f'<Bot {self.name}>'
 
+class TelegramUser(db.Model):
+    """Model to store Telegram user preferences"""
+    __tablename__ = 'telegram_users'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    telegram_user_id = db.Column(db.BigInteger, unique=True, nullable=False)  # Telegram user ID
+    username = db.Column(db.String(100), nullable=True)  # Telegram username
+    first_name = db.Column(db.String(100), nullable=True)
+    last_name = db.Column(db.String(100), nullable=True)
+    language = db.Column(db.String(5), default='uz', nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    def __repr__(self):
+        return f'<TelegramUser {self.telegram_user_id}>'
+
 class KnowledgeBase(db.Model):
     """Knowledge base documents for bots"""
     __tablename__ = 'knowledge_base'
