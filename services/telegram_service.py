@@ -349,11 +349,14 @@ class TelegramService:
                 db.session.add(conversation)
                 db.session.flush()  # Get ID
             
-            # Create message record
+            # Create message record - sanitize unicode characters
+            sanitized_user_message = user_message.encode('utf-8', 'ignore').decode('utf-8') if user_message else None
+            sanitized_bot_response = ai_response.encode('utf-8', 'ignore').decode('utf-8') if ai_response else None
+            
             message = Message(
                 conversation_id=conversation.id,
-                user_message=user_message,
-                bot_response=ai_response
+                user_message=sanitized_user_message,
+                bot_response=sanitized_bot_response
             )
             db.session.add(message)
             

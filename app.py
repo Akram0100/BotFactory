@@ -30,6 +30,7 @@ def create_app():
     app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
         "pool_recycle": 300,
         "pool_pre_ping": True,
+        "connect_args": {"check_same_thread": False} if "sqlite" in os.environ.get("DATABASE_URL", "sqlite:///botfactory.db") else {}
     }
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16MB max file upload
