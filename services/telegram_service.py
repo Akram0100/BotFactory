@@ -379,11 +379,11 @@ class TelegramService:
                 return
             
             # Create multilingual welcome message
-            welcome_text = "🌐 **Tilni tanlang / Выберите язык / Choose Language**\\n\\n"
-            welcome_text += f"Salom {user.first_name}! Men {bot.name} botiman.\\n"
-            welcome_text += f"Привет {user.first_name}! Я бот {bot.name}.\\n" 
-            welcome_text += f"Hello {user.first_name}! I'm {bot.name} bot.\\n\\n"
-            welcome_text += "Muloqot uchun tilni tanlang:"
+            welcome_text = "🌐 *Tilni tanlang / Выберите язык / Choose Language*\n\n"
+            welcome_text += f"🇺🇿 Salom {user.first_name}! Men {bot.name} botiman.\n"
+            welcome_text += f"🇷🇺 Привет {user.first_name}! Я бот {bot.name}.\n" 
+            welcome_text += f"🇬🇧 Hello {user.first_name}! I'm {bot.name} bot.\n\n"
+            welcome_text += "👇 Muloqot uchun tilni tanlang:"
             
             # Create inline keyboard with language options
             keyboard = [
@@ -426,22 +426,22 @@ class TelegramService:
         """Get welcome message in specified language"""
         messages = {
             'uz': {
-                'welcome': f"Salom {user_name}! 👋\\n\\n"
-                          f"Men {bot_name} botiman. Sizga qanday yordam bera olaman?\\n\\n"
-                          f"Menga savolingizni yuboring va men sizga javob beraman! 💬\\n\\n"
-                          f"Tilni o'zgartirish uchun /start buyrug'ini qayta yuboring."
+                'welcome': f"🎉 *Salom {user_name}!* 👋\n\n"
+                          f"✨ Men *{bot_name}* botiman. Sizga qanday yordam bera olaman?\n\n"
+                          f"💬 Menga savolingizni yuboring va men sizga javob beraman!\n\n"
+                          f"🔄 Tilni o'zgartirish uchun /start buyrug'ini qayta yuboring."
             },
             'ru': {
-                'welcome': f"Привет {user_name}! 👋\\n\\n"
-                          f"Я бот {bot_name}. Как я могу вам помочь?\\n\\n"
-                          f"Отправьте мне ваш вопрос, и я отвечу! 💬\\n\\n"
-                          f"Чтобы изменить язык, отправьте команду /start снова."
+                'welcome': f"🎉 *Привет {user_name}!* 👋\n\n"
+                          f"✨ Я бот *{bot_name}*. Как я могу вам помочь?\n\n"
+                          f"💬 Отправьте мне ваш вопрос, и я отвечу!\n\n"
+                          f"🔄 Чтобы изменить язык, отправьте команду /start снова."
             },
             'en': {
-                'welcome': f"Hello {user_name}! 👋\\n\\n"
-                          f"I'm {bot_name} bot. How can I help you?\\n\\n"
-                          f"Send me your question and I'll respond! 💬\\n\\n"
-                          f"To change language, send /start command again."
+                'welcome': f"🎉 *Hello {user_name}!* 👋\n\n"
+                          f"✨ I'm *{bot_name}* bot. How can I help you?\n\n"
+                          f"💬 Send me your question and I'll respond!\n\n"
+                          f"🔄 To change language, send /start command again."
             }
         }
         
@@ -473,31 +473,31 @@ class TelegramService:
         """Get help message in specified language"""
         help_messages = {
             'uz': {
-                'help': f"ℹ️ **{bot_name} - Yordam**\\n\\n"
-                       f"**Qanday foydalanish:**\\n"
-                       f"• Menga oddiy matn yuboring\\n"
-                       f"• Men sizga javob beraman\\n"
-                       f"• /start - Botni qayta ishga tushirish\\n"
-                       f"• /help - Bu yordam habarini ko'rish\\n\\n"
-                       f"Savollar bormi? Menga yozing! 😊"
+                'help': f"ℹ️ *{bot_name} - Yordam*\n\n"
+                       f"📋 *Qanday foydalanish:*\n"
+                       f"💬 Menga oddiy matn yuboring\n"
+                       f"🤖 Men sizga javob beraman\n"
+                       f"🔄 /start - Botni qayta ishga tushirish\n"
+                       f"❓ /help - Bu yordam habarini ko'rish\n\n"
+                       f"🙋‍♂️ Savollar bormi? Menga yozing! 😊"
             },
             'ru': {
-                'help': f"ℹ️ **{bot_name} - Помощь**\\n\\n"
-                       f"**Как использовать:**\\n"
-                       f"• Отправьте мне обычное сообщение\\n"
-                       f"• Я отвечу вам\\n"
-                       f"• /start - Перезапустить бота\\n"
-                       f"• /help - Показать это сообщение помощи\\n\\n"
-                       f"Есть вопросы? Пишите мне! 😊"
+                'help': f"ℹ️ *{bot_name} - Помощь*\n\n"
+                       f"📋 *Как использовать:*\n"
+                       f"💬 Отправьте мне обычное сообщение\n"
+                       f"🤖 Я отвечу вам\n"
+                       f"🔄 /start - Перезапустить бота\n"
+                       f"❓ /help - Показать это сообщение помощи\n\n"
+                       f"🙋‍♂️ Есть вопросы? Пишите мне! 😊"
             },
             'en': {
-                'help': f"ℹ️ **{bot_name} - Help**\\n\\n"
-                       f"**How to use:**\\n"
-                       f"• Send me a regular text message\\n"
-                       f"• I will respond to you\\n"
-                       f"• /start - Restart the bot\\n"
-                       f"• /help - Show this help message\\n\\n"
-                       f"Have questions? Write to me! 😊"
+                'help': f"ℹ️ *{bot_name} - Help*\n\n"
+                       f"📋 *How to use:*\n"
+                       f"💬 Send me a regular text message\n"
+                       f"🤖 I will respond to you\n"
+                       f"🔄 /start - Restart the bot\n"
+                       f"❓ /help - Show this help message\n\n"
+                       f"🙋‍♂️ Have questions? Write to me! 😊"
             }
         }
         
