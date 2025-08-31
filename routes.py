@@ -239,8 +239,15 @@ def edit_bot(bot_id):
         
         elif action == 'setup_telegram':
             token = request.form.get('telegram_token')
-            if token:
-                try:
+            admin_chat_id = request.form.get('admin_chat_id', '').strip()
+            notification_channel = request.form.get('notification_channel', '').strip()
+            
+            try:
+                # Update notification settings regardless of token
+                bot.admin_chat_id = admin_chat_id if admin_chat_id else None
+                bot.notification_channel = notification_channel if notification_channel else None
+                
+                if token:
                     # Validate token and get bot info
                     bot_info = telegram_service.validate_token(token)
                     if bot_info:
@@ -251,12 +258,19 @@ def edit_bot(bot_id):
                         
                         # Start the telegram bot
                         telegram_service.start_bot(bot)
-                        flash('Telegram bot configured successfully!', 'success')
+                        flash('Telegram bot and notification settings configured successfully!', 'success')
                     else:
                         flash('Invalid Telegram bot token.', 'error')
-                except Exception as e:
-                    flash('Failed to configure Telegram bot.', 'error')
-                    logging.error(f"Telegram setup error: {e}")
+                        return redirect(url_for('bots.edit_bot', bot_id=bot.id))
+                else:
+                    # Just update notification settings
+                    db.session.commit()
+                    flash('Notification settings updated successfully!', 'success')
+                    
+            except Exception as e:
+                db.session.rollback()
+                flash('Failed to update configuration.', 'error')
+                logging.error(f"Telegram/notification setup error: {e}")
         
         elif action == 'toggle_status':
             if bot.status == BotStatus.ACTIVE:

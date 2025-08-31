@@ -94,11 +94,6 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="conversations-tab" data-bs-toggle="tab" data-bs-target="#conversations" type="button" role="tab">
-                <i class="fas fa-comments me-2"></i>{{ _('Conversations') }}
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
             <button class="nav-link" id="test-tab" data-bs-toggle="tab" data-bs-target="#test" type="button" role="tab">
                 <i class="fas fa-comment-dots me-2"></i>{{ _('Test Bot') }}
             </button>
@@ -190,9 +185,46 @@
                                 {{ _('Get this token by messaging @BotFather on Telegram and creating a new bot.') }}
                             </div>
                         </div>
+
+                        <hr class="my-4">
+                        
+                        <h6>{{ _('Notification Settings') }}</h6>
+                        <p class="text-muted small">Configure where to receive notifications about user interactions</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="admin_chat_id" class="form-label">{{ _('Admin Chat ID') }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-shield"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="admin_chat_id" 
+                                           name="admin_chat_id" placeholder="e.g., 123456789"
+                                           value="{{ bot.admin_chat_id or '' }}">
+                                </div>
+                                <div class="form-text">
+                                    Your personal Telegram chat ID for receiving bot notifications
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="notification_channel" class="form-label">{{ _('Notification Channel') }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-broadcast-tower"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="notification_channel" 
+                                           name="notification_channel" placeholder="e.g., @mychannel or -100123456789"
+                                           value="{{ bot.notification_channel or '' }}">
+                                </div>
+                                <div class="form-text">
+                                    Telegram channel for team notifications (optional)
+                                </div>
+                            </div>
+                        </div>
                         
                         <button type="submit" class="btn btn-success">
-                            <i class="fas fa-link me-2"></i>{{ 'Update' if bot.telegram_token else 'Connect' }} Telegram Bot
+                            <i class="fas fa-save me-2"></i>{{ 'Update' if bot.telegram_token else 'Setup' }} Telegram Configuration
                         </button>
                     </form>
 
@@ -290,25 +322,6 @@
             </div>
         </div>
 
-        <!-- Conversations Tab -->
-        <div class="tab-pane fade" id="conversations" role="tabpanel">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Recent Conversations</h5>
-                    <a href="{{ url_for('bots.conversations', bot_id=bot.id) }}" class="btn btn-primary btn-sm">
-                        <i class="fas fa-comments me-1"></i>View All
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div id="conversationsPreview">
-                        <div class="text-center text-muted py-4">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            <p class="mt-2">Loading conversations...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Test Bot Tab -->
         <div class="tab-pane fade" id="test" role="tabpanel">
