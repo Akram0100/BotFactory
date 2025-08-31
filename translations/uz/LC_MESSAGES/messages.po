@@ -192,9 +192,10 @@ msgstr "Bot shaxsiyati va ko'rsatmalar"
 
 #: templates/bot_edit.html:141
 msgid "Define how your bot should behave and respond to users."
-msgstr "Botingiz foydalanuvchilarga qanday javob berishi va o'zini qanday tutishini belgilang."
-"Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi "
-"kerakligini belgilang."
+msgstr ""
+"Botingiz foydalanuvchilarga qanday javob berishi va o'zini qanday "
+"tutishini belgilang.Botingiz qanday harakat qilishi va foydalanuvchilarga"
+" javob berishi kerakligini belgilang."
 
 #: templates/bot_edit.html:145
 msgid "Save Changes"
@@ -212,9 +213,10 @@ msgstr "Bot Telegramga quyidagicha ulangan"
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token yaratishingiz kerak."
+msgstr ""
 "Botingizni Telegramga joylashtirish uchun @BotFather orqali bot token "
-"yaratishingiz kerak."
+"yaratishingiz kerak.Botingizni Telegramga joylashtirish uchun @BotFather "
+"orqali bot token yaratishingiz kerak."
 
 #: templates/bot_edit.html:175
 msgid "Telegram Bot Token"
@@ -222,9 +224,10 @@ msgstr "Telegram bot tokeni"
 
 #: templates/bot_edit.html:185
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
-msgstr "Bu tokenni olish uchun Telegramda @BotFather ga xabar yozib, yangi bot yarating."
-"Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi bot "
-"yaratish orqali oling."
+msgstr ""
+"Bu tokenni olish uchun Telegramda @BotFather ga xabar yozib, yangi bot "
+"yarating.Ushbu tokenni Telegramda @BotFather ga xabar yuborish va yangi "
+"bot yaratish orqali oling."
 
 #: templates/bot_edit.html:196
 msgid "How to get a Telegram Bot Token:"
@@ -397,9 +400,10 @@ msgstr "Nega BotFactory ni tanlash kerak?"
 
 #: templates/index.html:54
 msgid "Everything you need to create and deploy intelligent chatbots"
-msgstr "Aqlli chatbotlar yaratish va joylashtirish uchun kerak bo'lgan hamma narsa"
-"Aqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan hamma "
-"narsa"
+msgstr ""
+"Aqlli chatbotlar yaratish va joylashtirish uchun kerak bo'lgan hamma "
+"narsaAqlli chatbotlarni yaratish va joylashtirish uchun kerak bo'lgan "
+"hamma narsa"
 
 #: templates/index.html:64
 #, fuzzy
@@ -459,12 +463,15 @@ msgid "Secure & Reliable"
 msgstr ""
 
 #: templates/index.html:136
+#, python-format
 msgid ""
 "Enterprise-grade security and 99.9% uptime ensure your bots are always "
 "available when your customers need them."
-msgstr "Korporativ darajadagi xavfsizlik va 99.9% ishga tushish vaqti botlaringizning mijozlaringiz kerak bo'lganda doimo foydalanish mumkinligini ta'minlaydi."
+msgstr ""
+"Korporativ darajadagi xavfsizlik va 99.9% ishga tushish vaqti "
 "botlaringizning mijozlaringiz kerak bo'lganda doimo foydalanish "
-"mumkinligini ta'minlaydi."
+"mumkinligini ta'minlaydi.botlaringizning mijozlaringiz kerak bo'lganda "
+"doimo foydalanish mumkinligini ta'minlaydi."
 
 #: templates/index.html:149
 msgid "How It Works"

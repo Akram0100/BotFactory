@@ -216,9 +216,10 @@ msgstr "Бот подключён к Telegram как"
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
-msgstr "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота через @BotFather."
+msgstr ""
 "Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота "
-"через @BotFather."
+"через @BotFather.Чтобы развернуть вашего бота в Telegram, вам нужно "
+"создать токен бота через @BotFather."
 
 #: templates/bot_edit.html:175
 #, fuzzy
@@ -469,10 +470,12 @@ msgid "Secure & Reliable"
 msgstr ""
 
 #: templates/index.html:136
+#, python-format
 msgid ""
 "Enterprise-grade security and 99.9% uptime ensure your bots are always "
 "available when your customers need them."
-msgstr "Безопасность корпоративного уровня и 99.9% время безотказной работы гарантируют, что ваши боты всегда доступны, когда они нужны вашим клиентам."
+msgstr ""
+"Безопасность корпоративного уровня и 99.9% время безотказной работы "
 "гарантируют, что ваши боты всегда доступны, когда они нужны вашим "
 "клиентам."
 
