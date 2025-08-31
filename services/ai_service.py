@@ -19,37 +19,40 @@ class AIService:
             self.api_available = False
             logging.warning("GEMINI_API_KEY not found. AI responses will be disabled.")
     
-    def get_response(self, bot, user_message, user_language='auto'):
+    async def get_response(self, bot, user_message, user_language='auto'):
         """Generate AI response for user message"""
         if not self.api_available or not self.client:
             return "AI service is currently unavailable. Please configure your GEMINI_API_KEY to enable AI responses."
         
         try:
-            # Get bot's knowledge base
-            knowledge_entries = KnowledgeBase.query.filter_by(bot_id=bot.id).all()
-            knowledge_context = ""
-            
-            if knowledge_entries:
-                knowledge_context = "\n\nKnowledge Base:\n"
-                for entry in knowledge_entries:
-                    knowledge_context += f"- {entry.title}: {entry.content}"
-                    # Add image information if available
-                    if entry.image_url:
-                        knowledge_context += f"\n  📸 Product Image: {entry.image_url}"
-                        if entry.image_caption:
-                            knowledge_context += f"\n  📝 Image Caption: {entry.image_caption}"
-                        knowledge_context += "\n  💡 Note: You can send this image to users when they ask about this topic"
-                    knowledge_context += "\n\n"
-            
-            # Set language instructions based on user preference or detection
-            if user_language != 'auto':
-                language_instruction = self._get_language_instruction(user_language)
-            else:
-                language_instruction = self._detect_language_instruction(user_message)
-            
-            # Construct system prompt with language support
-            system_instruction = f"""{bot.system_prompt}
-            
+            # Ensure we have Flask app context
+            from app import app
+            with app.app_context():
+                # Get bot's knowledge base
+                knowledge_entries = KnowledgeBase.query.filter_by(bot_id=bot.id).all()
+                knowledge_context = ""
+                
+                if knowledge_entries:
+                    knowledge_context = "\n\nKnowledge Base:\n"
+                    for entry in knowledge_entries:
+                        knowledge_context += f"- {entry.title}: {entry.content}"
+                        # Add image information if available
+                        if entry.image_url:
+                            knowledge_context += f"\n  📸 Product Image: {entry.image_url}"
+                            if entry.image_caption:
+                                knowledge_context += f"\n  📝 Image Caption: {entry.image_caption}"
+                            knowledge_context += "\n  💡 Note: You can send this image to users when they ask about this topic"
+                        knowledge_context += "\n\n"
+                
+                # Set language instructions based on user preference or detection
+                if user_language != 'auto':
+                    language_instruction = self._get_language_instruction(user_language)
+                else:
+                    language_instruction = self._detect_language_instruction(user_message)
+                
+                # Construct system prompt with language support
+                system_instruction = f"""{bot.system_prompt}
+                
 You are a chatbot named "{bot.name}".
 {f"Description: {bot.description}" if bot.description else ""}
 
@@ -67,35 +70,35 @@ If you have relevant information in your knowledge base, use it to provide accur
 If you don't know something, be honest about it.
 
 {knowledge_context}"""
-            
-            # Generate response using Gemini
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=[
-                    types.Content(role="user", parts=[types.Part(text=user_message)])
-                ],
-                config=types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    temperature=0.7,
-                    max_output_tokens=1000,
-                )
-            )
-            
-            if response.text:
-                ai_response = response.text.strip()
                 
-                # Check if AI wants to send an image based on the knowledge base context
-                relevant_image = self._find_relevant_image(user_message, knowledge_entries, ai_response)
-                if relevant_image:
-                    return {
-                        'text': ai_response,
-                        'image_url': relevant_image['url'],
-                        'image_caption': relevant_image['caption']
-                    }
+                # Generate response using Gemini
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=[
+                        types.Content(role="user", parts=[types.Part(text=user_message)])
+                    ],
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        temperature=0.7,
+                        max_output_tokens=1000,
+                    )
+                )
+                
+                if response.text:
+                    ai_response = response.text.strip()
+                    
+                    # Check if AI wants to send an image based on the knowledge base context
+                    relevant_image = self._find_relevant_image(user_message, knowledge_entries, ai_response)
+                    if relevant_image:
+                        return {
+                            'text': ai_response,
+                            'image_url': relevant_image['url'],
+                            'image_caption': relevant_image['caption']
+                        }
+                    else:
+                        return ai_response
                 else:
-                    return ai_response
-            else:
-                return "I apologize, but I couldn't generate a response. Please try again."
+                    return "I apologize, but I couldn't generate a response. Please try again."
                 
         except Exception as e:
             logging.error(f"AI Service error: {e}")
