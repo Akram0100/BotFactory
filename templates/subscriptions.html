@@ -38,7 +38,15 @@
                     </div>
                 {% endif %}
                 <div class="card-body text-center p-4">
-                    <h3 class="card-title">Free</h3>
+                    <h3 class="card-title">
+                        {% if get_locale() == 'uz' %}
+                            Bepul
+                        {% elif get_locale() == 'ru' %}
+                            Бесплатный
+                        {% else %}
+                            Free
+                        {% endif %}
+                    </h3>
                     <div class="mb-3">
                         <span class="h1">$0</span>
                         <span class="text-muted">{{ _("/month") }}</span>
@@ -100,7 +108,15 @@
                     {% endif %}
                 </div>
                 <div class="card-body text-center p-4">
-                    <h3 class="card-title">Basic</h3>
+                    <h3 class="card-title">
+                        {% if get_locale() == 'uz' %}
+                            Basic
+                        {% elif get_locale() == 'ru' %}
+                            Basic
+                        {% else %}
+                            Basic
+                        {% endif %}
+                    </h3>
                     <div class="mb-3">
                         <span class="h1">$29</span>
                         <span class="text-muted">{{ _("/month") }}</span>
@@ -168,7 +184,15 @@
                     </div>
                 {% endif %}
                 <div class="card-body text-center p-4">
-                    <h3 class="card-title">Premium</h3>
+                    <h3 class="card-title">
+                        {% if get_locale() == 'uz' %}
+                            Premium
+                        {% elif get_locale() == 'ru' %}
+                            Premium
+                        {% else %}
+                            Premium
+                        {% endif %}
+                    </h3>
                     <div class="mb-3">
                         <span class="h1">$99</span>
                         <span class="text-muted">{{ _("/month") }}</span>

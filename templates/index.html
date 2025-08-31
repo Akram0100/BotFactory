@@ -217,12 +217,44 @@
                             <span class="text-muted">{{ _('/month') }}</span>
                         </div>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1 AI chatbot</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>100 messages/month</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic knowledge base</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Telegram integration</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    1 AI chatbot
+                                {% elif get_locale() == 'ru' %}
+                                    1 AI чатбот
+                                {% else %}
+                                    1 AI chatbot
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    100 xabar/oyiga
+                                {% elif get_locale() == 'ru' %}
+                                    100 сообщений/месяц
+                                {% else %}
+                                    100 messages/month
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{{ _('Basic knowledge base') }}</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    Telegram integratsiyasi
+                                {% elif get_locale() == 'ru' %}
+                                    Интеграция с Telegram
+                                {% else %}
+                                    Telegram integration
+                                {% endif %}
+                            </li>
                         </ul>
-                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Get Started</a>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">
+                            {% if get_locale() == 'uz' %}
+                                Boshlash
+                            {% elif get_locale() == 'ru' %}
+                                Начать
+                            {% else %}
+                                Get Started
+                            {% endif %}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -230,21 +262,77 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card shadow border-primary">
                     <div class="card-header bg-primary text-white text-center">
-                        <span class="badge bg-warning text-dark">Most Popular</span>
+                        <span class="badge bg-warning text-dark">
+                            {% if get_locale() == 'uz' %}
+                                Eng mashhur
+                            {% elif get_locale() == 'ru' %}
+                                Самый популярный
+                            {% else %}
+                                Most Popular
+                            {% endif %}
+                        </span>
                     </div>
                     <div class="card-body text-center p-4">
-                        <h5 class="card-title">Basic</h5>
+                        <h5 class="card-title">
+                            {% if get_locale() == 'uz' %}
+                                Basic
+                            {% elif get_locale() == 'ru' %}
+                                Basic
+                            {% else %}
+                                Basic
+                            {% endif %}
+                        </h5>
                         <div class="mb-3">
                             <span class="h2">$29</span>
                             <span class="text-muted">/month</span>
                         </div>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 AI chatbots</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1,000 messages/month</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced knowledge base</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    5 AI chatbot
+                                {% elif get_locale() == 'ru' %}
+                                    5 AI чатботов
+                                {% else %}
+                                    5 AI chatbots
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    1,000 xabar/oyiga
+                                {% elif get_locale() == 'ru' %}
+                                    1,000 сообщений/месяц
+                                {% else %}
+                                    1,000 messages/month
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    Rivojlangan bilimlar bazasi
+                                {% elif get_locale() == 'ru' %}
+                                    Продвинутая база знаний
+                                {% else %}
+                                    Advanced knowledge base
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    Ustuvor yordam
+                                {% elif get_locale() == 'ru' %}
+                                    Приоритетная поддержка
+                                {% else %}
+                                    Priority support
+                                {% endif %}
+                            </li>
                         </ul>
-                        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Start Free Trial</a>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-primary">
+                            {% if get_locale() == 'uz' %}
+                                Bepul sinovni boshlash
+                            {% elif get_locale() == 'ru' %}
+                                Начать бесплатную пробную версию
+                            {% else %}
+                                Start Free Trial
+                            {% endif %}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -252,18 +340,66 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card shadow">
                     <div class="card-body text-center p-4">
-                        <h5 class="card-title">Premium</h5>
+                        <h5 class="card-title">
+                            {% if get_locale() == 'uz' %}
+                                Premium
+                            {% elif get_locale() == 'ru' %}
+                                Premium
+                            {% else %}
+                                Premium
+                            {% endif %}
+                        </h5>
                         <div class="mb-3">
                             <span class="h2">$99</span>
                             <span class="text-muted">/month</span>
                         </div>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>25 AI chatbots</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>10,000 messages/month</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited knowledge base</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Analytics & API access</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    25 AI chatbot
+                                {% elif get_locale() == 'ru' %}
+                                    25 AI чатботов
+                                {% else %}
+                                    25 AI chatbots
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    10,000 xabar/oyiga
+                                {% elif get_locale() == 'ru' %}
+                                    10,000 сообщений/месяц
+                                {% else %}
+                                    10,000 messages/month
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    Cheksiz bilimlar bazasi
+                                {% elif get_locale() == 'ru' %}
+                                    Неограниченная база знаний
+                                {% else %}
+                                    Unlimited knowledge base
+                                {% endif %}
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>
+                                {% if get_locale() == 'uz' %}
+                                    Analitika va API kirish
+                                {% elif get_locale() == 'ru' %}
+                                    Аналитика и доступ к API
+                                {% else %}
+                                    Analytics & API access
+                                {% endif %}
+                            </li>
                         </ul>
-                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Start Free Trial</a>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">
+                            {% if get_locale() == 'uz' %}
+                                Bepul sinovni boshlash
+                            {% elif get_locale() == 'ru' %}
+                                Начать бесплатную пробную версию
+                            {% else %}
+                                Start Free Trial
+                            {% endif %}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -274,16 +410,44 @@
 <!-- CTA Section -->
 <section class="py-5 bg-primary text-white">
     <div class="container text-center">
-        <h2 class="display-6 fw-bold mb-4">Ready to Create Your AI Chatbot?</h2>
+        <h2 class="display-6 fw-bold mb-4">
+            {% if get_locale() == 'uz' %}
+                AI Chatbotingizni yaratishga tayyormisiz?
+            {% elif get_locale() == 'ru' %}
+                Готовы создать своего AI-чатбота?
+            {% else %}
+                Ready to Create Your AI Chatbot?
+            {% endif %}
+        </h2>
         <p class="lead mb-4">
-            Join thousands of businesses using BotFactory to provide better customer support 
-            and engagement through AI-powered chatbots.
+            {% if get_locale() == 'uz' %}
+                BotFactory dan foydalanib, AI asosidagi chatbotlar orqali yaxshiroq mijozlarga xizmat ko'rsatish va muloqot qilish uchun minglab bizneslar bilan qo'shiling.
+            {% elif get_locale() == 'ru' %}
+                Присоединяйтесь к тысячам компаний, которые используют BotFactory для лучшей поддержки клиентов и взаимодействия с помощью AI-чатботов.
+            {% else %}
+                Join thousands of businesses using BotFactory to provide better customer support and engagement through AI-powered chatbots.
+            {% endif %}
         </p>
         <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
-            <i class="fas fa-rocket me-2"></i>Start Building for Free
+            <i class="fas fa-rocket me-2"></i>
+            {% if get_locale() == 'uz' %}
+                Bepul yaratishni boshlang
+            {% elif get_locale() == 'ru' %}
+                Начать создавать бесплатно
+            {% else %}
+                Start Building for Free
+            {% endif %}
         </a>
         <div class="mt-4">
-            <small class="text-white-75">No credit card required • 14-day free trial on paid plans</small>
+            <small class="text-white-75">
+                {% if get_locale() == 'uz' %}
+                    Kredit karta talab qilinmaydi • Pullik rejalarda 14 kunlik bepul sinov
+                {% elif get_locale() == 'ru' %}
+                    Кредитная карта не требуется • 14-дневная бесплатная пробная версия платных планов
+                {% else %}
+                    No credit card required • 14-day free trial on paid plans
+                {% endif %}
+            </small>
         </div>
     </div>
 </section>
