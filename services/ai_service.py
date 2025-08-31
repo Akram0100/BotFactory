@@ -231,10 +231,23 @@ Message: {message}"""
     def _get_language_instruction(self, language):
         """Get language instruction based on user's selected language"""
         if language == 'uz':
-            return "Always respond in UZBEK language (o'zbek tilida javob bering). Use Latin script for Uzbek."
+            return """MAJBURIY QOIDA - ENG MUHIM: 
+- Barcha javoblaringizni FAQAT O'ZBEK TILIDA yozing
+- Hech qanday ingliz, rus yoki boshqa tilda so'z ishlatmang
+- Lotin yozuvidan foydalaning
+- Agar tushunmasangiz ham, o'zbek tilida javob bering
+- Bu eng muhim qoida - hech qachon buzilmasligi kerak"""
         elif language == 'ru':
-            return "Always respond in RUSSIAN language (отвечайте на русском языке)."
+            return """ОБЯЗАТЕЛЬНОЕ ПРАВИЛО - САМОЕ ВАЖНОЕ:
+- Отвечайте ТОЛЬКО НА РУССКОМ ЯЗЫКЕ
+- Не используйте английские, узбекские или другие слова
+- Даже если не понимаете, отвечайте на русском
+- Это самое важное правило - никогда не нарушайте его"""
         elif language == 'en':
-            return "Always respond in ENGLISH language."
+            return """MANDATORY RULE - MOST IMPORTANT:
+- Respond ONLY in ENGLISH language
+- Do not use Russian, Uzbek or other language words
+- Even if you don't understand, respond in English
+- This is the most important rule - never break it"""
         else:
             return "Respond in the same language as the user's message."
