@@ -5,7 +5,7 @@ from flask_babel import gettext as _
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 from app import db
-from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery
+from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery, Conversation, Message
 from services.auth_service import AuthService
 from services.ai_service import AIService
 from services.telegram_service import TelegramService
