@@ -291,6 +291,8 @@ def knowledge_base(bot_id):
         if action == 'add_text':
             title = request.form.get('title')
             content = request.form.get('content')
+            image_url = request.form.get('image_url', '').strip()
+            image_caption = request.form.get('image_caption', '').strip()
             
             if title and content:
                 try:
@@ -299,6 +301,10 @@ def knowledge_base(bot_id):
                     kb.title = title
                     kb.content = content
                     kb.file_type = 'text'
+                    if image_url:
+                        kb.image_url = image_url
+                    if image_caption:
+                        kb.image_caption = image_caption
                     db.session.add(kb)
                     db.session.commit()
                     flash(_('Knowledge base entry added successfully!'), 'success')
@@ -339,12 +345,16 @@ def knowledge_base(bot_id):
             entry_id = request.form.get('entry_id')
             title = request.form.get('title')
             content = request.form.get('content')
+            image_url = request.form.get('image_url', '').strip()
+            image_caption = request.form.get('image_caption', '').strip()
             
             if entry_id and title and content:
                 try:
                     kb_entry = KnowledgeBase.query.filter_by(id=entry_id, bot_id=bot.id).first_or_404()
                     kb_entry.title = title
                     kb_entry.content = content
+                    kb_entry.image_url = image_url if image_url else None
+                    kb_entry.image_caption = image_caption if image_caption else None
                     kb_entry.updated_at = db.func.now()
                     db.session.commit()
                     flash(_('Knowledge base entry updated successfully!'), 'success')

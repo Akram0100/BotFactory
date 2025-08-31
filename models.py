@@ -129,6 +129,8 @@ class KnowledgeBase(db.Model):
     content = db.Column(db.Text, nullable=False)
     file_type = db.Column(db.String(50), nullable=True)
     file_size = db.Column(db.Integer, nullable=True)
+    image_url = db.Column(db.String(500), nullable=True)  # Mahsulot rasmi URL
+    image_caption = db.Column(db.String(200), nullable=True)  # Rasm tavsifi
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     

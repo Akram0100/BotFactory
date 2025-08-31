@@ -32,7 +32,14 @@ class AIService:
             if knowledge_entries:
                 knowledge_context = "\n\nKnowledge Base:\n"
                 for entry in knowledge_entries:
-                    knowledge_context += f"- {entry.title}: {entry.content}\n\n"
+                    knowledge_context += f"- {entry.title}: {entry.content}"
+                    # Add image information if available
+                    if entry.image_url:
+                        knowledge_context += f"\n  📸 Product Image: {entry.image_url}"
+                        if entry.image_caption:
+                            knowledge_context += f"\n  📝 Image Caption: {entry.image_caption}"
+                        knowledge_context += "\n  💡 Note: You can send this image to users when they ask about this topic"
+                    knowledge_context += "\n\n"
             
             # Set language instructions based on user preference or detection
             if user_language != 'auto':
@@ -75,13 +82,55 @@ If you don't know something, be honest about it.
             )
             
             if response.text:
-                return response.text.strip()
+                ai_response = response.text.strip()
+                
+                # Check if AI wants to send an image based on the knowledge base context
+                relevant_image = self._find_relevant_image(user_message, knowledge_entries, ai_response)
+                if relevant_image:
+                    return {
+                        'text': ai_response,
+                        'image_url': relevant_image['url'],
+                        'image_caption': relevant_image['caption']
+                    }
+                else:
+                    return ai_response
             else:
                 return "I apologize, but I couldn't generate a response. Please try again."
                 
         except Exception as e:
             logging.error(f"AI Service error: {e}")
             return "I'm experiencing technical difficulties. Please try again later."
+    
+    def _find_relevant_image(self, user_message, knowledge_entries, ai_response):
+        """Find relevant image based on user message and AI response context"""
+        try:
+            # Keywords that might indicate user wants to see a product/image
+            image_keywords = [
+                'rasm', 'surat', 'rasmini', 'picture', 'image', 'photo', 'show me', 'ko\'rsat',
+                'qanday ko\'rinadi', 'ko\'rsating', 'фото', 'картинка', 'покажи', 'как выглядит'
+            ]
+            
+            user_msg_lower = user_message.lower()
+            
+            # Check if user is asking for images/photos
+            wants_image = any(keyword in user_msg_lower for keyword in image_keywords)
+            
+            if wants_image:
+                # Look for knowledge entries with images that might be relevant
+                for entry in knowledge_entries:
+                    if entry.image_url:
+                        # Simple keyword matching to find relevant products
+                        entry_keywords = entry.title.lower().split() + entry.content.lower().split()
+                        if any(word in user_msg_lower for word in entry_keywords if len(word) > 3):
+                            return {
+                                'url': entry.image_url,
+                                'caption': entry.image_caption or entry.title
+                            }
+            
+            return None
+        except Exception as e:
+            logging.error(f"Error finding relevant image: {e}")
+            return None
     
     def test_connection(self):
         """Test Gemini API connection"""

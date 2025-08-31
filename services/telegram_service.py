@@ -229,12 +229,29 @@ class TelegramService:
             with app.app_context():
                 ai_response = self.ai_service.get_response(bot, user_message, user_language=user_language)
             
-            # Send response
-            await update.message.reply_text(ai_response)
+            # Handle response - could be text only or include image
+            response_text = ai_response
+            if isinstance(ai_response, dict) and 'image_url' in ai_response:
+                # Send image with caption
+                try:
+                    await context.bot.send_photo(
+                        chat_id=update.effective_chat.id,
+                        photo=ai_response['image_url'],
+                        caption=ai_response['text']
+                    )
+                    response_text = ai_response['text'] + f" [Image sent: {ai_response.get('image_caption', 'Product image')}]"
+                except Exception as img_error:
+                    logging.error(f"Failed to send image: {img_error}")
+                    # Fallback to text only
+                    await update.message.reply_text(ai_response['text'])
+                    response_text = ai_response['text']
+            else:
+                # Send text response
+                await update.message.reply_text(ai_response)
             
             # Store conversation in database (in background) with app context
             with app.app_context():
-                await self._store_message(update, bot, user_message, ai_response)
+                await self._store_message(update, bot, user_message, response_text)
             
         except Exception as e:
             logging.error(f"Message handling error for bot {bot.id}: {e}")

@@ -43,8 +43,18 @@
                                     <h5 class="card-title mb-2">
                                         <i class="fas fa-{{ 'file-text' if entry.file_type == 'text' else 'file' }} me-2 text-muted"></i>
                                         {{ entry.title }}
+                                        {% if entry.image_url %}
+                                            <span class="badge bg-success ms-2">
+                                                <i class="fas fa-image me-1"></i>Has Image
+                                            </span>
+                                        {% endif %}
                                     </h5>
                                     <p class="card-text">{{ entry.content|truncate(200) }}</p>
+                                    {% if entry.image_caption %}
+                                        <p class="text-primary small mb-2">
+                                            <i class="fas fa-image me-1"></i>{{ entry.image_caption }}
+                                        </p>
+                                    {% endif %}
                                     <small class="text-muted">
                                         <i class="fas fa-calendar me-1"></i>Added {{ entry.created_at|datetime }}
                                         {% if entry.file_size %}
@@ -97,6 +107,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
+                                    {% if entry.image_url %}
+                                        <div class="mb-3">
+                                            <img src="{{ entry.image_url }}" alt="{{ entry.image_caption or entry.title }}" 
+                                                 class="img-fluid rounded" style="max-height: 300px;">
+                                            {% if entry.image_caption %}
+                                                <p class="text-center text-muted mt-2 mb-0">{{ entry.image_caption }}</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
                                     <div class="bg-light p-3 rounded" style="max-height: 400px; overflow-y: auto;">
                                         <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;">{{ entry.content }}</pre>
                                     </div>
@@ -128,7 +147,32 @@
                                         <div class="mb-3">
                                             <label for="edit_content_{{ entry.id }}" class="form-label">Content</label>
                                             <textarea class="form-control" id="edit_content_{{ entry.id }}" 
-                                                      name="content" rows="10" required>{{ entry.content }}</textarea>
+                                                      name="content" rows="6" required>{{ entry.content }}</textarea>
+                                        </div>
+                                        
+                                        <!-- Image Support -->
+                                        <div class="card mb-3 bg-light">
+                                            <div class="card-header">
+                                                <h6 class="mb-0 text-primary">
+                                                    <i class="fas fa-image me-2"></i>Product Image (optional)
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="edit_image_url_{{ entry.id }}" class="form-label">Image URL</label>
+                                                    <input type="url" class="form-control" id="edit_image_url_{{ entry.id }}" 
+                                                           name="image_url" value="{{ entry.image_url or '' }}"
+                                                           placeholder="https://example.com/product-image.jpg">
+                                                    <div class="form-text">Enter the direct URL to your product image.</div>
+                                                </div>
+                                                <div class="mb-0">
+                                                    <label for="edit_image_caption_{{ entry.id }}" class="form-label">Image Caption</label>
+                                                    <input type="text" class="form-control" id="edit_image_caption_{{ entry.id }}" 
+                                                           name="image_caption" value="{{ entry.image_caption or '' }}"
+                                                           placeholder="Product name or short description" maxlength="200">
+                                                    <div class="form-text">Brief description that will be sent with the image.</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -248,8 +292,31 @@
                     <div class="mb-3">
                         <label for="content" class="form-label">Content *</label>
                         <textarea class="form-control" id="content" name="content" 
-                                  rows="12" placeholder="Enter the content that your bot should know about..." required></textarea>
+                                  rows="8" placeholder="Enter the content that your bot should know about..." required></textarea>
                         <div class="form-text">Include as much detail as possible for better AI responses.</div>
+                    </div>
+                    
+                    <!-- Image Support for Products -->
+                    <div class="card mb-3 bg-light">
+                        <div class="card-header">
+                            <h6 class="mb-0 text-primary">
+                                <i class="fas fa-image me-2"></i>Product Image (optional)
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="image_url" class="form-label">Image URL</label>
+                                <input type="url" class="form-control" id="image_url" name="image_url" 
+                                       placeholder="https://example.com/product-image.jpg">
+                                <div class="form-text">Enter the direct URL to your product image. Bot will send this image when relevant.</div>
+                            </div>
+                            <div class="mb-0">
+                                <label for="image_caption" class="form-label">Image Caption</label>
+                                <input type="text" class="form-control" id="image_caption" name="image_caption" 
+                                       placeholder="Product name or short description" maxlength="200">
+                                <div class="form-text">Brief description that will be sent with the image.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
