@@ -6,7 +6,12 @@ BotFactory is a SaaS platform that enables businesses to create and deploy intel
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+Preferred communication style: Simple, everyday language in Uzbek.
+
+## Admin Credentials
+- Username: Akramjon
+- Password: Gisobot20141920*
+- Email: akramjon@botfactory.com
 
 ## System Architecture
 
