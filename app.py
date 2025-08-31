@@ -132,7 +132,23 @@ def create_app():
         # from services.notification_service import NotificationService
         # NotificationService.initialize_templates()
         
-        # Auto-start active Telegram bots will be done separately to avoid circular imports
+        # Auto-start active Telegram bots
+        try:
+            from services.telegram_service import TelegramService
+            from models import Bot, BotStatus
+            
+            telegram_service = TelegramService()
+            active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
+            
+            for bot in active_bots:
+                try:
+                    telegram_service.start_bot(bot)
+                    logging.info(f"Auto-started bot: {bot.name}")
+                except Exception as e:
+                    logging.error(f"Failed to auto-start bot {bot.name}: {e}")
+                    
+        except Exception as e:
+            logging.error(f"Auto-start bots error: {e}")
     
     return app
 
