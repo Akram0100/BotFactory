@@ -478,19 +478,20 @@ msgstr ""
 " necha daqiqada chatbotingizni yarating va sozlang."
 
 #: templates/index.html:120
-#, fuzzy
 msgid "Analytics & Insights"
-msgstr "Analitika"
+msgstr "Analitika va Statistika"
 
 #: templates/index.html:122
 msgid ""
 "Track conversations, user engagement, and bot performance with detailed "
 "analytics and reporting."
 msgstr ""
+"Suhbatlar, foydalanuvchilar faolligi va bot ishlashini batafsil analitika "
+"va hisobotlar bilan kuzating."
 
 #: templates/index.html:134
 msgid "Secure & Reliable"
-msgstr ""
+msgstr "Xavfsiz va Ishonchli"
 
 #: templates/index.html:155
 msgid "How It Works"
