@@ -672,6 +672,54 @@ msgstr "Tez sozlash"
 msgid "Get your bot running in minutes"
 msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
 
+#: routes.py
+msgid "Knowledge base entry added successfully!"
+msgstr "Bilim bazasi yozuvi muvaffaqiyatli qo'shildi!"
+
+#: routes.py
+msgid "Failed to add knowledge base entry."
+msgstr "Bilim bazasi yozuvini qo'shib bo'lmadi."
+
+#: routes.py
+msgid "No file selected."
+msgstr "Hech qanday fayl tanlanmadi."
+
+#: routes.py
+msgid "File \"%(filename)s\" uploaded successfully!"
+msgstr "\"%(filename)s\" fayli muvaffaqiyatli yuklandi!"
+
+#: routes.py
+msgid "File must be text-based (UTF-8 encoded)."
+msgstr "Fayl matn ko'rinishida (UTF-8 kodlangan) bo'lishi kerak."
+
+#: routes.py
+msgid "File too large. Maximum size is 16MB."
+msgstr "Fayl juda katta. Maksimal hajmi 16MB."
+
+#: routes.py
+msgid "Failed to upload file."
+msgstr "Faylni yuklab bo'lmadi."
+
+#: routes.py
+msgid "Knowledge base entry updated successfully!"
+msgstr "Bilim bazasi yozuvi muvaffaqiyatli yangilandi!"
+
+#: routes.py
+msgid "Failed to update knowledge base entry."
+msgstr "Bilim bazasi yozuvini yangilab bo'lmadi."
+
+#: routes.py
+msgid "All fields are required."
+msgstr "Barcha maydonlar to'ldirilishi kerak."
+
+#: routes.py
+msgid "Knowledge base entry deleted successfully!"
+msgstr "Bilim bazasi yozuvi muvaffaqiyatli o'chirildi!"
+
+#: routes.py
+msgid "Failed to delete entry."
+msgstr "Yozuvni o'chirib bo'lmadi."
+
 #: templates/register.html:126
 #, fuzzy
 msgid "24/7 Support"

@@ -300,18 +300,18 @@ def knowledge_base(bot_id):
                     kb.file_type = 'text'
                     db.session.add(kb)
                     db.session.commit()
-                    flash('Knowledge base entry added successfully!', 'success')
+                    flash(_('Knowledge base entry added successfully!'), 'success')
                 except Exception as e:
-                    flash('Failed to add knowledge base entry.', 'error')
+                    flash(_('Failed to add knowledge base entry.'), 'error')
                     logging.error(f"Knowledge base error: {e}")
         
         elif action == 'upload_file':
             if 'file' not in request.files:
-                flash('No file selected.', 'error')
+                flash(_('No file selected.'), 'error')
             else:
                 file = request.files['file']
                 if file.filename == '':
-                    flash('No file selected.', 'error')
+                    flash(_('No file selected.'), 'error')
                 elif file:
                     try:
                         filename = secure_filename(file.filename or 'unknown')
@@ -325,14 +325,33 @@ def knowledge_base(bot_id):
                         kb.file_size = len(content)
                         db.session.add(kb)
                         db.session.commit()
-                        flash(f'File "{filename}" uploaded successfully!', 'success')
+                        flash(_('File "%(filename)s" uploaded successfully!', filename=filename), 'success')
                     except UnicodeDecodeError:
-                        flash('File must be text-based (UTF-8 encoded).', 'error')
+                        flash(_('File must be text-based (UTF-8 encoded).'), 'error')
                     except RequestEntityTooLarge:
-                        flash('File too large. Maximum size is 16MB.', 'error')
+                        flash(_('File too large. Maximum size is 16MB.'), 'error')
                     except Exception as e:
-                        flash('Failed to upload file.', 'error')
+                        flash(_('Failed to upload file.'), 'error')
                         logging.error(f"File upload error: {e}")
+        
+        elif action == 'edit_entry':
+            entry_id = request.form.get('entry_id')
+            title = request.form.get('title')
+            content = request.form.get('content')
+            
+            if entry_id and title and content:
+                try:
+                    kb_entry = KnowledgeBase.query.filter_by(id=entry_id, bot_id=bot.id).first_or_404()
+                    kb_entry.title = title
+                    kb_entry.content = content
+                    kb_entry.updated_at = db.func.now()
+                    db.session.commit()
+                    flash(_('Knowledge base entry updated successfully!'), 'success')
+                except Exception as e:
+                    flash(_('Failed to update knowledge base entry.'), 'error')
+                    logging.error(f"Knowledge base update error: {e}")
+            else:
+                flash(_('All fields are required.'), 'error')
     
     knowledge_entries = KnowledgeBase.query.filter_by(bot_id=bot.id).all()
     return render_template('knowledge_base.html', bot=bot, knowledge_entries=knowledge_entries)
@@ -347,9 +366,9 @@ def delete_knowledge_entry(bot_id, kb_id):
     try:
         db.session.delete(kb_entry)
         db.session.commit()
-        flash('Knowledge base entry deleted successfully!', 'success')
+        flash(_('Knowledge base entry deleted successfully!'), 'success')
     except Exception as e:
-        flash('Failed to delete entry.', 'error')
+        flash(_('Failed to delete entry.'), 'error')
         logging.error(f"Knowledge base deletion error: {e}")
     
     return redirect(url_for('bots.knowledge_base', bot_id=bot_id))
