@@ -27,11 +27,22 @@ def create_app():
     # Configuration
     app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key-change-in-production")
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///botfactory.db")
-    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-        "pool_recycle": 300,
-        "pool_pre_ping": True,
-        "connect_args": {"check_same_thread": False} if "sqlite" in os.environ.get("DATABASE_URL", "sqlite:///botfactory.db") else {}
-    }
+    # Database configuration
+    database_url = os.environ.get("DATABASE_URL", "sqlite:///botfactory.db")
+    if "sqlite" in database_url:
+        # SQLite configuration
+        app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+            "pool_recycle": 300,
+            "pool_pre_ping": True,
+            "connect_args": {"check_same_thread": False}
+        }
+    else:
+        # PostgreSQL configuration
+        app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+            "pool_recycle": 300,
+            "pool_pre_ping": True,
+            "connect_args": {"options": "-c client_encoding=utf8"}
+        }
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16MB max file upload
     

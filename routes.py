@@ -309,6 +309,7 @@ def knowledge_base(bot_id):
                     db.session.commit()
                     flash(_('Knowledge base entry added successfully!'), 'success')
                 except Exception as e:
+                    db.session.rollback()
                     flash(_('Failed to add knowledge base entry.'), 'error')
                     logging.error(f"Knowledge base error: {e}")
         
@@ -338,6 +339,7 @@ def knowledge_base(bot_id):
                     except RequestEntityTooLarge:
                         flash(_('File too large. Maximum size is 16MB.'), 'error')
                     except Exception as e:
+                        db.session.rollback()
                         flash(_('Failed to upload file.'), 'error')
                         logging.error(f"File upload error: {e}")
         
@@ -359,6 +361,7 @@ def knowledge_base(bot_id):
                     db.session.commit()
                     flash(_('Knowledge base entry updated successfully!'), 'success')
                 except Exception as e:
+                    db.session.rollback()
                     flash(_('Failed to update knowledge base entry.'), 'error')
                     logging.error(f"Knowledge base update error: {e}")
             else:
