@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-31 05:16+0000\n"
+"POT-Creation-Date: 2025-08-31 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -523,8 +523,9 @@ msgstr ""
 msgid "plan"
 msgstr ""
 
-#: templates/subscriptions.html:37 templates/subscriptions.html:105
-#: templates/subscriptions.html:179
+#: templates/subscriptions.html:37 templates/subscriptions.html:93
+#: templates/subscriptions.html:105 templates/subscriptions.html:167
+#: templates/subscriptions.html:179 templates/subscriptions.html:243
 msgid "Current Plan"
 msgstr ""
 
@@ -598,6 +599,10 @@ msgstr ""
 msgid "Switch to Basic"
 msgstr ""
 
+#: templates/subscriptions.html:183 templates/subscriptions.html:262
+msgid "Premium"
+msgstr ""
+
 #: templates/subscriptions.html:200
 msgid "For growing businesses and agencies"
 msgstr ""
@@ -636,10 +641,6 @@ msgstr ""
 
 #: templates/subscriptions.html:261 templates/subscriptions.html:299
 msgid "Basic"
-msgstr ""
-
-#: templates/subscriptions.html:262
-msgid "Premium"
 msgstr ""
 
 #: templates/subscriptions.html:267
@@ -746,5 +747,9 @@ msgstr ""
 
 #: templates/subscriptions.html:403
 msgid "Go to Dashboard"
+msgstr ""
+
+#: templates/subscriptions.html:441
+msgid "Compare All Features"
 msgstr ""
 

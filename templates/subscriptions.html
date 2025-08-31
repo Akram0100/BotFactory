@@ -90,7 +90,7 @@
                         </a>
                     {% else %}
                         <button class="btn btn-primary w-100" disabled>
-                            <i class="fas fa-check me-2"></i>Current Plan
+                            <i class="fas fa-check me-2"></i>{{ _('Current Plan') }}
                         </button>
                     {% endif %}
                 </div>
@@ -164,7 +164,7 @@
                         </a>
                     {% else %}
                         <button class="btn btn-success w-100" disabled>
-                            <i class="fas fa-check me-2"></i>Current Plan
+                            <i class="fas fa-check me-2"></i>{{ _('Current Plan') }}
                         </button>
                     {% endif %}
                 </div>
@@ -180,7 +180,7 @@
                     </div>
                 {% else %}
                     <div class="card-header bg-warning text-dark text-center">
-                        <i class="fas fa-crown me-2"></i>Premium
+                        <i class="fas fa-crown me-2"></i>{{ _('Premium') }}
                     </div>
                 {% endif %}
                 <div class="card-body text-center p-4">
@@ -240,7 +240,7 @@
                         </a>
                     {% else %}
                         <button class="btn btn-warning w-100" disabled>
-                            <i class="fas fa-check me-2"></i>Current Plan
+                            <i class="fas fa-check me-2"></i>{{ _('Current Plan') }}
                         </button>
                     {% endif %}
                 </div>
@@ -438,7 +438,7 @@ const compareBtn = document.createElement('div');
 compareBtn.className = 'text-center mt-4';
 compareBtn.innerHTML = `
     <button type="button" class="btn btn-outline-info" onclick="scrollToComparison()">
-        <i class="fas fa-table me-2"></i>Compare All Features
+        <i class="fas fa-table me-2"></i>{{ _('Compare All Features') }}
     </button>
 `;
 

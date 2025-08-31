@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-31 05:16+0000\n"
+"POT-Creation-Date: 2025-08-31 05:22+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: ru\n"
@@ -581,8 +581,9 @@ msgstr "Сейчас на"
 msgid "plan"
 msgstr "Тарифы"
 
-#: templates/subscriptions.html:37 templates/subscriptions.html:105
-#: templates/subscriptions.html:179
+#: templates/subscriptions.html:37 templates/subscriptions.html:93
+#: templates/subscriptions.html:105 templates/subscriptions.html:167
+#: templates/subscriptions.html:179 templates/subscriptions.html:243
 #, fuzzy
 msgid "Current Plan"
 msgstr "Выберите свой план"
@@ -667,6 +668,10 @@ msgstr "Обновить"
 msgid "Switch to Basic"
 msgstr ""
 
+#: templates/subscriptions.html:183 templates/subscriptions.html:262
+msgid "Premium"
+msgstr ""
+
 #: templates/subscriptions.html:200
 msgid "For growing businesses and agencies"
 msgstr ""
@@ -707,10 +712,6 @@ msgstr ""
 
 #: templates/subscriptions.html:261 templates/subscriptions.html:299
 msgid "Basic"
-msgstr ""
-
-#: templates/subscriptions.html:262
-msgid "Premium"
 msgstr ""
 
 #: templates/subscriptions.html:267
@@ -826,6 +827,10 @@ msgstr ""
 #, fuzzy
 msgid "Go to Dashboard"
 msgstr "Панель управления"
+
+#: templates/subscriptions.html:441
+msgid "Compare All Features"
+msgstr ""
 
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "
