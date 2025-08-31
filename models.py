@@ -26,6 +26,7 @@ class User(UserMixin, db.Model):
     first_name = db.Column(db.String(100), nullable=True)
     last_name = db.Column(db.String(100), nullable=True)
     language = db.Column(db.String(5), default='en', nullable=False)
+    is_admin = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     active = db.Column(db.Boolean, default=True)
@@ -164,3 +165,50 @@ class Message(db.Model):
     
     def __repr__(self):
         return f'<Message {self.id}>'
+
+class AdminBroadcast(db.Model):
+    """Admin broadcast messages to free users"""
+    __tablename__ = 'admin_broadcasts'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    admin_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(200), nullable=False)
+    message_text = db.Column(db.Text, nullable=False)
+    message_html = db.Column(db.Text, nullable=True)  # HTML formatted version
+    target_subscription = db.Column(db.Enum(SubscriptionType), default=SubscriptionType.FREE)
+    allow_basic = db.Column(db.Boolean, default=False)
+    allow_premium = db.Column(db.Boolean, default=False)
+    is_sent = db.Column(db.Boolean, default=False)
+    sent_at = db.Column(db.DateTime, nullable=True)
+    total_bots = db.Column(db.Integer, default=0)
+    successful_sends = db.Column(db.Integer, default=0)
+    failed_sends = db.Column(db.Integer, default=0)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    admin = db.relationship('User', backref='broadcasts')
+    delivery_logs = db.relationship('BroadcastDelivery', backref='broadcast', lazy=True, cascade='all, delete-orphan')
+    
+    def __repr__(self):
+        return f'<AdminBroadcast {self.title}>'
+
+class BroadcastDelivery(db.Model):
+    """Track delivery status of broadcast messages"""
+    __tablename__ = 'broadcast_deliveries'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    broadcast_id = db.Column(db.Integer, db.ForeignKey('admin_broadcasts.id'), nullable=False)
+    bot_id = db.Column(db.Integer, db.ForeignKey('bots.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    telegram_chat_id = db.Column(db.String(100), nullable=True)
+    delivered = db.Column(db.Boolean, default=False)
+    error_message = db.Column(db.Text, nullable=True)
+    delivered_at = db.Column(db.DateTime, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    bot = db.relationship('Bot')
+    user = db.relationship('User')
+    
+    def __repr__(self):
+        return f'<BroadcastDelivery {self.id}>'

@@ -103,11 +103,12 @@ def create_app():
     
     
     # Import and register routes
-    from routes import main, auth, bots, subscriptions
+    from routes import main, auth, bots, subscriptions, admin
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(bots)
     app.register_blueprint(subscriptions)
+    app.register_blueprint(admin)
     
     # Create database tables
     with app.app_context():

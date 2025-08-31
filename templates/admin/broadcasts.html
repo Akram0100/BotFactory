@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% from 'babel/babel.html' import _ %}
+
+{% block title %}{{ _('Broadcasts') }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">
+                    <i class="fas fa-list text-info me-2"></i>
+                    {{ _('Broadcasts') }}
+                </h2>
+                <div>
+                    <a href="{{ url_for('admin.create_broadcast') }}" class="btn btn-success me-2">
+                        <i class="fas fa-plus me-2"></i>{{ _('New Broadcast') }}
+                    </a>
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Admin') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-bullhorn me-2"></i>{{ _('All Broadcasts') }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if broadcasts.items %}
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('Title') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                    <th>{{ _('Target') }}</th>
+                                    <th>{{ _('Created') }}</th>
+                                    <th>{{ _('Sent') }}</th>
+                                    <th>{{ _('Actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for broadcast in broadcasts.items %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ broadcast.title }}</strong>
+                                        <br>
+                                        <small class="text-muted">
+                                            {{ broadcast.message_text[:100] }}{% if broadcast.message_text|length > 100 %}...{% endif %}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        {% if broadcast.is_sent %}
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-check me-1"></i>{{ _('Sent') }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-warning">
+                                                <i class="fas fa-edit me-1"></i>{{ _('Draft') }}
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            <span class="badge bg-warning">
+                                                <i class="fas fa-gift me-1"></i>{{ _('Free') }}
+                                            </span>
+                                            {% if broadcast.allow_basic %}
+                                                <span class="badge bg-info">
+                                                    <i class="fas fa-star me-1"></i>{{ _('Basic') }}
+                                                </span>
+                                            {% endif %}
+                                            {% if broadcast.allow_premium %}
+                                                <span class="badge bg-primary">
+                                                    <i class="fas fa-crown me-1"></i>{{ _('Premium') }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                    <td>{{ broadcast.created_at | datetime }}</td>
+                                    <td>{{ broadcast.sent_at | datetime if broadcast.sent_at else '-' }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('admin.broadcast_detail', broadcast_id=broadcast.id) }}" 
+                                               class="btn btn-sm btn-outline-primary" title="{{ _('View Details') }}">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            {% if not broadcast.is_sent %}
+                                            <a href="{{ url_for('admin.preview_broadcast', broadcast_id=broadcast.id) }}" 
+                                               class="btn btn-sm btn-outline-info" title="{{ _('Preview') }}">
+                                                <i class="fas fa-search"></i>
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if broadcasts.pages > 1 %}
+                    <nav aria-label="Broadcasts pagination" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            {% if broadcasts.has_prev %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('admin.broadcasts', page=broadcasts.prev_num) }}">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for page_num in broadcasts.iter_pages() %}
+                                {% if page_num %}
+                                    {% if page_num != broadcasts.page %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ url_for('admin.broadcasts', page=page_num) }}">{{ page_num }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ page_num }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if broadcasts.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('admin.broadcasts', page=broadcasts.next_num) }}">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-bullhorn fa-3x text-muted mb-3"></i>
+                        <h4 class="text-muted">{{ _('No broadcasts yet') }}</h4>
+                        <p class="text-muted">{{ _('Create your first broadcast to send messages to users') }}</p>
+                        <a href="{{ url_for('admin.create_broadcast') }}" class="btn btn-success">
+                            <i class="fas fa-plus me-2"></i>{{ _('Create First Broadcast') }}
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% from 'babel/babel.html' import _ %}
+
+{% block title %}{{ _('Manage Users') }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">
+                    <i class="fas fa-users-cog text-primary me-2"></i>
+                    {{ _('Manage Users') }}
+                </h2>
+                <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Admin') }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <form method="GET" class="row g-3">
+                        <div class="col-md-4">
+                            <label for="subscription" class="form-label text-white">{{ _('Filter by Subscription') }}</label>
+                            <select name="subscription" id="subscription" class="form-select">
+                                <option value="">{{ _('All Subscriptions') }}</option>
+                                <option value="free" {% if request.args.get('subscription') == 'free' %}selected{% endif %}>
+                                    {{ _('Free') }}
+                                </option>
+                                <option value="basic" {% if request.args.get('subscription') == 'basic' %}selected{% endif %}>
+                                    {{ _('Basic') }}
+                                </option>
+                                <option value="premium" {% if request.args.get('subscription') == 'premium' %}selected{% endif %}>
+                                    {{ _('Premium') }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter me-2"></i>{{ _('Filter') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-users me-2"></i>{{ _('Users') }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if users.items %}
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('User') }}</th>
+                                    <th>{{ _('Subscription') }}</th>
+                                    <th>{{ _('Bots') }}</th>
+                                    <th>{{ _('Language') }}</th>
+                                    <th>{{ _('Joined') }}</th>
+                                    <th>{{ _('Admin') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users.items %}
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <strong class="text-white">{{ user.username }}</strong>
+                                            <br>
+                                            <small class="text-muted">{{ user.email }}</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {% if user.subscription %}
+                                            {% if user.subscription.subscription_type.value == 'free' %}
+                                                <span class="badge bg-warning">
+                                                    <i class="fas fa-gift me-1"></i>{{ _('Free') }}
+                                                </span>
+                                            {% elif user.subscription.subscription_type.value == 'basic' %}
+                                                <span class="badge bg-info">
+                                                    <i class="fas fa-star me-1"></i>{{ _('Basic') }}
+                                                </span>
+                                            {% elif user.subscription.subscription_type.value == 'premium' %}
+                                                <span class="badge bg-primary">
+                                                    <i class="fas fa-crown me-1"></i>{{ _('Premium') }}
+                                                </span>
+                                            {% endif %}
+                                            <br>
+                                            <small class="text-muted">
+                                                {{ _('Max Bots') }}: {{ user.subscription.max_bots }}<br>
+                                                {{ _('Max Messages') }}: {{ user.subscription.max_messages_per_month | number }}
+                                            </small>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ _('No Subscription') }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.bots %}
+                                            <div class="d-flex flex-column">
+                                                <span class="text-white">{{ user.bots | length }} {{ _('bots') }}</span>
+                                                <small class="text-muted">
+                                                    {% set active_bots = user.bots | selectattr('status.value', 'equalto', 'active') | list %}
+                                                    {{ active_bots | length }} {{ _('active') }}
+                                                </small>
+                                            </div>
+                                        {% else %}
+                                            <span class="text-muted">{{ _('No bots') }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.language %}
+                                            {% if user.language == 'en' %}
+                                                🇺🇸 English
+                                            {% elif user.language == 'ru' %}
+                                                🇷🇺 Русский
+                                            {% elif user.language == 'uz' %}
+                                                🇺🇿 O'zbek
+                                            {% else %}
+                                                {{ user.language }}
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="text-muted">{{ _('Not set') }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{ user.created_at | datetime }}</span>
+                                    </td>
+                                    <td>
+                                        {% if user.is_admin %}
+                                            <span class="badge bg-danger">
+                                                <i class="fas fa-crown me-1"></i>{{ _('Admin') }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ _('User') }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if users.pages > 1 %}
+                    <nav aria-label="Users pagination" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            {% if users.has_prev %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('admin.users', page=users.prev_num, subscription=request.args.get('subscription', '')) }}">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for page_num in users.iter_pages() %}
+                                {% if page_num %}
+                                    {% if page_num != users.page %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ url_for('admin.users', page=page_num, subscription=request.args.get('subscription', '')) }}">{{ page_num }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ page_num }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if users.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('admin.users', page=users.next_num, subscription=request.args.get('subscription', '')) }}">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                        <h4 class="text-muted">{{ _('No users found') }}</h4>
+                        <p class="text-muted">{{ _('No users match the current filter criteria') }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% from 'babel/babel.html' import _ %}
+
+{% block title %}{{ _('Preview Broadcast') }} - {{ broadcast.title }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">
+                    <i class="fas fa-search text-info me-2"></i>
+                    {{ _('Preview Broadcast') }}
+                </h2>
+                <a href="{{ url_for('admin.broadcast_detail', broadcast_id=broadcast.id) }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Details') }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Message Preview -->
+        <div class="col-md-6 mb-4">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-comment-alt me-2"></i>{{ _('Message Preview') }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('Title') }}</h6>
+                        <p class="text-muted">{{ broadcast.title }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('Text Version') }}</h6>
+                        <div class="card bg-dark border-secondary p-3">
+                            <pre class="text-white mb-0">{{ broadcast.message_text }}</pre>
+                        </div>
+                    </div>
+
+                    {% if broadcast.message_html %}
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('HTML Version') }}</h6>
+                        <div class="card bg-dark border-secondary p-3">
+                            <div class="text-white">{{ broadcast.message_html | safe }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Target Info -->
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('Target Audience') }}</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-warning">
+                                <i class="fas fa-gift me-1"></i>{{ _('Free Users') }}
+                            </span>
+                            {% if broadcast.allow_basic %}
+                                <span class="badge bg-info">
+                                    <i class="fas fa-star me-1"></i>{{ _('Basic Users') }}
+                                </span>
+                            {% endif %}
+                            {% if broadcast.allow_premium %}
+                                <span class="badge bg-primary">
+                                    <i class="fas fa-crown me-1"></i>{{ _('Premium Users') }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Bots -->
+        <div class="col-md-6 mb-4">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-robot me-2"></i>{{ _('Target Bots') }} ({{ _('First 10') }})
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if target_bots %}
+                    <div class="list-group list-group-flush">
+                        {% for bot in target_bots %}
+                        <div class="list-group-item bg-dark border-secondary">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1 text-white">{{ bot.name }}</h6>
+                                    <p class="mb-1 text-muted">
+                                        <i class="fas fa-user me-1"></i>{{ bot.user.username }}
+                                        {% if bot.user.subscription %}
+                                            <span class="badge bg-secondary ms-2">{{ bot.user.subscription.subscription_type.value }}</span>
+                                        {% endif %}
+                                    </p>
+                                    {% if bot.telegram_username %}
+                                    <small class="text-muted">
+                                        <i class="fab fa-telegram me-1"></i>@{{ bot.telegram_username }}
+                                    </small>
+                                    {% endif %}
+                                </div>
+                                <div class="text-end">
+                                    {% if bot.status.value == 'active' %}
+                                        <span class="badge bg-success">{{ _('Active') }}</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ bot.status.value }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if target_bots|length >= 10 %}
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            {{ _('Showing first 10 bots. More bots will be included when broadcast is sent.') }}
+                        </small>
+                    </div>
+                    {% endif %}
+
+                    {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-robot fa-2x text-muted mb-2"></i>
+                        <h6 class="text-muted">{{ _('No target bots found') }}</h6>
+                        <p class="text-muted small">{{ _('There are no active bots for the selected audience') }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-secondary">
+                <div class="card-body text-center">
+                    <h5 class="text-white mb-3">{{ _('Ready to send?') }}</h5>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('admin.broadcast_detail', broadcast_id=broadcast.id) }}" 
+                           class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Details') }}
+                        </a>
+                        {% if target_bots %}
+                        <form method="POST" action="{{ url_for('admin.send_broadcast', broadcast_id=broadcast.id) }}" 
+                              class="d-inline" onsubmit="return confirm('{{ _('Are you sure you want to send this broadcast to all target bots?') }}')">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-paper-plane me-2"></i>{{ _('Send Broadcast Now') }}
+                            </button>
+                        </form>
+                        {% else %}
+                        <button class="btn btn-success" disabled>
+                            <i class="fas fa-paper-plane me-2"></i>{{ _('No Target Bots') }}
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

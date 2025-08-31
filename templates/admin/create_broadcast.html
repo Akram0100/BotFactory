@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% from 'babel/babel.html' import _ %}
+
+{% block title %}{{ _('Create Broadcast') }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">
+                    <i class="fas fa-bullhorn text-warning me-2"></i>
+                    {{ _('Create Broadcast') }}
+                </h2>
+                <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Admin') }}
+                </a>
+            </div>
+
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-edit me-2"></i>{{ _('Broadcast Details') }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label text-white">{{ _('Title') }} *</label>
+                            <input type="text" class="form-control" id="title" name="title" 
+                                   placeholder="{{ _('Enter broadcast title') }}" required>
+                            <div class="form-text text-muted">{{ _('Internal title for tracking purposes') }}</div>
+                        </div>
+
+                        <!-- Text Message -->
+                        <div class="mb-3">
+                            <label for="message_text" class="form-label text-white">{{ _('Message Text') }} *</label>
+                            <textarea class="form-control" id="message_text" name="message_text" 
+                                      rows="6" placeholder="{{ _('Enter your message text here...') }}" required></textarea>
+                            <div class="form-text text-muted">{{ _('Plain text version of your message') }}</div>
+                        </div>
+
+                        <!-- HTML Message (Optional) -->
+                        <div class="mb-3">
+                            <label for="message_html" class="form-label text-white">{{ _('HTML Message') }} ({{ _('Optional') }})</label>
+                            <textarea class="form-control" id="message_html" name="message_html" 
+                                      rows="8" placeholder="{{ _('Enter HTML formatted message (optional)...') }}"></textarea>
+                            <div class="form-text text-muted">
+                                {{ _('HTML version with formatting. Allowed tags: b, i, u, s, code, pre, a') }}
+                            </div>
+                        </div>
+
+                        <!-- Target Audience -->
+                        <div class="mb-3">
+                            <label class="form-label text-white">{{ _('Target Audience') }}</label>
+                            <div class="card bg-dark border-secondary p-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="target_free" checked disabled>
+                                    <label class="form-check-label text-white" for="target_free">
+                                        <i class="fas fa-gift text-warning me-2"></i>{{ _('Free Users') }} ({{ _('Always included') }})
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="allow_basic" name="allow_basic">
+                                    <label class="form-check-label text-white" for="allow_basic">
+                                        <i class="fas fa-star text-info me-2"></i>{{ _('Basic Plan Users') }}
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="allow_premium" name="allow_premium">
+                                    <label class="form-check-label text-white" for="allow_premium">
+                                        <i class="fas fa-crown text-gold me-2"></i>{{ _('Premium Plan Users') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HTML Preview -->
+                        <div class="mb-3">
+                            <label class="form-label text-white">{{ _('Preview') }}</label>
+                            <div class="card bg-dark border-secondary p-3">
+                                <div id="text-preview" class="mb-2">
+                                    <strong>{{ _('Text:') }}</strong>
+                                    <div class="text-muted fst-italic">{{ _('Type your message above to see preview') }}</div>
+                                </div>
+                                <div id="html-preview" style="display: none;">
+                                    <strong>{{ _('HTML:') }}</strong>
+                                    <div id="html-content" class="border p-2 mt-1 bg-secondary rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">
+                                <i class="fas fa-times me-2"></i>{{ _('Cancel') }}
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save me-2"></i>{{ _('Create Broadcast') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Live preview functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const textArea = document.getElementById('message_text');
+    const htmlArea = document.getElementById('message_html');
+    const textPreview = document.getElementById('text-preview');
+    const htmlPreview = document.getElementById('html-preview');
+    const htmlContent = document.getElementById('html-content');
+
+    function updatePreview() {
+        const textValue = textArea.value.trim();
+        const htmlValue = htmlArea.value.trim();
+
+        // Text preview
+        if (textValue) {
+            textPreview.innerHTML = '<strong>{{ _("Text:") }}</strong><div class="mt-1">' + 
+                textValue.replace(/\n/g, '<br>') + '</div>';
+        } else {
+            textPreview.innerHTML = '<strong>{{ _("Text:") }}</strong><div class="text-muted fst-italic">{{ _("Type your message above to see preview") }}</div>';
+        }
+
+        // HTML preview
+        if (htmlValue) {
+            htmlContent.innerHTML = htmlValue;
+            htmlPreview.style.display = 'block';
+        } else {
+            htmlPreview.style.display = 'none';
+        }
+    }
+
+    textArea.addEventListener('input', updatePreview);
+    htmlArea.addEventListener('input', updatePreview);
+});
+</script>
+{% endblock %}

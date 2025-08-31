@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% from 'babel/babel.html' import _ %}
+
+{% block title %}{{ broadcast.title }} - {{ _('Broadcast Details') }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">
+                    <i class="fas fa-bullhorn text-info me-2"></i>
+                    {{ _('Broadcast Details') }}
+                </h2>
+                <div>
+                    {% if not broadcast.is_sent %}
+                    <form method="POST" action="{{ url_for('admin.send_broadcast', broadcast_id=broadcast.id) }}" 
+                          class="d-inline" onsubmit="return confirm('{{ _('Are you sure you want to send this broadcast?') }}')">
+                        <button type="submit" class="btn btn-success me-2">
+                            <i class="fas fa-paper-plane me-2"></i>{{ _('Send Now') }}
+                        </button>
+                    </form>
+                    {% endif %}
+                    <a href="{{ url_for('admin.broadcasts') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Broadcasts') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Broadcast Info -->
+        <div class="col-md-8 mb-4">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-info-circle me-2"></i>{{ broadcast.title }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- Status Badge -->
+                    <div class="mb-3">
+                        {% if broadcast.is_sent %}
+                            <span class="badge bg-success fs-6">
+                                <i class="fas fa-check me-1"></i>{{ _('Sent') }}
+                            </span>
+                        {% else %}
+                            <span class="badge bg-warning fs-6">
+                                <i class="fas fa-edit me-1"></i>{{ _('Draft') }}
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Target Audience -->
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('Target Audience') }}</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-warning">
+                                <i class="fas fa-gift me-1"></i>{{ _('Free Users') }}
+                            </span>
+                            {% if broadcast.allow_basic %}
+                                <span class="badge bg-info">
+                                    <i class="fas fa-star me-1"></i>{{ _('Basic Users') }}
+                                </span>
+                            {% endif %}
+                            {% if broadcast.allow_premium %}
+                                <span class="badge bg-primary">
+                                    <i class="fas fa-crown me-1"></i>{{ _('Premium Users') }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Message Content -->
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('Text Message') }}</h6>
+                        <div class="card bg-dark border-secondary p-3">
+                            <pre class="text-white mb-0">{{ broadcast.message_text }}</pre>
+                        </div>
+                    </div>
+
+                    {% if broadcast.message_html %}
+                    <div class="mb-3">
+                        <h6 class="text-white">{{ _('HTML Message') }}</h6>
+                        <div class="card bg-dark border-secondary p-3">
+                            <div class="text-white">{{ broadcast.message_html | safe }}</div>
+                        </div>
+                        <details class="mt-2">
+                            <summary class="text-muted">{{ _('View HTML Source') }}</summary>
+                            <pre class="text-muted mt-2"><code>{{ broadcast.message_html }}</code></pre>
+                        </details>
+                    </div>
+                    {% endif %}
+
+                    <!-- Timestamps -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-white">{{ _('Created') }}</h6>
+                            <p class="text-muted">{{ broadcast.created_at | datetime }}</p>
+                        </div>
+                        {% if broadcast.sent_at %}
+                        <div class="col-md-6">
+                            <h6 class="text-white">{{ _('Sent') }}</h6>
+                            <p class="text-muted">{{ broadcast.sent_at | datetime }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="col-md-4 mb-4">
+            <div class="card border-secondary">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-chart-bar me-2"></i>{{ _('Statistics') }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if broadcast.is_sent %}
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">{{ _('Total Sent') }}</span>
+                            <span class="badge bg-primary">{{ stats.total_sent | number }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">{{ _('Delivered') }}</span>
+                            <span class="badge bg-success">{{ stats.delivered | number }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">{{ _('Failed') }}</span>
+                            <span class="badge bg-danger">{{ stats.failed | number }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">{{ _('Pending') }}</span>
+                            <span class="badge bg-warning">{{ stats.pending | number }}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Success Rate -->
+                    {% if stats.total_sent > 0 %}
+                    <div class="mb-3">
+                        <span class="text-white">{{ _('Success Rate') }}</span>
+                        {% set success_rate = (stats.delivered / stats.total_sent * 100) | round(1) %}
+                        <div class="progress mt-1">
+                            <div class="progress-bar bg-success" role="progressbar" 
+                                 style="width: {{ success_rate }}%" 
+                                 aria-valuenow="{{ success_rate }}" 
+                                 aria-valuemin="0" aria-valuemax="100">
+                                {{ success_rate }}%
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% else %}
+                    <div class="text-center text-muted">
+                        <i class="fas fa-clock fa-2x mb-2"></i>
+                        <p>{{ _('Statistics will be available after sending') }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if not broadcast.is_sent %}
+            <!-- Preview Actions -->
+            <div class="card border-secondary mt-3">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="card-title mb-0">
+                        <i class="fas fa-eye me-2"></i>{{ _('Preview') }}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('admin.preview_broadcast', broadcast_id=broadcast.id) }}" 
+                       class="btn btn-info btn-sm w-100 mb-2">
+                        <i class="fas fa-search me-2"></i>{{ _('Preview Targets') }}
+                    </a>
+                    <p class="text-muted small">{{ _('See which bots will receive this broadcast') }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -445,6 +445,38 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Bot restart error: {e}")
+    
+    def send_broadcast_message(self, token, chat_id, message, parse_mode=None):
+        """Send broadcast message using specific bot token"""
+        import asyncio
+        
+        async def _send_message():
+            try:
+                telegram_bot = TelegramBot(token)
+                await telegram_bot.send_message(
+                    chat_id=chat_id,
+                    text=message,
+                    parse_mode=parse_mode
+                )
+                return True
+            except Exception as e:
+                logging.error(f"Error sending broadcast to {chat_id}: {e}")
+                return False
+        
+        try:
+            # Try to get existing event loop
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # If loop is running, use run_in_executor
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(asyncio.run, _send_message())
+                    return future.result()
+            else:
+                return loop.run_until_complete(_send_message())
+        except RuntimeError:
+            # No event loop exists, create one
+            return asyncio.run(_send_message())
 
 # Initialize service instance
 telegram_service = TelegramService()

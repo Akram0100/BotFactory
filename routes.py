@@ -4,10 +4,12 @@ from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 from app import db
-from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus
+from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery
 from services.auth_service import AuthService
 from services.ai_service import AIService
 from services.telegram_service import TelegramService
+from services.broadcast_service import BroadcastService
+from functools import wraps
 import logging
 
 # Blueprint definitions
@@ -15,11 +17,24 @@ main = Blueprint('main', __name__)
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 bots = Blueprint('bots', __name__, url_prefix='/bots')
 subscriptions = Blueprint('subscriptions', __name__, url_prefix='/subscriptions')
+admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 # Initialize services
 auth_service = AuthService()
 ai_service = AIService()
 telegram_service = TelegramService()
+broadcast_service = BroadcastService()
+
+# Admin decorator
+def admin_required(f):
+    @wraps(f)
+    @login_required
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_admin:
+            flash('Admin access required.', 'error')
+            return redirect(url_for('main.dashboard'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 # Main routes
 @main.route('/')
@@ -429,3 +444,145 @@ def not_found(error):
 def internal_error(error):
     db.session.rollback()
     return render_template('500.html'), 500
+
+# Admin Panel Routes
+@admin.route('/')
+@admin_required
+def dashboard():
+    """Admin dashboard"""
+    # Get statistics
+    total_users = User.query.count()
+    total_bots = Bot.query.count()
+    active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).count()
+    free_users = db.session.query(User).join(Subscription).filter(
+        Subscription.subscription_type == SubscriptionType.FREE
+    ).count()
+    
+    # Recent broadcasts
+    recent_broadcasts = AdminBroadcast.query.order_by(
+        AdminBroadcast.created_at.desc()
+    ).limit(5).all()
+    
+    stats = {
+        'total_users': total_users,
+        'total_bots': total_bots,
+        'active_bots': active_bots,
+        'free_users': free_users
+    }
+    
+    return render_template('admin/dashboard.html', 
+                         stats=stats, 
+                         recent_broadcasts=recent_broadcasts)
+
+@admin.route('/broadcasts')
+@admin_required
+def broadcasts():
+    """List all broadcasts"""
+    page = request.args.get('page', 1, type=int)
+    broadcasts = AdminBroadcast.query.order_by(
+        AdminBroadcast.created_at.desc()
+    ).paginate(
+        page=page, per_page=20, error_out=False
+    )
+    
+    return render_template('admin/broadcasts.html', broadcasts=broadcasts)
+
+@admin.route('/broadcasts/create', methods=['GET', 'POST'])
+@admin_required
+def create_broadcast():
+    """Create new broadcast"""
+    if request.method == 'POST':
+        title = request.form.get('title', '').strip()
+        message_text = request.form.get('message_text', '').strip()
+        message_html = request.form.get('message_html', '').strip()
+        allow_basic = bool(request.form.get('allow_basic'))
+        allow_premium = bool(request.form.get('allow_premium'))
+        
+        if not title or not message_text:
+            flash('Title and message are required.', 'error')
+            return render_template('admin/create_broadcast.html')
+        
+        # Sanitize HTML if provided
+        if message_html:
+            message_html = broadcast_service.sanitize_html(message_html)
+        
+        # Create broadcast
+        broadcast = broadcast_service.create_broadcast(
+            admin_id=current_user.id,
+            title=title,
+            message_text=message_text,
+            message_html=message_html,
+            target_subscription=SubscriptionType.FREE,
+            allow_basic=allow_basic,
+            allow_premium=allow_premium
+        )
+        
+        if broadcast:
+            flash('Broadcast created successfully!', 'success')
+            return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast.id))
+        else:
+            flash('Failed to create broadcast.', 'error')
+    
+    return render_template('admin/create_broadcast.html')
+
+@admin.route('/broadcasts/<int:broadcast_id>')
+@admin_required
+def broadcast_detail(broadcast_id):
+    """View broadcast details"""
+    broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
+    stats = broadcast_service.get_broadcast_stats(broadcast_id)
+    
+    return render_template('admin/broadcast_detail.html', 
+                         broadcast=broadcast, 
+                         stats=stats)
+
+@admin.route('/broadcasts/<int:broadcast_id>/send', methods=['POST'])
+@admin_required
+def send_broadcast(broadcast_id):
+    """Send broadcast to target users"""
+    broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
+    
+    if broadcast.is_sent:
+        flash('Broadcast has already been sent.', 'error')
+        return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast_id))
+    
+    # Send broadcast in background
+    success, message = broadcast_service.send_broadcast(broadcast_id)
+    
+    if success:
+        flash(message, 'success')
+    else:
+        flash(f'Failed to send broadcast: {message}', 'error')
+    
+    return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast_id))
+
+@admin.route('/broadcasts/<int:broadcast_id>/preview')
+@admin_required
+def preview_broadcast(broadcast_id):
+    """Preview broadcast message"""
+    broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
+    target_bots = broadcast_service.get_target_bots(broadcast)
+    
+    return render_template('admin/broadcast_preview.html', 
+                         broadcast=broadcast, 
+                         target_bots=target_bots[:10])  # Show first 10 for preview
+
+@admin.route('/users')
+@admin_required
+def users():
+    """List all users"""
+    page = request.args.get('page', 1, type=int)
+    users_query = User.query.order_by(User.created_at.desc())
+    
+    # Filter by subscription type if specified
+    subscription_filter = request.args.get('subscription')
+    if subscription_filter:
+        users_query = users_query.join(Subscription).filter(
+            Subscription.subscription_type == SubscriptionType(subscription_filter)
+        )
+    
+    users_paginated = users_query.paginate(
+        page=page, per_page=50, error_out=False
+    )
+    
+    return render_template('admin/users.html', users=users_paginated)
