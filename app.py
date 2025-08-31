@@ -131,6 +131,8 @@ def create_app():
         # TODO: Initialize notification templates after fixing Unicode encoding
         # from services.notification_service import NotificationService
         # NotificationService.initialize_templates()
+        
+        # Auto-start active Telegram bots will be done separately to avoid circular imports
     
     return app
 

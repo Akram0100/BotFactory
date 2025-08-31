@@ -175,6 +175,10 @@ class TelegramService:
         """Handle /start command with language selection"""
         try:
             user = update.effective_user
+            if not user:
+                logging.error("No user in update")
+                return
+                
             user_id = user.id
             
             # Check if user already has language preference
@@ -198,11 +202,14 @@ class TelegramService:
             error_msg += "🇺🇿 Kechirasiz, xatolik yuz berdi.\n"
             error_msg += "🇷🇺 Извините, произошла ошибка.\n"
             error_msg += "🇬🇧 Sorry, an error occurred."
-            await update.message.reply_text(error_msg)
+            if update and update.message:
+                await update.message.reply_text(error_msg)
     
     async def _handle_help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle /help command"""
         try:
+            if not update.effective_user:
+                return
             user_id = update.effective_user.id
             user_lang = self.user_languages.get(user_id, 'uz')
             
@@ -212,15 +219,19 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Help command error: {e}")
-            user_id = update.effective_user.id
-            user_lang = self.user_languages.get(user_id, 'uz')
-            error_msg = self._get_localized_text('error', user_lang)
-            await update.message.reply_text(error_msg)
+            if update and update.effective_user and update.message:
+                user_id = update.effective_user.id
+                user_lang = self.user_languages.get(user_id, 'uz')
+                error_msg = self._get_localized_text('error', user_lang)
+                await update.message.reply_text(error_msg)
     
     async def _handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle regular text messages"""
         try:
             user = update.effective_user
+            if not user or not update.message or not update.message.text:
+                return
+                
             user_message = update.message.text
             user_id = user.id
             user_lang = self.user_languages.get(user_id, 'uz')
@@ -256,18 +267,25 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Message handling error: {e}")
-            user_id = update.effective_user.id if update.effective_user else None
-            user_lang = self.user_languages.get(user_id, 'uz') if user_id else 'uz'
-            error_msg = self._get_localized_text('error', user_lang)
-            await update.message.reply_text(error_msg)
+            if update and update.message:
+                user_id = update.effective_user.id if update.effective_user else None
+                user_lang = self.user_languages.get(user_id, 'uz') if user_id else 'uz'
+                error_msg = self._get_localized_text('error', user_lang)
+                await update.message.reply_text(error_msg)
     
     async def _handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle callback queries from inline keyboards"""
         try:
             query = update.callback_query
+            if not query:
+                return
+                
             await query.answer()
             
             user = query.from_user
+            if not user or not query.data:
+                return
+                
             callback_data = query.data
             user_id = user.id
             
@@ -298,6 +316,11 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Callback handling error: {e}")
+            if query:
+                try:
+                    await query.answer("Xatolik yuz berdi / Ошибка / Error")
+                except:
+                    pass
     
     async def _send_notification(self, bot, message):
         """Send notification to admin chat or channel"""
@@ -352,6 +375,8 @@ class TelegramService:
         """Show language selection menu"""
         try:
             user = update.effective_user
+            if not user or not update.message:
+                return
             
             # Create multilingual welcome message
             welcome_text = "🌐 **Tilni tanlang / Выберите язык / Choose Language**\\n\\n"
@@ -379,9 +404,13 @@ class TelegramService:
             if edit_message:
                 # This is from callback query
                 user = update_or_query.from_user
+                if not user:
+                    return
             else:
                 # This is from regular update
                 user = update_or_query.effective_user
+                if not user or not update_or_query.message:
+                    return
             
             welcome_msg = self._get_localized_welcome_message(user.first_name, bot.name, language)
             
@@ -485,16 +514,14 @@ class TelegramService:
     def restart_all_bots(self):
         """Restart all active bots"""
         try:
-            from app import app
-            with app.app_context():
-                # Get all active bots from database
-                active_bots = Bot.query.filter_by(status='ACTIVE').all()
-                
-                for bot in active_bots:
-                    if bot.telegram_token:
-                        self.start_bot(bot)
-                        
-                logging.info(f"Auto-started {len(active_bots)} active bots")
-                
+            # Get all active bots from database
+            active_bots = Bot.query.filter_by(status='ACTIVE').all()
+            
+            for bot in active_bots:
+                if bot.telegram_token:
+                    self.start_bot(bot)
+                    
+            logging.info(f"Auto-started {len(active_bots)} active bots")
+            
         except Exception as e:
             logging.error(f"Bot restart error: {e}")
