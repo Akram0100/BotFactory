@@ -99,6 +99,8 @@ If you don't know something, be honest about it.
                 
         except Exception as e:
             logging.error(f"AI Service error: {e}")
+            import traceback
+            logging.error(f"AI Service traceback: {traceback.format_exc()}")
             return "I'm experiencing technical difficulties. Please try again later."
     
     def _find_relevant_image(self, user_message, knowledge_entries, ai_response):

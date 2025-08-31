@@ -247,7 +247,9 @@ class TelegramService:
             await self._send_notification(bot, notification_text)
             
             # Get AI response with user's language preference
+            logging.info(f"Requesting AI response for user {user_id} in language {user_lang}")
             ai_response = self.ai_service.get_response(bot, user_message, user_language=user_lang)
+            logging.info(f"AI response received: {ai_response[:100]}..." if ai_response else "No AI response")
             
             # Send response to user
             if ai_response:
