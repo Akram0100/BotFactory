@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify, current_app
 from flask_login import login_user, logout_user, login_required, current_user
+from flask_babel import gettext as _
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 from app import db
