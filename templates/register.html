@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Ro'yxatdan o'tish - BotFactory{% endblock %}
+{% block title %}{{ _('Sign Up') }} - BotFactory{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -10,89 +10,89 @@
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
                         <i class="fas fa-robot text-primary" style="font-size: 3rem;"></i>
-                        <h2 class="mt-3">Hisobingizni yarating</h2>
-                        <p class="text-muted">Bugun AI chatbotlar yaratishni boshlang</p>
+                        <h2 class="mt-3">{{ _('Create Your Account') }}</h2>
+                        <p class="text-muted">{{ _('Start building AI chatbots today') }}</p>
                     </div>
                     
                     <form method="POST" id="registerForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="first_name" class="form-label">Ism</label>
+                                <label for="first_name" class="form-label">{{ _('First Name') }}</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" 
-                                       placeholder="Ismingizni kiriting">
+                                       placeholder="{{ _('Enter first name') }}">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="last_name" class="form-label">Familiya</label>
+                                <label for="last_name" class="form-label">{{ _('Last Name') }}</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" 
-                                       placeholder="Familiyangizni kiriting">
+                                       placeholder="{{ _('Enter last name') }}">
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="username" class="form-label">Foydalanuvchi nomi *</label>
+                            <label for="username" class="form-label">{{ _('Username') }} *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-user"></i>
                                 </span>
                                 <input type="text" class="form-control" id="username" name="username" 
-                                       required placeholder="Foydalanuvchi nomini tanlang">
+                                       required placeholder="{{ _('Choose a username') }}">
                             </div>
-                            <div class="form-text">3-30 ta belgi, faqat harf, raqam va pastki chiziq</div>
+                            <div class="form-text">{{ _('3-30 characters, letters, numbers and underscore only') }}</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email manzil *</label>
+                            <label for="email" class="form-label">{{ _('Email Address') }} *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-envelope"></i>
                                 </span>
                                 <input type="email" class="form-control" id="email" name="email" 
-                                       required placeholder="Email manzilingizni kiriting">
+                                       required placeholder="{{ _('Enter your email') }}">
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="password" class="form-label">Parol *</label>
+                            <label for="password" class="form-label">{{ _('Password') }} *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" id="password" name="password" 
-                                       required placeholder="Parol yarating">
+                                       required placeholder="{{ _('Create a password') }}">
                             </div>
-                            <div class="form-text">Kamida 6 ta belgi</div>
+                            <div class="form-text">{{ _('Minimum 6 characters') }}</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Parolni tasdiqlang *</label>
+                            <label for="confirm_password" class="form-label">{{ _('Confirm Password') }} *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
-                                       required placeholder="Parolingizni tasdiqlang">
+                                       required placeholder="{{ _('Confirm your password') }}">
                             </div>
                         </div>
                         
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="terms" required>
                             <label class="form-check-label" for="terms">
-                                Men <a href="#" class="text-decoration-none">Xizmat shartlari</a> 
-                                va <a href="#" class="text-decoration-none">Maxfiylik siyosati</a> bilan roziman
+                                {{ _('I agree to the') }} <a href="#" class="text-decoration-none">{{ _('Terms of Service') }}</a> 
+                                {{ _('and') }} <a href="#" class="text-decoration-none">{{ _('Privacy Policy') }}</a>
                             </label>
                         </div>
                         
                         <button type="submit" class="btn btn-primary w-100 mb-3">
-                            <i class="fas fa-user-plus me-2"></i>Hisob yaratish
+                            <i class="fas fa-user-plus me-2"></i>{{ _('Create Account') }}
                         </button>
                     </form>
                     
                     <hr class="my-4">
                     
                     <div class="text-center">
-                        <p class="mb-0">Hisobingiz bormi?</p>
+                        <p class="mb-0">{{ _('Already have an account?') }}</p>
                         <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary mt-2">
-                            Kirish
+                            {{ _('Sign In Instead') }}
                         </a>
                     </div>
                 </div>
@@ -105,8 +105,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-gift text-success mb-2" style="font-size: 2rem;"></i>
-                                <h6>Bepul boshlash</h6>
-                                <small class="text-muted">Birinchi botingizni bepul yarating</small>
+                                <h6>{{ _('Free to Start') }}</h6>
+                                <small class="text-muted">{{ _('Create your first bot for free') }}</small>
                             </div>
                         </div>
                     </div>
@@ -114,8 +114,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-zap text-warning mb-2" style="font-size: 2rem;"></i>
-                                <h6>Tez sozlash</h6>
-                                <small class="text-muted">Botingizni bir necha daqiqada ishga tushiring</small>
+                                <h6>{{ _('Quick Setup') }}</h6>
+                                <small class="text-muted">{{ _('Get your bot running in minutes') }}</small>
                             </div>
                         </div>
                     </div>
@@ -123,8 +123,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-headset text-info mb-2" style="font-size: 2rem;"></i>
-                                <h6>24/7 Qo'llab-quvvatlash</h6>
-                                <small class="text-muted">Sizning muvaffaqiyatingiz uchun doim yordamga tayyormiz</small>
+                                <h6>{{ _('24/7 Support') }}</h6>
+                                <small class="text-muted">{{ _('We are here to help you succeed') }}</small>
                             </div>
                         </div>
                     </div>

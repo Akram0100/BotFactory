@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-31 05:22+0000\n"
+"POT-Creation-Date: 2025-08-31 06:00+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -66,7 +66,7 @@ msgstr "Chiqish"
 msgid "Login"
 msgstr "Kirish"
 
-#: templates/base.html:82
+#: templates/base.html:82 templates/register.html:3
 msgid "Sign Up"
 msgstr "Ro'yxatdan o'tish"
 
@@ -124,7 +124,7 @@ msgid "Powered by Google Gemini AI"
 msgstr "Google Gemini AI tomonidan quvvatlanadi"
 
 #: templates/bot_create.html:14 templates/bot_list.html:24
-#: templates/dashboard.html:17 templates/dashboard.html:214
+#: templates/dashboard.html:22 templates/dashboard.html:219
 msgid "Create New Bot"
 msgstr "Yangi bot yaratish"
 
@@ -176,11 +176,11 @@ msgstr "O'chirish"
 msgid "Delete"
 msgstr "O'chirish"
 
-#: templates/bot_edit.html:49 templates/dashboard.html:64
+#: templates/bot_edit.html:49 templates/dashboard.html:69
 msgid "Total Messages"
 msgstr "Jami xabarlar"
 
-#: templates/bot_edit.html:57 templates/dashboard.html:80
+#: templates/bot_edit.html:57 templates/dashboard.html:85
 msgid "Users Served"
 msgstr "Xizmat ko'rsatilgan foydalanuvchilar"
 
@@ -285,7 +285,7 @@ msgstr "Bot chegarasiga yetildi"
 msgid "You are using %(current)s of %(max)s available bots."
 msgstr "Siz %(max)s ta mavjud botdan %(current)s tasini ishlatyapsiz."
 
-#: templates/bot_list.html:46 templates/dashboard.html:196
+#: templates/bot_list.html:46 templates/dashboard.html:201
 msgid "Upgrade Plan"
 msgstr "Rejani yangilash"
 
@@ -294,7 +294,7 @@ msgstr "Rejani yangilash"
 msgid "Edit Bot"
 msgstr "Botni sinash"
 
-#: templates/bot_list.html:116 templates/dashboard.html:184
+#: templates/bot_list.html:116 templates/dashboard.html:189
 #, fuzzy
 msgid "Messages"
 msgstr "Jami xabarlar"
@@ -323,68 +323,72 @@ msgstr "Xush kelibsiz, %(name)s!"
 msgid "Manage your AI chatbots and monitor performance"
 msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
 
-#: templates/dashboard.html:32
+#: templates/dashboard.html:18
+msgid "Admin Panel"
+msgstr ""
+
+#: templates/dashboard.html:37
 msgid "Total Bots"
 msgstr "Jami botlar"
 
-#: templates/dashboard.html:48
+#: templates/dashboard.html:53
 msgid "Active Bots"
 msgstr "Faol botlar"
 
-#: templates/dashboard.html:96
+#: templates/dashboard.html:101
 msgid "Your Bots"
 msgstr "Sizning botlaringiz"
 
-#: templates/dashboard.html:98
+#: templates/dashboard.html:103
 msgid "View All"
 msgstr "Barchasini ko'rish"
 
-#: templates/dashboard.html:115
+#: templates/dashboard.html:120
 #, fuzzy
 msgid "No description"
 msgstr "Tavsif"
 
-#: templates/dashboard.html:143
+#: templates/dashboard.html:148
 msgid "No Bots Yet"
 msgstr "Hali botlar yo'q"
 
-#: templates/dashboard.html:144
+#: templates/dashboard.html:149
 msgid "Create your first AI chatbot to get started"
 msgstr "Boshlash uchun birinchi AI chatbotingizni yarating"
 
-#: templates/dashboard.html:146 templates/subscriptions.html:400
+#: templates/dashboard.html:151 templates/subscriptions.html:400
 msgid "Create Your First Bot"
 msgstr "Birinchi botingizni yarating"
 
-#: templates/dashboard.html:160
+#: templates/dashboard.html:165
 msgid "Your Plan"
 msgstr "Sizning rejangiz"
 
-#: templates/dashboard.html:172
+#: templates/dashboard.html:177
 msgid "Bots Used"
 msgstr "Ishlatilgan botlar"
 
-#: templates/dashboard.html:200
+#: templates/dashboard.html:205
 msgid "Active Subscription"
 msgstr "Faol obuna"
 
-#: templates/dashboard.html:209
+#: templates/dashboard.html:214
 msgid "Quick Actions"
 msgstr "Tezkor amallar"
 
-#: templates/dashboard.html:217
+#: templates/dashboard.html:222
 msgid "Manage Bots"
 msgstr "Botlarni boshqarish"
 
-#: templates/dashboard.html:220
+#: templates/dashboard.html:225
 msgid "View Plans"
 msgstr "Rejalarni ko'rish"
 
-#: templates/dashboard.html:229
+#: templates/dashboard.html:234
 msgid "Need help?"
 msgstr "Yordam kerakmi?"
 
-#: templates/dashboard.html:229
+#: templates/dashboard.html:234
 msgid "Contact Support"
 msgstr "Yordam xizmatiga murojaat qiling"
 
@@ -550,6 +554,135 @@ msgstr "/oyiga"
 #, fuzzy
 msgid "Basic knowledge base"
 msgstr "Bilimlar bazasi"
+
+#: templates/register.html:13
+#, fuzzy
+msgid "Create Your Account"
+msgstr "Hisobingizni yarating"
+
+#: templates/register.html:14
+msgid "Start building AI chatbots today"
+msgstr ""
+
+#: templates/register.html:20
+#, fuzzy
+msgid "First Name"
+msgstr "Bot nomi"
+
+#: templates/register.html:22
+msgid "Enter first name"
+msgstr "Ismingizni kiriting"
+
+#: templates/register.html:25
+#, fuzzy
+msgid "Last Name"
+msgstr "Bot nomi"
+
+#: templates/register.html:27
+#, fuzzy
+msgid "Enter last name"
+msgstr "Familiyangizni kiriting"
+
+#: templates/register.html:32
+#, fuzzy
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+#: templates/register.html:38
+#, fuzzy
+msgid "Choose a username"
+msgstr "Foydalanuvchi nomini tanlang"
+
+#: templates/register.html:40
+msgid "3-30 characters, letters, numbers and underscore only"
+msgstr "3-30 ta belgi, faqat harf, raqam va pastki chiziq"
+
+#: templates/register.html:44
+#, fuzzy
+msgid "Email Address"
+msgstr "Email manzil"
+
+#: templates/register.html:50
+msgid "Enter your email"
+msgstr "Email manzilingizni kiriting"
+
+#: templates/register.html:55
+msgid "Password"
+msgstr "Parol"
+
+#: templates/register.html:61
+msgid "Create a password"
+msgstr "Parol yarating"
+
+#: templates/register.html:63
+msgid "Minimum 6 characters"
+msgstr "Kamida 6 ta belgi"
+
+#: templates/register.html:67
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlang"
+
+#: templates/register.html:73
+msgid "Confirm your password"
+msgstr "Parolingizni tasdiqlang"
+
+#: templates/register.html:80
+msgid "I agree to the"
+msgstr "Men quyidagi bilan roziman:"
+
+#: templates/register.html:80
+#, fuzzy
+msgid "Terms of Service"
+msgstr "Xizmat shartlari"
+
+#: templates/register.html:81
+msgid "and"
+msgstr "va"
+
+#: templates/register.html:81
+msgid "Privacy Policy"
+msgstr "Maxfiylik siyosati"
+
+#: templates/register.html:86
+#, fuzzy
+msgid "Create Account"
+msgstr "Hisob yaratish"
+
+#: templates/register.html:93
+msgid "Already have an account?"
+msgstr "Hisobingiz bormi?"
+
+#: templates/register.html:95
+msgid "Sign In Instead"
+msgstr "Kirish"
+
+#: templates/register.html:108
+#, fuzzy
+msgid "Free to Start"
+msgstr "Bepul boshlash"
+
+#: templates/register.html:109
+#, fuzzy
+msgid "Create your first bot for free"
+msgstr "Birinchi botingizni bepul yarating"
+
+#: templates/register.html:117
+msgid "Quick Setup"
+msgstr "Tez sozlash"
+
+#: templates/register.html:118
+#, fuzzy
+msgid "Get your bot running in minutes"
+msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
+
+#: templates/register.html:126
+#, fuzzy
+msgid "24/7 Support"
+msgstr "24/7 Qo'llab-quvvatlash"
+
+#: templates/register.html:127
+msgid "We are here to help you succeed"
+msgstr "Sizning muvaffaqiyatingiz uchun doim yordamga tayyormiz"
 
 #: templates/subscriptions.html:13
 #, fuzzy
