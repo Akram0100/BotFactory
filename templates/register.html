@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Sign Up - BotFactory{% endblock %}
+{% block title %}Ro'yxatdan o'tish - BotFactory{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -10,89 +10,89 @@
                 <div class="card-body p-4">
                     <div class="text-center mb-4">
                         <i class="fas fa-robot text-primary" style="font-size: 3rem;"></i>
-                        <h2 class="mt-3">Create Your Account</h2>
-                        <p class="text-muted">Start building AI chatbots today</p>
+                        <h2 class="mt-3">Hisobingizni yarating</h2>
+                        <p class="text-muted">Bugun AI chatbotlar yaratishni boshlang</p>
                     </div>
                     
                     <form method="POST" id="registerForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="first_name" class="form-label">First Name</label>
+                                <label for="first_name" class="form-label">Ism</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" 
-                                       placeholder="Enter first name">
+                                       placeholder="Ismingizni kiriting">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="last_name" class="form-label">Last Name</label>
+                                <label for="last_name" class="form-label">Familiya</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" 
-                                       placeholder="Enter last name">
+                                       placeholder="Familiyangizni kiriting">
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username *</label>
+                            <label for="username" class="form-label">Foydalanuvchi nomi *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-user"></i>
                                 </span>
                                 <input type="text" class="form-control" id="username" name="username" 
-                                       required placeholder="Choose a username">
+                                       required placeholder="Foydalanuvchi nomini tanlang">
                             </div>
-                            <div class="form-text">3-30 characters, letters, numbers and underscore only</div>
+                            <div class="form-text">3-30 ta belgi, faqat harf, raqam va pastki chiziq</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email Address *</label>
+                            <label for="email" class="form-label">Email manzil *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-envelope"></i>
                                 </span>
                                 <input type="email" class="form-control" id="email" name="email" 
-                                       required placeholder="Enter your email">
+                                       required placeholder="Email manzilingizni kiriting">
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password *</label>
+                            <label for="password" class="form-label">Parol *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" id="password" name="password" 
-                                       required placeholder="Create a password">
+                                       required placeholder="Parol yarating">
                             </div>
-                            <div class="form-text">Minimum 6 characters</div>
+                            <div class="form-text">Kamida 6 ta belgi</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm Password *</label>
+                            <label for="confirm_password" class="form-label">Parolni tasdiqlang *</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
-                                       required placeholder="Confirm your password">
+                                       required placeholder="Parolingizni tasdiqlang">
                             </div>
                         </div>
                         
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="terms" required>
                             <label class="form-check-label" for="terms">
-                                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> 
-                                and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                Men <a href="#" class="text-decoration-none">Xizmat shartlari</a> 
+                                va <a href="#" class="text-decoration-none">Maxfiylik siyosati</a> bilan roziman
                             </label>
                         </div>
                         
                         <button type="submit" class="btn btn-primary w-100 mb-3">
-                            <i class="fas fa-user-plus me-2"></i>Create Account
+                            <i class="fas fa-user-plus me-2"></i>Hisob yaratish
                         </button>
                     </form>
                     
                     <hr class="my-4">
                     
                     <div class="text-center">
-                        <p class="mb-0">Already have an account?</p>
+                        <p class="mb-0">Hisobingiz bormi?</p>
                         <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary mt-2">
-                            Sign In Instead
+                            Kirish
                         </a>
                     </div>
                 </div>
@@ -105,8 +105,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-gift text-success mb-2" style="font-size: 2rem;"></i>
-                                <h6>Free to Start</h6>
-                                <small class="text-muted">Create your first bot for free</small>
+                                <h6>Bepul boshlash</h6>
+                                <small class="text-muted">Birinchi botingizni bepul yarating</small>
                             </div>
                         </div>
                     </div>
@@ -114,8 +114,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-zap text-warning mb-2" style="font-size: 2rem;"></i>
-                                <h6>Quick Setup</h6>
-                                <small class="text-muted">Get your bot running in minutes</small>
+                                <h6>Tez sozlash</h6>
+                                <small class="text-muted">Botingizni bir necha daqiqada ishga tushiring</small>
                             </div>
                         </div>
                     </div>
@@ -123,8 +123,8 @@
                         <div class="card border-0 bg-transparent">
                             <div class="card-body p-2">
                                 <i class="fas fa-headset text-info mb-2" style="font-size: 2rem;"></i>
-                                <h6>24/7 Support</h6>
-                                <small class="text-muted">We're here to help you succeed</small>
+                                <h6>24/7 Qo'llab-quvvatlash</h6>
+                                <small class="text-muted">Sizning muvaffaqiyatingiz uchun doim yordamga tayyormiz</small>
                             </div>
                         </div>
                     </div>
@@ -151,39 +151,39 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     // Username validation
     if (username.length < 3 || username.length > 30) {
         e.preventDefault();
-        alert('Username must be between 3 and 30 characters.');
+        alert('Foydalanuvchi nomi 3 dan 30 gacha belgi bo\'lishi kerak.');
         return;
     }
     
     if (!/^[a-zA-Z0-9_]+$/.test(username)) {
         e.preventDefault();
-        alert('Username can only contain letters, numbers, and underscores.');
+        alert('Foydalanuvchi nomida faqat harf, raqam va pastki chiziq bo\'lishi mumkin.');
         return;
     }
     
     // Email validation
     if (!isValidEmail(email)) {
         e.preventDefault();
-        alert('Please enter a valid email address.');
+        alert('Iltimos, to\'g\'ri email manzilini kiriting.');
         return;
     }
     
     // Password validation
     if (password.length < 6) {
         e.preventDefault();
-        alert('Password must be at least 6 characters long.');
+        alert('Parol kamida 6 ta belgidan iborat bo\'lishi kerak.');
         return;
     }
     
     if (password !== confirmPassword) {
         e.preventDefault();
-        alert('Passwords do not match.');
+        alert('Parollar mos kelmaydi.');
         return;
     }
     
     if (!terms) {
         e.preventDefault();
-        alert('Please accept the Terms of Service and Privacy Policy.');
+        alert('Iltimos, Xizmat shartlari va Maxfiylik siyosatini qabul qiling.');
         return;
     }
 });
@@ -194,7 +194,7 @@ document.getElementById('confirm_password').addEventListener('input', function()
     const confirmPassword = this.value;
     
     if (confirmPassword && password !== confirmPassword) {
-        this.setCustomValidity('Passwords do not match');
+        this.setCustomValidity('Parollar mos kelmaydi');
     } else {
         this.setCustomValidity('');
     }
@@ -205,9 +205,9 @@ document.getElementById('username').addEventListener('input', function() {
     const username = this.value;
     
     if (username && !/^[a-zA-Z0-9_]+$/.test(username)) {
-        this.setCustomValidity('Username can only contain letters, numbers, and underscores');
+        this.setCustomValidity('Foydalanuvchi nomida faqat harf, raqam va pastki chiziq bo\'lishi mumkin');
     } else if (username && (username.length < 3 || username.length > 30)) {
-        this.setCustomValidity('Username must be between 3 and 30 characters');
+        this.setCustomValidity('Foydalanuvchi nomi 3 dan 30 gacha belgi bo\'lishi kerak');
     } else {
         this.setCustomValidity('');
     }
