@@ -556,27 +556,24 @@ msgid "Basic knowledge base"
 msgstr "Bilimlar bazasi"
 
 #: templates/register.html:13
-#, fuzzy
 msgid "Create Your Account"
 msgstr "Hisobingizni yarating"
 
 #: templates/register.html:14
 msgid "Start building AI chatbots today"
-msgstr ""
+msgstr "Bugun AI chatbotlar yaratishni boshlang"
 
 #: templates/register.html:20
-#, fuzzy
 msgid "First Name"
-msgstr "Bot nomi"
+msgstr "Ism"
 
 #: templates/register.html:22
 msgid "Enter first name"
 msgstr "Ismingizni kiriting"
 
 #: templates/register.html:25
-#, fuzzy
 msgid "Last Name"
-msgstr "Bot nomi"
+msgstr "Familiya"
 
 #: templates/register.html:27
 #, fuzzy
