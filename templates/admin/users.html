@@ -112,8 +112,13 @@
                                             <div class="d-flex flex-column">
                                                 <span class="text-white">{{ user.bots | length }} {{ _('bots') }}</span>
                                                 <small class="text-muted">
-                                                    {% set active_bots = user.bots | selectattr('status.value', 'equalto', 'active') | list %}
-                                                    {{ active_bots | length }} {{ _('active') }}
+                                                    {% set active_count = 0 %}
+                                                    {% for bot in user.bots %}
+                                                        {% if bot.status.value == 'active' %}
+                                                            {% set active_count = active_count + 1 %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {{ active_count }} {{ _('active') }}
                                                 </small>
                                             </div>
                                         {% else %}
