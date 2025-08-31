@@ -529,7 +529,7 @@ def internal_error(error):
 # Admin Panel Routes
 @admin.route('/')
 @admin_required
-def dashboard():
+def admin_dashboard():
     """Admin dashboard"""
     # Get statistics
     total_users = User.query.count()
