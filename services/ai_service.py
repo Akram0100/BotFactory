@@ -32,7 +32,7 @@ class AIService:
             if knowledge_entries:
                 knowledge_context = "\n\nKnowledge Base:\n"
                 for entry in knowledge_entries:
-                    knowledge_context += f"- {entry.title}: {entry.content[:500]}...\n"
+                    knowledge_context += f"- {entry.title}: {entry.content}\n\n"
             
             # Set language instructions based on user preference or detection
             if user_language != 'auto':
