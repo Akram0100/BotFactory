@@ -62,6 +62,74 @@
                             </div>
                         </div>
 
+                        <!-- Platform Selection -->
+                        <div class="mb-4">
+                            <label class="form-label">{{ _('Choose Platform') }} *</label>
+                            <div class="row g-3">
+                                <!-- Telegram -->
+                                <div class="col-md-4">
+                                    <div class="card border-primary">
+                                        <div class="card-body text-center p-3">
+                                            <input type="radio" class="form-check-input d-none" id="platform_telegram" name="platform_type" value="telegram" checked>
+                                            <label for="platform_telegram" class="form-check-label w-100 cursor-pointer">
+                                                <i class="fab fa-telegram text-primary mb-2" style="font-size: 2rem;"></i>
+                                                <h6 class="mb-1">Telegram</h6>
+                                                <small class="text-muted">{{ _('Available on all plans') }}</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Instagram -->
+                                <div class="col-md-4">
+                                    <div class="card {% if current_user.subscription and current_user.subscription.instagram_enabled %}border-success{% else %}border-secondary{% endif %}">
+                                        <div class="card-body text-center p-3">
+                                            <input type="radio" class="form-check-input d-none" id="platform_instagram" name="platform_type" value="instagram" {% if not current_user.subscription.instagram_enabled %}disabled{% endif %}>
+                                            <label for="platform_instagram" class="form-check-label w-100 cursor-pointer {% if not current_user.subscription.instagram_enabled %}opacity-50{% endif %}">
+                                                <i class="fab fa-instagram {% if current_user.subscription.instagram_enabled %}text-success{% else %}text-muted{% endif %} mb-2" style="font-size: 2rem;"></i>
+                                                <h6 class="mb-1">Instagram</h6>
+                                                <small class="text-muted">
+                                                    {% if current_user.subscription.instagram_enabled %}
+                                                        {{ _('Available with your plan') }}
+                                                    {% else %}
+                                                        {{ _('Requires Basic+ plan') }}
+                                                    {% endif %}
+                                                </small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- WhatsApp -->
+                                <div class="col-md-4">
+                                    <div class="card {% if current_user.subscription and current_user.subscription.whatsapp_enabled %}border-success{% else %}border-secondary{% endif %}">
+                                        <div class="card-body text-center p-3">
+                                            <input type="radio" class="form-check-input d-none" id="platform_whatsapp" name="platform_type" value="whatsapp" {% if not current_user.subscription.whatsapp_enabled %}disabled{% endif %}>
+                                            <label for="platform_whatsapp" class="form-check-label w-100 cursor-pointer {% if not current_user.subscription.whatsapp_enabled %}opacity-50{% endif %}">
+                                                <i class="fab fa-whatsapp {% if current_user.subscription.whatsapp_enabled %}text-success{% else %}text-muted{% endif %} mb-2" style="font-size: 2rem;"></i>
+                                                <h6 class="mb-1">WhatsApp</h6>
+                                                <small class="text-muted">
+                                                    {% if current_user.subscription.whatsapp_enabled %}
+                                                        {{ _('Available with your plan') }}
+                                                    {% else %}
+                                                        {{ _('Requires Premium plan') }}
+                                                    {% endif %}
+                                                </small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {% if not current_user.subscription.instagram_enabled or not current_user.subscription.whatsapp_enabled %}
+                                <div class="form-text">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    {{ _('Need more platforms?') }} 
+                                    <a href="{{ url_for('subscriptions.plans') }}" class="text-decoration-none">{{ _('Upgrade your plan') }}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+
                         <!-- Examples Panel -->
                         <div class="alert alert-info">
                             <h6><i class="fas fa-lightbulb me-2"></i>Bot Personality Examples</h6>
@@ -102,20 +170,25 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4 text-center mb-3">
-                            <i class="fas fa-telegram text-success mb-2" style="font-size: 2rem;"></i>
-                            <h6>Connect Telegram</h6>
-                            <small class="text-muted">Link your bot to a Telegram bot token</small>
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-link text-success mb-2" style="font-size: 2rem;"></i>
+                            <h6>Connect Platform</h6>
+                            <small class="text-muted">Link your bot to chosen platform (Telegram, Instagram, WhatsApp)</small>
                         </div>
-                        <div class="col-md-4 text-center mb-3">
+                        <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-database text-info mb-2" style="font-size: 2rem;"></i>
                             <h6>Upload Knowledge</h6>
                             <small class="text-muted">Add documents and information for your bot</small>
                         </div>
-                        <div class="col-md-4 text-center mb-3">
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-comment-dots text-warning mb-2" style="font-size: 2rem;"></i>
+                            <h6>Test Bot</h6>
+                            <small class="text-muted">Test your bot responses before going live</small>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-play text-primary mb-2" style="font-size: 2rem;"></i>
-                            <h6>Test & Deploy</h6>
-                            <small class="text-muted">Test your bot and make it available to users</small>
+                            <h6>Deploy</h6>
+                            <small class="text-muted">Make your bot available to users</small>
                         </div>
                     </div>
                 </div>

@@ -5,10 +5,12 @@ from flask_babel import gettext as _
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 from app import db
-from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery
+from models import User, Bot, Subscription, KnowledgeBase, SubscriptionType, BotStatus, AdminBroadcast, BroadcastDelivery, PlatformType
 from services.auth_service import AuthService
 from services.ai_service import AIService
 from services.telegram_service import TelegramService
+from services.instagram_service import InstagramService
+from services.whatsapp_service import WhatsAppService
 from services.broadcast_service import BroadcastService
 from functools import wraps
 import logging
@@ -24,6 +26,8 @@ admin = Blueprint('admin', __name__, url_prefix='/admin')
 auth_service = AuthService()
 ai_service = AIService()
 telegram_service = TelegramService()
+instagram_service = InstagramService()
+whatsapp_service = WhatsAppService()
 broadcast_service = BroadcastService()
 
 # Admin decorator
@@ -194,9 +198,19 @@ def create_bot():
         name = request.form.get('name')
         description = request.form.get('description')
         system_prompt = request.form.get('system_prompt', 'You are a helpful AI assistant.')
+        platform_type = request.form.get('platform_type', 'telegram')
         
         if not name:
             flash('Bot name is required.', 'error')
+            return render_template('bot_create.html')
+        
+        # Validate platform access based on subscription
+        if platform_type == 'instagram' and not subscription.instagram_enabled:
+            flash('Instagram integration requires Basic or higher subscription.', 'error')
+            return render_template('bot_create.html')
+        
+        if platform_type == 'whatsapp' and not subscription.whatsapp_enabled:
+            flash('WhatsApp integration requires Premium subscription.', 'error')
             return render_template('bot_create.html')
         
         try:
@@ -205,6 +219,7 @@ def create_bot():
             bot.name = name
             bot.description = description
             bot.system_prompt = system_prompt
+            bot.platform_type = PlatformType(platform_type)
             db.session.add(bot)
             db.session.commit()
             
@@ -272,18 +287,79 @@ def edit_bot(bot_id):
                 flash('Failed to update configuration.', 'error')
                 logging.error(f"Telegram/notification setup error: {e}")
         
+        elif action == 'setup_instagram':
+            access_token = request.form.get('instagram_access_token')
+            if access_token:
+                try:
+                    account_info = instagram_service.validate_token(access_token)
+                    if account_info:
+                        bot.instagram_access_token = access_token
+                        bot.instagram_username = account_info.get('username')
+                        bot.instagram_account_id = account_info.get('id')
+                        bot.platform_type = PlatformType.INSTAGRAM
+                        bot.status = BotStatus.ACTIVE
+                        db.session.commit()
+                        
+                        instagram_service.start_bot(bot)
+                        flash('Instagram bot configured successfully!', 'success')
+                    else:
+                        flash('Invalid Instagram access token.', 'error')
+                except Exception as e:
+                    flash('Failed to configure Instagram bot.', 'error')
+                    logging.error(f"Instagram setup error: {e}")
+                    
+        elif action == 'setup_whatsapp':
+            access_token = request.form.get('whatsapp_access_token')
+            phone_number_id = request.form.get('whatsapp_phone_number_id')
+            if access_token and phone_number_id:
+                try:
+                    account_info = whatsapp_service.validate_credentials(access_token, phone_number_id)
+                    if account_info:
+                        bot.whatsapp_access_token = access_token
+                        bot.whatsapp_phone_number_id = phone_number_id
+                        bot.whatsapp_phone_number = account_info.get('phone_number')
+                        bot.whatsapp_verified_name = account_info.get('verified_name')
+                        bot.platform_type = PlatformType.WHATSAPP
+                        bot.status = BotStatus.ACTIVE
+                        db.session.commit()
+                        
+                        whatsapp_service.start_bot(bot)
+                        flash('WhatsApp bot configured successfully!', 'success')
+                    else:
+                        flash('Invalid WhatsApp credentials.', 'error')
+                except Exception as e:
+                    flash('Failed to configure WhatsApp bot.', 'error')
+                    logging.error(f"WhatsApp setup error: {e}")
+                    
         elif action == 'toggle_status':
             if bot.status == BotStatus.ACTIVE:
                 bot.status = BotStatus.INACTIVE
-                telegram_service.stop_bot(bot)
+                # Stop bot based on platform
+                if bot.platform_type == PlatformType.TELEGRAM:
+                    telegram_service.stop_bot(bot)
+                elif bot.platform_type == PlatformType.INSTAGRAM:
+                    instagram_service.stop_bot(bot)
+                elif bot.platform_type == PlatformType.WHATSAPP:
+                    whatsapp_service.stop_bot(bot)
                 flash('Bot deactivated.', 'info')
             else:
-                if bot.telegram_token:
-                    bot.status = BotStatus.ACTIVE
+                # Check platform credentials and start bot
+                platform_configured = False
+                if bot.platform_type == PlatformType.TELEGRAM and bot.telegram_token:
                     telegram_service.start_bot(bot)
+                    platform_configured = True
+                elif bot.platform_type == PlatformType.INSTAGRAM and bot.instagram_access_token:
+                    instagram_service.start_bot(bot)
+                    platform_configured = True
+                elif bot.platform_type == PlatformType.WHATSAPP and bot.whatsapp_access_token:
+                    whatsapp_service.start_bot(bot)
+                    platform_configured = True
+                    
+                if platform_configured:
+                    bot.status = BotStatus.ACTIVE
                     flash('Bot activated.', 'success')
                 else:
-                    flash('Please configure Telegram token first.', 'error')
+                    flash('Please configure platform credentials first.', 'error')
             
             try:
                 db.session.commit()

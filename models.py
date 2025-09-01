@@ -15,6 +15,11 @@ class BotStatus(enum.Enum):
     INACTIVE = "inactive"
     PENDING = "pending"
 
+class PlatformType(enum.Enum):
+    TELEGRAM = "telegram"
+    INSTAGRAM = "instagram"
+    WHATSAPP = "whatsapp"
+
 class User(UserMixin, db.Model):
     """User model for authentication and account management"""
     __tablename__ = 'users'
@@ -69,6 +74,11 @@ class Subscription(db.Model):
     is_active = db.Column(db.Boolean, default=True)
     max_bots = db.Column(db.Integer, default=1)
     max_messages_per_month = db.Column(db.Integer, default=100)
+    
+    # Platform access permissions
+    telegram_enabled = db.Column(db.Boolean, default=True)
+    instagram_enabled = db.Column(db.Boolean, default=False)  # Only for paid plans
+    whatsapp_enabled = db.Column(db.Boolean, default=False)   # Only for paid plans
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     def is_expired(self):
@@ -93,8 +103,25 @@ class Bot(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
+    
+    # Platform selection
+    platform_type = db.Column(db.Enum(PlatformType), default=PlatformType.TELEGRAM, nullable=False)
+    
+    # Telegram integration
     telegram_token = db.Column(db.String(255), nullable=True)
     telegram_username = db.Column(db.String(100), nullable=True)
+    
+    # Instagram integration  
+    instagram_access_token = db.Column(db.String(500), nullable=True)
+    instagram_username = db.Column(db.String(100), nullable=True)
+    instagram_account_id = db.Column(db.String(100), nullable=True)
+    
+    # WhatsApp integration
+    whatsapp_access_token = db.Column(db.String(500), nullable=True)
+    whatsapp_phone_number_id = db.Column(db.String(100), nullable=True)
+    whatsapp_phone_number = db.Column(db.String(50), nullable=True)
+    whatsapp_verified_name = db.Column(db.String(100), nullable=True)
+    
     system_prompt = db.Column(db.Text, default="You are a helpful AI assistant.")
     status = db.Column(db.Enum(BotStatus), default=BotStatus.INACTIVE)
     is_active = db.Column(db.Boolean, default=True)

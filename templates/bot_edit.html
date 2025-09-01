@@ -89,6 +89,22 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="instagram-tab" data-bs-toggle="tab" data-bs-target="#instagram" type="button" role="tab">
+                <i class="fab fa-instagram me-2"></i>{{ _('Instagram Setup') }}
+                {% if current_user.subscription and not current_user.subscription.instagram_enabled %}
+                    <span class="badge bg-warning ms-1">Premium</span>
+                {% endif %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="whatsapp-tab" data-bs-toggle="tab" data-bs-target="#whatsapp" type="button" role="tab">
+                <i class="fab fa-whatsapp me-2"></i>{{ _('WhatsApp Setup') }}
+                {% if current_user.subscription and not current_user.subscription.whatsapp_enabled %}
+                    <span class="badge bg-warning ms-1">Premium</span>
+                {% endif %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
             <button class="nav-link" id="knowledge-tab" data-bs-toggle="tab" data-bs-target="#knowledge" type="button" role="tab">
                 <i class="fas fa-database me-2"></i>{{ _('Knowledge Base') }}
             </button>
@@ -238,6 +254,147 @@
                         <li>Copy the token and paste it above</li>
                         <li>Click "Connect Telegram Bot" to activate</li>
                     </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Setup Tab -->
+        <div class="tab-pane fade" id="instagram" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">{{ _('Instagram Bot Configuration') }}</h5>
+                </div>
+                <div class="card-body">
+                    {% if not current_user.subscription.instagram_enabled %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-crown me-2"></i>
+                            {{ _('Instagram integration is available only for Premium subscribers.') }}
+                            <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-warning btn-sm ms-2">{{ _('Upgrade Now') }}</a>
+                        </div>
+                    {% else %}
+                        {% if bot.instagram_access_token %}
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                {{ _('Bot is connected to Instagram as') }} <strong>@{{ bot.instagram_username }}</strong>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                {{ _('To deploy your bot to Instagram, you need to create a business account and get access token.') }}
+                            </div>
+                        {% endif %}
+
+                        <form method="POST">
+                            <input type="hidden" name="action" value="setup_instagram">
+                            
+                            <div class="mb-3">
+                                <label for="instagram_access_token" class="form-label">{{ _('Instagram Access Token') }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-instagram"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="instagram_access_token" 
+                                           name="instagram_access_token" placeholder="Enter your Instagram access token"
+                                           value="{{ bot.instagram_access_token if bot.instagram_access_token else '' }}">
+                                </div>
+                                <div class="form-text">
+                                    {{ _('Get this token from Facebook Developer Console for your Instagram Business account.') }}
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save me-2"></i>{{ 'Update' if bot.instagram_access_token else 'Setup' }} Instagram Configuration
+                            </button>
+                        </form>
+
+                        <!-- Instructions -->
+                        <hr class="my-4">
+                        <h6>{{ _('How to get Instagram Access Token:') }}</h6>
+                        <ol class="small">
+                            <li>Create a Facebook App at <code>developers.facebook.com</code></li>
+                            <li>Add Instagram Basic Display product</li>
+                            <li>Convert your Instagram account to Business/Creator account</li>
+                            <li>Generate access token for your business account</li>
+                            <li>Copy the token and paste it above</li>
+                        </ol>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Setup Tab -->
+        <div class="tab-pane fade" id="whatsapp" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">{{ _('WhatsApp Bot Configuration') }}</h5>
+                </div>
+                <div class="card-body">
+                    {% if not current_user.subscription.whatsapp_enabled %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-crown me-2"></i>
+                            {{ _('WhatsApp integration is available only for Premium subscribers.') }}
+                            <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-warning btn-sm ms-2">{{ _('Upgrade Now') }}</a>
+                        </div>
+                    {% else %}
+                        {% if bot.whatsapp_access_token %}
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                {{ _('Bot is connected to WhatsApp Business as') }} <strong>{{ bot.whatsapp_verified_name }}</strong>
+                                <br><small class="text-muted">{{ _('Phone:') }} {{ bot.whatsapp_phone_number }}</small>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                {{ _('To deploy your bot to WhatsApp, you need WhatsApp Business API credentials.') }}
+                            </div>
+                        {% endif %}
+
+                        <form method="POST">
+                            <input type="hidden" name="action" value="setup_whatsapp">
+                            
+                            <div class="mb-3">
+                                <label for="whatsapp_access_token" class="form-label">{{ _('WhatsApp Access Token') }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="whatsapp_access_token" 
+                                           name="whatsapp_access_token" placeholder="Enter your WhatsApp access token"
+                                           value="{{ bot.whatsapp_access_token if bot.whatsapp_access_token else '' }}">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="whatsapp_phone_number_id" class="form-label">{{ _('Phone Number ID') }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-phone"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="whatsapp_phone_number_id" 
+                                           name="whatsapp_phone_number_id" placeholder="Enter phone number ID"
+                                           value="{{ bot.whatsapp_phone_number_id if bot.whatsapp_phone_number_id else '' }}">
+                                </div>
+                                <div class="form-text">
+                                    {{ _('Get these credentials from Facebook Developer Console WhatsApp Business API.') }}
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save me-2"></i>{{ 'Update' if bot.whatsapp_access_token else 'Setup' }} WhatsApp Configuration
+                            </button>
+                        </form>
+
+                        <!-- Instructions -->
+                        <hr class="my-4">
+                        <h6>{{ _('How to get WhatsApp Business API credentials:') }}</h6>
+                        <ol class="small">
+                            <li>Create a Facebook App at <code>developers.facebook.com</code></li>
+                            <li>Add WhatsApp Business product</li>
+                            <li>Set up WhatsApp Business account</li>
+                            <li>Get access token and phone number ID</li>
+                            <li>Copy the credentials and paste them above</li>
+                        </ol>
+                    {% endif %}
                 </div>
             </div>
         </div>

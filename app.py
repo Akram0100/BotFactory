@@ -132,18 +132,31 @@ def create_app():
         # from services.notification_service import NotificationService
         # NotificationService.initialize_templates()
         
-        # Auto-start active Telegram bots
+        # Auto-start active bots for all platforms
         try:
             from services.telegram_service import TelegramService
-            from models import Bot, BotStatus
+            from services.instagram_service import InstagramService
+            from services.whatsapp_service import WhatsAppService
+            from models import Bot, BotStatus, PlatformType
             
+            # Initialize services
             telegram_service = TelegramService()
+            instagram_service = InstagramService()
+            whatsapp_service = WhatsAppService()
+            
             active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
             
             for bot in active_bots:
                 try:
-                    telegram_service.start_bot(bot)
-                    logging.info(f"Auto-started bot: {bot.name}")
+                    if bot.platform_type == PlatformType.TELEGRAM and bot.telegram_token:
+                        telegram_service.start_bot(bot)
+                        logging.info(f"Auto-started Telegram bot: {bot.name}")
+                    elif bot.platform_type == PlatformType.INSTAGRAM and bot.instagram_access_token:
+                        instagram_service.start_bot(bot)
+                        logging.info(f"Auto-started Instagram bot: {bot.name}")
+                    elif bot.platform_type == PlatformType.WHATSAPP and bot.whatsapp_access_token:
+                        whatsapp_service.start_bot(bot)
+                        logging.info(f"Auto-started WhatsApp bot: {bot.name}")
                 except Exception as e:
                     logging.error(f"Failed to auto-start bot {bot.name}: {e}")
                     
