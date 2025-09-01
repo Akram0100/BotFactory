@@ -76,7 +76,16 @@ class TelegramService:
                 return await self._handle_message(update, context, bot)
             
             async def callback_wrapper(update, context):
-                return await self._handle_callback(update, context, bot)
+                logging.info(f"🔔 CALLBACK WRAPPER called for bot {bot.id}")
+                try:
+                    result = await self._handle_callback(update, context, bot)
+                    logging.info(f"✅ Callback wrapper completed successfully")
+                    return result
+                except Exception as e:
+                    logging.error(f"❌ Callback wrapper error: {e}")
+                    import traceback
+                    logging.error(f"Full traceback: {traceback.format_exc()}")
+                    raise
             
             application.add_handler(CommandHandler("start", start_wrapper))
             application.add_handler(CommandHandler("help", help_wrapper))
@@ -302,14 +311,21 @@ class TelegramService:
     async def _handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle callback queries from inline keyboards"""
         try:
-            logging.info(f"Callback handler called with update: {update}")
+            logging.info(f"=== CALLBACK HANDLER START ===")
+            logging.info(f"Update type: {type(update)}")
+            logging.info(f"Update data: {update}")
+            
             query = update.callback_query
             if not query:
-                logging.error("No callback query in update")
+                logging.error("❌ No callback query in update")
                 return
                 
+            logging.info(f"✅ Callback query found: {query}")
+            logging.info(f"Query data: {query.data}")
+            logging.info(f"Query from user: {query.from_user.id if query.from_user else 'Unknown'}")
+            
             await query.answer()
-            logging.info(f"Callback query answered")
+            logging.info(f"✅ Callback query answered successfully")
             
             user = query.from_user
             if not user or not query.data:
