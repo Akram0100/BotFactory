@@ -133,18 +133,27 @@ def create_app():
         # NotificationService.initialize_templates()
         
         # Auto-start active bots for all platforms
+        logging.info("🚀 Starting auto-start process for active bots...")
         try:
             # Import the singleton instances from routes (to share state)
+            logging.info("📦 Importing service instances from routes...")
             from routes import telegram_service, instagram_service, whatsapp_service
             from models import Bot, BotStatus, PlatformType
             
+            logging.info("🔍 Querying for ACTIVE bots...")
             active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
+            logging.info(f"📊 Found {len(active_bots)} active bots")
             
             for bot in active_bots:
                 try:
+                    logging.info(f"🔄 Processing bot: {bot.name} (ID: {bot.id}, Type: {bot.platform_type})")
                     if bot.platform_type == PlatformType.TELEGRAM and bot.telegram_token:
-                        telegram_service.start_bot(bot)
-                        logging.info(f"Auto-started Telegram bot: {bot.name}")
+                        logging.info(f"📱 Starting Telegram bot {bot.name}...")
+                        result = telegram_service.start_bot(bot)
+                        if result:
+                            logging.info(f"✅ Auto-started Telegram bot: {bot.name}")
+                        else:
+                            logging.error(f"❌ Failed to auto-start Telegram bot: {bot.name}")
                     elif bot.platform_type == PlatformType.INSTAGRAM and bot.instagram_access_token:
                         instagram_service.start_bot(bot)
                         logging.info(f"Auto-started Instagram bot: {bot.name}")
@@ -152,10 +161,14 @@ def create_app():
                         whatsapp_service.start_bot(bot)
                         logging.info(f"Auto-started WhatsApp bot: {bot.name}")
                 except Exception as e:
-                    logging.error(f"Failed to auto-start bot {bot.name}: {e}")
+                    logging.error(f"❌ Failed to auto-start bot {bot.name}: {e}")
+                    import traceback
+                    logging.error(f"📋 Full traceback: {traceback.format_exc()}")
                     
         except Exception as e:
-            logging.error(f"Auto-start bots error: {e}")
+            logging.error(f"💥 Auto-start bots error: {e}")
+            import traceback
+            logging.error(f"📋 Auto-start full traceback: {traceback.format_exc()}")
     
     return app
 

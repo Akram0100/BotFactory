@@ -87,13 +87,29 @@ class TelegramService:
                     logging.error(f"Full traceback: {traceback.format_exc()}")
                     raise
             
-            application.add_handler(CommandHandler("start", start_wrapper))
-            application.add_handler(CommandHandler("help", help_wrapper))
-            application.add_handler(CallbackQueryHandler(callback_wrapper))
-            application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_wrapper))
+            # Add handlers with detailed logging
+            logging.info(f"🎯 Registering handlers for bot {bot.id}")
+            
+            start_handler = CommandHandler("start", start_wrapper)
+            help_handler = CommandHandler("help", help_wrapper)
+            callback_handler = CallbackQueryHandler(callback_wrapper)
+            message_handler = MessageHandler(filters.TEXT & ~filters.COMMAND, message_wrapper)
+            
+            application.add_handler(start_handler)
+            application.add_handler(help_handler)
+            application.add_handler(callback_handler)
+            application.add_handler(message_handler)
+            
+            logging.info(f"✅ Handler registration completed for bot {bot.id}")
+            logging.info(f"📊 Total handlers registered: {len(application.handlers.get(0, []))}")
+            
+            # Log each handler type
+            for i, handler in enumerate(application.handlers.get(0, [])):
+                logging.info(f"  Handler {i+1}: {type(handler).__name__} - {handler}")
             
             # Store application
             self.active_bots[bot.id] = application
+            logging.info(f"🏪 Bot {bot.id} stored in active_bots. Total active: {len(self.active_bots)}")
             
             # Start polling in a separate thread with proper async setup
             def run_bot():
@@ -103,10 +119,14 @@ class TelegramService:
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
                     
-                    # Run the application
+                    # Run the application with detailed status
+                    logging.info(f"🔄 Initializing bot {bot.id}...")
                     loop.run_until_complete(application.initialize())
+                    logging.info(f"🚀 Starting bot {bot.id}...")
                     loop.run_until_complete(application.start())
+                    logging.info(f"📡 Starting polling for bot {bot.id}...")
                     loop.run_until_complete(application.updater.start_polling())
+                    logging.info(f"✅ Bot {bot.id} fully operational and polling!")
                     
                     # Keep the loop running
                     loop.run_forever()
