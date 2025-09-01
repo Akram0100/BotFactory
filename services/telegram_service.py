@@ -302,18 +302,23 @@ class TelegramService:
     async def _handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle callback queries from inline keyboards"""
         try:
+            logging.info(f"Callback handler called with update: {update}")
             query = update.callback_query
             if not query:
+                logging.error("No callback query in update")
                 return
                 
             await query.answer()
+            logging.info(f"Callback query answered")
             
             user = query.from_user
             if not user or not query.data:
+                logging.error(f"Missing user or query.data: user={user}, data={query.data if query else None}")
                 return
                 
             callback_data = query.data
             user_id = user.id
+            logging.info(f"Processing callback: {callback_data} from user {user_id}")
             
             # Send notification about callback
             notification_text = f"🔘 **Callback query**\n"
@@ -355,6 +360,7 @@ class TelegramService:
                 
                 # Save language preference to database
                 try:
+                    logging.info(f"Attempting to save language {language} for user {user_id}")
                     self._set_user_language(user_id, language, user)
                     self.user_languages[user_id] = language
                     logging.info(f"Successfully saved language {language} for user {user_id}")
@@ -363,6 +369,7 @@ class TelegramService:
                 
                 # Show welcome message in selected language
                 try:
+                    logging.info(f"Showing success message in language: {language}")
                     # Simple success message instead of complex welcome
                     success_messages = {
                         'uz': f"✅ Til tanlandi: O'zbek\n\n🎉 Salom! Menga savolingizni yuboring.",
@@ -371,16 +378,21 @@ class TelegramService:
                     }
                     message = success_messages.get(language, success_messages['uz'])
                     await query.edit_message_text(message)
-                    logging.info(f"Language {language} confirmed for user {user_id}")
+                    logging.info(f"Language {language} confirmed for user {user_id} - message sent")
                 except Exception as e:
                     logging.error(f"Error showing welcome message: {e}")
                     # Fallback: send simple text
-                    await query.edit_message_text(f"Til tanlandi: {language} ✅")
+                    try:
+                        await query.edit_message_text(f"Til tanlandi: {language} ✅")
+                        logging.info(f"Sent fallback message for language {language}")
+                    except Exception as e2:
+                        logging.error(f"Error sending fallback message: {e2}")
                 
             # Handle different callback actions
             elif callback_data == "help":
                 await self._handle_help_command(update, context, bot)
             else:
+                logging.info(f"Unhandled callback_data: {callback_data}")
                 # Get user's language for response
                 user_lang = self._get_user_language(user_id)
                 response_msg = self._get_localized_text("selection_completed", user_lang)
@@ -388,11 +400,14 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Callback handling error: {e}")
+            import traceback
+            logging.error(f"Callback error traceback: {traceback.format_exc()}")
             try:
                 if 'query' in locals() and query:
                     await query.answer("Xatolik yuz berdi / Ошибка / Error")
-            except:
-                pass
+                    logging.error(f"Sent error response to callback query")
+            except Exception as e2:
+                logging.error(f"Error sending callback error response: {e2}")
     
     async def _send_notification(self, bot, message):
         """Send notification to admin chat or channel"""
