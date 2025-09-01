@@ -165,6 +165,23 @@ class TelegramUser(db.Model):
     def __repr__(self):
         return f'<TelegramUser {self.telegram_user_id}>'
 
+class Conversation(db.Model):
+    """Model to track user-bot interactions"""
+    __tablename__ = 'conversations'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    bot_id = db.Column(db.Integer, db.ForeignKey('bots.id'), nullable=False)
+    telegram_user_id = db.Column(db.BigInteger, nullable=False)
+    chat_id = db.Column(db.String(100), nullable=False)
+    last_message_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    bot = db.relationship('Bot', backref='conversations')
+    
+    def __repr__(self):
+        return f'<Conversation bot:{self.bot_id} user:{self.telegram_user_id}>'
+
 class KnowledgeBase(db.Model):
     """Knowledge base documents for bots"""
     __tablename__ = 'knowledge_base'

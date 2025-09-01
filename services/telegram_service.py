@@ -235,7 +235,11 @@ class TelegramService:
                 
             user_message = update.message.text
             user_id = user.id
+            chat_id = update.message.chat_id
             user_lang = self._get_user_language(user_id)
+            
+            # Track conversation for broadcast purposes
+            self._track_conversation(bot.id, user_id, chat_id)
             
             # Send notification to admin about user message
             notification_text = f"💬 **Yangi xabar**\n"
@@ -607,6 +611,92 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Error setting user language: {e}")
+            try:
+                db.session.rollback()
+            except:
+                pass
+    
+    def send_broadcast_message(self, token, chat_id, message, parse_mode=None):
+        """Send broadcast message to a specific chat"""
+        import asyncio
+        import requests
+        import json
+        
+        async def _send_message():
+            try:
+                url = f"https://api.telegram.org/bot{token}/sendMessage"
+                
+                data = {
+                    'chat_id': chat_id,
+                    'text': message
+                }
+                
+                if parse_mode:
+                    data['parse_mode'] = parse_mode
+                
+                response = requests.post(url, data=data, timeout=10)
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    if result.get('ok'):
+                        logging.info(f"Broadcast message sent to {chat_id}")
+                        return True
+                    else:
+                        logging.error(f"Telegram API error: {result.get('description', 'Unknown error')}")
+                        return False
+                else:
+                    logging.error(f"HTTP error {response.status_code} sending to {chat_id}")
+                    return False
+                    
+            except Exception as e:
+                logging.error(f"Error sending broadcast message to {chat_id}: {e}")
+                return False
+        
+        try:
+            # Try to get existing event loop
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # If loop is running, we need to use run_in_executor
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(asyncio.run, _send_message())
+                    return future.result()
+            else:
+                return loop.run_until_complete(_send_message())
+        except RuntimeError:
+            # No event loop exists, create one
+            return asyncio.run(_send_message())
+    
+    def _track_conversation(self, bot_id, telegram_user_id, chat_id):
+        """Track user-bot conversation for broadcast purposes"""
+        try:
+            from app import app
+            from models import Conversation
+            with app.app_context():
+                # Check if conversation already exists
+                conversation = Conversation.query.filter_by(
+                    bot_id=bot_id,
+                    telegram_user_id=telegram_user_id
+                ).first()
+                
+                if conversation:
+                    # Update last message time
+                    conversation.last_message_at = datetime.utcnow()
+                    logging.info(f"Updated conversation for bot {bot_id} user {telegram_user_id}")
+                else:
+                    # Create new conversation record
+                    conversation = Conversation(
+                        bot_id=bot_id,
+                        telegram_user_id=telegram_user_id,
+                        chat_id=str(chat_id)
+                    )
+                    db.session.add(conversation)
+                    logging.info(f"Created new conversation for bot {bot_id} user {telegram_user_id}")
+                
+                db.session.commit()
+                
+        except Exception as e:
+            logging.error(f"Error tracking conversation: {e}")
             try:
                 db.session.rollback()
             except:

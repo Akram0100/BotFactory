@@ -151,12 +151,11 @@ class BroadcastService:
             if not bot.telegram_token:
                 return False
             
+            # Import Conversation model
+            from models import Conversation
+            
             # Get all conversations for this bot (unique users)
-            conversations = db.session.query(
-                db.func.distinct(db.text('telegram_user_id'))
-            ).select_from(db.text('conversations')).filter(
-                db.text('bot_id = :bot_id')
-            ).params(bot_id=bot.id).all()
+            conversations = db.session.query(Conversation).filter_by(bot_id=bot.id).all()
             
             if not conversations:
                 return True  # No users to send to, consider successful
@@ -176,7 +175,7 @@ class BroadcastService:
             success_count = 0
             for conv in conversations:
                 try:
-                    chat_id = conv[0]
+                    chat_id = conv.chat_id
                     
                     # Send message using bot's token
                     sent = telegram_service.send_broadcast_message(
@@ -190,7 +189,7 @@ class BroadcastService:
                         success_count += 1
                         
                 except Exception as e:
-                    current_app.logger.error(f"Error sending to chat {conv[0]}: {str(e)}")
+                    current_app.logger.error(f"Error sending to chat {conv.chat_id}: {str(e)}")
                     continue
             
             return success_count > 0
