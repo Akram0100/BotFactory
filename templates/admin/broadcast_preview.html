@@ -89,9 +89,9 @@
                                 <div>
                                     <h6 class="mb-1 text-white">{{ bot.name }}</h6>
                                     <p class="mb-1 text-muted">
-                                        <i class="fas fa-user me-1"></i>{{ bot.user.username }}
-                                        {% if bot.user.subscription %}
-                                            <span class="badge bg-secondary ms-2">{{ bot.user.subscription.subscription_type.value }}</span>
+                                        <i class="fas fa-user me-1"></i>{{ bot.owner.username }}
+                                        {% if bot.owner.subscription %}
+                                            <span class="badge bg-secondary ms-2">{{ bot.owner.subscription.subscription_type.value }}</span>
                                         {% endif %}
                                     </p>
                                     {% if bot.telegram_username %}

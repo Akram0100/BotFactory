@@ -684,12 +684,23 @@ def send_broadcast(broadcast_id):
 @admin_required
 def preview_broadcast(broadcast_id):
     """Preview broadcast message"""
-    broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
-    target_bots = broadcast_service.get_target_bots(broadcast)
-    
-    return render_template('admin/broadcast_preview.html', 
-                         broadcast=broadcast, 
-                         target_bots=target_bots[:10])  # Show first 10 for preview
+    try:
+        broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
+        target_bots = broadcast_service.get_target_bots(broadcast)
+        
+        # Ensure relationships are loaded for the preview
+        for bot in target_bots:
+            # Access relationships to ensure they're loaded
+            if bot.owner and bot.owner.subscription:
+                pass  # Just access to ensure loading
+        
+        return render_template('admin/broadcast_preview.html', 
+                             broadcast=broadcast, 
+                             target_bots=target_bots[:10])  # Show first 10 for preview
+    except Exception as e:
+        current_app.logger.error(f"Preview broadcast error: {str(e)}")
+        flash(f'Error loading broadcast preview: {str(e)}', 'error')
+        return redirect(url_for('admin.broadcasts'))
 
 @admin.route('/users')
 @admin_required

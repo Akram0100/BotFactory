@@ -60,10 +60,13 @@ class BroadcastService:
                 User.active == True
             ).all()
             
-            # Get active bots for these users
+            # Get active bots for these users with eager loading
+            from sqlalchemy.orm import joinedload
             target_bots = []
             for user in target_users:
-                user_bots = Bot.query.filter_by(
+                user_bots = Bot.query.options(
+                    joinedload(Bot.owner).joinedload(User.subscription)
+                ).filter_by(
                     user_id=user.id,
                     is_active=True
                 ).filter(
