@@ -519,7 +519,12 @@ def upgrade_plan(plan):
         subscription.user_id = current_user.id
         db.session.add(subscription)
     
-    if plan == 'basic':
+    if plan == 'starter':
+        subscription.subscription_type = SubscriptionType.STARTER
+        subscription.max_bots = 1
+        subscription.max_messages_per_month = 500
+        flash('Upgraded to Starter plan!', 'success')
+    elif plan == 'basic':
         subscription.subscription_type = SubscriptionType.BASIC
         subscription.max_bots = 5
         subscription.max_messages_per_month = 1000
@@ -529,6 +534,11 @@ def upgrade_plan(plan):
         subscription.max_bots = 25
         subscription.max_messages_per_month = 10000
         flash('Upgraded to Premium plan!', 'success')
+    elif plan == 'free':
+        subscription.subscription_type = SubscriptionType.FREE
+        subscription.max_bots = 1
+        subscription.max_messages_per_month = 100
+        flash('Switched to Free plan!', 'success')
     else:
         flash('Invalid plan selected.', 'error')
         return redirect(url_for('subscriptions.plans'))

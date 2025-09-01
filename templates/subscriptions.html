@@ -72,19 +72,11 @@
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-check text-success me-2"></i>
+                            <span class="text-success"><strong>{{ _("14 kunlik bepul sinov") }}</strong></span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
                             {{ _("Basic support") }}
-                        </li>
-                        <li class="mb-2">
-                            <i class="fas fa-times text-muted me-2"></i>
-                            <span class="text-muted">{{ _("Instagram integration") }}</span>
-                        </li>
-                        <li class="mb-2">
-                            <i class="fas fa-times text-muted me-2"></i>
-                            <span class="text-muted">{{ _("WhatsApp integration") }}</span>
-                        </li>
-                        <li class="mb-2">
-                            <i class="fas fa-times text-muted me-2"></i>
-                            <span class="text-muted">{{ _("Priority support") }}</span>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-times text-muted me-2"></i>
@@ -105,8 +97,84 @@
             </div>
         </div>
 
+        <!-- Starter Plan -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 border-info {% if current_subscription and current_subscription.subscription_type.value == 'starter' %}border-primary{% endif %}">
+                {% if current_subscription and current_subscription.subscription_type.value == 'starter' %}
+                    <div class="card-header bg-primary text-white text-center">
+                        <i class="fas fa-check-circle me-2"></i>{{ _("Current Plan") }}
+                    </div>
+                {% else %}
+                    <div class="card-header bg-info text-white text-center">
+                        <i class="fas fa-rocket me-2"></i>{{ _("Starter") }}
+                    </div>
+                {% endif %}
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title">
+                        {% if get_locale() == 'uz' %}
+                            Starter
+                        {% elif get_locale() == 'ru' %}
+                            Starter
+                        {% else %}
+                            Starter
+                        {% endif %}
+                    </h3>
+                    <div class="mb-3">
+                        <span class="h1">$9</span>
+                        <span class="text-muted">{{ _("/month") }}</span>
+                    </div>
+                    <p class="text-muted mb-4">{{ _("Perfect for getting started") }}</p>
+                    
+                    <ul class="list-unstyled text-start mb-4">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <strong>1</strong> {{ _("AI chatbot") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <strong>500</strong> {{ _("messages per month") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            <strong>25</strong> {{ _("knowledge base entries") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            {{ _("Telegram integration") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            {{ _("All languages support") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            {{ _("Technical support") }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            {{ _("Basic analytics") }}
+                        </li>
+                    </ul>
+                    
+                    {% if not current_subscription or current_subscription.subscription_type.value != 'starter' %}
+                        <a href="{{ url_for('subscriptions.upgrade_plan', plan='starter') }}" class="btn btn-info w-100">
+                            {% if current_subscription and current_subscription.subscription_type.value == 'free' %}
+                                {{ _("Upgrade to Starter") }}
+                            {% else %}
+                                {{ _("Switch to Starter") }}
+                            {% endif %}
+                        </a>
+                    {% else %}
+                        <button class="btn btn-info w-100" disabled>
+                            <i class="fas fa-check me-2"></i>{{ _('Current Plan') }}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
         <!-- Basic Plan -->
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-3 col-md-6">
             <div class="card h-100 border-success {% if current_subscription and current_subscription.subscription_type.value == 'basic' %}border-primary{% endif %}">
                 <div class="card-header bg-success text-white text-center">
                     {% if current_subscription and current_subscription.subscription_type.value == 'basic' %}
@@ -180,7 +248,7 @@
         </div>
 
         <!-- Premium Plan -->
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-3 col-md-6">
             <div class="card h-100 border-warning {% if current_subscription and current_subscription.subscription_type.value == 'premium' %}border-primary{% endif %}">
                 {% if current_subscription and current_subscription.subscription_type.value == 'premium' %}
                     <div class="card-header bg-primary text-white text-center">
@@ -266,6 +334,7 @@
                         <tr>
                             <th>{{ _("Feature") }}</th>
                             <th class="text-center">{{ _("Free") }}</th>
+                            <th class="text-center">{{ _("Starter") }}</th>
                             <th class="text-center">{{ _("Basic") }}</th>
                             <th class="text-center">{{ _("Premium") }}</th>
                         </tr>
@@ -274,18 +343,21 @@
                         <tr>
                             <td><i class="fas fa-robot me-2"></i>{{ _("AI Chatbots") }}</td>
                             <td class="text-center">1</td>
+                            <td class="text-center">1</td>
                             <td class="text-center">5</td>
                             <td class="text-center">25</td>
                         </tr>
                         <tr>
                             <td><i class="fas fa-comments me-2"></i>{{ _("Messages per Month") }}</td>
                             <td class="text-center">100</td>
+                            <td class="text-center">500</td>
                             <td class="text-center">1,000</td>
                             <td class="text-center">10,000</td>
                         </tr>
                         <tr>
                             <td><i class="fas fa-database me-2"></i>{{ _("Knowledge Base Entries") }}</td>
                             <td class="text-center">10</td>
+                            <td class="text-center">25</td>
                             <td class="text-center">50</td>
                             <td class="text-center">{{ _("Unlimited") }}</td>
                         </tr>
@@ -294,9 +366,25 @@
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-clock me-2"></i>{{ _("Trial Period") }}</td>
+                            <td class="text-center">14 kun</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-language me-2"></i>{{ _("All Languages Support") }}</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
                         </tr>
                         <tr>
                             <td><i class="fas fa-brain me-2"></i>{{ _("Custom AI Personalities") }}</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
@@ -306,9 +394,11 @@
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center">{{ _("Basic") }}</td>
                             <td class="text-center">{{ _("Advanced") }}</td>
+                            <td class="text-center">{{ _("Advanced") }}</td>
                         </tr>
                         <tr>
                             <td><i class="fas fa-code me-2"></i>{{ _("API Access") }}</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-times text-muted"></i></td>
                             <td class="text-center"><i class="fas fa-check text-success"></i></td>
@@ -316,6 +406,7 @@
                         <tr>
                             <td><i class="fas fa-headset me-2"></i>{{ _("Support") }}</td>
                             <td class="text-center">{{ _("Community") }}</td>
+                            <td class="text-center">{{ _("Technical") }}</td>
                             <td class="text-center">{{ _("Priority") }}</td>
                             <td class="text-center">{{ _("Priority") }}</td>
                         </tr>
@@ -457,7 +548,7 @@ if (pricingSection) {
 
 // Highlight current plan in comparison table
 const currentPlan = '{{ current_subscription.subscription_type.value if current_subscription else "free" }}';
-const planIndex = { 'free': 1, 'basic': 2, 'premium': 3 };
+const planIndex = { 'free': 1, 'starter': 2, 'basic': 3, 'premium': 4 };
 const columnIndex = planIndex[currentPlan];
 
 if (columnIndex) {

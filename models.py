@@ -7,6 +7,7 @@ import enum
 
 class SubscriptionType(enum.Enum):
     FREE = "free"
+    STARTER = "starter"
     BASIC = "basic"
     PREMIUM = "premium"
 

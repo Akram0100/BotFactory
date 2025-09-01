@@ -119,7 +119,14 @@ def calculate_subscription_limits(subscription_type):
             'max_bots': 1,
             'max_messages_per_month': 100,
             'max_knowledge_entries': 10,
-            'max_file_size_mb': 1
+            'max_file_size_mb': 1,
+            'trial_days': 14
+        },
+        'starter': {
+            'max_bots': 1,
+            'max_messages_per_month': 500,
+            'max_knowledge_entries': 25,
+            'max_file_size_mb': 2
         },
         'basic': {
             'max_bots': 5,
@@ -143,26 +150,39 @@ def get_subscription_features(subscription_type):
         'free': [
             '1 AI chatbot',
             '100 messages per month',
-            'Basic knowledge base',
+            'Basic knowledge base (10 entries)',
             'Telegram integration',
-            'Community support'
+            'Community support',
+            '14 kunlik bepul sinov'
+        ],
+        'starter': [
+            '1 AI chatbot',
+            '500 messages per month',
+            'Knowledge base (25 entries)',
+            'Telegram integration',
+            'All languages support',
+            'Technical support',
+            'Basic analytics'
         ],
         'basic': [
             '5 AI chatbots',
             '1,000 messages per month',
-            'Advanced knowledge base',
+            'Advanced knowledge base (50 entries)',
             'Telegram integration',
+            'All languages support',
             'Priority support',
-            'Custom bot personalities'
+            'Custom bot personalities',
+            'Advanced analytics'
         ],
         'premium': [
             '25 AI chatbots',
             '10,000 messages per month',
             'Unlimited knowledge base',
-            'All integrations',
+            'All platform integrations',
+            'All languages support',
             'Priority support',
             'Custom bot personalities',
-            'Analytics dashboard',
+            'Advanced analytics dashboard',
             'API access'
         ]
     }
