@@ -2,9 +2,10 @@ import os
 import logging
 import threading
 import time
+from datetime import datetime
 from telegram import Update, Bot as TelegramBot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
-from models import Bot, TelegramUser
+from models import Bot, TelegramUser, Conversation
 from app import db
 from services.ai_service import AIService
 
@@ -232,11 +233,14 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Help command error: {e}")
-            if update and update.effective_user and update.message:
-                user_id = update.effective_user.id
-                user_lang = self._get_user_language(user_id)
-                error_msg = self._get_localized_text('error', user_lang)
-                await update.message.reply_text(error_msg)
+            try:
+                if update and update.effective_user and update.message:
+                    user_id = update.effective_user.id
+                    user_lang = self._get_user_language(user_id)
+                    error_msg = self._get_localized_text('error', user_lang)
+                    await update.message.reply_text(error_msg)
+            except:
+                pass
     
     async def _handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE, bot):
         """Handle regular text messages"""
@@ -265,11 +269,14 @@ class TelegramService:
             # Get AI response with user's language preference
             logging.info(f"Requesting AI response for user {user_id} in language {user_lang}")
             ai_response = await self.ai_service.get_response(bot, user_message, user_language=user_lang)
-            logging.info(f"AI response received: {ai_response[:100]}..." if ai_response else "No AI response")
+            logging.info(f"AI response received: {ai_response[:100] if isinstance(ai_response, str) else str(ai_response)[:100]}..." if ai_response else "No AI response")
             
             # Send response to user
             if ai_response:
-                await update.message.reply_text(ai_response)
+                # Ensure ai_response is a string
+                if isinstance(ai_response, dict):
+                    ai_response = str(ai_response)
+                await update.message.reply_text(str(ai_response))
                 
                 # Send AI response notification to admin
                 response_notification = f"🤖 **Bot javobi**\n"
@@ -381,11 +388,11 @@ class TelegramService:
             
         except Exception as e:
             logging.error(f"Callback handling error: {e}")
-            if query:
-                try:
+            try:
+                if 'query' in locals() and query:
                     await query.answer("Xatolik yuz berdi / Ошибка / Error")
-                except:
-                    pass
+            except:
+                pass
     
     async def _send_notification(self, bot, message):
         """Send notification to admin chat or channel"""
@@ -668,13 +675,12 @@ class TelegramService:
                     logging.info(f"Updated existing user {telegram_user_id} language to {language}")
                 else:
                     # Create new user
-                    telegram_user = TelegramUser(
-                        telegram_user_id=telegram_user_id,
-                        username=user_data.username if user_data else None,
-                        first_name=user_data.first_name if user_data else None,
-                        last_name=user_data.last_name if user_data else None,
-                        language=language
-                    )
+                    telegram_user = TelegramUser()
+                    telegram_user.telegram_user_id = telegram_user_id
+                    telegram_user.username = user_data.username if user_data else None
+                    telegram_user.first_name = user_data.first_name if user_data else None
+                    telegram_user.last_name = user_data.last_name if user_data else None
+                    telegram_user.language = language
                     db.session.add(telegram_user)
                     logging.info(f"Created new user {telegram_user_id} with language {language}")
                 
@@ -760,11 +766,10 @@ class TelegramService:
                     logging.info(f"Updated conversation for bot {bot_id} user {telegram_user_id}")
                 else:
                     # Create new conversation record
-                    conversation = Conversation(
-                        bot_id=bot_id,
-                        telegram_user_id=telegram_user_id,
-                        chat_id=str(chat_id)
-                    )
+                    conversation = Conversation()
+                    conversation.bot_id = bot_id
+                    conversation.telegram_user_id = telegram_user_id
+                    conversation.chat_id = str(chat_id)
                     db.session.add(conversation)
                     logging.info(f"Created new conversation for bot {bot_id} user {telegram_user_id}")
                 
