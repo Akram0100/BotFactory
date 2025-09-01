@@ -134,15 +134,9 @@ def create_app():
         
         # Auto-start active bots for all platforms
         try:
-            from services.telegram_service import TelegramService
-            from services.instagram_service import InstagramService
-            from services.whatsapp_service import WhatsAppService
+            # Import the singleton instances from routes (to share state)
+            from routes import telegram_service, instagram_service, whatsapp_service
             from models import Bot, BotStatus, PlatformType
-            
-            # Initialize services
-            telegram_service = TelegramService()
-            instagram_service = InstagramService()
-            whatsapp_service = WhatsAppService()
             
             active_bots = Bot.query.filter_by(status=BotStatus.ACTIVE).all()
             
