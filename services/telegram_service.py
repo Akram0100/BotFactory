@@ -181,17 +181,29 @@ class TelegramService:
                 
             user_id = user.id
             
-            # Check if user already has language preference
-            user_lang = self._get_user_language(user_id)
-            if user_lang != 'uz' or user_id in self.user_languages:
-                # User has language preference, show welcome in that language
-                await self._show_welcome_message(update, bot, user_lang)
-            else:
-                # Show language selection
-                await self._show_language_selection(update, bot)
+            # Check if this is a new user (not in database)
+            from app import app
+            is_new_user = False
+            try:
+                with app.app_context():
+                    telegram_user = TelegramUser.query.filter_by(telegram_user_id=user_id).first()
+                    is_new_user = (telegram_user is None)
+            except Exception as e:
+                logging.error(f"Error checking user existence: {e}")
+                is_new_user = True
             
-            # Send notification to admin about new user
-            await self._send_notification(bot, f"🆕 Yangi foydalanuvchi: {user.first_name} (@{user.username or 'username yoq'}) - ID: {user.id}")
+            # Always show language selection for new users, or if no language preference
+            if is_new_user:
+                # Show language selection for new users
+                await self._show_language_selection(update, bot)
+            else:
+                # Existing user - show current language and option to change
+                user_lang = self._get_user_language(user_id)
+                await self._show_welcome_with_language_option(update, bot, user_lang)
+            
+            # Send notification to admin about new user (only for truly new users)
+            if is_new_user:
+                await self._send_notification(bot, f"🆕 Yangi foydalanuvchi: {user.first_name} (@{user.username or 'username yoq'}) - ID: {user.id}")
             
             # Update bot statistics
             await self._update_bot_stats(bot)
@@ -304,8 +316,33 @@ class TelegramService:
             
             await self._send_notification(bot, notification_text)
             
+            # Handle language change request
+            if callback_data == "change_language":
+                logging.info(f"User {user_id} requested language change")
+                # Show language selection menu by editing current message
+                try:
+                    # Create multilingual language selection message
+                    welcome_text = "🌐 *Tilni tanlang / Выберите язык / Choose Language*\n\n"
+                    welcome_text += f"🇺🇿 Salom {user.first_name}! Tilni tanlang.\n"
+                    welcome_text += f"🇷🇺 Привет {user.first_name}! Выберите язык.\n" 
+                    welcome_text += f"🇬🇧 Hello {user.first_name}! Choose your language.\n\n"
+                    welcome_text += "👇 Muloqot uchun tilni tanlang:"
+                    
+                    # Create inline keyboard with language options
+                    keyboard = [
+                        [InlineKeyboardButton("🇺🇿 O'zbek", callback_data="lang_uz")],
+                        [InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru")],
+                        [InlineKeyboardButton("🇬🇧 English", callback_data="lang_en")]
+                    ]
+                    reply_markup = InlineKeyboardMarkup(keyboard)
+                    
+                    await query.edit_message_text(welcome_text, reply_markup=reply_markup, parse_mode='Markdown')
+                    
+                except Exception as e:
+                    logging.error(f"Error showing language selection: {e}")
+
             # Handle language selection
-            if callback_data.startswith("lang_"):
+            elif callback_data.startswith("lang_"):
                 language = callback_data.split("_")[1]  # Extract language code
                 logging.info(f"User {user_id} selected language: {language}")
                 
@@ -449,6 +486,44 @@ class TelegramService:
                 
         except Exception as e:
             logging.error(f"Welcome message error: {e}")
+    
+    async def _show_welcome_with_language_option(self, update, bot, language):
+        """Show welcome message with language change option"""
+        try:
+            user = update.effective_user
+            if not user:
+                return
+            
+            # Get welcome message in current language
+            welcome_msg = self._get_localized_welcome_message(user.first_name, bot.name, language)
+            
+            # Add language change option
+            language_names = {
+                'uz': "O'zbek",
+                'ru': "Русский", 
+                'en': "English"
+            }
+            
+            current_lang_name = language_names.get(language, "O'zbek")
+            
+            if language == 'uz':
+                welcome_msg += f"\n\n🔄 Hozirgi til: {current_lang_name}\nTilni o'zgartirish uchun quyidagi tugmani bosing:"
+            elif language == 'ru':
+                welcome_msg += f"\n\n🔄 Текущий язык: {current_lang_name}\nДля смены языка нажмите кнопку ниже:"
+            else:  # English
+                welcome_msg += f"\n\n🔄 Current language: {current_lang_name}\nTo change language, press the button below:"
+            
+            # Create inline keyboard with language change button
+            keyboard = [[
+                InlineKeyboardButton("🌐 Tilni o'zgartirish / Сменить язык / Change Language", 
+                                   callback_data="change_language")
+            ]]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            await update.message.reply_text(welcome_msg, reply_markup=reply_markup, parse_mode='Markdown')
+            
+        except Exception as e:
+            logging.error(f"Welcome with language option error: {e}")
     
     def _get_localized_welcome_message(self, user_name, bot_name, language):
         """Get welcome message in specified language"""
