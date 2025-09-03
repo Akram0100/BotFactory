@@ -660,6 +660,7 @@ def internal_error(error):
 
 # Admin Panel Routes
 @admin.route('/')
+@admin.route('/dashboard')
 @admin_required
 def admin_dashboard():
     """Admin dashboard"""
