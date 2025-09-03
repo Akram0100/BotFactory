@@ -1130,6 +1130,216 @@ msgstr "Jonli efirga chiqishdan oldin bot javoblarini sinang"
 msgid "Make your bot available to users"
 msgstr "Botingizni foydalanuvchilar uchun mavjud qiling"
 
+# Dashboard yangi tarjimalar
+msgid "Last activity:"
+msgstr "Oxirgi faollik:"
+
+msgid "No description"
+msgstr "Tavsif yo'q"
+
+msgid "Need help?"
+msgstr "Yordam kerakmi?"
+
+msgid "Contact Support"
+msgstr "Yordam xizmatiga murojaat"
+
+# Knowledge Base yangi tarjimalar
+msgid "Knowledge Base"
+msgstr "Bilimlar bazasi"
+
+msgid "Train %(bot_name)s with your content and documents"
+msgstr "%(bot_name)s ni kontentingiz va hujjatlaringiz bilan o'rgating"
+
+msgid "Add Entry"
+msgstr "Yozuv qo'shish"
+
+msgid "Has Image"
+msgstr "Rasm bor"
+
+msgid "Added"
+msgstr "Qo'shilgan"
+
+msgid "View Full Content"
+msgstr "To'liq kontentni ko'rish"
+
+msgid "Edit"
+msgstr "Tahrirlash"
+
+msgid "Delete"
+msgstr "O'chirish"
+
+msgid "Are you sure you want to delete this entry?"
+msgstr "Ushbu yozuvni o'chirishni xohlaysizmi?"
+
+msgid "Close"
+msgstr "Yopish"
+
+msgid "Edit Knowledge Entry"
+msgstr "Bilimlar yozuvini tahrirlash"
+
+msgid "Title"
+msgstr "Sarlavha"
+
+msgid "Content"
+msgstr "Kontent"
+
+msgid "No Knowledge Base Entries"
+msgstr "Bilimlar bazasi yozuvlari yo'q"
+
+msgid "Add documents, FAQs, and information to help your bot provide better answers."
+msgstr "Botingiz yaxshiroq javoblar berishi uchun hujjatlar, FAQ va ma'lumotlar qo'shing."
+
+msgid "Add Your First Entry"
+msgstr "Birinchi yozuvingizni qo'shing"
+
+msgid "Knowledge Base Stats"
+msgstr "Bilimlar bazasi statistikasi"
+
+msgid "Total Entries"
+msgstr "Jami yozuvlar"
+
+msgid "Uploaded Files"
+msgstr "Yuklangan fayllar"
+
+msgid "Knowledge Base Tips"
+msgstr "Bilimlar bazasi maslahatlari"
+
+msgid "FAQs Work Best:"
+msgstr "FAQ eng yaxshi ishlaydi:"
+
+msgid "Add frequently asked questions and their answers for immediate bot responses."
+msgstr "Tez-tez beriladigan savol va javoblarni qo'shing - bot darhol javob beradi."
+
+msgid "Clear Titles:"
+msgstr "Aniq sarlavhalar:"
+
+msgid "Use descriptive titles that match what users might ask about."
+msgstr "Foydalanuvchilar so'rashi mumkin bo'lgan narsaga mos keladigan tavsiflovchi sarlavhalardan foydalaning."
+
+msgid "Context Matters:"
+msgstr "Kontekst muhim:"
+
+msgid "Include background information to help the AI understand your content better."
+msgstr "AI kontentingizni yaxshiroq tushunishi uchun fon ma'lumotlarini kiriting."
+
+msgid "Keep Updated:"
+msgstr "Yangilab turing:"
+
+msgid "Regularly update your knowledge base with new information."
+msgstr "Bilimlar bazangizni yangi ma'lumotlar bilan muntazam yangilab turing."
+
+msgid "Quick Actions"
+msgstr "Tezkor harakatlar"
+
+msgid "Add Text Entry"
+msgstr "Matn yozuvini qo'shish"
+
+msgid "Upload File"
+msgstr "Fayl yuklash"
+
+msgid "Back to Bot"
+msgstr "Botga qaytish"
+
+msgid "Add Knowledge Base Entry"
+msgstr "Bilimlar bazasi yozuvini qo'shish"
+
+msgid "Enter a descriptive title..."
+msgstr "Tavsiflovchi sarlavha kiriting..."
+
+msgid "This helps organize your knowledge and makes it easier to find."
+msgstr "Bu bilimlaringizni tartibga solishga va topishni osonlashtirishga yordam beradi."
+
+msgid "Enter the content that your bot should know about..."
+msgstr "Botingiz bilishi kerak bo'lgan kontentni kiriting..."
+
+msgid "Include as much detail as possible for better AI responses."
+msgstr "Yaxshiroq AI javoblari uchun iloji boricha ko'proq tafsilot kiriting."
+
+msgid "Product Image (optional)"
+msgstr "Mahsulot rasmi (ixtiyoriy)"
+
+msgid "Image URL"
+msgstr "Rasm URL manzili"
+
+msgid "Enter the direct URL to your product image. Bot will send this image when relevant."
+msgstr "Mahsulot rasimingizning to'g'ridan-to'g'ri URL manzilini kiriting. Bot tegishli bo'lganda ushbu rasmni yuboradi."
+
+msgid "Image Caption"
+msgstr "Rasm izoji"
+
+msgid "Product name or short description"
+msgstr "Mahsulot nomi yoki qisqa tavsif"
+
+msgid "Brief description that will be sent with the image."
+msgstr "Rasm bilan birga yuboriladigan qisqa tavsif."
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Bots"
+msgstr "Botlar"
+
+# Index.html yangi tarjimalar
+msgid "1 AI chatbot"
+msgstr "1 AI chatbot"
+
+msgid "100 messages/month"
+msgstr "100 xabar/oyiga"
+
+msgid "Telegram integration"
+msgstr "Telegram integratsiyasi"
+
+msgid "Get Started"
+msgstr "Boshlash"
+
+msgid "Most Popular"
+msgstr "Eng mashhur"
+
+msgid "Basic"
+msgstr "Basic"
+
+msgid "5 AI chatbots"
+msgstr "5 AI chatbot"
+
+msgid "1,000 messages/month"
+msgstr "1,000 xabar/oyiga"
+
+msgid "Advanced knowledge base"
+msgstr "Rivojlangan bilimlar bazasi"
+
+msgid "Priority support"
+msgstr "Ustuvor yordam"
+
+msgid "Start Free Trial"
+msgstr "Bepul sinovni boshlash"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "25 AI chatbots"
+msgstr "25 AI chatbot"
+
+msgid "10,000 messages/month"
+msgstr "10,000 xabar/oyiga"
+
+msgid "Unlimited knowledge base"
+msgstr "Cheksiz bilimlar bazasi"
+
+msgid "Analytics & API access"
+msgstr "Analitika va API kirish"
+
+msgid "Ready to Create Your AI Chatbot?"
+msgstr "AI Chatbotingizni yaratishga tayyormisiz?"
+
+msgid "Join thousands of businesses using BotFactory to provide better customer support and engagement through AI-powered chatbots."
+msgstr "BotFactory dan foydalanib, AI asosidagi chatbotlar orqali yaxshiroq mijozlarga xizmat ko'rsatish va muloqot qilish uchun minglab bizneslar bilan qo'shiling."
+
+msgid "Start Building for Free"
+msgstr "Bepul yaratishni boshlang"
+
+msgid "No credit card required • 14-day free trial on paid plans"
+msgstr "Kredit karta talab qilinmaydi • Pullik rejalarda 14 kunlik bepul sinov"
+
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "
 #~ "uptime ensure your bots are always "

@@ -1075,6 +1075,216 @@ msgstr "Протестируйте ответы вашего бота перед
 msgid "Make your bot available to users"
 msgstr "Сделайте вашего бота доступным для пользователей"
 
+# Dashboard новые переводы
+msgid "Last activity:"
+msgstr "Последняя активность:"
+
+msgid "No description"
+msgstr "Описание отсутствует"
+
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+msgid "Contact Support"
+msgstr "Связаться с поддержкой"
+
+# Knowledge Base новые переводы
+msgid "Knowledge Base"
+msgstr "База знаний"
+
+msgid "Train %(bot_name)s with your content and documents"
+msgstr "Обучите %(bot_name)s с помощью вашего контента и документов"
+
+msgid "Add Entry"
+msgstr "Добавить запись"
+
+msgid "Has Image"
+msgstr "Есть изображение"
+
+msgid "Added"
+msgstr "Добавлено"
+
+msgid "View Full Content"
+msgstr "Посмотреть полный контент"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Are you sure you want to delete this entry?"
+msgstr "Вы уверены, что хотите удалить эту запись?"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Edit Knowledge Entry"
+msgstr "Редактировать запись знаний"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Content"
+msgstr "Контент"
+
+msgid "No Knowledge Base Entries"
+msgstr "Нет записей в базе знаний"
+
+msgid "Add documents, FAQs, and information to help your bot provide better answers."
+msgstr "Добавьте документы, FAQ и информацию, чтобы помочь вашему боту давать лучшие ответы."
+
+msgid "Add Your First Entry"
+msgstr "Добавьте первую запись"
+
+msgid "Knowledge Base Stats"
+msgstr "Статистика базы знаний"
+
+msgid "Total Entries"
+msgstr "Всего записей"
+
+msgid "Uploaded Files"
+msgstr "Загруженные файлы"
+
+msgid "Knowledge Base Tips"
+msgstr "Советы по базе знаний"
+
+msgid "FAQs Work Best:"
+msgstr "FAQ работают лучше всего:"
+
+msgid "Add frequently asked questions and their answers for immediate bot responses."
+msgstr "Добавьте часто задаваемые вопросы и ответы на них для немедленных ответов бота."
+
+msgid "Clear Titles:"
+msgstr "Четкие заголовки:"
+
+msgid "Use descriptive titles that match what users might ask about."
+msgstr "Используйте описательные заголовки, которые соответствуют тому, о чем могут спросить пользователи."
+
+msgid "Context Matters:"
+msgstr "Контекст важен:"
+
+msgid "Include background information to help the AI understand your content better."
+msgstr "Включите справочную информацию, чтобы помочь ИИ лучше понимать ваш контент."
+
+msgid "Keep Updated:"
+msgstr "Поддерживайте актуальность:"
+
+msgid "Regularly update your knowledge base with new information."
+msgstr "Регулярно обновляйте базу знаний новой информацией."
+
+msgid "Quick Actions"
+msgstr "Быстрые действия"
+
+msgid "Add Text Entry"
+msgstr "Добавить текстовую запись"
+
+msgid "Upload File"
+msgstr "Загрузить файл"
+
+msgid "Back to Bot"
+msgstr "Вернуться к боту"
+
+msgid "Add Knowledge Base Entry"
+msgstr "Добавить запись в базу знаний"
+
+msgid "Enter a descriptive title..."
+msgstr "Введите описательный заголовок..."
+
+msgid "This helps organize your knowledge and makes it easier to find."
+msgstr "Это помогает организовать ваши знания и облегчает поиск."
+
+msgid "Enter the content that your bot should know about..."
+msgstr "Введите контент, о котором должен знать ваш бот..."
+
+msgid "Include as much detail as possible for better AI responses."
+msgstr "Включите как можно больше деталей для лучших ответов ИИ."
+
+msgid "Product Image (optional)"
+msgstr "Изображение продукта (необязательно)"
+
+msgid "Image URL"
+msgstr "URL изображения"
+
+msgid "Enter the direct URL to your product image. Bot will send this image when relevant."
+msgstr "Введите прямой URL к изображению вашего продукта. Бот будет отправлять это изображение при необходимости."
+
+msgid "Image Caption"
+msgstr "Подпись к изображению"
+
+msgid "Product name or short description"
+msgstr "Название продукта или краткое описание"
+
+msgid "Brief description that will be sent with the image."
+msgstr "Краткое описание, которое будет отправлено с изображением."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Bots"
+msgstr "Боты"
+
+# Index.html новые переводы
+msgid "1 AI chatbot"
+msgstr "1 AI чатбот"
+
+msgid "100 messages/month"
+msgstr "100 сообщений/месяц"
+
+msgid "Telegram integration"
+msgstr "Интеграция с Telegram"
+
+msgid "Get Started"
+msgstr "Начать"
+
+msgid "Most Popular"
+msgstr "Самый популярный"
+
+msgid "Basic"
+msgstr "Basic"
+
+msgid "5 AI chatbots"
+msgstr "5 AI чатботов"
+
+msgid "1,000 messages/month"
+msgstr "1,000 сообщений/месяц"
+
+msgid "Advanced knowledge base"
+msgstr "Продвинутая база знаний"
+
+msgid "Priority support"
+msgstr "Приоритетная поддержка"
+
+msgid "Start Free Trial"
+msgstr "Начать бесплатную пробную версию"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "25 AI chatbots"
+msgstr "25 AI чатботов"
+
+msgid "10,000 messages/month"
+msgstr "10,000 сообщений/месяц"
+
+msgid "Unlimited knowledge base"
+msgstr "Неограниченная база знаний"
+
+msgid "Analytics & API access"
+msgstr "Аналитика и доступ к API"
+
+msgid "Ready to Create Your AI Chatbot?"
+msgstr "Готовы создать своего AI-чатбота?"
+
+msgid "Join thousands of businesses using BotFactory to provide better customer support and engagement through AI-powered chatbots."
+msgstr "Присоединяйтесь к тысячам компаний, которые используют BotFactory для лучшей поддержки клиентов и взаимодействия с помощью AI-чатботов."
+
+msgid "Start Building for Free"
+msgstr "Начать создавать бесплатно"
+
+msgid "No credit card required • 14-day free trial on paid plans"
+msgstr "Кредитная карта не требуется • 14-дневная бесплатная пробная версия платных планов"
+
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "
 #~ "uptime ensure your bots are always "

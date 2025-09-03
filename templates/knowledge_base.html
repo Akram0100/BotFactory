@@ -9,22 +9,22 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url_for('bots.list_bots') }}">Bots</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard') }}">{{ _('Dashboard') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('bots.list_bots') }}">{{ _('Bots') }}</a></li>
                     <li class="breadcrumb-item"><a href="{{ url_for('bots.edit_bot', bot_id=bot.id) }}">{{ bot.name }}</a></li>
-                    <li class="breadcrumb-item active">Knowledge Base</li>
+                    <li class="breadcrumb-item active">{{ _('Knowledge Base') }}</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h1 class="h2 mb-1">
-                        <i class="fas fa-database me-2"></i>Knowledge Base
+                        <i class="fas fa-database me-2"></i>{{ _('Knowledge Base') }}
                     </h1>
-                    <p class="text-muted">Train {{ bot.name }} with your content and documents</p>
+                    <p class="text-muted">{{ _('Train %(bot_name)s with your content and documents', bot_name=bot.name) }}</p>
                 </div>
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEntryModal">
-                        <i class="fas fa-plus me-2"></i>Add Entry
+                        <i class="fas fa-plus me-2"></i>{{ _('Add Entry') }}
                     </button>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                                         {{ entry.title }}
                                         {% if entry.image_url %}
                                             <span class="badge bg-success ms-2">
-                                                <i class="fas fa-image me-1"></i>Has Image
+                                                <i class="fas fa-image me-1"></i>{{ _('Has Image') }}
                                             </span>
                                         {% endif %}
                                     </h5>
@@ -56,7 +56,7 @@
                                         </p>
                                     {% endif %}
                                     <small class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Added {{ entry.created_at|datetime }}
+                                        <i class="fas fa-calendar me-1"></i>{{ _('Added') }} {{ entry.created_at|datetime }}
                                         {% if entry.file_size %}
                                             • <i class="fas fa-file me-1"></i>{{ (entry.file_size / 1024)|round(1) }}KB
                                         {% endif %}
@@ -72,13 +72,13 @@
                                             <li>
                                                 <button type="button" class="dropdown-item" 
                                                         data-bs-toggle="modal" data-bs-target="#viewModal{{ entry.id }}">
-                                                    <i class="fas fa-eye me-2"></i>View Full Content
+                                                    <i class="fas fa-eye me-2"></i>{{ _('View Full Content') }}
                                                 </button>
                                             </li>
                                             <li>
                                                 <button type="button" class="dropdown-item" 
                                                         data-bs-toggle="modal" data-bs-target="#editModal{{ entry.id }}">
-                                                    <i class="fas fa-edit me-2"></i>Edit
+                                                    <i class="fas fa-edit me-2"></i>{{ _('Edit') }}
                                                 </button>
                                             </li>
                                             <li><hr class="dropdown-divider"></li>
@@ -86,8 +86,8 @@
                                                 <form method="POST" action="{{ url_for('bots.delete_knowledge_entry', bot_id=bot.id, kb_id=entry.id) }}" 
                                                       style="display: inline;">
                                                     <button type="submit" class="dropdown-item text-danger" 
-                                                            onclick="return confirm('Are you sure you want to delete this entry?')">
-                                                        <i class="fas fa-trash me-2"></i>Delete
+                                                            onclick="return confirm('{{ _('Are you sure you want to delete this entry?') }}')">
+                                                        <i class="fas fa-trash me-2"></i>{{ _('Delete') }}
                                                     </button>
                                                 </form>
                                             </li>
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Close') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Edit Knowledge Entry</h5>
+                                    <h5 class="modal-title">{{ _('Edit Knowledge Entry') }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <form method="POST">
@@ -140,12 +140,12 @@
                                     <input type="hidden" name="entry_id" value="{{ entry.id }}">
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="edit_title_{{ entry.id }}" class="form-label">Title</label>
+                                            <label for="edit_title_{{ entry.id }}" class="form-label">{{ _('Title') }}</label>
                                             <input type="text" class="form-control" id="edit_title_{{ entry.id }}" 
                                                    name="title" value="{{ entry.title }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="edit_content_{{ entry.id }}" class="form-label">Content</label>
+                                            <label for="edit_content_{{ entry.id }}" class="form-label">{{ _('Content') }}</label>
                                             <textarea class="form-control" id="edit_content_{{ entry.id }}" 
                                                       name="content" rows="6" required>{{ entry.content }}</textarea>
                                         </div>
@@ -154,7 +154,7 @@
                                         <div class="card mb-3 bg-light">
                                             <div class="card-header">
                                                 <h6 class="mb-0 text-primary">
-                                                    <i class="fas fa-image me-2"></i>Product Image (optional)
+                                                    <i class="fas fa-image me-2"></i>{{ _('Product Image (optional)') }}
                                                 </h6>
                                             </div>
                                             <div class="card-body">
@@ -190,12 +190,12 @@
                     <div class="mb-4">
                         <i class="fas fa-database text-muted" style="font-size: 5rem;"></i>
                     </div>
-                    <h3 class="text-muted mb-3">No Knowledge Base Entries</h3>
+                    <h3 class="text-muted mb-3">{{ _('No Knowledge Base Entries') }}</h3>
                     <p class="text-muted mb-4">
-                        Add documents, FAQs, and information to help your bot provide better answers.
+                        {{ _('Add documents, FAQs, and information to help your bot provide better answers.') }}
                     </p>
                     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addEntryModal">
-                        <i class="fas fa-plus me-2"></i>Add Your First Entry
+                        <i class="fas fa-plus me-2"></i>{{ _('Add Your First Entry') }}
                     </button>
                 </div>
             {% endif %}
@@ -206,17 +206,17 @@
             <!-- Statistics -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h6 class="mb-0">Knowledge Base Stats</h6>
+                    <h6 class="mb-0">{{ _('Knowledge Base Stats') }}</h6>
                 </div>
                 <div class="card-body">
                     <div class="row text-center">
                         <div class="col-6">
                             <h4 class="text-primary mb-1">{{ knowledge_entries|length }}</h4>
-                            <small class="text-muted">Total Entries</small>
+                            <small class="text-muted">{{ _('Total Entries') }}</small>
                         </div>
                         <div class="col-6">
                             <h4 class="text-success mb-1">{{ knowledge_entries|selectattr('file_type', 'equalto', 'file')|list|length }}</h4>
-                            <small class="text-muted">Uploaded Files</small>
+                            <small class="text-muted">{{ _('Uploaded Files') }}</small>
                         </div>
                     </div>
                 </div>
@@ -225,25 +225,25 @@
             <!-- Tips -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h6 class="mb-0">Knowledge Base Tips</h6>
+                    <h6 class="mb-0">{{ _('Knowledge Base Tips') }}</h6>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled small">
                         <li class="mb-3">
                             <i class="fas fa-lightbulb text-warning me-2"></i>
-                            <strong>FAQs Work Best:</strong> Add frequently asked questions and their answers for immediate bot responses.
+                            <strong>{{ _('FAQs Work Best:') }}</strong> {{ _('Add frequently asked questions and their answers for immediate bot responses.') }}
                         </li>
                         <li class="mb-3">
                             <i class="fas fa-file-text text-info me-2"></i>
-                            <strong>Clear Titles:</strong> Use descriptive titles that match what users might ask about.
+                            <strong>{{ _('Clear Titles:') }}</strong> {{ _('Use descriptive titles that match what users might ask about.') }}
                         </li>
                         <li class="mb-3">
                             <i class="fas fa-brain text-success me-2"></i>
-                            <strong>Context Matters:</strong> Include background information to help the AI understand your content better.
+                            <strong>{{ _('Context Matters:') }}</strong> {{ _('Include background information to help the AI understand your content better.') }}
                         </li>
                         <li class="mb-0">
                             <i class="fas fa-sync text-primary me-2"></i>
-                            <strong>Keep Updated:</strong> Regularly update your knowledge base with new information.
+                            <strong>{{ _('Keep Updated:') }}</strong> {{ _('Regularly update your knowledge base with new information.') }}
                         </li>
                     </ul>
                 </div>
@@ -252,7 +252,7 @@
             <!-- Quick Actions -->
             <div class="card">
                 <div class="card-header">
-                    <h6 class="mb-0">Quick Actions</h6>
+                    <h6 class="mb-0">{{ _('Quick Actions') }}</h6>
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
@@ -263,7 +263,7 @@
                             <i class="fas fa-upload me-2"></i>Upload File
                         </button>
                         <a href="{{ url_for('bots.edit_bot', bot_id=bot.id) }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Back to Bot
+                            <i class="fas fa-arrow-left me-2"></i>{{ _('Back to Bot') }}
                         </a>
                     </div>
                 </div>
@@ -277,30 +277,30 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Knowledge Base Entry</h5>
+                <h5 class="modal-title">{{ _('Add Knowledge Base Entry') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <form method="POST">
                 <input type="hidden" name="action" value="add_text">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title *</label>
+                        <label for="title" class="form-label">{{ _('Title') }} *</label>
                         <input type="text" class="form-control" id="title" name="title" 
-                               placeholder="Enter a descriptive title..." required maxlength="200">
-                        <div class="form-text">This helps organize your knowledge and makes it easier to find.</div>
+                               placeholder="{{ _('Enter a descriptive title...') }}" required maxlength="200">
+                        <div class="form-text">{{ _('This helps organize your knowledge and makes it easier to find.') }}</div>
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content *</label>
+                        <label for="content" class="form-label">{{ _('Content') }} *</label>
                         <textarea class="form-control" id="content" name="content" 
-                                  rows="8" placeholder="Enter the content that your bot should know about..." required></textarea>
-                        <div class="form-text">Include as much detail as possible for better AI responses.</div>
+                                  rows="8" placeholder="{{ _('Enter the content that your bot should know about...') }}" required></textarea>
+                        <div class="form-text">{{ _('Include as much detail as possible for better AI responses.') }}</div>
                     </div>
                     
                     <!-- Image Support for Products -->
                     <div class="card mb-3 bg-light">
                         <div class="card-header">
                             <h6 class="mb-0 text-primary">
-                                <i class="fas fa-image me-2"></i>Product Image (optional)
+                                <i class="fas fa-image me-2"></i>{{ _('Product Image (optional)') }}
                             </h6>
                         </div>
                         <div class="card-body">
