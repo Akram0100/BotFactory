@@ -313,20 +313,28 @@ function showPlatformConfig(platform) {
 }
 
 function updateRequiredFields(platform) {
+    // Helper function to safely set required attribute
+    function setRequired(elementId, required) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.required = required;
+        }
+    }
+    
     // Remove required from all token fields
-    document.getElementById('telegram_token').required = false;
-    document.getElementById('instagram_access_token').required = false;
-    document.getElementById('whatsapp_access_token').required = false;
-    document.getElementById('whatsapp_phone_number_id').required = false;
+    setRequired('telegram_token', false);
+    setRequired('instagram_access_token', false);
+    setRequired('whatsapp_access_token', false);
+    setRequired('whatsapp_phone_number_id', false);
     
     // Add required to selected platform fields
     if (platform === 'telegram') {
-        document.getElementById('telegram_token').required = true;
+        setRequired('telegram_token', true);
     } else if (platform === 'instagram') {
-        document.getElementById('instagram_access_token').required = true;
+        setRequired('instagram_access_token', true);
     } else if (platform === 'whatsapp') {
-        document.getElementById('whatsapp_access_token').required = true;
-        document.getElementById('whatsapp_phone_number_id').required = true;
+        setRequired('whatsapp_access_token', true);
+        setRequired('whatsapp_phone_number_id', true);
     }
 }
 
@@ -398,7 +406,8 @@ document.getElementById('createBotForm').addEventListener('submit', function(e) 
     
     // Validate platform-specific tokens
     if (platformType === 'telegram') {
-        const token = document.getElementById('telegram_token').value.trim();
+        const tokenElement = document.getElementById('telegram_token');
+        const token = tokenElement ? tokenElement.value.trim() : '';
         if (!token) {
             e.preventDefault();
             alert('{{ _("Telegram bot token is required.") }}');
@@ -410,21 +419,25 @@ document.getElementById('createBotForm').addEventListener('submit', function(e) 
             return;
         }
     } else if (platformType === 'instagram') {
-        const token = document.getElementById('instagram_access_token').value.trim();
-        if (!token) {
+        const tokenElement = document.getElementById('instagram_access_token');
+        const token = tokenElement ? tokenElement.value.trim() : '';
+        if (tokenElement && !token) {
             e.preventDefault();
             alert('{{ _("Instagram access token is required.") }}');
             return;
         }
     } else if (platformType === 'whatsapp') {
-        const token = document.getElementById('whatsapp_access_token').value.trim();
-        const phoneId = document.getElementById('whatsapp_phone_number_id').value.trim();
-        if (!token) {
+        const tokenElement = document.getElementById('whatsapp_access_token');
+        const phoneIdElement = document.getElementById('whatsapp_phone_number_id');
+        const token = tokenElement ? tokenElement.value.trim() : '';
+        const phoneId = phoneIdElement ? phoneIdElement.value.trim() : '';
+        
+        if (tokenElement && !token) {
             e.preventDefault();
             alert('{{ _("WhatsApp access token is required.") }}');
             return;
         }
-        if (!phoneId) {
+        if (phoneIdElement && !phoneId) {
             e.preventDefault();
             alert('{{ _("WhatsApp phone number ID is required.") }}');
             return;
