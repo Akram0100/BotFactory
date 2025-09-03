@@ -140,7 +140,7 @@ msgstr "Создайте свою учетную запись"
 
 #: templates/bot_create.html:32
 msgid "Fill in the details below to get started"
-msgstr ""
+msgstr "Заполните детали ниже, чтобы начать"
 
 #: templates/bot_create.html:37 templates/bot_edit.html:117
 msgid "Bot Name"
@@ -153,7 +153,7 @@ msgstr "Создайте свою учетную запись"
 
 #: templates/bot_create.html:45
 msgid "Choose a friendly name that represents your bot's purpose"
-msgstr ""
+msgstr "Выберите дружелюбное имя, которое отражает назначение вашего бота"
 
 #: templates/bot_create.html:49 templates/bot_edit.html:132
 msgid "Description"
@@ -328,7 +328,7 @@ msgstr "Управляйте вашими AI-чатботами и отслеж�
 
 #: templates/dashboard.html:18
 msgid "Admin Panel"
-msgstr ""
+msgstr "Панель администратора"
 
 #: templates/dashboard.html:37
 msgid "Total Bots"
@@ -961,7 +961,119 @@ msgstr "Панель управления"
 
 #: templates/subscriptions.html:441
 msgid "Compare All Features"
-msgstr ""
+msgstr "Сравнить все функции"
+
+# Новые добавленные переводы
+msgid "Welcome Back"
+msgstr "Добро пожаловать"
+
+msgid "Sign in to your BotFactory account"
+msgstr "Войдите в свой аккаунт BotFactory"
+
+msgid "Enter your username"
+msgstr "Введите ваше имя пользователя"
+
+msgid "Enter your password"
+msgstr "Введите ваш пароль"
+
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+msgid "Sign In"
+msgstr "Войти"
+
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+msgid "AI-Powered"
+msgstr "На основе ИИ"
+
+msgid "Telegram Ready"
+msgstr "Готов для Telegram"
+
+msgid "AI Chatbot Platform"
+msgstr "Платформа ИИ-чатботов"
+
+msgid "Set up your intelligent chatbot with custom personality and purpose"
+msgstr "Настройте своего умного чатбота с индивидуальной личностью и целью"
+
+msgid "Describe what your bot does and how it helps users..."
+msgstr "Опишите, что делает ваш бот и как он помогает пользователям..."
+
+msgid "Optional: Describe your bot's purpose and capabilities"
+msgstr "Необязательно: Опишите назначение и возможности вашего бота"
+
+msgid "You are a helpful AI assistant..."
+msgstr "Вы полезный ИИ-помощник..."
+
+msgid "You are a helpful AI assistant. You provide accurate, friendly, and professional responses to user questions. Always be polite and try to be as helpful as possible."
+msgstr "Вы полезный ИИ-помощник. Вы предоставляете точные, дружелюбные и профессиональные ответы на вопросы пользователей. Всегда будьте вежливы и старайтесь быть максимально полезными."
+
+msgid "Define how your bot should behave and respond. This is like giving your bot a personality and role."
+msgstr "Определите, как ваш бот должен вести себя и отвечать. Это как давать вашему боту личность и роль."
+
+msgid "Choose Platform"
+msgstr "Выберите платформу"
+
+msgid "Available on all plans"
+msgstr "Доступно во всех планах"
+
+msgid "Available with your plan"
+msgstr "Доступно в вашем плане"
+
+msgid "Requires Basic+ plan"
+msgstr "Требуется план Basic+"
+
+msgid "Requires Premium plan"
+msgstr "Требуется план Premium"
+
+msgid "Need more platforms?"
+msgstr "Нужно больше платформ?"
+
+msgid "Upgrade your plan"
+msgstr "Обновите ваш план"
+
+msgid "Bot Personality Examples"
+msgstr "Примеры личности бота"
+
+msgid "Customer Support Bot:"
+msgstr "Бот поддержки клиентов:"
+
+msgid "You are a friendly customer support representative. Help users with their questions, provide product information, and escalate complex issues when needed."
+msgstr "Вы дружелюбный представитель службы поддержки клиентов. Помогайте пользователям с их вопросами, предоставляйте информацию о продукте и передавайте сложные вопросы при необходимости."
+
+msgid "Educational Tutor:"
+msgstr "Образовательный наставник:"
+
+msgid "You are an encouraging tutor. Explain concepts clearly, ask questions to check understanding, and provide examples to help students learn."
+msgstr "Вы ободряющий наставник. Объясняйте концепции четко, задавайте вопросы для проверки понимания и приводите примеры, чтобы помочь студентам учиться."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Create Bot"
+msgstr "Создать бота"
+
+msgid "Next Steps After Creation"
+msgstr "Следующие шаги после создания"
+
+msgid "Connect Platform"
+msgstr "Подключить платформу"
+
+msgid "Link your bot to chosen platform (Telegram, Instagram, WhatsApp)"
+msgstr "Свяжите вашего бота с выбранной платформой (Telegram, Instagram, WhatsApp)"
+
+msgid "Add documents and information for your bot"
+msgstr "Добавьте документы и информацию для вашего бота"
+
+msgid "Test your bot responses before going live"
+msgstr "Протестируйте ответы вашего бота перед запуском"
+
+msgid "Make your bot available to users"
+msgstr "Сделайте вашего бота доступным для пользователей"
 
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "

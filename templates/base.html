@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="{{ get_locale() }}" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}BotFactory - AI Chatbot Platform{% endblock %}</title>
+    <title>{% block title %}BotFactory - {{ _('AI Chatbot Platform') }}{% endblock %}</title>
     
     <!-- Bootstrap CSS with Replit theme -->
     <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">

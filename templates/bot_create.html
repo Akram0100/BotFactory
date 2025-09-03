@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Create New Bot - BotFactory{% endblock %}
+{% block title %}{{ _('Create New Bot') }} - BotFactory{% endblock %}
 
 {% block content %}
 <div class="container py-4">
@@ -15,7 +15,7 @@
                 </ol>
             </nav>
             <h1 class="h2">{{ _('Create New AI Chatbot') }}</h1>
-            <p class="text-muted">Set up your intelligent chatbot with custom personality and purpose</p>
+            <p class="text-muted">{{ _('Set up your intelligent chatbot with custom personality and purpose') }}</p>
         </div>
     </div>
 
@@ -49,16 +49,16 @@
                             <label for="description" class="form-label">{{ _('Description') }}</label>
                             <textarea class="form-control" id="description" name="description" 
                                       rows="3" maxlength="500" 
-                                      placeholder="Describe what your bot does and how it helps users..."></textarea>
-                            <div class="form-text">Optional: Describe your bot's purpose and capabilities</div>
+                                      placeholder="{{ _('Describe what your bot does and how it helps users...') }}"></textarea>
+                            <div class="form-text">{{ _('Optional: Describe your bot\'s purpose and capabilities') }}</div>
                         </div>
 
                         <div class="mb-4">
-                            <label for="system_prompt" class="form-label">Bot Personality & Instructions</label>
+                            <label for="system_prompt" class="form-label">{{ _('Bot Personality & Instructions') }}</label>
                             <textarea class="form-control" id="system_prompt" name="system_prompt" 
-                                      rows="6" placeholder="You are a helpful AI assistant...">You are a helpful AI assistant. You provide accurate, friendly, and professional responses to user questions. Always be polite and try to be as helpful as possible.</textarea>
+                                      rows="6" placeholder="{{ _('You are a helpful AI assistant...') }}">{{ _('You are a helpful AI assistant. You provide accurate, friendly, and professional responses to user questions. Always be polite and try to be as helpful as possible.') }}</textarea>
                             <div class="form-text">
-                                Define how your bot should behave and respond. This is like giving your bot a personality and role.
+                                {{ _('Define how your bot should behave and respond. This is like giving your bot a personality and role.') }}
                             </div>
                         </div>
 
@@ -132,20 +132,18 @@
 
                         <!-- Examples Panel -->
                         <div class="alert alert-info">
-                            <h6><i class="fas fa-lightbulb me-2"></i>Bot Personality Examples</h6>
+                            <h6><i class="fas fa-lightbulb me-2"></i>{{ _('Bot Personality Examples') }}</h6>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <strong>Customer Support Bot:</strong>
+                                    <strong>{{ _('Customer Support Bot:') }}</strong>
                                     <small class="d-block text-muted">
-                                        "You are a friendly customer support representative. Help users with their questions, 
-                                        provide product information, and escalate complex issues when needed."
+                                        "{{ _('You are a friendly customer support representative. Help users with their questions, provide product information, and escalate complex issues when needed.') }}"
                                     </small>
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>Educational Tutor:</strong>
+                                    <strong>{{ _('Educational Tutor:') }}</strong>
                                     <small class="d-block text-muted">
-                                        "You are an encouraging tutor. Explain concepts clearly, ask questions to check 
-                                        understanding, and provide examples to help students learn."
+                                        "{{ _('You are an encouraging tutor. Explain concepts clearly, ask questions to check understanding, and provide examples to help students learn.') }}"
                                     </small>
                                 </div>
                             </div>
@@ -153,10 +151,10 @@
 
                         <div class="d-flex justify-content-between">
                             <a href="{{ url_for('bots.list_bots') }}" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Cancel
+                                <i class="fas fa-arrow-left me-2"></i>{{ _('Cancel') }}
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-plus me-2"></i>Create Bot
+                                <i class="fas fa-plus me-2"></i>{{ _('Create Bot') }}
                             </button>
                         </div>
                     </form>
@@ -166,29 +164,29 @@
             <!-- Next Steps Preview -->
             <div class="card mt-4 border-success">
                 <div class="card-header bg-success text-white">
-                    <h6 class="mb-0"><i class="fas fa-check me-2"></i>Next Steps After Creation</h6>
+                    <h6 class="mb-0"><i class="fas fa-check me-2"></i>{{ _('Next Steps After Creation') }}</h6>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-link text-success mb-2" style="font-size: 2rem;"></i>
-                            <h6>Connect Platform</h6>
-                            <small class="text-muted">Link your bot to chosen platform (Telegram, Instagram, WhatsApp)</small>
+                            <h6>{{ _('Connect Platform') }}</h6>
+                            <small class="text-muted">{{ _('Link your bot to chosen platform (Telegram, Instagram, WhatsApp)') }}</small>
                         </div>
                         <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-database text-info mb-2" style="font-size: 2rem;"></i>
-                            <h6>Upload Knowledge</h6>
-                            <small class="text-muted">Add documents and information for your bot</small>
+                            <h6>{{ _('Upload Knowledge') }}</h6>
+                            <small class="text-muted">{{ _('Add documents and information for your bot') }}</small>
                         </div>
                         <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-comment-dots text-warning mb-2" style="font-size: 2rem;"></i>
-                            <h6>Test Bot</h6>
-                            <small class="text-muted">Test your bot responses before going live</small>
+                            <h6>{{ _('Test Bot') }}</h6>
+                            <small class="text-muted">{{ _('Test your bot responses before going live') }}</small>
                         </div>
                         <div class="col-md-3 text-center mb-3">
                             <i class="fas fa-play text-primary mb-2" style="font-size: 2rem;"></i>
-                            <h6>Deploy</h6>
-                            <small class="text-muted">Make your bot available to users</small>
+                            <h6>{{ _('Deploy') }}</h6>
+                            <small class="text-muted">{{ _('Make your bot available to users') }}</small>
                         </div>
                     </div>
                 </div>

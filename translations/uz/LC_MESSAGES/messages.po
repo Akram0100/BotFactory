@@ -140,7 +140,7 @@ msgstr "Birinchi botingizni yarating"
 
 #: templates/bot_create.html:32
 msgid "Fill in the details below to get started"
-msgstr ""
+msgstr "Boshlash uchun quyidagi ma'lumotlarni to'ldiring"
 
 #: templates/bot_create.html:37 templates/bot_edit.html:117
 msgid "Bot Name"
@@ -153,7 +153,7 @@ msgstr "Birinchi botingizni yarating"
 
 #: templates/bot_create.html:45
 msgid "Choose a friendly name that represents your bot's purpose"
-msgstr ""
+msgstr "Bot maqsadini aks ettiradigan do'stona nom tanlang"
 
 #: templates/bot_create.html:49 templates/bot_edit.html:132
 msgid "Description"
@@ -223,10 +223,7 @@ msgstr "Bot shaxsiyati va ko'rsatmalar"
 
 #: templates/bot_edit.html:141
 msgid "Define how your bot should behave and respond to users."
-msgstr ""
-"Botingiz foydalanuvchilarga qanday javob berishi va o'zini qanday "
-"tutishini belgilang.Botingiz qanday harakat qilishi va foydalanuvchilarga"
-" javob berishi kerakligini belgilang."
+msgstr "Botingiz qanday harakat qilishi va foydalanuvchilarga javob berishi kerakligini belgilang."
 
 #: templates/bot_edit.html:145
 msgid "Save Changes"
@@ -325,7 +322,7 @@ msgstr "AI chatbotlaringizni boshqaring va samaradorlikni kuzating"
 
 #: templates/dashboard.html:18
 msgid "Admin Panel"
-msgstr ""
+msgstr "Admin paneli"
 
 #: templates/dashboard.html:37
 msgid "Total Bots"
@@ -1019,7 +1016,119 @@ msgstr "Boshqaruv paneli"
 
 #: templates/subscriptions.html:441
 msgid "Compare All Features"
-msgstr ""
+msgstr "Barcha xususiyatlarni solishtiring"
+
+# Yangi qo'shilgan tarjimalar
+msgid "Welcome Back"
+msgstr "Xush kelibsiz"
+
+msgid "Sign in to your BotFactory account"
+msgstr "BotFactory hisobingizga kiring"
+
+msgid "Enter your username"
+msgstr "Foydalanuvchi nomingizni kiriting"
+
+msgid "Enter your password"
+msgstr "Parolingizni kiriting"
+
+msgid "Remember me"
+msgstr "Meni eslab qol"
+
+msgid "Sign In"
+msgstr "Kirish"
+
+msgid "Forgot your password?"
+msgstr "Parolingizni unutdingizmi?"
+
+msgid "Don't have an account?"
+msgstr "Hisobingiz yo'qmi?"
+
+msgid "AI-Powered"
+msgstr "AI asosidagi"
+
+msgid "Telegram Ready"
+msgstr "Telegram tayyor"
+
+msgid "AI Chatbot Platform"
+msgstr "AI Chatbot Platformasi"
+
+msgid "Set up your intelligent chatbot with custom personality and purpose"
+msgstr "Moslashtirilgan shaxsiyat va maqsad bilan aqlli chatbotingizni sozlang"
+
+msgid "Describe what your bot does and how it helps users..."
+msgstr "Botingiz nima qilishini va foydalanuvchilarga qanday yordam berishini tasvirlab bering..."
+
+msgid "Optional: Describe your bot's purpose and capabilities"
+msgstr "Ixtiyoriy: Botingizning maqsadi va imkoniyatlarini tasvirlab bering"
+
+msgid "You are a helpful AI assistant..."
+msgstr "Siz foydali AI yordamchisisiz..."
+
+msgid "You are a helpful AI assistant. You provide accurate, friendly, and professional responses to user questions. Always be polite and try to be as helpful as possible."
+msgstr "Siz foydali AI yordamchisisiz. Foydalanuvchi savollariga aniq, do'stona va professional javoblar berasiz. Har doim xushmuomala bo'ling va iloji boricha yordam berishga harakat qiling."
+
+msgid "Define how your bot should behave and respond. This is like giving your bot a personality and role."
+msgstr "Botingiz qanday harakat qilishi va javob berishi kerakligini belgilang. Bu botingizga shaxsiyat va rol berishga o'xshaydi."
+
+msgid "Choose Platform"
+msgstr "Platformani tanlang"
+
+msgid "Available on all plans"
+msgstr "Barcha rejalarda mavjud"
+
+msgid "Available with your plan"
+msgstr "Sizning rejangizda mavjud"
+
+msgid "Requires Basic+ plan"
+msgstr "Basic+ reja talab qilinadi"
+
+msgid "Requires Premium plan"
+msgstr "Premium reja talab qilinadi"
+
+msgid "Need more platforms?"
+msgstr "Ko'proq platformalar kerakmi?"
+
+msgid "Upgrade your plan"
+msgstr "Rejangizni yangilang"
+
+msgid "Bot Personality Examples"
+msgstr "Bot shaxsiyati namunalari"
+
+msgid "Customer Support Bot:"
+msgstr "Mijozlarni qo'llab-quvvatlash boti:"
+
+msgid "You are a friendly customer support representative. Help users with their questions, provide product information, and escalate complex issues when needed."
+msgstr "Siz do'stona mijozlarni qo'llab-quvvatlash vakiliisiz. Foydalanuvchilarga savollarida yordam bering, mahsulot ma'lumotlarini taqdim eting va kerak bo'lganda murakkab masalalarni yuqori darajaga yo'naltiring."
+
+msgid "Educational Tutor:"
+msgstr "Ta'lim o'qituvchisi:"
+
+msgid "You are an encouraging tutor. Explain concepts clearly, ask questions to check understanding, and provide examples to help students learn."
+msgstr "Siz rag'batlantiruvchi o'qituvchisiz. Tushunchalarni aniq tushuntiring, tushunishni tekshirish uchun savollar bering va o'quvchilarga o'rganishda yordam berish uchun misollar keltiring."
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Create Bot"
+msgstr "Bot yaratish"
+
+msgid "Next Steps After Creation"
+msgstr "Yaratishdan keyingi qadamlar"
+
+msgid "Connect Platform"
+msgstr "Platformani ulash"
+
+msgid "Link your bot to chosen platform (Telegram, Instagram, WhatsApp)"
+msgstr "Botingizni tanlangan platformaga ulang (Telegram, Instagram, WhatsApp)"
+
+msgid "Add documents and information for your bot"
+msgstr "Botingiz uchun hujjatlar va ma'lumotlar qo'shing"
+
+msgid "Test your bot responses before going live"
+msgstr "Jonli efirga chiqishdan oldin bot javoblarini sinang"
+
+msgid "Make your bot available to users"
+msgstr "Botingizni foydalanuvchilar uchun mavjud qiling"
 
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "
