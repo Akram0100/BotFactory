@@ -130,6 +130,103 @@
                             {% endif %}
                         </div>
 
+                        <!-- Platform Configuration Section -->
+                        <div class="mb-4" id="platform-config">
+                            <h5 class="mb-3">{{ _('Platform Configuration') }}</h5>
+                            
+                            <!-- Telegram Configuration -->
+                            <div id="telegram-config" class="card mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0"><i class="fab fa-telegram me-2"></i>{{ _('Telegram Bot Setup') }}</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="telegram_token" class="form-label">{{ _('Telegram Bot Token') }} *</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="telegram_token" name="telegram_token" 
+                                                   placeholder="{{ _('Enter your Telegram bot token...') }}" required>
+                                        </div>
+                                        <div class="form-text">
+                                            {{ _('Get your bot token from') }} <a href="https://t.me/BotFather" target="_blank">@BotFather</a> {{ _('on Telegram') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Instagram Configuration -->
+                            <div id="instagram-config" class="card mb-3" style="display: none;">
+                                <div class="card-header {% if current_user.subscription.instagram_enabled %}bg-success text-white{% else %}bg-secondary text-white{% endif %}">
+                                    <h6 class="mb-0"><i class="fab fa-instagram me-2"></i>{{ _('Instagram Bot Setup') }}</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% if current_user.subscription.instagram_enabled %}
+                                        <div class="mb-3">
+                                            <label for="instagram_access_token" class="form-label">{{ _('Instagram Access Token') }} *</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-key"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="instagram_access_token" name="instagram_access_token" 
+                                                       placeholder="{{ _('Enter your Instagram access token...') }}">
+                                            </div>
+                                            <div class="form-text">
+                                                {{ _('Get your access token from') }} <a href="https://developers.facebook.com/" target="_blank">Facebook Developers</a>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-crown me-2"></i>
+                                            {{ _('Instagram integration is available only for Premium subscribers.') }}
+                                            <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-warning btn-sm ms-2">{{ _('Upgrade Now') }}</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp Configuration -->
+                            <div id="whatsapp-config" class="card mb-3" style="display: none;">
+                                <div class="card-header {% if current_user.subscription.whatsapp_enabled %}bg-success text-white{% else %}bg-secondary text-white{% endif %}">
+                                    <h6 class="mb-0"><i class="fab fa-whatsapp me-2"></i>{{ _('WhatsApp Bot Setup') }}</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% if current_user.subscription.whatsapp_enabled %}
+                                        <div class="mb-3">
+                                            <label for="whatsapp_access_token" class="form-label">{{ _('WhatsApp Access Token') }} *</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-key"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="whatsapp_access_token" name="whatsapp_access_token" 
+                                                       placeholder="{{ _('Enter your WhatsApp access token...') }}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="whatsapp_phone_number_id" class="form-label">{{ _('Phone Number ID') }} *</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-phone"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="whatsapp_phone_number_id" name="whatsapp_phone_number_id" 
+                                                       placeholder="{{ _('Enter your WhatsApp phone number ID...') }}">
+                                            </div>
+                                            <div class="form-text">
+                                                {{ _('Get these credentials from') }} <a href="https://developers.facebook.com/" target="_blank">WhatsApp Business API</a>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-crown me-2"></i>
+                                            {{ _('WhatsApp integration is available only for Premium subscribers.') }}
+                                            <a href="{{ url_for('subscriptions.plans') }}" class="btn btn-warning btn-sm ms-2">{{ _('Upgrade Now') }}</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Examples Panel -->
                         <div class="alert alert-info">
                             <h6><i class="fas fa-lightbulb me-2"></i>{{ _('Bot Personality Examples') }}</h6>
@@ -201,6 +298,57 @@
 // Auto-focus on bot name
 document.getElementById('name').focus();
 
+// Platform configuration switching
+function showPlatformConfig(platform) {
+    // Hide all config sections
+    document.getElementById('telegram-config').style.display = 'none';
+    document.getElementById('instagram-config').style.display = 'none';
+    document.getElementById('whatsapp-config').style.display = 'none';
+    
+    // Show selected platform config
+    document.getElementById(platform + '-config').style.display = 'block';
+    
+    // Update required fields
+    updateRequiredFields(platform);
+}
+
+function updateRequiredFields(platform) {
+    // Remove required from all token fields
+    document.getElementById('telegram_token').required = false;
+    document.getElementById('instagram_access_token').required = false;
+    document.getElementById('whatsapp_access_token').required = false;
+    document.getElementById('whatsapp_phone_number_id').required = false;
+    
+    // Add required to selected platform fields
+    if (platform === 'telegram') {
+        document.getElementById('telegram_token').required = true;
+    } else if (platform === 'instagram') {
+        document.getElementById('instagram_access_token').required = true;
+    } else if (platform === 'whatsapp') {
+        document.getElementById('whatsapp_access_token').required = true;
+        document.getElementById('whatsapp_phone_number_id').required = true;
+    }
+}
+
+// Platform selection event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    const platformRadios = document.querySelectorAll('input[name="platform_type"]');
+    
+    platformRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                showPlatformConfig(this.value);
+            }
+        });
+    });
+    
+    // Show initial platform config (Telegram by default)
+    const checkedPlatform = document.querySelector('input[name="platform_type"]:checked');
+    if (checkedPlatform) {
+        showPlatformConfig(checkedPlatform.value);
+    }
+});
+
 // Character counters
 function addCharacterCounter(elementId, maxLength) {
     const element = document.getElementById(elementId);
@@ -228,29 +376,65 @@ addCharacterCounter('system_prompt', 2000);
 document.getElementById('createBotForm').addEventListener('submit', function(e) {
     const name = document.getElementById('name').value.trim();
     const systemPrompt = document.getElementById('system_prompt').value.trim();
+    const platformType = document.querySelector('input[name="platform_type"]:checked').value;
     
     if (!name) {
         e.preventDefault();
-        alert('Bot name is required.');
+        alert('{{ _("Bot name is required.") }}');
         return;
     }
     
     if (name.length < 2) {
         e.preventDefault();
-        alert('Bot name must be at least 2 characters long.');
+        alert('{{ _("Bot name must be at least 2 characters long.") }}');
         return;
     }
     
     if (!systemPrompt || systemPrompt.length < 10) {
         e.preventDefault();
-        alert('Please provide proper instructions for your bot (at least 10 characters).');
+        alert('{{ _("Please provide proper instructions for your bot (at least 10 characters).") }}');
         return;
+    }
+    
+    // Validate platform-specific tokens
+    if (platformType === 'telegram') {
+        const token = document.getElementById('telegram_token').value.trim();
+        if (!token) {
+            e.preventDefault();
+            alert('{{ _("Telegram bot token is required.") }}');
+            return;
+        }
+        if (!token.match(/^\d+:[A-Za-z0-9_-]+$/)) {
+            e.preventDefault();
+            alert('{{ _("Please enter a valid Telegram bot token.") }}');
+            return;
+        }
+    } else if (platformType === 'instagram') {
+        const token = document.getElementById('instagram_access_token').value.trim();
+        if (!token) {
+            e.preventDefault();
+            alert('{{ _("Instagram access token is required.") }}');
+            return;
+        }
+    } else if (platformType === 'whatsapp') {
+        const token = document.getElementById('whatsapp_access_token').value.trim();
+        const phoneId = document.getElementById('whatsapp_phone_number_id').value.trim();
+        if (!token) {
+            e.preventDefault();
+            alert('{{ _("WhatsApp access token is required.") }}');
+            return;
+        }
+        if (!phoneId) {
+            e.preventDefault();
+            alert('{{ _("WhatsApp phone number ID is required.") }}');
+            return;
+        }
     }
     
     // Show loading state
     const submitBtn = this.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating Bot...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>{{ _("Creating Bot...") }}';
 });
 
 // Personality examples click handlers

@@ -220,12 +220,91 @@ def create_bot():
             bot.description = description
             bot.system_prompt = system_prompt
             bot.platform_type = PlatformType(platform_type)
+            
+            # Handle platform-specific tokens
+            if platform_type == 'telegram':
+                telegram_token = request.form.get('telegram_token')
+                if telegram_token:
+                    # Validate token and get bot info
+                    bot_info = telegram_service.validate_token(telegram_token)
+                    if bot_info:
+                        bot.telegram_token = telegram_token
+                        bot.telegram_username = bot_info.get('username')
+                        bot.status = BotStatus.ACTIVE
+                        
+                        db.session.add(bot)
+                        db.session.commit()
+                        
+                        # Start the telegram bot
+                        if telegram_service.start_bot(bot):
+                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                        else:
+                            flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
+                        return redirect(url_for('bots.list_bots'))
+                    else:
+                        flash('Invalid Telegram bot token. Please check and try again.', 'error')
+                        return render_template('bot_create.html')
+                        
+            elif platform_type == 'instagram':
+                instagram_token = request.form.get('instagram_access_token')
+                if instagram_token:
+                    # Validate Instagram token
+                    account_info = instagram_service.validate_token(instagram_token)
+                    if account_info:
+                        bot.instagram_access_token = instagram_token
+                        bot.instagram_username = account_info.get('username')
+                        bot.instagram_account_id = account_info.get('id')
+                        bot.status = BotStatus.ACTIVE
+                        
+                        db.session.add(bot)
+                        db.session.commit()
+                        
+                        # Start Instagram bot
+                        if instagram_service.start_bot(bot):
+                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                        else:
+                            flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
+                        return redirect(url_for('bots.list_bots'))
+                    else:
+                        flash('Invalid Instagram access token. Please check and try again.', 'error')
+                        return render_template('bot_create.html')
+                        
+            elif platform_type == 'whatsapp':
+                whatsapp_token = request.form.get('whatsapp_access_token')
+                whatsapp_phone_id = request.form.get('whatsapp_phone_number_id')
+                if whatsapp_token and whatsapp_phone_id:
+                    # Validate WhatsApp credentials
+                    account_info = whatsapp_service.validate_credentials(whatsapp_token, whatsapp_phone_id)
+                    if account_info:
+                        bot.whatsapp_access_token = whatsapp_token
+                        bot.whatsapp_phone_number_id = whatsapp_phone_id
+                        bot.whatsapp_phone_number = account_info.get('phone_number')
+                        bot.whatsapp_verified_name = account_info.get('verified_name')
+                        bot.status = BotStatus.ACTIVE
+                        
+                        db.session.add(bot)
+                        db.session.commit()
+                        
+                        # Start WhatsApp bot
+                        if whatsapp_service.start_bot(bot):
+                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                        else:
+                            flash(f'Bot "{name}" created but failed to start. Check your credentials.', 'warning')
+                        return redirect(url_for('bots.list_bots'))
+                    else:
+                        flash('Invalid WhatsApp credentials. Please check and try again.', 'error')
+                        return render_template('bot_create.html')
+            
+            # If no token provided or platform not supported, create as inactive
+            bot.status = BotStatus.INACTIVE
             db.session.add(bot)
             db.session.commit()
             
-            flash(f'Bot "{name}" created successfully!', 'success')
+            flash(f'Bot "{name}" created successfully! You can configure it now.', 'success')
             return redirect(url_for('bots.edit_bot', bot_id=bot.id))
+            
         except Exception as e:
+            db.session.rollback()
             flash('Failed to create bot. Please try again.', 'error')
             logging.error(f"Bot creation error: {e}")
     
