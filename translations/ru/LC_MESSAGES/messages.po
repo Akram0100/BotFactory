@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-08-31 06:00+0000\n"
+"POT-Creation-Date: 2025-09-15 12:58+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: ru\n"
@@ -18,10 +18,277 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
+#: routes.py:39
+msgid "Admin access required."
+msgstr ""
+
+#: routes.py:108
+msgid "Please fill in all fields."
+msgstr ""
+
+# Новые добавленные переводы
+#: routes.py:115
+#, fuzzy, python-brace-format
+msgid "Welcome back, {}!"
+msgstr "Добро пожаловать"
+
+#: routes.py:118
+#, fuzzy
+msgid "Invalid username or password."
+msgstr "Введите ваш пароль"
+
+#: routes.py:138
+msgid "Please fill in all required fields."
+msgstr ""
+
+#: routes.py:142
+msgid "Passwords do not match."
+msgstr ""
+
+#: routes.py:146
+msgid "Password must be at least 6 characters long."
+msgstr ""
+
+#: routes.py:151
+msgid "Username already exists."
+msgstr ""
+
+#: routes.py:155
+msgid "Email already registered."
+msgstr ""
+
+#: routes.py:165
+msgid "Registration failed. Please try again."
+msgstr ""
+
+#: routes.py:175
+#, fuzzy
+msgid "You have been logged out successfully."
+msgstr "Записи базы знаний"
+
+#: routes.py:194
+msgid "You have reached your bot limit. Please upgrade your subscription."
+msgstr ""
+
+#: routes.py:204 templates/bot_create.html:391
+msgid "Bot name is required."
+msgstr ""
+
+#: routes.py:209
+msgid "Instagram integration requires Basic or higher subscription."
+msgstr ""
+
+#: routes.py:213
+msgid "WhatsApp integration requires Premium subscription."
+msgstr ""
+
+#: routes.py:245
+msgid "Invalid Telegram bot token. Please check and try again."
+msgstr ""
+
+#: routes.py:269
+msgid "Invalid Instagram access token. Please check and try again."
+msgstr ""
+
+#: routes.py:295
+msgid "Invalid WhatsApp credentials. Please check and try again."
+msgstr ""
+
+#: routes.py:308
+#, fuzzy
+msgid "Failed to create bot. Please try again."
+msgstr "Добавить запись в базу знаний"
+
+#: routes.py:329
+#, fuzzy
+msgid "Bot updated successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:331
+#, fuzzy
+msgid "Failed to update bot."
+msgstr "Добавить текстовую запись"
+
+#: routes.py:355
+msgid "Telegram bot and notification settings configured successfully!"
+msgstr ""
+
+#: routes.py:357
+#, fuzzy
+msgid "Invalid Telegram bot token."
+msgstr "Токен бота Telegram"
+
+#: routes.py:362
+#, fuzzy
+msgid "Notification settings updated successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:366
+#, fuzzy
+msgid "Failed to update configuration."
+msgstr "Конфигурация бота"
+
+#: routes.py:383
+#, fuzzy
+msgid "Instagram bot configured successfully!"
+msgstr "Конфигурация бота Telegram"
+
+#: routes.py:385
+#, fuzzy
+msgid "Invalid Instagram access token."
+msgstr "Токен бота Telegram"
+
+#: routes.py:387
+msgid "Failed to configure Instagram bot."
+msgstr ""
+
+#: routes.py:406
+#, fuzzy
+msgid "WhatsApp bot configured successfully!"
+msgstr "Конфигурация бота"
+
+#: routes.py:408
+msgid "Invalid WhatsApp credentials."
+msgstr ""
+
+#: routes.py:410
+msgid "Failed to configure WhatsApp bot."
+msgstr ""
+
+#: routes.py:423
+#, fuzzy
+msgid "Bot deactivated."
+msgstr "Деактивировать"
+
+#: routes.py:439
+#, fuzzy
+msgid "Bot activated."
+msgstr "Активировать"
+
+#: routes.py:441
+msgid "Please configure platform credentials first."
+msgstr ""
+
+#: routes.py:446
+#, fuzzy
+msgid "Failed to update bot status."
+msgstr "Добавить запись в базу знаний"
+
+#: routes.py:479
+#, fuzzy
+msgid "Knowledge base entry added successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:482
+#, fuzzy
+msgid "Failed to add knowledge base entry."
+msgstr "Добавить запись в базу знаний"
+
+#: routes.py:487 routes.py:491
+msgid "No file selected."
+msgstr ""
+
+#: routes.py:505
+#, python-format
+msgid "File \"%(filename)s\" uploaded successfully!"
+msgstr ""
+
+#: routes.py:507
+msgid "File must be text-based (UTF-8 encoded)."
+msgstr ""
+
+#: routes.py:509
+msgid "File too large. Maximum size is 16MB."
+msgstr ""
+
+#: routes.py:512
+#, fuzzy
+msgid "Failed to upload file."
+msgstr "Загрузить файл"
+
+#: routes.py:531
+#, fuzzy
+msgid "Knowledge base entry updated successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:534
+#, fuzzy
+msgid "Failed to update knowledge base entry."
+msgstr "Добавить запись в базу знаний"
+
+#: routes.py:537
+msgid "All fields are required."
+msgstr ""
+
+#: routes.py:552
+#, fuzzy
+msgid "Knowledge base entry deleted successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:554
+#, fuzzy
+msgid "Failed to delete entry."
+msgstr "Добавить текстовую запись"
+
+#: routes.py:576
+#, fuzzy
+msgid "Failed to delete bot."
+msgstr "Добавить текстовую запись"
+
+#: routes.py:605
+#, fuzzy
+msgid "Upgraded to Starter plan!"
+msgstr "Обновите для создания больше ботов"
+
+#: routes.py:610
+#, fuzzy
+msgid "Upgraded to Basic plan!"
+msgstr "Обновить"
+
+#: routes.py:615
+#, fuzzy
+msgid "Upgraded to Premium plan!"
+msgstr "Обновить"
+
+#: routes.py:620
+msgid "Switched to Free plan!"
+msgstr ""
+
+#: routes.py:622
+msgid "Invalid plan selected."
+msgstr ""
+
+#: routes.py:628
+#, fuzzy
+msgid "Failed to upgrade subscription."
+msgstr "Описание"
+
+#: routes.py:716
+msgid "Title and message are required."
+msgstr ""
+
+#: routes.py:735
+#, fuzzy
+msgid "Broadcast created successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:738
+#, fuzzy
+msgid "Failed to create broadcast."
+msgstr "Создать бота"
+
+#: routes.py:760
+msgid "Broadcast has already been sent."
+msgstr ""
+
+#: templates/base.html:6
+msgid "AI Chatbot Platform"
+msgstr "Платформа ИИ-чатботов"
+
 # Navigation
 #: templates/base.html:36 templates/bot_create.html:12
 #: templates/bot_edit.html:12 templates/bot_list.html:12
-#: templates/subscriptions.html:12
+#: templates/knowledge_base.html:12 templates/subscriptions.html:12
 msgid "Dashboard"
 msgstr "Панель управления"
 
@@ -34,7 +301,7 @@ msgstr "Мои боты"
 msgid "Plans"
 msgstr "Тарифы"
 
-#: templates/base.html:56
+#: templates/admin/users.html:71 templates/base.html:56
 msgid "Language"
 msgstr "Язык"
 
@@ -72,9 +339,10 @@ msgstr "Регистрация"
 
 # Hero Section
 #: templates/base.html:124
-#, fuzzy
 msgid "Create powerful AI chatbots for your business with ease."
-msgstr "Создавайте мощные AI-чатботы за минуты"
+msgstr ""
+"Создавайте мощных чат-ботов с искусственным интеллектом для вашего "
+"бизнеса легко."
 
 #: templates/base.html:127
 msgid "Features"
@@ -85,21 +353,22 @@ msgid "AI-Powered Responses"
 msgstr "ИИ-ответы"
 
 #: templates/base.html:130 templates/index.html:78
-#: templates/subscriptions.html:285
-#, fuzzy
+#: templates/subscriptions.html:365
 msgid "Telegram Integration"
-msgstr "Конфигурация бота"
+msgstr "Интеграция с Telegram"
 
-#: templates/base.html:131 templates/bot_edit.html:93
+# Knowledge Base новые переводы
+#: templates/base.html:131 templates/bot_edit.html:109
 #: templates/bot_list.html:83 templates/index.html:92
+#: templates/knowledge_base.html:15 templates/knowledge_base.html:21
 msgid "Knowledge Base"
 msgstr "База знаний"
 
-#: templates/base.html:132
+#: templates/admin/dashboard.html:112 templates/base.html:132
 msgid "Analytics"
 msgstr "Аналитика"
 
-#: templates/base.html:136 templates/subscriptions.html:309
+#: templates/base.html:136 templates/subscriptions.html:407
 msgid "Support"
 msgstr "Поддержка"
 
@@ -123,57 +392,316 @@ msgstr "Все права защищены."
 msgid "Powered by Google Gemini AI"
 msgstr "Работает на Google Gemini AI"
 
-#: templates/bot_create.html:14 templates/bot_list.html:24
-#: templates/dashboard.html:22 templates/dashboard.html:219
+#: templates/bot_create.html:3 templates/bot_create.html:14
+#: templates/bot_list.html:24 templates/dashboard.html:22
+#: templates/dashboard.html:219
 msgid "Create New Bot"
 msgstr "Создать нового бота"
 
 #: templates/bot_create.html:17
-#, fuzzy
 msgid "Create New AI Chatbot"
-msgstr "Создать нового бота"
+msgstr "Создать нового чат-бота с ИИ"
+
+#: templates/bot_create.html:18
+msgid "Set up your intelligent chatbot with custom personality and purpose"
+msgstr "Настройте своего умного чатбота с индивидуальной личностью и целью"
 
 #: templates/bot_create.html:31
-#, fuzzy
 msgid "Let's Create Your Bot"
-msgstr "Создайте свою учетную запись"
+msgstr "Давайте создадим вашего бота"
 
 #: templates/bot_create.html:32
 msgid "Fill in the details below to get started"
 msgstr "Заполните детали ниже, чтобы начать"
 
-#: templates/bot_create.html:37 templates/bot_edit.html:117
+#: templates/bot_create.html:37 templates/bot_edit.html:133
 msgid "Bot Name"
 msgstr "Имя бота"
 
 #: templates/bot_create.html:43
-#, fuzzy
 msgid "Enter a name for your bot"
-msgstr "Создайте свою учетную запись"
+msgstr "Введите имя для вашего бота"
 
 #: templates/bot_create.html:45
 msgid "Choose a friendly name that represents your bot's purpose"
 msgstr "Выберите дружелюбное имя, которое отражает назначение вашего бота"
 
-#: templates/bot_create.html:49 templates/bot_edit.html:132
+#: templates/bot_create.html:49 templates/bot_edit.html:148
 msgid "Description"
 msgstr "Описание"
 
-#: templates/bot_edit.html:25 templates/bot_list.html:108
+#: templates/bot_create.html:52
+msgid "Describe what your bot does and how it helps users..."
+msgstr "Опишите, что делает ваш бот и как он помогает пользователям..."
+
+#: templates/bot_create.html:53
+msgid "Optional: Describe your bot's purpose and capabilities"
+msgstr "Необязательно: Опишите назначение и возможности вашего бота"
+
+#: templates/bot_create.html:57 templates/bot_edit.html:154
+msgid "Bot Personality & Instructions"
+msgstr "Личность бота и инструкции"
+
+#: templates/bot_create.html:59
+msgid "You are a helpful AI assistant..."
+msgstr "Вы полезный ИИ-помощник..."
+
+#: templates/bot_create.html:59
+msgid ""
+"You are a helpful AI assistant. You provide accurate, friendly, and "
+"professional responses to user questions. Always be polite and try to be "
+"as helpful as possible."
+msgstr ""
+"Вы полезный ИИ-помощник. Вы предоставляете точные, дружелюбные и "
+"профессиональные ответы на вопросы пользователей. Всегда будьте вежливы и"
+" старайтесь быть максимально полезными."
+
+#: templates/bot_create.html:61
+msgid ""
+"Define how your bot should behave and respond. This is like giving your "
+"bot a personality and role."
+msgstr ""
+"Определите, как ваш бот должен вести себя и отвечать. Это как давать "
+"вашему боту личность и роль."
+
+#: templates/bot_create.html:67
+msgid "Choose Platform"
+msgstr "Выберите платформу"
+
+#: templates/bot_create.html:77
+msgid "Available on all plans"
+msgstr "Доступно во всех планах"
+
+#: templates/bot_create.html:93 templates/bot_create.html:113
+msgid "Available with your plan"
+msgstr "Доступно в вашем плане"
+
+#: templates/bot_create.html:95
+msgid "Requires Basic+ plan"
+msgstr "Требуется план Basic+"
+
+#: templates/bot_create.html:115
+msgid "Requires Premium plan"
+msgstr "Требуется план Premium"
+
+#: templates/bot_create.html:127
+msgid "Need more platforms?"
+msgstr "Нужно больше платформ?"
+
+#: templates/bot_create.html:128
+msgid "Upgrade your plan"
+msgstr "Обновите ваш план"
+
+#: templates/bot_create.html:135
 #, fuzzy
+msgid "Platform Configuration"
+msgstr "Конфигурация бота"
+
+#: templates/bot_create.html:140
+#, fuzzy
+msgid "Telegram Bot Setup"
+msgstr "Настройка Telegram"
+
+#: templates/bot_create.html:144 templates/bot_edit.html:191
+msgid "Telegram Bot Token"
+msgstr "Токен бота Telegram"
+
+#: templates/bot_create.html:150
+#, fuzzy
+msgid "Enter your Telegram bot token..."
+msgstr "Токен бота Telegram"
+
+#: templates/bot_create.html:153
+#, fuzzy
+msgid "Get your bot token from"
+msgstr "Создайте свою учетную запись"
+
+#: templates/bot_create.html:153
+#, fuzzy
+msgid "on Telegram"
+msgstr "Настройка Telegram"
+
+#: templates/bot_create.html:162
+#, fuzzy
+msgid "Instagram Bot Setup"
+msgstr "Настройка Telegram"
+
+#: templates/bot_create.html:167 templates/bot_edit.html:291
+#, fuzzy
+msgid "Instagram Access Token"
+msgstr "Токен бота Telegram"
+
+#: templates/bot_create.html:173
+msgid "Enter your Instagram access token..."
+msgstr ""
+
+#: templates/bot_create.html:176
+msgid "Get your access token from"
+msgstr ""
+
+#: templates/bot_create.html:182 templates/bot_edit.html:271
+msgid "Instagram integration is available only for Premium subscribers."
+msgstr ""
+
+#: templates/bot_create.html:183 templates/bot_create.html:223
+#: templates/bot_edit.html:272 templates/bot_edit.html:336
+#, fuzzy
+msgid "Upgrade Now"
+msgstr "Обновить план"
+
+#: templates/bot_create.html:192
+msgid "WhatsApp Bot Setup"
+msgstr ""
+
+#: templates/bot_create.html:197 templates/bot_edit.html:356
+msgid "WhatsApp Access Token"
+msgstr ""
+
+#: templates/bot_create.html:203
+msgid "Enter your WhatsApp access token..."
+msgstr ""
+
+#: templates/bot_create.html:207 templates/bot_edit.html:368
+msgid "Phone Number ID"
+msgstr ""
+
+#: templates/bot_create.html:213
+msgid "Enter your WhatsApp phone number ID..."
+msgstr ""
+
+#: templates/bot_create.html:216
+msgid "Get these credentials from"
+msgstr ""
+
+#: templates/bot_create.html:222 templates/bot_edit.html:335
+msgid "WhatsApp integration is available only for Premium subscribers."
+msgstr ""
+
+#: templates/bot_create.html:232
+msgid "Bot Personality Examples"
+msgstr "Примеры личности бота"
+
+#: templates/bot_create.html:235
+msgid "Customer Support Bot:"
+msgstr "Бот поддержки клиентов:"
+
+#: templates/bot_create.html:237
+msgid ""
+"You are a friendly customer support representative. Help users with their"
+" questions, provide product information, and escalate complex issues when"
+" needed."
+msgstr ""
+"Вы дружелюбный представитель службы поддержки клиентов. Помогайте "
+"пользователям с их вопросами, предоставляйте информацию о продукте и "
+"передавайте сложные вопросы при необходимости."
+
+#: templates/bot_create.html:241
+msgid "Educational Tutor:"
+msgstr "Образовательный наставник:"
+
+#: templates/bot_create.html:243
+msgid ""
+"You are an encouraging tutor. Explain concepts clearly, ask questions to "
+"check understanding, and provide examples to help students learn."
+msgstr ""
+"Вы ободряющий наставник. Объясняйте концепции четко, задавайте вопросы "
+"для проверки понимания и приводите примеры, чтобы помочь студентам "
+"учиться."
+
+#: templates/admin/create_broadcast.html:96 templates/bot_create.html:251
+msgid "Cancel"
+msgstr "Отмена"
+
+#: templates/bot_create.html:254
+msgid "Create Bot"
+msgstr "Создать бота"
+
+#: templates/bot_create.html:264
+msgid "Next Steps After Creation"
+msgstr "Следующие шаги после создания"
+
+#: templates/bot_create.html:270
+msgid "Connect Platform"
+msgstr "Подключить платформу"
+
+#: templates/bot_create.html:271
+msgid "Link your bot to chosen platform (Telegram, Instagram, WhatsApp)"
+msgstr "Свяжите вашего бота с выбранной платформой (Telegram, Instagram, WhatsApp)"
+
+#: templates/bot_create.html:275 templates/index.html:179
+#, fuzzy
+msgid "Upload Knowledge"
+msgstr "База знаний"
+
+#: templates/bot_create.html:276
+msgid "Add documents and information for your bot"
+msgstr "Добавьте документы и информацию для вашего бота"
+
+#: templates/bot_create.html:280 templates/bot_edit.html:114
+msgid "Test Bot"
+msgstr "Тестировать бота"
+
+#: templates/bot_create.html:281
+msgid "Test your bot responses before going live"
+msgstr "Протестируйте ответы вашего бота перед запуском"
+
+#: templates/bot_create.html:285
+msgid "Deploy"
+msgstr ""
+
+#: templates/bot_create.html:286
+msgid "Make your bot available to users"
+msgstr "Сделайте вашего бота доступным для пользователей"
+
+#: templates/bot_create.html:397
+msgid "Bot name must be at least 2 characters long."
+msgstr ""
+
+#: templates/bot_create.html:403
+msgid "Please provide proper instructions for your bot (at least 10 characters)."
+msgstr ""
+
+#: templates/bot_create.html:413
+#, fuzzy
+msgid "Telegram bot token is required."
+msgstr "Токен бота Telegram"
+
+#: templates/bot_create.html:418
+#, fuzzy
+msgid "Please enter a valid Telegram bot token."
+msgstr "Как получить токен Telegram бота:"
+
+#: templates/bot_create.html:426
+msgid "Instagram access token is required."
+msgstr ""
+
+#: templates/bot_create.html:437
+msgid "WhatsApp access token is required."
+msgstr ""
+
+#: templates/bot_create.html:442
+msgid "WhatsApp phone number ID is required."
+msgstr ""
+
+#: templates/bot_create.html:450
+#, fuzzy
+msgid "Creating Bot..."
+msgstr "Создать бота"
+
+#: templates/bot_edit.html:25 templates/bot_list.html:108
 msgid "No description provided"
-msgstr "Описание"
+msgstr "Описание не предоставлено"
 
 #: templates/bot_edit.html:32 templates/bot_list.html:92
 msgid "Deactivate"
 msgstr "Деактивировать"
 
 #: templates/bot_edit.html:32 templates/bot_list.html:92
-#, fuzzy
 msgid "Activate"
-msgstr "Активные боты"
+msgstr "Активировать"
 
 #: templates/bot_edit.html:36 templates/bot_list.html:99
+#: templates/knowledge_base.html:90
 msgid "Delete"
 msgstr "Удалить"
 
@@ -190,60 +718,56 @@ msgid "Last Activity"
 msgstr "Последняя активность"
 
 #: templates/bot_edit.html:73
-#, fuzzy
 msgid "Knowledge Entries"
 msgstr "Записи базы знаний"
 
 #: templates/bot_edit.html:83
-#, fuzzy
 msgid "Basic Settings"
-msgstr "Настройки"
+msgstr "Основные настройки"
 
 #: templates/bot_edit.html:88
 msgid "Telegram Setup"
 msgstr "Настройка Telegram"
 
-#: templates/bot_edit.html:98
+#: templates/bot_edit.html:93
 #, fuzzy
-msgid "Test Bot"
-msgstr "Редактировать бота"
+msgid "Instagram Setup"
+msgstr "Настройка Telegram"
 
-#: templates/bot_edit.html:109
+#: templates/bot_edit.html:101
+#, fuzzy
+msgid "WhatsApp Setup"
+msgstr "Настройка Telegram"
+
+#: templates/bot_edit.html:125
 msgid "Bot Configuration"
 msgstr "Конфигурация бота"
 
-#: templates/bot_edit.html:122
-#, fuzzy
-msgid "Telegram Username"
-msgstr "Настройка Telegram"
-
-#: templates/bot_edit.html:126
-#, fuzzy
-msgid "Not configured"
-msgstr "Конфигурация бота"
-
 #: templates/bot_edit.html:138
-msgid "Bot Personality & Instructions"
-msgstr "Личность бота и инструкции"
+msgid "Telegram Username"
+msgstr "Имя пользователя Telegram"
 
-#: templates/bot_edit.html:141
+#: templates/bot_edit.html:142
+msgid "Not configured"
+msgstr "Не настроено"
+
+#: templates/bot_edit.html:157
 msgid "Define how your bot should behave and respond to users."
 msgstr "Определите, как ваш бот должен вести себя и отвечать пользователям."
 
-#: templates/bot_edit.html:145
+#: templates/bot_edit.html:161
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: templates/bot_edit.html:156
-#, fuzzy
+#: templates/bot_edit.html:172
 msgid "Telegram Bot Configuration"
-msgstr "Конфигурация бота"
+msgstr "Конфигурация бота Telegram"
 
-#: templates/bot_edit.html:162
+#: templates/bot_edit.html:178
 msgid "Bot is connected to Telegram as"
 msgstr "Бот подключён к Telegram как"
 
-#: templates/bot_edit.html:167
+#: templates/bot_edit.html:183
 msgid ""
 "To deploy your bot to Telegram, you need to create a bot token via "
 "@BotFather."
@@ -252,25 +776,94 @@ msgstr ""
 "через @BotFather.Чтобы развернуть вашего бота в Telegram, вам нужно "
 "создать токен бота через @BotFather."
 
-#: templates/bot_edit.html:175
-#, fuzzy
-msgid "Telegram Bot Token"
-msgstr "Токен бота"
-
-#: templates/bot_edit.html:185
+#: templates/bot_edit.html:201
 msgid "Get this token by messaging @BotFather on Telegram and creating a new bot."
 msgstr ""
 "Получите этот токен, отправив сообщение @BotFather в Telegram и создав "
 "нового бота."
 
-#: templates/bot_edit.html:196
+#: templates/bot_edit.html:207
+#, fuzzy
+msgid "Notification Settings"
+msgstr "Основные настройки"
+
+#: templates/bot_edit.html:212
+#, fuzzy
+msgid "Admin Chat ID"
+msgstr "AI-чатботы"
+
+#: templates/bot_edit.html:227
+msgid "Notification Channel"
+msgstr ""
+
+#: templates/bot_edit.html:249
 msgid "How to get a Telegram Bot Token:"
 msgstr "Как получить токен Telegram бота:"
 
-#: templates/bot_list.html:18
+#: templates/bot_edit.html:265
 #, fuzzy
+msgid "Instagram Bot Configuration"
+msgstr "Конфигурация бота Telegram"
+
+#: templates/bot_edit.html:278
+#, fuzzy
+msgid "Bot is connected to Instagram as"
+msgstr "Бот подключён к Telegram как"
+
+#: templates/bot_edit.html:283
+#, fuzzy
+msgid ""
+"To deploy your bot to Instagram, you need to create a business account "
+"and get access token."
+msgstr ""
+"Чтобы развернуть вашего бота в Telegram, вам нужно создать токен бота "
+"через @BotFather.Чтобы развернуть вашего бота в Telegram, вам нужно "
+"создать токен бота через @BotFather."
+
+#: templates/bot_edit.html:301
+msgid ""
+"Get this token from Facebook Developer Console for your Instagram "
+"Business account."
+msgstr ""
+
+#: templates/bot_edit.html:312
+#, fuzzy
+msgid "How to get Instagram Access Token:"
+msgstr "Как получить токен Telegram бота:"
+
+#: templates/bot_edit.html:329
+#, fuzzy
+msgid "WhatsApp Bot Configuration"
+msgstr "Конфигурация бота"
+
+#: templates/bot_edit.html:342
+#, fuzzy
+msgid "Bot is connected to WhatsApp Business as"
+msgstr "Бот подключён к Telegram как"
+
+#: templates/bot_edit.html:343
+msgid "Phone:"
+msgstr ""
+
+#: templates/bot_edit.html:348
+msgid ""
+"To deploy your bot to WhatsApp, you need WhatsApp Business API "
+"credentials."
+msgstr ""
+
+#: templates/bot_edit.html:378
+msgid ""
+"Get these credentials from Facebook Developer Console WhatsApp Business "
+"API."
+msgstr ""
+
+#: templates/bot_edit.html:389
+msgid "How to get WhatsApp Business API credentials:"
+msgstr ""
+
+#: templates/bot_list.html:18
 msgid "My AI Chatbots"
-msgstr "AI-чатботы"
+msgstr "Мои чат-боты с ИИ"
 
 #: templates/bot_list.html:19
 msgid "Manage and monitor your intelligent chatbots"
@@ -290,30 +883,27 @@ msgid "You are using %(current)s of %(max)s available bots."
 msgstr "Вы используете %(current)s из %(max)s доступных ботов."
 
 #: templates/bot_list.html:46 templates/dashboard.html:201
-#, fuzzy
 msgid "Upgrade Plan"
-msgstr "Обновить"
+msgstr "Обновить план"
 
 #: templates/bot_list.html:78
-#, fuzzy
 msgid "Edit Bot"
 msgstr "Редактировать бота"
 
 #: templates/bot_list.html:116 templates/dashboard.html:189
-#, fuzzy
 msgid "Messages"
-msgstr "Всего сообщений"
+msgstr "Сообщения"
 
-#: templates/bot_list.html:122
+#: templates/admin/users.html:59 templates/bot_list.html:122
 msgid "Users"
 msgstr "Пользователи"
 
 #: templates/bot_list.html:139
-#, fuzzy
 msgid "Telegram not configured"
-msgstr "Конфигурация бота"
+msgstr "Telegram не настроен"
 
-#: templates/bot_list.html:149
+# Dashboard новые переводы
+#: templates/bot_list.html:149 templates/dashboard.html:126
 msgid "Last activity:"
 msgstr "Последняя активность:"
 
@@ -326,15 +916,16 @@ msgstr "Добро пожаловать!"
 msgid "Manage your AI chatbots and monitor performance"
 msgstr "Управляйте вашими AI-чатботами и отслеживайте производительность"
 
+#: templates/admin/dashboard.html:3 templates/admin/dashboard.html:12
 #: templates/dashboard.html:18
 msgid "Admin Panel"
 msgstr "Панель администратора"
 
-#: templates/dashboard.html:37
+#: templates/admin/dashboard.html:42 templates/dashboard.html:37
 msgid "Total Bots"
 msgstr "Всего ботов"
 
-#: templates/dashboard.html:53
+#: templates/admin/dashboard.html:56 templates/dashboard.html:53
 msgid "Active Bots"
 msgstr "Активные боты"
 
@@ -361,7 +952,7 @@ msgstr "Пока нет ботов"
 msgid "Create your first AI chatbot to get started"
 msgstr "Создайте своего первого AI-чатбота, чтобы начать"
 
-#: templates/dashboard.html:151 templates/subscriptions.html:400
+#: templates/dashboard.html:151 templates/subscriptions.html:499
 #, fuzzy
 msgid "Create Your First Bot"
 msgstr "Создайте свою учетную запись"
@@ -381,7 +972,8 @@ msgstr "Всего пользователей"
 msgid "Active Subscription"
 msgstr "Описание"
 
-#: templates/dashboard.html:214
+#: templates/admin/dashboard.html:86 templates/dashboard.html:214
+#: templates/knowledge_base.html:255
 msgid "Quick Actions"
 msgstr "Быстрые действия"
 
@@ -433,6 +1025,14 @@ msgstr "Бесплатный тариф доступен"
 #: templates/index.html:29
 msgid "No credit card required"
 msgstr "Кредитная карта не требуется"
+
+#: templates/index.html:39 templates/login.html:74
+msgid "AI-Powered"
+msgstr "На основе ИИ"
+
+#: templates/index.html:40
+msgid "Smart conversations with your customers"
+msgstr ""
 
 #: templates/index.html:53
 msgid "Why Choose BotFactory?"
@@ -519,11 +1119,6 @@ msgid ""
 " with custom prompts."
 msgstr ""
 
-#: templates/index.html:179
-#, fuzzy
-msgid "Upload Knowledge"
-msgstr "База знаний"
-
 #: templates/index.html:181
 msgid ""
 "Upload your documents, FAQs, and content to train your bot with your "
@@ -548,115 +1143,397 @@ msgstr "Простые, прозрачные цены"
 msgid "Start free and scale as you grow"
 msgstr "Начните бесплатно и масштабируйтесь по мере роста"
 
-#: templates/index.html:214 templates/subscriptions.html:260
+#: templates/admin/broadcasts.html:72 templates/admin/users.html:32
+#: templates/admin/users.html:90 templates/index.html:214
+#: templates/subscriptions.html:336
 msgid "Free"
-msgstr ""
+msgstr "Бесплатно"
 
 #: templates/index.html:217 templates/subscriptions.html:52
-#: templates/subscriptions.html:122 templates/subscriptions.html:198
+#: templates/subscriptions.html:124 templates/subscriptions.html:198
+#: templates/subscriptions.html:274
 msgid "/month"
 msgstr "/в месяц"
 
-#: templates/index.html:238
-#, fuzzy
+# Index.html новые переводы
+#: templates/index.html:220
+msgid "1 AI chatbot"
+msgstr "1 AI чатбот"
+
+#: templates/index.html:221
+msgid "100 messages/month"
+msgstr "100 сообщений/месяц"
+
+#: templates/index.html:222
 msgid "Basic knowledge base"
-msgstr "База знаний"
+msgstr "Базовая база знаний"
+
+#: templates/index.html:223 templates/subscriptions.html:71
+#: templates/subscriptions.html:143
+#, fuzzy
+msgid "Telegram integration"
+msgstr "Конфигурация бота"
+
+#: templates/index.html:225
+msgid "Get Started"
+msgstr "Начать"
+
+#: templates/index.html:233 templates/subscriptions.html:183
+msgid "Most Popular"
+msgstr ""
+
+#: templates/admin/broadcasts.html:76 templates/admin/users.html:35
+#: templates/admin/users.html:94 templates/index.html:236
+#: templates/subscriptions.html:338 templates/subscriptions.html:395
+msgid "Basic"
+msgstr ""
+
+#: templates/index.html:242
+msgid "5 AI chatbots"
+msgstr "5 AI чатботов"
+
+#: templates/index.html:243
+msgid "1,000 messages/month"
+msgstr "1,000 сообщений/месяц"
+
+#: templates/index.html:244
+msgid "Advanced knowledge base"
+msgstr "Продвинутая база знаний"
+
+#: templates/index.html:245 templates/subscriptions.html:221
+#: templates/subscriptions.html:297
+msgid "Priority support"
+msgstr ""
+
+#: templates/index.html:247 templates/index.html:266
+msgid "Start Free Trial"
+msgstr "Начать бесплатную пробную версию"
+
+#: templates/admin/broadcasts.html:81 templates/admin/users.html:38
+#: templates/admin/users.html:98 templates/index.html:255
+#: templates/subscriptions.html:259 templates/subscriptions.html:339
+msgid "Premium"
+msgstr ""
+
+#: templates/index.html:261
+msgid "25 AI chatbots"
+msgstr "25 AI чатботов"
+
+#: templates/index.html:262
+msgid "10,000 messages/month"
+msgstr "10,000 сообщений/месяц"
+
+#: templates/index.html:263
+msgid "Unlimited knowledge base"
+msgstr "Неограниченная база знаний"
+
+#: templates/index.html:264
+msgid "Analytics & API access"
+msgstr "Аналитика и доступ к API"
+
+#: templates/index.html:277
+msgid "Ready to Create Your AI Chatbot?"
+msgstr "Готовы создать своего AI-чатбота?"
+
+#: templates/index.html:278
+msgid ""
+"Join thousands of businesses using BotFactory to provide better customer "
+"support and engagement through AI-powered chatbots."
+msgstr ""
+"Присоединяйтесь к тысячам компаний, которые используют BotFactory для "
+"лучшей поддержки клиентов и взаимодействия с помощью AI-чатботов."
+
+#: templates/index.html:280
+msgid "Start Building for Free"
+msgstr "Начать создавать бесплатно"
+
+#: templates/index.html:283
+msgid "No credit card required • 14-day free trial on paid plans"
+msgstr ""
+"Кредитная карта не требуется • 14-дневная бесплатная пробная версия "
+"платных планов"
+
+#: templates/admin/users.html:70 templates/knowledge_base.html:13
+msgid "Bots"
+msgstr "Боты"
+
+#: templates/knowledge_base.html:23
+#, python-format
+msgid "Train %(bot_name)s with your content and documents"
+msgstr "Обучите %(bot_name)s с помощью вашего контента и документов"
+
+#: templates/knowledge_base.html:27
+msgid "Add Entry"
+msgstr "Добавить запись"
+
+#: templates/knowledge_base.html:48
+msgid "Has Image"
+msgstr "Есть изображение"
+
+#: templates/knowledge_base.html:59
+msgid "Added"
+msgstr "Добавлено"
+
+#: templates/knowledge_base.html:75
+msgid "View Full Content"
+msgstr "Посмотреть полный контент"
+
+#: templates/knowledge_base.html:81
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/knowledge_base.html:89
+msgid "Are you sure you want to delete this entry?"
+msgstr "Вы уверены, что хотите удалить эту запись?"
+
+#: templates/knowledge_base.html:124
+msgid "Close"
+msgstr "Закрыть"
+
+#: templates/knowledge_base.html:135
+msgid "Edit Knowledge Entry"
+msgstr "Редактировать запись знаний"
+
+#: templates/admin/broadcast_preview.html:32 templates/admin/broadcasts.html:40
+#: templates/admin/create_broadcast.html:29 templates/admin/dashboard.html:136
+#: templates/knowledge_base.html:143 templates/knowledge_base.html:287
+msgid "Title"
+msgstr "Заголовок"
+
+#: templates/knowledge_base.html:148 templates/knowledge_base.html:293
+msgid "Content"
+msgstr "Контент"
+
+#: templates/knowledge_base.html:157 templates/knowledge_base.html:303
+msgid "Product Image (optional)"
+msgstr "Изображение продукта (необязательно)"
+
+#: templates/knowledge_base.html:193
+msgid "No Knowledge Base Entries"
+msgstr "Нет записей в базе знаний"
+
+#: templates/knowledge_base.html:195
+msgid ""
+"Add documents, FAQs, and information to help your bot provide better "
+"answers."
+msgstr ""
+"Добавьте документы, FAQ и информацию, чтобы помочь вашему боту давать "
+"лучшие ответы."
+
+#: templates/knowledge_base.html:198
+msgid "Add Your First Entry"
+msgstr "Добавьте первую запись"
+
+#: templates/knowledge_base.html:209
+msgid "Knowledge Base Stats"
+msgstr "Статистика базы знаний"
+
+#: templates/knowledge_base.html:215
+msgid "Total Entries"
+msgstr "Всего записей"
+
+#: templates/knowledge_base.html:219
+msgid "Uploaded Files"
+msgstr "Загруженные файлы"
+
+#: templates/knowledge_base.html:228
+msgid "Knowledge Base Tips"
+msgstr "Советы по базе знаний"
+
+#: templates/knowledge_base.html:234
+msgid "FAQs Work Best:"
+msgstr "FAQ работают лучше всего:"
+
+#: templates/knowledge_base.html:234
+msgid ""
+"Add frequently asked questions and their answers for immediate bot "
+"responses."
+msgstr ""
+"Добавьте часто задаваемые вопросы и ответы на них для немедленных ответов"
+" бота."
+
+#: templates/knowledge_base.html:238
+msgid "Clear Titles:"
+msgstr "Четкие заголовки:"
+
+#: templates/knowledge_base.html:238
+msgid "Use descriptive titles that match what users might ask about."
+msgstr ""
+"Используйте описательные заголовки, которые соответствуют тому, о чем "
+"могут спросить пользователи."
+
+#: templates/knowledge_base.html:242
+msgid "Context Matters:"
+msgstr "Контекст важен:"
+
+#: templates/knowledge_base.html:242
+msgid ""
+"Include background information to help the AI understand your content "
+"better."
+msgstr ""
+"Включите справочную информацию, чтобы помочь ИИ лучше понимать ваш "
+"контент."
+
+#: templates/knowledge_base.html:246
+msgid "Keep Updated:"
+msgstr "Поддерживайте актуальность:"
+
+#: templates/knowledge_base.html:246
+msgid "Regularly update your knowledge base with new information."
+msgstr "Регулярно обновляйте базу знаний новой информацией."
+
+#: templates/knowledge_base.html:266
+msgid "Back to Bot"
+msgstr "Вернуться к боту"
+
+#: templates/knowledge_base.html:280
+msgid "Add Knowledge Base Entry"
+msgstr "Добавить запись в базу знаний"
+
+#: templates/knowledge_base.html:289
+msgid "Enter a descriptive title..."
+msgstr "Введите описательный заголовок..."
+
+#: templates/knowledge_base.html:290
+msgid "This helps organize your knowledge and makes it easier to find."
+msgstr "Это помогает организовать ваши знания и облегчает поиск."
+
+#: templates/knowledge_base.html:295
+msgid "Enter the content that your bot should know about..."
+msgstr "Введите контент, о котором должен знать ваш бот..."
+
+#: templates/knowledge_base.html:296
+msgid "Include as much detail as possible for better AI responses."
+msgstr "Включите как можно больше деталей для лучших ответов ИИ."
+
+# Новые добавленные переводы
+#: templates/login.html:13
+msgid "Welcome Back"
+msgstr "Добро пожаловать"
+
+#: templates/login.html:14
+msgid "Sign in to your BotFactory account"
+msgstr "Войдите в свой аккаунт BotFactory"
+
+#: templates/login.html:19 templates/register.html:32
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: templates/login.html:25
+msgid "Enter your username"
+msgstr "Введите ваше имя пользователя"
+
+#: templates/login.html:30 templates/register.html:55
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/login.html:36
+msgid "Enter your password"
+msgstr "Введите ваш пароль"
+
+#: templates/login.html:43
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: templates/login.html:48
+msgid "Sign In"
+msgstr "Войти"
+
+#: templates/login.html:52
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: templates/login.html:59
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: templates/login.html:61 templates/register.html:86
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+#: templates/login.html:80
+msgid "Telegram Ready"
+msgstr "Готов для Telegram"
+
+#: templates/login.html:86 templates/register.html:117
+msgid "Quick Setup"
+msgstr ""
 
 #: templates/register.html:13
-#, fuzzy
 msgid "Create Your Account"
 msgstr "Создайте свою учетную запись"
 
 #: templates/register.html:14
 msgid "Start building AI chatbots today"
-msgstr ""
+msgstr "Начните создавать чат-ботов с ИИ уже сегодня"
 
 #: templates/register.html:20
-#, fuzzy
 msgid "First Name"
-msgstr "Имя бота"
+msgstr "Имя"
 
 #: templates/register.html:22
 msgid "Enter first name"
-msgstr ""
+msgstr "Введите имя"
 
 #: templates/register.html:25
-#, fuzzy
 msgid "Last Name"
-msgstr "Имя бота"
+msgstr "Фамилия"
 
 #: templates/register.html:27
-#, fuzzy
 msgid "Enter last name"
-msgstr "Создайте свою учетную запись"
-
-#: templates/register.html:32
-#, fuzzy
-msgid "Username"
-msgstr "Настройка Telegram"
+msgstr "Введите фамилию"
 
 #: templates/register.html:38
-#, fuzzy
 msgid "Choose a username"
-msgstr "Настройка Telegram"
+msgstr "Выберите имя пользователя"
 
 #: templates/register.html:40
 msgid "3-30 characters, letters, numbers and underscore only"
-msgstr ""
+msgstr "3-30 символов, только буквы, цифры и подчеркивание"
 
 #: templates/register.html:44
 msgid "Email Address"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: templates/register.html:50
 msgid "Enter your email"
-msgstr ""
-
-#: templates/register.html:55
-msgid "Password"
-msgstr ""
+msgstr "Введите ваш адрес электронной почты"
 
 #: templates/register.html:61
 msgid "Create a password"
-msgstr ""
+msgstr "Создайте пароль"
 
 #: templates/register.html:63
 msgid "Minimum 6 characters"
-msgstr ""
+msgstr "Минимум 6 символов"
 
 #: templates/register.html:67
 msgid "Confirm Password"
-msgstr ""
+msgstr "Подтвердите пароль"
 
 #: templates/register.html:73
 msgid "Confirm your password"
-msgstr ""
+msgstr "Подтвердите ваш пароль"
 
 #: templates/register.html:80
 msgid "I agree to the"
-msgstr ""
+msgstr "Я соглашаюсь с"
 
 #: templates/register.html:80
-#, fuzzy
 msgid "Terms of Service"
-msgstr "Обслужено пользователей"
+msgstr "Условиями обслуживания"
 
 #: templates/register.html:81
 msgid "and"
-msgstr ""
+msgstr "и"
 
 #: templates/register.html:81
 msgid "Privacy Policy"
-msgstr ""
-
-#: templates/register.html:86
-#, fuzzy
-msgid "Create Account"
-msgstr "Создайте свою учетную запись"
+msgstr "Политикой конфиденциальности"
 
 #: templates/register.html:93
 msgid "Already have an account?"
-msgstr ""
+msgstr "Уже есть аккаунт?"
 
 #: templates/register.html:95
 msgid "Sign In Instead"
@@ -670,10 +1547,6 @@ msgstr ""
 #, fuzzy
 msgid "Create your first bot for free"
 msgstr "Создайте свою учетную запись"
-
-#: templates/register.html:117
-msgid "Quick Setup"
-msgstr ""
 
 #: templates/register.html:118
 #, fuzzy
@@ -713,8 +1586,9 @@ msgid "plan"
 msgstr "Тарифы"
 
 #: templates/subscriptions.html:37 templates/subscriptions.html:93
-#: templates/subscriptions.html:105 templates/subscriptions.html:167
-#: templates/subscriptions.html:179 templates/subscriptions.html:243
+#: templates/subscriptions.html:105 templates/subscriptions.html:169
+#: templates/subscriptions.html:181 templates/subscriptions.html:243
+#: templates/subscriptions.html:255 templates/subscriptions.html:319
 #, fuzzy
 msgid "Current Plan"
 msgstr "Выберите свой план"
@@ -723,34 +1597,29 @@ msgstr "Выберите свой план"
 msgid "Perfect for trying out BotFactory"
 msgstr "Идеально для знакомства с BotFactory"
 
-#: templates/subscriptions.html:59
+#: templates/subscriptions.html:59 templates/subscriptions.html:131
 #, fuzzy
 msgid "AI chatbot"
 msgstr "AI-чатботы"
 
-#: templates/subscriptions.html:63 templates/subscriptions.html:133
-#: templates/subscriptions.html:209
+#: templates/subscriptions.html:63 templates/subscriptions.html:135
+#: templates/subscriptions.html:209 templates/subscriptions.html:285
 #, fuzzy
 msgid "messages per month"
 msgstr "Всего сообщений"
 
-#: templates/subscriptions.html:67 templates/subscriptions.html:137
+#: templates/subscriptions.html:67 templates/subscriptions.html:139
+#: templates/subscriptions.html:213
 #, fuzzy
 msgid "knowledge base entries"
 msgstr "Записи базы знаний"
 
-#: templates/subscriptions.html:71
-#, fuzzy
-msgid "Telegram integration"
-msgstr "Конфигурация бота"
-
 #: templates/subscriptions.html:75
-msgid "Basic support"
+msgid "14 kunlik bepul sinov"
 msgstr ""
 
-#: templates/subscriptions.html:79 templates/subscriptions.html:145
-#: templates/subscriptions.html:221
-msgid "Priority support"
+#: templates/subscriptions.html:79
+msgid "Basic support"
 msgstr ""
 
 # Navigation
@@ -763,527 +1632,658 @@ msgstr "Панель управления"
 msgid "Switch to Free"
 msgstr ""
 
-#: templates/subscriptions.html:107
-msgid "Most Popular"
-msgstr ""
-
-#: templates/subscriptions.html:124
-msgid "Great for small businesses"
-msgstr ""
-
-#: templates/subscriptions.html:129 templates/subscriptions.html:205
+#: templates/subscriptions.html:109 templates/subscriptions.html:337
 #, fuzzy
-msgid "AI chatbots"
-msgstr "AI-чатботы"
+msgid "Starter"
+msgstr "Начать"
 
-#: templates/subscriptions.html:141 templates/subscriptions.html:217
+#: templates/subscriptions.html:126
 #, fuzzy
-msgid "All integrations"
-msgstr "Конфигурация бота"
+msgid "Perfect for getting started"
+msgstr "Идеально для знакомства с BotFactory"
 
-#: templates/subscriptions.html:149
-msgid "Custom bot personalities"
+#: templates/subscriptions.html:147
+msgid "All languages support"
 msgstr ""
 
-#: templates/subscriptions.html:153
+#: templates/subscriptions.html:151
+#, fuzzy
+msgid "Technical support"
+msgstr "Связаться с поддержкой"
+
+#: templates/subscriptions.html:155 templates/subscriptions.html:229
 #, fuzzy
 msgid "Basic analytics"
 msgstr "Настройки"
 
-#: templates/subscriptions.html:160
-#, fuzzy
-msgid "Upgrade to Basic"
-msgstr "Обновить"
-
 #: templates/subscriptions.html:162
-msgid "Switch to Basic"
-msgstr ""
+#, fuzzy
+msgid "Upgrade to Starter"
+msgstr "Обновите для создания больше ботов"
 
-#: templates/subscriptions.html:183 templates/subscriptions.html:262
-msgid "Premium"
+#: templates/subscriptions.html:164
+msgid "Switch to Starter"
 msgstr ""
 
 #: templates/subscriptions.html:200
-msgid "For growing businesses and agencies"
+msgid "Great for small businesses"
 msgstr ""
 
-#: templates/subscriptions.html:213 templates/subscriptions.html:282
-msgid "Unlimited"
-msgstr ""
-
-#: templates/subscriptions.html:213
+#: templates/subscriptions.html:205 templates/subscriptions.html:281
 #, fuzzy
-msgid "knowledge base"
-msgstr "База знаний"
+msgid "AI chatbots"
+msgstr "AI-чатботы"
+
+#: templates/subscriptions.html:217
+#, fuzzy
+msgid "Telegram & Instagram integration"
+msgstr "Конфигурация бота"
 
 #: templates/subscriptions.html:225
-msgid "Advanced analytics"
-msgstr ""
-
-#: templates/subscriptions.html:229
-msgid "API access"
+msgid "Custom bot personalities"
 msgstr ""
 
 #: templates/subscriptions.html:236
 #, fuzzy
-msgid "Upgrade to Premium"
+msgid "Upgrade to Basic"
 msgstr "Обновить"
 
 #: templates/subscriptions.html:238
+msgid "Switch to Basic"
+msgstr ""
+
+#: templates/subscriptions.html:276
+msgid "For growing businesses and agencies"
+msgstr ""
+
+#: templates/subscriptions.html:289 templates/subscriptions.html:362
+msgid "Unlimited"
+msgstr ""
+
+#: templates/subscriptions.html:289
+#, fuzzy
+msgid "knowledge base"
+msgstr "База знаний"
+
+#: templates/subscriptions.html:293
+#, fuzzy
+msgid "All platform integrations"
+msgstr "Конфигурация бота"
+
+#: templates/subscriptions.html:293
+#, fuzzy
+msgid "Telegram, Instagram, WhatsApp"
+msgstr "Конфигурация бота"
+
+#: templates/subscriptions.html:301
+msgid "Advanced analytics"
+msgstr ""
+
+#: templates/subscriptions.html:305
+msgid "API access"
+msgstr ""
+
+#: templates/subscriptions.html:312
+#, fuzzy
+msgid "Upgrade to Premium"
+msgstr "Обновить"
+
+#: templates/subscriptions.html:314
 msgid "Choose Premium"
 msgstr ""
 
-#: templates/subscriptions.html:254
+#: templates/subscriptions.html:330
 msgid "Feature Comparison"
 msgstr ""
 
-#: templates/subscriptions.html:259
+#: templates/subscriptions.html:335
 msgid "Feature"
 msgstr ""
 
-#: templates/subscriptions.html:261 templates/subscriptions.html:299
-msgid "Basic"
-msgstr ""
-
-#: templates/subscriptions.html:267
+#: templates/subscriptions.html:344
 #, fuzzy
 msgid "AI Chatbots"
 msgstr "AI-чатботы"
 
-#: templates/subscriptions.html:273
+#: templates/subscriptions.html:351
 #, fuzzy
 msgid "Messages per Month"
 msgstr "Всего сообщений"
 
-#: templates/subscriptions.html:279
+#: templates/subscriptions.html:358
 #, fuzzy
 msgid "Knowledge Base Entries"
 msgstr "Записи базы знаний"
 
-#: templates/subscriptions.html:291
+#: templates/subscriptions.html:372
+msgid "Trial Period"
+msgstr ""
+
+#: templates/subscriptions.html:379
+msgid "All Languages Support"
+msgstr ""
+
+#: templates/subscriptions.html:386
 msgid "Custom AI Personalities"
 msgstr ""
 
 # Navigation
-#: templates/subscriptions.html:297
+#: templates/subscriptions.html:393
 #, fuzzy
 msgid "Analytics Dashboard"
 msgstr "Панель управления"
 
-#: templates/subscriptions.html:300
+#: templates/subscriptions.html:396 templates/subscriptions.html:397
 msgid "Advanced"
 msgstr ""
 
-#: templates/subscriptions.html:303
+#: templates/subscriptions.html:400
 msgid "API Access"
 msgstr ""
 
-#: templates/subscriptions.html:310
+#: templates/subscriptions.html:408
 msgid "Community"
 msgstr ""
 
-#: templates/subscriptions.html:311 templates/subscriptions.html:312
+#: templates/subscriptions.html:409
+msgid "Technical"
+msgstr ""
+
+#: templates/subscriptions.html:410 templates/subscriptions.html:411
 msgid "Priority"
 msgstr ""
 
-#: templates/subscriptions.html:323
+#: templates/subscriptions.html:422
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: templates/subscriptions.html:329
+#: templates/subscriptions.html:428
 msgid "Can I upgrade or downgrade my plan anytime?"
 msgstr ""
 
-#: templates/subscriptions.html:334
+#: templates/subscriptions.html:433
 msgid ""
 "Yes, you can upgrade or downgrade your subscription plan at any time. "
 "Changes take effect immediately, and billing is prorated accordingly."
 msgstr ""
 
-#: templates/subscriptions.html:342
+#: templates/subscriptions.html:441
 msgid "What happens if I exceed my message limit?"
 msgstr ""
 
-#: templates/subscriptions.html:347
+#: templates/subscriptions.html:446
 msgid ""
 "When you reach your monthly message limit, your bots will temporarily "
 "stop responding until the next billing cycle or you upgrade your plan. "
 "We'll notify you before you reach the limit."
 msgstr ""
 
-#: templates/subscriptions.html:355
+#: templates/subscriptions.html:454
 msgid "Is there a free trial for paid plans?"
 msgstr ""
 
-#: templates/subscriptions.html:360
+#: templates/subscriptions.html:459
 msgid ""
 "Yes! All paid plans come with a 14-day free trial. You can cancel anytime"
 " during the trial period without being charged."
 msgstr ""
 
-#: templates/subscriptions.html:368
+#: templates/subscriptions.html:467
 msgid "What payment methods do you accept?"
 msgstr ""
 
-#: templates/subscriptions.html:373
+#: templates/subscriptions.html:472
 msgid ""
 "We accept all major credit cards (Visa, Mastercard, American Express) and"
 " PayPal. All payments are processed securely through Stripe."
 msgstr ""
 
-#: templates/subscriptions.html:381
+#: templates/subscriptions.html:480
 #, fuzzy
 msgid "Can I cancel my subscription?"
 msgstr "Описание"
 
-#: templates/subscriptions.html:386
+#: templates/subscriptions.html:485
 msgid ""
 "Yes, you can cancel your subscription at any time. Your bots will "
 "continue to work until the end of your current billing period, after "
 "which they'll be downgraded to the free plan limits."
 msgstr ""
 
-#: templates/subscriptions.html:396
+#: templates/subscriptions.html:495
 msgid "Ready to get started?"
 msgstr ""
 
-#: templates/subscriptions.html:397
+#: templates/subscriptions.html:496
 msgid ""
 "Choose a plan that fits your needs and start building powerful AI "
 "chatbots today."
 msgstr ""
 
 # Navigation
-#: templates/subscriptions.html:403
+#: templates/subscriptions.html:502
 #, fuzzy
 msgid "Go to Dashboard"
 msgstr "Панель управления"
 
-#: templates/subscriptions.html:441
+#: templates/subscriptions.html:540
 msgid "Compare All Features"
 msgstr "Сравнить все функции"
 
-# Новые добавленные переводы
-msgid "Welcome Back"
-msgstr "Добро пожаловать"
+#: templates/admin/broadcast_detail.html:3
+#: templates/admin/broadcast_detail.html:12
+#: templates/admin/create_broadcast.html:22
+msgid "Broadcast Details"
+msgstr ""
 
-msgid "Sign in to your BotFactory account"
-msgstr "Войдите в свой аккаунт BotFactory"
-
-msgid "Enter your username"
-msgstr "Введите ваше имя пользователя"
-
-msgid "Enter your password"
-msgstr "Введите ваш пароль"
-
-msgid "Remember me"
-msgstr "Запомнить меня"
-
-msgid "Sign In"
-msgstr "Войти"
-
-msgid "Forgot your password?"
-msgstr "Забыли пароль?"
-
-msgid "Don't have an account?"
-msgstr "Нет аккаунта?"
-
-msgid "AI-Powered"
-msgstr "На основе ИИ"
-
-msgid "Telegram Ready"
-msgstr "Готов для Telegram"
-
-msgid "AI Chatbot Platform"
-msgstr "Платформа ИИ-чатботов"
-
-msgid "Set up your intelligent chatbot with custom personality and purpose"
-msgstr "Настройте своего умного чатбота с индивидуальной личностью и целью"
-
-msgid "Describe what your bot does and how it helps users..."
-msgstr "Опишите, что делает ваш бот и как он помогает пользователям..."
-
-msgid "Optional: Describe your bot's purpose and capabilities"
-msgstr "Необязательно: Опишите назначение и возможности вашего бота"
-
-msgid "You are a helpful AI assistant..."
-msgstr "Вы полезный ИИ-помощник..."
-
-msgid "You are a helpful AI assistant. You provide accurate, friendly, and professional responses to user questions. Always be polite and try to be as helpful as possible."
-msgstr "Вы полезный ИИ-помощник. Вы предоставляете точные, дружелюбные и профессиональные ответы на вопросы пользователей. Всегда будьте вежливы и старайтесь быть максимально полезными."
-
-msgid "Define how your bot should behave and respond. This is like giving your bot a personality and role."
-msgstr "Определите, как ваш бот должен вести себя и отвечать. Это как давать вашему боту личность и роль."
-
-msgid "Choose Platform"
-msgstr "Выберите платформу"
-
-msgid "Available on all plans"
-msgstr "Доступно во всех планах"
-
-msgid "Available with your plan"
-msgstr "Доступно в вашем плане"
-
-msgid "Requires Basic+ plan"
-msgstr "Требуется план Basic+"
-
-msgid "Requires Premium plan"
-msgstr "Требуется план Premium"
-
-msgid "Need more platforms?"
-msgstr "Нужно больше платформ?"
-
-msgid "Upgrade your plan"
-msgstr "Обновите ваш план"
-
-msgid "Bot Personality Examples"
-msgstr "Примеры личности бота"
-
-msgid "Customer Support Bot:"
-msgstr "Бот поддержки клиентов:"
-
-msgid "You are a friendly customer support representative. Help users with their questions, provide product information, and escalate complex issues when needed."
-msgstr "Вы дружелюбный представитель службы поддержки клиентов. Помогайте пользователям с их вопросами, предоставляйте информацию о продукте и передавайте сложные вопросы при необходимости."
-
-msgid "Educational Tutor:"
-msgstr "Образовательный наставник:"
-
-msgid "You are an encouraging tutor. Explain concepts clearly, ask questions to check understanding, and provide examples to help students learn."
-msgstr "Вы ободряющий наставник. Объясняйте концепции четко, задавайте вопросы для проверки понимания и приводите примеры, чтобы помочь студентам учиться."
-
-msgid "Cancel"
-msgstr "Отмена"
-
-msgid "Create Bot"
-msgstr "Создать бота"
-
-msgid "Next Steps After Creation"
-msgstr "Следующие шаги после создания"
-
-msgid "Connect Platform"
-msgstr "Подключить платформу"
-
-msgid "Link your bot to chosen platform (Telegram, Instagram, WhatsApp)"
-msgstr "Свяжите вашего бота с выбранной платформой (Telegram, Instagram, WhatsApp)"
-
-msgid "Add documents and information for your bot"
-msgstr "Добавьте документы и информацию для вашего бота"
-
-msgid "Test your bot responses before going live"
-msgstr "Протестируйте ответы вашего бота перед запуском"
-
-msgid "Make your bot available to users"
-msgstr "Сделайте вашего бота доступным для пользователей"
-
-# Dashboard новые переводы
-msgid "Last activity:"
-msgstr "Последняя активность:"
-
-msgid "No description"
-msgstr "Описание отсутствует"
-
-msgid "Need help?"
-msgstr "Нужна помощь?"
-
-msgid "Contact Support"
-msgstr "Связаться с поддержкой"
-
-# Knowledge Base новые переводы
-msgid "Knowledge Base"
-msgstr "База знаний"
-
-msgid "Train %(bot_name)s with your content and documents"
-msgstr "Обучите %(bot_name)s с помощью вашего контента и документов"
-
-msgid "Add Entry"
-msgstr "Добавить запись"
-
-msgid "Has Image"
-msgstr "Есть изображение"
-
-msgid "Added"
-msgstr "Добавлено"
-
-msgid "View Full Content"
-msgstr "Посмотреть полный контент"
-
-msgid "Edit"
-msgstr "Редактировать"
-
-msgid "Delete"
-msgstr "Удалить"
-
-msgid "Are you sure you want to delete this entry?"
+#: templates/admin/broadcast_detail.html:17
+#, fuzzy
+msgid "Are you sure you want to send this broadcast?"
 msgstr "Вы уверены, что хотите удалить эту запись?"
 
-msgid "Close"
-msgstr "Закрыть"
+#: templates/admin/broadcast_detail.html:19
+msgid "Send Now"
+msgstr ""
 
-msgid "Edit Knowledge Entry"
-msgstr "Редактировать запись знаний"
-
-msgid "Title"
-msgstr "Заголовок"
-
-msgid "Content"
-msgstr "Контент"
-
-msgid "No Knowledge Base Entries"
-msgstr "Нет записей в базе знаний"
-
-msgid "Add documents, FAQs, and information to help your bot provide better answers."
-msgstr "Добавьте документы, FAQ и информацию, чтобы помочь вашему боту давать лучшие ответы."
-
-msgid "Add Your First Entry"
-msgstr "Добавьте первую запись"
-
-msgid "Knowledge Base Stats"
-msgstr "Статистика базы знаний"
-
-msgid "Total Entries"
-msgstr "Всего записей"
-
-msgid "Uploaded Files"
-msgstr "Загруженные файлы"
-
-msgid "Knowledge Base Tips"
-msgstr "Советы по базе знаний"
-
-msgid "FAQs Work Best:"
-msgstr "FAQ работают лучше всего:"
-
-msgid "Add frequently asked questions and their answers for immediate bot responses."
-msgstr "Добавьте часто задаваемые вопросы и ответы на них для немедленных ответов бота."
-
-msgid "Clear Titles:"
-msgstr "Четкие заголовки:"
-
-msgid "Use descriptive titles that match what users might ask about."
-msgstr "Используйте описательные заголовки, которые соответствуют тому, о чем могут спросить пользователи."
-
-msgid "Context Matters:"
-msgstr "Контекст важен:"
-
-msgid "Include background information to help the AI understand your content better."
-msgstr "Включите справочную информацию, чтобы помочь ИИ лучше понимать ваш контент."
-
-msgid "Keep Updated:"
-msgstr "Поддерживайте актуальность:"
-
-msgid "Regularly update your knowledge base with new information."
-msgstr "Регулярно обновляйте базу знаний новой информацией."
-
-msgid "Quick Actions"
-msgstr "Быстрые действия"
-
-msgid "Add Text Entry"
-msgstr "Добавить текстовую запись"
-
-msgid "Upload File"
-msgstr "Загрузить файл"
-
-msgid "Back to Bot"
+#: templates/admin/broadcast_detail.html:24
+#, fuzzy
+msgid "Back to Broadcasts"
 msgstr "Вернуться к боту"
 
-msgid "Add Knowledge Base Entry"
-msgstr "Добавить запись в базу знаний"
+#: templates/admin/broadcast_detail.html:45
+#: templates/admin/broadcast_detail.html:103 templates/admin/broadcasts.html:44
+#: templates/admin/broadcasts.html:61 templates/admin/dashboard.html:139
+#: templates/admin/dashboard.html:149
+msgid "Sent"
+msgstr ""
 
-msgid "Enter a descriptive title..."
+#: templates/admin/broadcast_detail.html:49 templates/admin/broadcasts.html:65
+#: templates/admin/dashboard.html:151
+msgid "Draft"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:56
+#: templates/admin/broadcast_preview.html:54
+#: templates/admin/create_broadcast.html:55
+msgid "Target Audience"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:59
+#: templates/admin/broadcast_preview.html:57
+#: templates/admin/create_broadcast.html:60 templates/admin/dashboard.html:70
+#, fuzzy
+msgid "Free Users"
+msgstr "Пользователи"
+
+#: templates/admin/broadcast_detail.html:63
+#: templates/admin/broadcast_preview.html:61
+#, fuzzy
+msgid "Basic Users"
+msgstr "Основные настройки"
+
+#: templates/admin/broadcast_detail.html:68
+#: templates/admin/broadcast_preview.html:66
+msgid "Premium Users"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:76
+#, fuzzy
+msgid "Text Message"
+msgstr "Всего сообщений"
+
+#: templates/admin/broadcast_detail.html:84
+#: templates/admin/create_broadcast.html:45
+#, fuzzy
+msgid "HTML Message"
+msgstr "Всего сообщений"
+
+#: templates/admin/broadcast_detail.html:89
+msgid "View HTML Source"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:98 templates/admin/broadcasts.html:43
+#: templates/admin/dashboard.html:138
+#, fuzzy
+msgid "Created"
+msgstr "Создать бота"
+
+#: templates/admin/broadcast_detail.html:117
+msgid "Statistics"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:124
+#, fuzzy
+msgid "Total Sent"
+msgstr "Всего записей"
+
+#: templates/admin/broadcast_detail.html:130
+#, fuzzy
+msgid "Delivered"
+msgstr "Удалить"
+
+#: templates/admin/broadcast_detail.html:136
+#, fuzzy
+msgid "Failed"
+msgstr "Профиль"
+
+#: templates/admin/broadcast_detail.html:144
+msgid "Success Rate"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:159
+msgid "Statistics will be available after sending"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:170 templates/admin/broadcasts.html:96
+#: templates/admin/create_broadcast.html:80
+msgid "Preview"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:176
+msgid "Preview Targets"
+msgstr ""
+
+#: templates/admin/broadcast_detail.html:178
+msgid "See which bots will receive this broadcast"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:3
+#: templates/admin/broadcast_preview.html:12
+msgid "Preview Broadcast"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:15
+#: templates/admin/broadcast_preview.html:145
+#, fuzzy
+msgid "Back to Details"
+msgstr "Вернуться к боту"
+
+#: templates/admin/broadcast_preview.html:27
+#, fuzzy
+msgid "Message Preview"
+msgstr "Сообщения"
+
+#: templates/admin/broadcast_preview.html:37
+msgid "Text Version"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:45
+msgid "HTML Version"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:80
+#, fuzzy
+msgid "Target Bots"
+msgstr "Тестировать бота"
+
+#: templates/admin/broadcast_preview.html:80
+#, fuzzy
+msgid "First 10"
+msgstr "Имя"
+
+#: templates/admin/broadcast_preview.html:105
+#, fuzzy
+msgid "Active"
+msgstr "Активировать"
+
+#: templates/admin/broadcast_preview.html:119
+msgid "Showing first 10 bots. More bots will be included when broadcast is sent."
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:127
+msgid "No target bots found"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:128
+msgid "There are no active bots for the selected audience"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:141
+msgid "Ready to send?"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:149
+#, fuzzy
+msgid "Are you sure you want to send this broadcast to all target bots?"
+msgstr "Вы уверены, что хотите удалить эту запись?"
+
+#: templates/admin/broadcast_preview.html:151
+msgid "Send Broadcast Now"
+msgstr ""
+
+#: templates/admin/broadcast_preview.html:156
+#, fuzzy
+msgid "No Target Bots"
+msgstr "Всего ботов"
+
+#: templates/admin/broadcasts.html:3 templates/admin/broadcasts.html:12
+msgid "Broadcasts"
+msgstr ""
+
+#: templates/admin/broadcasts.html:16
+msgid "New Broadcast"
+msgstr ""
+
+#: templates/admin/broadcasts.html:19 templates/admin/create_broadcast.html:15
+#: templates/admin/users.html:15
+#, fuzzy
+msgid "Back to Admin"
+msgstr "Вернуться к боту"
+
+#: templates/admin/broadcasts.html:31
+msgid "All Broadcasts"
+msgstr ""
+
+#: templates/admin/broadcasts.html:41 templates/admin/dashboard.html:137
+#, fuzzy
+msgid "Status"
+msgstr "Связаться с нами"
+
+#: templates/admin/broadcasts.html:42
+msgid "Target"
+msgstr ""
+
+#: templates/admin/broadcasts.html:45 templates/admin/dashboard.html:140
+#, fuzzy
+msgid "Actions"
+msgstr "Быстрые действия"
+
+#: templates/admin/broadcasts.html:91
+#, fuzzy
+msgid "View Details"
+msgstr "Посмотреть всех ботов"
+
+#: templates/admin/broadcasts.html:152
+#, fuzzy
+msgid "No broadcasts yet"
+msgstr "Пока нет ботов"
+
+#: templates/admin/broadcasts.html:153
+#, fuzzy
+msgid "Create your first broadcast to send messages to users"
+msgstr "Создайте своего первого AI-чатбота, чтобы начать"
+
+#: templates/admin/broadcasts.html:155
+#, fuzzy
+msgid "Create First Broadcast"
+msgstr "Создайте свою учетную запись"
+
+#: templates/admin/create_broadcast.html:3
+#: templates/admin/create_broadcast.html:12
+#: templates/admin/create_broadcast.html:99 templates/admin/dashboard.html:94
+#, fuzzy
+msgid "Create Broadcast"
+msgstr "Создать бота"
+
+#: templates/admin/create_broadcast.html:31
+#, fuzzy
+msgid "Enter broadcast title"
 msgstr "Введите описательный заголовок..."
 
-msgid "This helps organize your knowledge and makes it easier to find."
-msgstr "Это помогает организовать ваши знания и облегчает поиск."
+#: templates/admin/create_broadcast.html:32
+msgid "Internal title for tracking purposes"
+msgstr ""
 
-msgid "Enter the content that your bot should know about..."
-msgstr "Введите контент, о котором должен знать ваш бот..."
+#: templates/admin/create_broadcast.html:37
+#, fuzzy
+msgid "Message Text"
+msgstr "Сообщения"
 
-msgid "Include as much detail as possible for better AI responses."
-msgstr "Включите как можно больше деталей для лучших ответов ИИ."
+#: templates/admin/create_broadcast.html:39
+#, fuzzy
+msgid "Enter your message text here..."
+msgstr "Введите ваше имя пользователя"
 
-msgid "Product Image (optional)"
-msgstr "Изображение продукта (необязательно)"
+#: templates/admin/create_broadcast.html:40
+msgid "Plain text version of your message"
+msgstr ""
 
-msgid "Image URL"
-msgstr "URL изображения"
+#: templates/admin/create_broadcast.html:45
+msgid "Optional"
+msgstr ""
 
-msgid "Enter the direct URL to your product image. Bot will send this image when relevant."
-msgstr "Введите прямой URL к изображению вашего продукта. Бот будет отправлять это изображение при необходимости."
+#: templates/admin/create_broadcast.html:47
+msgid "Enter HTML formatted message (optional)..."
+msgstr ""
 
-msgid "Image Caption"
-msgstr "Подпись к изображению"
+#: templates/admin/create_broadcast.html:49
+msgid "HTML version with formatting. Allowed tags: b, i, u, s, code, pre, a"
+msgstr ""
 
-msgid "Product name or short description"
-msgstr "Название продукта или краткое описание"
+#: templates/admin/create_broadcast.html:60
+msgid "Always included"
+msgstr ""
 
-msgid "Brief description that will be sent with the image."
-msgstr "Краткое описание, которое будет отправлено с изображением."
+#: templates/admin/create_broadcast.html:66
+#, fuzzy
+msgid "Basic Plan Users"
+msgstr "Основные настройки"
 
-msgid "Cancel"
-msgstr "Отмена"
+#: templates/admin/create_broadcast.html:72
+#, fuzzy
+msgid "Premium Plan Users"
+msgstr "Требуется план Premium"
 
-msgid "Bots"
+#: templates/admin/create_broadcast.html:83
+#: templates/admin/create_broadcast.html:124
+#: templates/admin/create_broadcast.html:127
+msgid "Text:"
+msgstr ""
+
+#: templates/admin/create_broadcast.html:84
+#: templates/admin/create_broadcast.html:127
+msgid "Type your message above to see preview"
+msgstr ""
+
+#: templates/admin/create_broadcast.html:87
+msgid "HTML:"
+msgstr ""
+
+# Navigation
+#: templates/admin/dashboard.html:15
+#, fuzzy
+msgid "Back to Dashboard"
+msgstr "Панель управления"
+
+#: templates/admin/dashboard.html:28
+#, fuzzy
+msgid "Total Users"
+msgstr "Всего записей"
+
+#: templates/admin/dashboard.html:100
+msgid "View Broadcasts"
+msgstr ""
+
+#: templates/admin/dashboard.html:106 templates/admin/users.html:3
+#: templates/admin/users.html:12
+#, fuzzy
+msgid "Manage Users"
+msgstr "Мои боты"
+
+#: templates/admin/dashboard.html:128
+msgid "Recent Broadcasts"
+msgstr ""
+
+#: templates/admin/dashboard.html:169
+msgid "View All Broadcasts"
+msgstr ""
+
+#: templates/admin/users.html:28
+#, fuzzy
+msgid "Filter by Subscription"
+msgstr "Описание"
+
+#: templates/admin/users.html:30
+#, fuzzy
+msgid "All Subscriptions"
+msgstr "Описание"
+
+#: templates/admin/users.html:44
+#, fuzzy
+msgid "Filter"
+msgstr "Профиль"
+
+#: templates/admin/users.html:68 templates/admin/users.html:152
+#, fuzzy
+msgid "User"
+msgstr "Пользователи"
+
+#: templates/admin/users.html:69
+#, fuzzy
+msgid "Subscription"
+msgstr "Описание"
+
+#: templates/admin/users.html:72
+msgid "Joined"
+msgstr ""
+
+#: templates/admin/users.html:73 templates/admin/users.html:149
+#, fuzzy
+msgid "Admin"
+msgstr "Панель администратора"
+
+#: templates/admin/users.html:103
+#, fuzzy
+msgid "Max Bots"
+msgstr "Мои боты"
+
+#: templates/admin/users.html:104
+#, fuzzy
+msgid "Max Messages"
+msgstr "Сообщения"
+
+#: templates/admin/users.html:107
+#, fuzzy
+msgid "No Subscription"
+msgstr "Описание"
+
+#: templates/admin/users.html:113
+#, fuzzy
+msgid "bots"
 msgstr "Боты"
 
-# Index.html новые переводы
-msgid "1 AI chatbot"
-msgstr "1 AI чатбот"
+#: templates/admin/users.html:121
+#, fuzzy
+msgid "active"
+msgstr "Активировать"
 
-msgid "100 messages/month"
-msgstr "100 сообщений/месяц"
+#: templates/admin/users.html:125
+#, fuzzy
+msgid "No bots"
+msgstr "Пока нет ботов"
 
-msgid "Telegram integration"
-msgstr "Интеграция с Telegram"
+#: templates/admin/users.html:140
+#, fuzzy
+msgid "Not set"
+msgstr "Пока нет ботов"
 
-msgid "Get Started"
-msgstr "Начать"
+#: templates/admin/users.html:205
+msgid "No users found"
+msgstr ""
 
-msgid "Most Popular"
-msgstr "Самый популярный"
-
-msgid "Basic"
-msgstr "Basic"
-
-msgid "5 AI chatbots"
-msgstr "5 AI чатботов"
-
-msgid "1,000 messages/month"
-msgstr "1,000 сообщений/месяц"
-
-msgid "Advanced knowledge base"
-msgstr "Продвинутая база знаний"
-
-msgid "Priority support"
-msgstr "Приоритетная поддержка"
-
-msgid "Start Free Trial"
-msgstr "Начать бесплатную пробную версию"
-
-msgid "Premium"
-msgstr "Premium"
-
-msgid "25 AI chatbots"
-msgstr "25 AI чатботов"
-
-msgid "10,000 messages/month"
-msgstr "10,000 сообщений/месяц"
-
-msgid "Unlimited knowledge base"
-msgstr "Неограниченная база знаний"
-
-msgid "Analytics & API access"
-msgstr "Аналитика и доступ к API"
-
-msgid "Ready to Create Your AI Chatbot?"
-msgstr "Готовы создать своего AI-чатбота?"
-
-msgid "Join thousands of businesses using BotFactory to provide better customer support and engagement through AI-powered chatbots."
-msgstr "Присоединяйтесь к тысячам компаний, которые используют BotFactory для лучшей поддержки клиентов и взаимодействия с помощью AI-чатботов."
-
-msgid "Start Building for Free"
-msgstr "Начать создавать бесплатно"
-
-msgid "No credit card required • 14-day free trial on paid plans"
-msgstr "Кредитная карта не требуется • 14-дневная бесплатная пробная версия платных планов"
+#: templates/admin/users.html:206
+msgid "No users match the current filter criteria"
+msgstr ""
 
 #~ msgid ""
 #~ "Enterprise-grade security and 99.9% "
@@ -1294,4 +2294,25 @@ msgstr "Кредитная карта не требуется • 14-дневн�
 #~ "время безотказной работы гарантируют, что "
 #~ "ваши боты всегда доступны, когда они "
 #~ "нужны вашим клиентам."
+
+#~ msgid "Image URL"
+#~ msgstr "URL изображения"
+
+#~ msgid ""
+#~ "Enter the direct URL to your "
+#~ "product image. Bot will send this "
+#~ "image when relevant."
+#~ msgstr ""
+#~ "Введите прямой URL к изображению вашего"
+#~ " продукта. Бот будет отправлять это "
+#~ "изображение при необходимости."
+
+#~ msgid "Image Caption"
+#~ msgstr "Подпись к изображению"
+
+#~ msgid "Product name or short description"
+#~ msgstr "Название продукта или краткое описание"
+
+#~ msgid "Brief description that will be sent with the image."
+#~ msgstr "Краткое описание, которое будет отправлено с изображением."
 

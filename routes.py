@@ -36,7 +36,7 @@ def admin_required(f):
     @login_required
     def decorated_function(*args, **kwargs):
         if not current_user.is_admin:
-            flash('Admin access required.', 'error')
+            flash(_('Admin access required.'), 'error')
             return redirect(url_for('main.dashboard'))
         return f(*args, **kwargs)
     return decorated_function
@@ -105,17 +105,17 @@ def login():
         password = request.form.get('password')
         
         if not username or not password:
-            flash('Please fill in all fields.', 'error')
+            flash(_('Please fill in all fields.'), 'error')
             return render_template('login.html')
         
         user = auth_service.authenticate_user(username, password)
         if user:
             login_user(user, remember=bool(request.form.get('remember')))
             next_page = request.args.get('next')
-            flash(f'Welcome back, {user.get_full_name()}!', 'success')
+            flash(_('Welcome back, {}!').format(user.get_full_name()), 'success')
             return redirect(next_page if next_page else url_for('main.dashboard'))
         else:
-            flash('Invalid username or password.', 'error')
+            flash(_('Invalid username or password.'), 'error')
     
     return render_template('login.html')
 
@@ -135,24 +135,24 @@ def register():
         
         # Validation
         if not all([username, email, password, confirm_password]):
-            flash('Please fill in all required fields.', 'error')
+            flash(_('Please fill in all required fields.'), 'error')
             return render_template('register.html')
         
         if password != confirm_password:
-            flash('Passwords do not match.', 'error')
+            flash(_('Passwords do not match.'), 'error')
             return render_template('register.html')
         
         if password and len(password) < 6:
-            flash('Password must be at least 6 characters long.', 'error')
+            flash(_('Password must be at least 6 characters long.'), 'error')
             return render_template('register.html')
         
         # Check if user exists
         if User.query.filter_by(username=username).first():
-            flash('Username already exists.', 'error')
+            flash(_('Username already exists.'), 'error')
             return render_template('register.html')
         
         if User.query.filter_by(email=email).first():
-            flash('Email already registered.', 'error')
+            flash(_('Email already registered.'), 'error')
             return render_template('register.html')
         
         # Create user
@@ -162,7 +162,7 @@ def register():
             flash(f'Welcome to BotFactory, {user.get_full_name()}!', 'success')
             return redirect(url_for('main.dashboard'))
         except Exception as e:
-            flash('Registration failed. Please try again.', 'error')
+            flash(_('Registration failed. Please try again.'), 'error')
             logging.error(f"Registration error: {e}")
     
     return render_template('register.html')
@@ -172,7 +172,7 @@ def register():
 def logout():
     """User logout"""
     logout_user()
-    flash('You have been logged out successfully.', 'info')
+    flash(_('You have been logged out successfully.'), 'info')
     return redirect(url_for('main.index'))
 
 # Bot management routes
@@ -191,7 +191,7 @@ def create_bot():
     subscription = Subscription.query.filter_by(user_id=current_user.id).first()
     
     if not subscription or not subscription.can_create_bot():
-        flash('You have reached your bot limit. Please upgrade your subscription.', 'error')
+        flash(_('You have reached your bot limit. Please upgrade your subscription.'), 'error')
         return redirect(url_for('subscriptions.plans'))
     
     if request.method == 'POST':
@@ -201,16 +201,16 @@ def create_bot():
         platform_type = request.form.get('platform_type', 'telegram')
         
         if not name:
-            flash('Bot name is required.', 'error')
+            flash(_('Bot name is required.'), 'error')
             return render_template('bot_create.html')
         
         # Validate platform access based on subscription
         if platform_type == 'instagram' and not subscription.instagram_enabled:
-            flash('Instagram integration requires Basic or higher subscription.', 'error')
+            flash(_('Instagram integration requires Basic or higher subscription.'), 'error')
             return render_template('bot_create.html')
         
         if platform_type == 'whatsapp' and not subscription.whatsapp_enabled:
-            flash('WhatsApp integration requires Premium subscription.', 'error')
+            flash(_('WhatsApp integration requires Premium subscription.'), 'error')
             return render_template('bot_create.html')
         
         try:
@@ -242,7 +242,7 @@ def create_bot():
                             flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
                         return redirect(url_for('bots.list_bots'))
                     else:
-                        flash('Invalid Telegram bot token. Please check and try again.', 'error')
+                        flash(_('Invalid Telegram bot token. Please check and try again.'), 'error')
                         return render_template('bot_create.html')
                         
             elif platform_type == 'instagram':
@@ -266,7 +266,7 @@ def create_bot():
                             flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
                         return redirect(url_for('bots.list_bots'))
                     else:
-                        flash('Invalid Instagram access token. Please check and try again.', 'error')
+                        flash(_('Invalid Instagram access token. Please check and try again.'), 'error')
                         return render_template('bot_create.html')
                         
             elif platform_type == 'whatsapp':
@@ -292,7 +292,7 @@ def create_bot():
                             flash(f'Bot "{name}" created but failed to start. Check your credentials.', 'warning')
                         return redirect(url_for('bots.list_bots'))
                     else:
-                        flash('Invalid WhatsApp credentials. Please check and try again.', 'error')
+                        flash(_('Invalid WhatsApp credentials. Please check and try again.'), 'error')
                         return render_template('bot_create.html')
             
             # If no token provided or platform not supported, create as inactive
@@ -305,7 +305,7 @@ def create_bot():
             
         except Exception as e:
             db.session.rollback()
-            flash('Failed to create bot. Please try again.', 'error')
+            flash(_('Failed to create bot. Please try again.'), 'error')
             logging.error(f"Bot creation error: {e}")
     
     return render_template('bot_create.html')
@@ -326,9 +326,9 @@ def edit_bot(bot_id):
             
             try:
                 db.session.commit()
-                flash('Bot updated successfully!', 'success')
+                flash(_('Bot updated successfully!'), 'success')
             except Exception as e:
-                flash('Failed to update bot.', 'error')
+                flash(_('Failed to update bot.'), 'error')
                 logging.error(f"Bot update error: {e}")
         
         elif action == 'setup_telegram':
@@ -352,18 +352,18 @@ def edit_bot(bot_id):
                         
                         # Start the telegram bot
                         telegram_service.start_bot(bot)
-                        flash('Telegram bot and notification settings configured successfully!', 'success')
+                        flash(_('Telegram bot and notification settings configured successfully!'), 'success')
                     else:
-                        flash('Invalid Telegram bot token.', 'error')
+                        flash(_('Invalid Telegram bot token.'), 'error')
                         return redirect(url_for('bots.edit_bot', bot_id=bot.id))
                 else:
                     # Just update notification settings
                     db.session.commit()
-                    flash('Notification settings updated successfully!', 'success')
+                    flash(_('Notification settings updated successfully!'), 'success')
                     
             except Exception as e:
                 db.session.rollback()
-                flash('Failed to update configuration.', 'error')
+                flash(_('Failed to update configuration.'), 'error')
                 logging.error(f"Telegram/notification setup error: {e}")
         
         elif action == 'setup_instagram':
@@ -380,11 +380,11 @@ def edit_bot(bot_id):
                         db.session.commit()
                         
                         instagram_service.start_bot(bot)
-                        flash('Instagram bot configured successfully!', 'success')
+                        flash(_('Instagram bot configured successfully!'), 'success')
                     else:
-                        flash('Invalid Instagram access token.', 'error')
+                        flash(_('Invalid Instagram access token.'), 'error')
                 except Exception as e:
-                    flash('Failed to configure Instagram bot.', 'error')
+                    flash(_('Failed to configure Instagram bot.'), 'error')
                     logging.error(f"Instagram setup error: {e}")
                     
         elif action == 'setup_whatsapp':
@@ -403,11 +403,11 @@ def edit_bot(bot_id):
                         db.session.commit()
                         
                         whatsapp_service.start_bot(bot)
-                        flash('WhatsApp bot configured successfully!', 'success')
+                        flash(_('WhatsApp bot configured successfully!'), 'success')
                     else:
-                        flash('Invalid WhatsApp credentials.', 'error')
+                        flash(_('Invalid WhatsApp credentials.'), 'error')
                 except Exception as e:
-                    flash('Failed to configure WhatsApp bot.', 'error')
+                    flash(_('Failed to configure WhatsApp bot.'), 'error')
                     logging.error(f"WhatsApp setup error: {e}")
                     
         elif action == 'toggle_status':
@@ -420,7 +420,7 @@ def edit_bot(bot_id):
                     instagram_service.stop_bot(bot)
                 elif bot.platform_type == PlatformType.WHATSAPP:
                     whatsapp_service.stop_bot(bot)
-                flash('Bot deactivated.', 'info')
+                flash(_('Bot deactivated.'), 'info')
             else:
                 # Check platform credentials and start bot
                 platform_configured = False
@@ -436,14 +436,14 @@ def edit_bot(bot_id):
                     
                 if platform_configured:
                     bot.status = BotStatus.ACTIVE
-                    flash('Bot activated.', 'success')
+                    flash(_('Bot activated.'), 'success')
                 else:
-                    flash('Please configure platform credentials first.', 'error')
+                    flash(_('Please configure platform credentials first.'), 'error')
             
             try:
                 db.session.commit()
             except Exception as e:
-                flash('Failed to update bot status.', 'error')
+                flash(_('Failed to update bot status.'), 'error')
                 logging.error(f"Bot status update error: {e}")
     
     return render_template('bot_edit.html', bot=bot)
@@ -573,7 +573,7 @@ def delete_bot(bot_id):
         
         flash(f'Bot "{bot.name}" deleted successfully!', 'success')
     except Exception as e:
-        flash('Failed to delete bot.', 'error')
+        flash(_('Failed to delete bot.'), 'error')
         logging.error(f"Bot deletion error: {e}")
     
     return redirect(url_for('bots.list_bots'))
@@ -602,30 +602,30 @@ def upgrade_plan(plan):
         subscription.subscription_type = SubscriptionType.STARTER
         subscription.max_bots = 1
         subscription.max_messages_per_month = 500
-        flash('Upgraded to Starter plan!', 'success')
+        flash(_('Upgraded to Starter plan!'), 'success')
     elif plan == 'basic':
         subscription.subscription_type = SubscriptionType.BASIC
         subscription.max_bots = 5
         subscription.max_messages_per_month = 1000
-        flash('Upgraded to Basic plan!', 'success')
+        flash(_('Upgraded to Basic plan!'), 'success')
     elif plan == 'premium':
         subscription.subscription_type = SubscriptionType.PREMIUM
         subscription.max_bots = 25
         subscription.max_messages_per_month = 10000
-        flash('Upgraded to Premium plan!', 'success')
+        flash(_('Upgraded to Premium plan!'), 'success')
     elif plan == 'free':
         subscription.subscription_type = SubscriptionType.FREE
         subscription.max_bots = 1
         subscription.max_messages_per_month = 100
-        flash('Switched to Free plan!', 'success')
+        flash(_('Switched to Free plan!'), 'success')
     else:
-        flash('Invalid plan selected.', 'error')
+        flash(_('Invalid plan selected.'), 'error')
         return redirect(url_for('subscriptions.plans'))
     
     try:
         db.session.commit()
     except Exception as e:
-        flash('Failed to upgrade subscription.', 'error')
+        flash(_('Failed to upgrade subscription.'), 'error')
         logging.error(f"Subscription upgrade error: {e}")
     
     return redirect(url_for('main.dashboard'))
@@ -713,7 +713,7 @@ def create_broadcast():
         allow_premium = bool(request.form.get('allow_premium'))
         
         if not title or not message_text:
-            flash('Title and message are required.', 'error')
+            flash(_('Title and message are required.'), 'error')
             return render_template('admin/create_broadcast.html')
         
         # Sanitize HTML if provided
@@ -732,10 +732,10 @@ def create_broadcast():
         )
         
         if broadcast:
-            flash('Broadcast created successfully!', 'success')
+            flash(_('Broadcast created successfully!'), 'success')
             return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast.id))
         else:
-            flash('Failed to create broadcast.', 'error')
+            flash(_('Failed to create broadcast.'), 'error')
     
     return render_template('admin/create_broadcast.html')
 
@@ -757,7 +757,7 @@ def send_broadcast(broadcast_id):
     broadcast = AdminBroadcast.query.get_or_404(broadcast_id)
     
     if broadcast.is_sent:
-        flash('Broadcast has already been sent.', 'error')
+        flash(_('Broadcast has already been sent.'), 'error')
         return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast_id))
     
     # Send broadcast in background
