@@ -159,7 +159,7 @@ def register():
         try:
             user = auth_service.create_user(username, email, password, first_name, last_name)
             login_user(user)
-            flash(f'Welcome to BotFactory, {user.get_full_name()}!', 'success')
+            flash(_('Welcome to BotFactory, %(name)s!') % {'name': user.get_full_name()}, 'success')
             return redirect(url_for('main.dashboard'))
         except Exception as e:
             flash(_('Registration failed. Please try again.'), 'error')
@@ -237,9 +237,9 @@ def create_bot():
                         
                         # Start the telegram bot
                         if telegram_service.start_bot(bot):
-                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                            flash(_('Bot "%(name)s" created and activated successfully!') % {'name': name}, 'success')
                         else:
-                            flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
+                            flash(_('Bot "%(name)s" created but failed to start. Check your token.') % {'name': name}, 'warning')
                         return redirect(url_for('bots.list_bots'))
                     else:
                         flash(_('Invalid Telegram bot token. Please check and try again.'), 'error')
@@ -261,9 +261,9 @@ def create_bot():
                         
                         # Start Instagram bot
                         if instagram_service.start_bot(bot):
-                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                            flash(_('Bot "%(name)s" created and activated successfully!') % {'name': name}, 'success')
                         else:
-                            flash(f'Bot "{name}" created but failed to start. Check your token.', 'warning')
+                            flash(_('Bot "%(name)s" created but failed to start. Check your token.') % {'name': name}, 'warning')
                         return redirect(url_for('bots.list_bots'))
                     else:
                         flash(_('Invalid Instagram access token. Please check and try again.'), 'error')
@@ -287,7 +287,7 @@ def create_bot():
                         
                         # Start WhatsApp bot
                         if whatsapp_service.start_bot(bot):
-                            flash(f'Bot "{name}" created and activated successfully!', 'success')
+                            flash(_('Bot "%(name)s" created and activated successfully!') % {'name': name}, 'success')
                         else:
                             flash(f'Bot "{name}" created but failed to start. Check your credentials.', 'warning')
                         return redirect(url_for('bots.list_bots'))
@@ -300,7 +300,7 @@ def create_bot():
             db.session.add(bot)
             db.session.commit()
             
-            flash(f'Bot "{name}" created successfully! You can configure it now.', 'success')
+            flash(_('Bot "%(name)s" created successfully! You can configure it now.') % {'name': name}, 'success')
             return redirect(url_for('bots.edit_bot', bot_id=bot.id))
             
         except Exception as e:
@@ -571,7 +571,7 @@ def delete_bot(bot_id):
         db.session.delete(bot)
         db.session.commit()
         
-        flash(f'Bot "{bot.name}" deleted successfully!', 'success')
+        flash(_('Bot "%(name)s" deleted successfully!') % {'name': bot.name}, 'success')
     except Exception as e:
         flash(_('Failed to delete bot.'), 'error')
         logging.error(f"Bot deletion error: {e}")
@@ -766,7 +766,7 @@ def send_broadcast(broadcast_id):
     if success:
         flash(message, 'success')
     else:
-        flash(f'Failed to send broadcast: {message}', 'error')
+        flash(_('Failed to send broadcast: %(message)s') % {'message': message}, 'error')
     
     return redirect(url_for('admin.broadcast_detail', broadcast_id=broadcast_id))
 
@@ -789,7 +789,7 @@ def preview_broadcast(broadcast_id):
                              target_bots=target_bots[:10])  # Show first 10 for preview
     except Exception as e:
         current_app.logger.error(f"Preview broadcast error: {str(e)}")
-        flash(f'Error loading broadcast preview: {str(e)}', 'error')
+        flash(_('Error loading broadcast preview: %(error)s') % {'error': str(e)}, 'error')
         return redirect(url_for('admin.broadcasts'))
 
 @admin.route('/users')

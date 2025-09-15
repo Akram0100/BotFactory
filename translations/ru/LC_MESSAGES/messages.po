@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-09-15 12:58+0000\n"
+"POT-Creation-Date: 2025-09-15 13:08+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: ru\n"
@@ -57,6 +57,11 @@ msgstr ""
 msgid "Email already registered."
 msgstr ""
 
+#: routes.py:162
+#, fuzzy, python-format
+msgid "Welcome to BotFactory, %(name)s!"
+msgstr "Добро пожаловать!"
+
 #: routes.py:165
 msgid "Registration failed. Please try again."
 msgstr ""
@@ -82,6 +87,16 @@ msgstr ""
 msgid "WhatsApp integration requires Premium subscription."
 msgstr ""
 
+#: routes.py:240 routes.py:264 routes.py:290
+#, fuzzy, python-format
+msgid "Bot \"%(name)s\" created and activated successfully!"
+msgstr "Записи базы знаний"
+
+#: routes.py:242 routes.py:266
+#, python-format
+msgid "Bot \"%(name)s\" created but failed to start. Check your token."
+msgstr ""
+
 #: routes.py:245
 msgid "Invalid Telegram bot token. Please check and try again."
 msgstr ""
@@ -92,6 +107,11 @@ msgstr ""
 
 #: routes.py:295
 msgid "Invalid WhatsApp credentials. Please check and try again."
+msgstr ""
+
+#: routes.py:303
+#, python-format
+msgid "Bot \"%(name)s\" created successfully! You can configure it now."
 msgstr ""
 
 #: routes.py:308
@@ -229,6 +249,11 @@ msgstr "Записи базы знаний"
 #, fuzzy
 msgid "Failed to delete entry."
 msgstr "Добавить текстовую запись"
+
+#: routes.py:574
+#, fuzzy, python-format
+msgid "Bot \"%(name)s\" deleted successfully!"
+msgstr "Записи базы знаний"
 
 #: routes.py:576
 #, fuzzy
@@ -2284,35 +2309,4 @@ msgstr ""
 #: templates/admin/users.html:206
 msgid "No users match the current filter criteria"
 msgstr ""
-
-#~ msgid ""
-#~ "Enterprise-grade security and 99.9% "
-#~ "uptime ensure your bots are always "
-#~ "available when your customers need them."
-#~ msgstr ""
-#~ "Безопасность корпоративного уровня и 99.9% "
-#~ "время безотказной работы гарантируют, что "
-#~ "ваши боты всегда доступны, когда они "
-#~ "нужны вашим клиентам."
-
-#~ msgid "Image URL"
-#~ msgstr "URL изображения"
-
-#~ msgid ""
-#~ "Enter the direct URL to your "
-#~ "product image. Bot will send this "
-#~ "image when relevant."
-#~ msgstr ""
-#~ "Введите прямой URL к изображению вашего"
-#~ " продукта. Бот будет отправлять это "
-#~ "изображение при необходимости."
-
-#~ msgid "Image Caption"
-#~ msgstr "Подпись к изображению"
-
-#~ msgid "Product name or short description"
-#~ msgstr "Название продукта или краткое описание"
-
-#~ msgid "Brief description that will be sent with the image."
-#~ msgstr "Краткое описание, которое будет отправлено с изображением."
 

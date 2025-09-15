@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BotFactory 1.0\n"
 "Report-Msgid-Bugs-To: support@botfactory.com\n"
-"POT-Creation-Date: 2025-09-15 12:58+0000\n"
+"POT-Creation-Date: 2025-09-15 13:08+0000\n"
 "PO-Revision-Date: 2025-08-30 13:58+0000\n"
 "Last-Translator: BotFactory Team\n"
 "Language: uz\n"
@@ -18,116 +18,127 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: routes.py:39
-#, fuzzy
 msgid "Admin access required."
-msgstr "Barcha maydonlar to'ldirilishi kerak."
+msgstr "Administrator ruxsati talab qilinadi."
 
 #: routes.py:108
 msgid "Please fill in all fields."
-msgstr ""
+msgstr "Barcha maydonlarni to'ldiring."
 
 # Yangi qo'shilgan tarjimalar
 #: routes.py:115
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Welcome back, {}!"
-msgstr "Xush kelibsiz"
+msgstr "Qaytganingiz bilan, {}!"
 
 #: routes.py:118
-#, fuzzy
 msgid "Invalid username or password."
-msgstr "Parolingizni kiriting"
+msgstr "Noto'g'ri foydalanuvchi nomi yoki parol."
 
 #: routes.py:138
 msgid "Please fill in all required fields."
-msgstr ""
+msgstr "Barcha talab qilingan maydonlarni to'ldiring."
 
 #: routes.py:142
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Parollar mos kelmaydi."
 
 #: routes.py:146
 msgid "Password must be at least 6 characters long."
-msgstr ""
+msgstr "Parol kamida 6 belgidan iborat bo'lishi kerak."
 
 #: routes.py:151
 msgid "Username already exists."
-msgstr ""
+msgstr "Bu foydalanuvchi nomi allaqachon mavjud."
 
 #: routes.py:155
 msgid "Email already registered."
-msgstr ""
+msgstr "Bu email allaqachon ro'yxatdan o'tgan."
+
+# Dashboard
+#: routes.py:162
+#, fuzzy, python-format
+msgid "Welcome to BotFactory, %(name)s!"
+msgstr "Xush kelibsiz, %(name)s!"
 
 #: routes.py:165
 msgid "Registration failed. Please try again."
-msgstr ""
+msgstr "Ro'yxatdan o'tish muvaffaqiyatsiz. Qaytadan urinib ko'ring."
 
 #: routes.py:175
-#, fuzzy
 msgid "You have been logged out successfully."
-msgstr "Bilim bazasi yozuvi muvaffaqiyatli o'chirildi!"
+msgstr "Muvaffaqiyatli chiqib ketdingiz."
 
 #: routes.py:194
 msgid "You have reached your bot limit. Please upgrade your subscription."
-msgstr ""
+msgstr "Botlar chegarasiga yetdingiz. Obuna rejangizni yangilang."
 
 #: routes.py:204 templates/bot_create.html:391
-#, fuzzy
 msgid "Bot name is required."
-msgstr "Barcha maydonlar to'ldirilishi kerak."
+msgstr "Bot nomi talab qilinadi."
 
 #: routes.py:209
 msgid "Instagram integration requires Basic or higher subscription."
-msgstr ""
+msgstr "Instagram integratsiyasi uchun Basic yoki undan yuqori obuna kerak."
 
 #: routes.py:213
 msgid "WhatsApp integration requires Premium subscription."
+msgstr "WhatsApp integratsiyasi uchun Premium obuna kerak."
+
+#: routes.py:240 routes.py:264 routes.py:290
+#, fuzzy, python-format
+msgid "Bot \"%(name)s\" created and activated successfully!"
+msgstr "\"%(filename)s\" fayli muvaffaqiyatli yuklandi!"
+
+#: routes.py:242 routes.py:266
+#, python-format
+msgid "Bot \"%(name)s\" created but failed to start. Check your token."
 msgstr ""
 
 #: routes.py:245
 msgid "Invalid Telegram bot token. Please check and try again."
-msgstr ""
+msgstr "Noto'g'ri Telegram bot tokeni. Tekshirib qaytadan urinib ko'ring."
 
 #: routes.py:269
 msgid "Invalid Instagram access token. Please check and try again."
-msgstr ""
+msgstr "Noto'g'ri Instagram kirish tokeni. Tekshirib qaytadan urinib ko'ring."
 
 #: routes.py:295
 msgid "Invalid WhatsApp credentials. Please check and try again."
+msgstr "Noto'g'ri WhatsApp ma'lumotlari. Tekshirib qaytadan urinib ko'ring."
+
+#: routes.py:303
+#, python-format
+msgid "Bot \"%(name)s\" created successfully! You can configure it now."
 msgstr ""
 
 #: routes.py:308
-#, fuzzy
 msgid "Failed to create bot. Please try again."
-msgstr "Bilim bazasi yozuvini yangilab bo'lmadi."
+msgstr "Botni yaratib bo'lmadi. Qaytadan urinib ko'ring."
 
 #: routes.py:329
-#, fuzzy
 msgid "Bot updated successfully!"
-msgstr "Bilim bazasi yozuvi muvaffaqiyatli yangilandi!"
+msgstr "Bot muvaffaqiyatli yangilandi!"
 
 #: routes.py:331
-#, fuzzy
 msgid "Failed to update bot."
-msgstr "Yozuvni o'chirib bo'lmadi."
+msgstr "Botni yangilab bo'lmadi."
 
 #: routes.py:355
 msgid "Telegram bot and notification settings configured successfully!"
-msgstr ""
+msgstr "Telegram bot va bildirishnoma sozlamalari muvaffaqiyatli sozlandi!"
 
 #: routes.py:357
-#, fuzzy
 msgid "Invalid Telegram bot token."
-msgstr "Telegram bot tokeni"
+msgstr "Noto'g'ri Telegram bot tokeni."
 
 #: routes.py:362
-#, fuzzy
 msgid "Notification settings updated successfully!"
-msgstr "Bilim bazasi yozuvi muvaffaqiyatli yangilandi!"
+msgstr "Bildirishnoma sozlamalari muvaffaqiyatli yangilandi!"
 
 #: routes.py:366
-#, fuzzy
 msgid "Failed to update configuration."
-msgstr "Bot konfiguratsiyasi"
+msgstr "Konfiguratsiyani yangilab bo'lmadi."
 
 #: routes.py:383
 #, fuzzy
@@ -141,7 +152,7 @@ msgstr "Telegram bot tokeni"
 
 #: routes.py:387
 msgid "Failed to configure Instagram bot."
-msgstr ""
+msgstr "Instagram botni sozlab bo'lmadi."
 
 #: routes.py:406
 #, fuzzy
@@ -150,11 +161,11 @@ msgstr "Bot konfiguratsiyasi"
 
 #: routes.py:408
 msgid "Invalid WhatsApp credentials."
-msgstr ""
+msgstr "Noto'g'ri WhatsApp ma'lumotlari."
 
 #: routes.py:410
 msgid "Failed to configure WhatsApp bot."
-msgstr ""
+msgstr "WhatsApp botni sozlab bo'lmadi."
 
 #: routes.py:423
 #, fuzzy
@@ -168,7 +179,7 @@ msgstr "Faollashtirish"
 
 #: routes.py:441
 msgid "Please configure platform credentials first."
-msgstr ""
+msgstr "Avval platforma ma'lumotlarini sozlang."
 
 #: routes.py:446
 #, fuzzy
@@ -224,6 +235,11 @@ msgstr "Bilim bazasi yozuvi muvaffaqiyatli o'chirildi!"
 msgid "Failed to delete entry."
 msgstr "Yozuvni o'chirib bo'lmadi."
 
+#: routes.py:574
+#, fuzzy, python-format
+msgid "Bot \"%(name)s\" deleted successfully!"
+msgstr "\"%(filename)s\" fayli muvaffaqiyatli yuklandi!"
+
 #: routes.py:576
 #, fuzzy
 msgid "Failed to delete bot."
@@ -276,7 +292,7 @@ msgstr "Bot yaratish"
 
 #: routes.py:760
 msgid "Broadcast has already been sent."
-msgstr ""
+msgstr "Ommaviy xabar allaqachon yuborilgan."
 
 #: templates/base.html:6
 msgid "AI Chatbot Platform"
@@ -531,15 +547,15 @@ msgstr "Telegram bot tokeni"
 
 #: templates/bot_create.html:173
 msgid "Enter your Instagram access token..."
-msgstr ""
+msgstr "Instagram kirish tokeningizni kiriting..."
 
 #: templates/bot_create.html:176
 msgid "Get your access token from"
-msgstr ""
+msgstr "Kirish tokenini olish"
 
 #: templates/bot_create.html:182 templates/bot_edit.html:271
 msgid "Instagram integration is available only for Premium subscribers."
-msgstr ""
+msgstr "Instagram integratsiyasi faqat Premium obunachilar uchun mavjud."
 
 #: templates/bot_create.html:183 templates/bot_create.html:223
 #: templates/bot_edit.html:272 templates/bot_edit.html:336
@@ -549,27 +565,27 @@ msgstr "Rejani yangilash"
 
 #: templates/bot_create.html:192
 msgid "WhatsApp Bot Setup"
-msgstr ""
+msgstr "WhatsApp Bot Sozlamalari"
 
 #: templates/bot_create.html:197 templates/bot_edit.html:356
 msgid "WhatsApp Access Token"
-msgstr ""
+msgstr "WhatsApp Kirish Tokeni"
 
 #: templates/bot_create.html:203
 msgid "Enter your WhatsApp access token..."
-msgstr ""
+msgstr "WhatsApp kirish tokeningizni kiriting..."
 
 #: templates/bot_create.html:207 templates/bot_edit.html:368
 msgid "Phone Number ID"
-msgstr ""
+msgstr "Telefon raqami ID"
 
 #: templates/bot_create.html:213
 msgid "Enter your WhatsApp phone number ID..."
-msgstr ""
+msgstr "WhatsApp telefon raqami ID sini kiriting..."
 
 #: templates/bot_create.html:216
 msgid "Get these credentials from"
-msgstr ""
+msgstr "Ushbu ma'lumotlarni olish"
 
 #: templates/bot_create.html:222 templates/bot_edit.html:335
 msgid "WhatsApp integration is available only for Premium subscribers."
@@ -2293,43 +2309,4 @@ msgstr ""
 #: templates/admin/users.html:206
 msgid "No users match the current filter criteria"
 msgstr ""
-
-#~ msgid ""
-#~ "Enterprise-grade security and 99.9% "
-#~ "uptime ensure your bots are always "
-#~ "available when your customers need them."
-#~ msgstr ""
-#~ "Korporativ darajadagi xavfsizlik va 99.9% "
-#~ "ishga tushish vaqti botlaringizning "
-#~ "mijozlaringiz kerak bo'lganda doimo "
-#~ "foydalanish mumkinligini ta'minlaydi.botlaringizning "
-#~ "mijozlaringiz kerak bo'lganda doimo "
-#~ "foydalanish mumkinligini ta'minlaydi."
-
-#~ msgid "Add Text Entry"
-#~ msgstr "Matn yozuvini qo'shish"
-
-#~ msgid "Upload File"
-#~ msgstr "Fayl yuklash"
-
-#~ msgid "Image URL"
-#~ msgstr "Rasm URL manzili"
-
-#~ msgid ""
-#~ "Enter the direct URL to your "
-#~ "product image. Bot will send this "
-#~ "image when relevant."
-#~ msgstr ""
-#~ "Mahsulot rasimingizning to'g'ridan-to'g'ri URL"
-#~ " manzilini kiriting. Bot tegishli bo'lganda"
-#~ " ushbu rasmni yuboradi."
-
-#~ msgid "Image Caption"
-#~ msgstr "Rasm izoji"
-
-#~ msgid "Product name or short description"
-#~ msgstr "Mahsulot nomi yoki qisqa tavsif"
-
-#~ msgid "Brief description that will be sent with the image."
-#~ msgstr "Rasm bilan birga yuboriladigan qisqa tavsif."
 
